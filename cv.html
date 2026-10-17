@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — Jordi-Joan Giménez</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Inter:wght@400..700&display=swap">
+  <style>
+    :root { --ink: #1b1a17; --muted: #5f5a52; --line: #e3dccf; --accent: #0f5466; }
+    @page { size: A4; margin: 11mm 13mm; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 400 8.8pt/1.36 "Inter", "Segoe UI", Arial, sans-serif; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { max-width: 182mm; margin: 0 auto; }
+    @media screen { body { background: #eee; } .page { background: #fff; padding: 14mm; margin: 20px auto; box-shadow: 0 2px 12px rgba(0,0,0,.12); } }
+    header { display: flex; gap: 6mm; align-items: center; padding-bottom: 4mm; border-bottom: 2px solid var(--ink); }
+    header img { width: 25mm; height: 30mm; object-fit: cover; border-radius: 3mm; }
+    h1 { font: 800 21pt/1.05 "Bricolage Grotesque", "Inter", sans-serif; letter-spacing: -0.02em; margin: 0 0 1.5mm; }
+    .role { font-weight: 600; margin: 0 0 1.5mm; }
+    .contact { color: var(--muted); margin: 0; font-size: 8.6pt; }
+    .contact a { color: var(--muted); text-decoration: none; }
+    h2 { font: 700 8.6pt/1 "Inter", sans-serif; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 4.5mm 0 2mm; padding-bottom: 1.2mm; border-bottom: 1px solid var(--line); }
+    p { margin: 0 0 1.5mm; }
+    .job { margin-bottom: 2.6mm; break-inside: avoid; }
+    .job-head { display: flex; justify-content: space-between; gap: 4mm; align-items: baseline; }
+    .job-head b { font-size: 9.8pt; }
+    .job-head span { color: var(--muted); white-space: nowrap; font-size: 8.6pt; }
+    .job-role { font-weight: 600; color: var(--muted); margin: 0.3mm 0 1mm; }
+    ul { margin: 0; padding-left: 4.2mm; }
+    li { margin: 0 0 0.6mm; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 0 7mm; break-inside: avoid; }
+    h2 { break-after: avoid; }
+    .plain { list-style: none; padding: 0; }
+    .plain li { margin-bottom: 1mm; }
+    .muted { color: var(--muted); }
+    .pubs li { margin-bottom: 1.1mm; }
+    .tags { color: var(--ink); }
+    a { color: var(--ink); }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <img src="img/jordi.jpg" alt="Jordi-Joan Giménez">
+    <div>
+      <h1>Dr. Jordi-Joan Giménez Gandia</h1>
+      <p class="role">Head of Technology, 5G-MAG Project Office · Senior Project Manager, EBU</p>
+      <p class="contact">Geneva, Switzerland · <a href="https://jordijoan.es">jordijoan.es</a> · <a href="https://www.linkedin.com/in/jordijoangimenez">linkedin.com/in/jordijoangimenez</a> · <a href="https://orcid.org/0000-0001-5618-9090">ORCID 0000-0001-5618-9090</a> · <a href="https://github.com/jordijoangimenez">github.com/jordijoangimenez</a></p>
+    </div>
+  </header>
+
+  <h2>Profile</h2>
+  <p>Technology leader with 15+ years in media delivery across mobile and broadcast networks. I work in the Project Office of 5G-MAG – The Media Connectivity Association, managing the association's day-to-day activities and its technical programme, and represent the EBU in 3GPP RAN1, where I am feature lead in Rel-19. Track record of 30+ contributions to international standards (3GPP, DVB, ATSC), open-source programmes, EU research projects and award-winning research: IBC Best Paper 2016, 3 granted US patents, 60+ papers and 1,000+ citations.</p>
+
+  <h2>Experience</h2>
+  <div class="job">
+    <div class="job-head"><b>5G-MAG Association &amp; European Broadcasting Union (EBU) · Geneva</b><span>Apr 2020 – present</span></div>
+    <p class="job-role">Head of Technology, 5G-MAG Project Office · Senior Project Manager, EBU</p>
+    <ul>
+      <li>Day-to-day management of the association: coordination of member projects and activities, work planning, logistics, the members' platform, website and social media.</li>
+      <li>Organisation of workshops and events, such as the Future Media Townhall at IBC; member relations and communication with the media and international fora.</li>
+      <li>Lead and maintainer of the 5G-MAG Reference Tools on GitHub, open implementations of 3GPP, MPEG, DVB and IETF specifications (2,300+ contributions in the last year; 430+ pull requests, 140+ reviews).</li>
+      <li>3GPP RAN1 delegate and feature lead for Rel-19 time-frequency interleaving (RRC parameters); testing and profiling with srsRAN and Open5GS, including NTN and MBS.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><b>Institut für Rundfunktechnik (IRT) · Munich</b><span>Apr 2018 – Apr 2020</span></div>
+    <p class="job-role">Project Lead &amp; Research Engineer, Radio Systems Department</p>
+    <ul>
+      <li>3GPP RAN1 delegate for LTE-based 5G Terrestrial Broadcast (Rel-16): contributions, simulations and coordination with 3GPP companies.</li>
+      <li>Chair of the EBU 5G-Deployments industry group; delegate to the EBU Mobile Technology Standards group.</li>
+      <li>Project leader for the H2020 5G-PPP projects 5G-Xcast and 5G-SOLUTIONS.</li>
+      <li>MATLAB link- and network-level simulators for eMBMS Rel-14; software-defined-radio demonstrators (srsLTE, Amarisoft) for IBC 2018/2019 and MWC 2019; patents on RAN enhancements.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><b>iTEAM Research Institute, Universitat Politècnica de València · Valencia</b><span>Feb 2011 – Mar 2018</span></div>
+    <p class="job-role">Research Engineer (2011–2016) · Postdoctoral Researcher, APOSTD grant (2016–2018) · Mobile Communications Group</p>
+    <ul>
+      <li>Standardization of next-generation terrestrial TV technologies (DVB-T2, DVB-NGH, ATSC 3.0).</li>
+      <li>Link-level simulation, propagation modelling, frequency planning and coverage estimation for broadcast and cellular networks.</li>
+      <li>Drive tests and laboratory measurements, including an HEVC 120 fps pilot transmitter over DVB-T2.</li>
+      <li>Industry projects with ETRI (ATSC 3.0), Panasonic and Teracom (WiB), BMW (DAB/eMBMS service continuity) and mobile operators.</li>
+    </ul>
+  </div>
+  <div class="job">
+    <div class="job-head"><b>Baa Consultors S.L.</b><span>Nov – Dec 2017</span></div>
+    <p>Technical expert, EU technical assistance for the implementation of digital TV in Colombia (EuropeAid).</p>
+  </div>
+  <p class="muted">Research stays: IRT, Munich (2015, 2017–2018) · Teracom AB, Stockholm (2013, 2014) · KTH Royal Institute of Technology, Stockholm (2014).</p>
+
+  <h2>Standardization · 30+ technical contributions</h2>
+  <ul style="break-inside: avoid">
+    <li><b>3GPP RAN1</b> (2018 – present): feature lead for Rel-19 time-frequency interleaving (EBU); 8 contributions on LTE-based 5G Terrestrial Broadcast (Rel-16) with the EBU, BBC and IRT.</li>
+    <li><b>DVB</b> (2011 – 2018): 20 contributions to DVB-NGH, TM-MIMO and TM-WIB, including the TM-WIB final report.</li>
+    <li><b>ATSC 3.0</b>: proposals on Time Frequency Slicing and Advanced Network Planning to the TG3/S32-3 waveform group.</li>
+    <li><b>EBU</b>: chair of the 5G-Deployments industry group; delegate to the Mobile Technology Standards group.</li>
+  </ul>
+
+  <h2>Projects &amp; contracts · 7 R&amp;D projects, 8 industry contracts</h2>
+  <ul>
+    <li><b>EU H2020:</b> 5G-SOLUTIONS (2019–20, €14.3M, IRT) · 5G-Xcast (2017–19, €8.0M, UPV).</li>
+    <li><b>IRT:</b> multicast delivery and HbbTV web apps in Android (2018, principal investigator).</li>
+    <li><b>National programmes:</b> extra-terrestrial digital broadcasting (Spanish Ministry of Economy, 2016–18) · non-uniform constellations for ATSC 3.0 (UPV, 2015–16) · FREEDOM (CDTI, 2012–13) · ENGINES (Celtic-Plus, 2010–).</li>
+    <li><b>Contracts:</b> ETRI, South Korea (TFS for cloud transmission, non-uniform constellations and LDM for ATSC 3.0, 2014–16) · EuropeAid, digital TV in Colombia (2017) · TV/LTE coexistence at 700 MHz in Peru and Argentina (2015–16) · Orange, Vodafone and Telefónica (2013) · SAPEC, Egatel and Axión (2012–13) · Abertis Retevisión, DVB-H/SH planning (2007–08).</li>
+  </ul>
+  <p><b>Supervision:</b> 2 M.Sc. theses (2016, 2018) and 2 final-degree projects (2012; 2013, 10/10 with honours), UPV.</p>
+  <p><b>PhD committees:</b> Secretary of the examination committee for E. Iradier, “Power domain NOMA for 5G networks and beyond”, UPV/EHU (2021).</p>
+
+  <div class="two">
+    <div>
+      <h2>Education</h2>
+      <ul class="plain">
+        <li><b>PhD in Telecommunication</b>, UPV, 2015<br><span class="muted">Cum laude, International Doctorate mention</span></li>
+        <li><b>M.Sc. Technologies, Systems and Telecom Networks</b>, UPV, 2011</li>
+        <li><b>M.Sc. Telecommunication Engineering</b>, UPV, 2010</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Awards &amp; grants</h2>
+      <ul class="plain">
+        <li><b>IBC Best Paper Award</b>, 2016 (WiB)</li>
+        <li><b>IEEE BMSB Best Student Paper Award</b>, 2017</li>
+        <li><b>Vodafone/ONO Best M.Sc. Thesis</b>, COIT, 2012</li>
+        <li><b>Guest editor</b>, IEEE Trans. Broadcasting special issues, 2022 and 2024</li>
+        <li>APOSTD postdoctoral grant (2016) · FPI-UPV predoctoral grant (2013)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Patents</h2>
+  <ul class="plain">
+    <li>US 11,916,655 B2 — Transmitter and/or receiver for transmitting and/or receiving radio information signals (IRT, 2024)</li>
+    <li>US 10,225,040 B2 — Broadcasting signal using combination of layered division multiplexing and channel bonding (ETRI, 2019)</li>
+    <li>US 9,917,666 B2 — Switching between DAB and eMBMS transmissions for a broadcast service (BMW, 2018)</li>
+    <li>US 2023/0053534 A1 — Cellular network broadcasting (IRT, application)</li>
+  </ul>
+
+  <h2>Selected publications <span class="muted" style="text-transform:none;letter-spacing:0;font-weight:500">· full list at jordijoan.es and Google Scholar</span></h2>
+  <ul class="pubs">
+    <li>F. Gabin, D. Silhavy, T. Stockhammer, R. Bradbury, T. Lohmar, <b>J.J. Giménez</b>, J. Mika, “Advanced Media Delivery: Latest Updates on Streaming and Broadcast,” IBC 2025.</li>
+    <li>N. Dhollande, D. Butler, R. Bradbury, U. Rauschenbach, T. Biatek, T. Lohmar, <b>J.J. Giménez</b>, “Unlocking Network APIs for Media Production over Mobile Networks,” IBC 2025.</li>
+    <li>E. Garro et al., <b>J.J. Giménez</b>, D. Gómez-Barquero, “5G Mixed Mode: NR Multicast-Broadcast Services,” IEEE Trans. Broadcasting, 2020.</li>
+    <li><b>J.J. Giménez</b> et al., “5G New Radio for Terrestrial Broadcast: A Forward-Looking Approach for NR-MBMS,” IEEE Trans. Broadcasting, 2019.</li>
+    <li><b>J.J. Giménez</b>, D. Gómez-Barquero, J. Morgade, E. Stare, “Wideband Broadcasting: A Power-Efficient Approach to 5G Broadcasting,” IEEE Communications Magazine, 2018.</li>
+    <li>E. Stare, P. Klenner, <b>J.J. Giménez</b>, “WIB: A New System Concept for Digital Terrestrial Television,” IBC 2016 — Best Paper Award.</li>
+  </ul>
+
+  <h2>Selected talks</h2>
+  <p>Keynote, IEEE BMSB 2022 · Future Media Townhall, IBC 2026 · Fraunhofer FOKUS Media Web Symposium 2022, 2025, 2026 · FOSDEM 2024 · invited talk, workshop on 5G in content production and distribution (2024) · UWA Summit 2023 · EBU @ IBC 2023 · 5G-Xcast tutorial, IEEE BMSB 2019</p>
+
+  <h2>Skills</h2>
+  <p><b>Leadership:</b> association management, programme and project management, member and stakeholder relations, events and workshops, communication and outreach, technology strategy, standards delegation and consensus building, open-source community building, EU proposals (H2020, Horizon Europe), moderation and public speaking.</p>
+  <p><b>Technology:</b> 3GPP RAN1, 5G multicast/broadcast (MBS), 5G Media Streaming, network APIs (CAMARA), NTN, MPEG-I/V3C and XR, DVB and ATSC 3.0, network planning and propagation, PHY and signal processing.</p>
+  <p><b>Tools:</b> srsRAN, Open5GS, Amarisoft, 5G-MAG Reference Tools, MATLAB, Atoll, ICS Telecom, IRT FRANSY, GitHub.</p>
+  <p><b>Languages:</b> Catalan and Spanish (native), English (professional), German and French (basic).</p>
+</div>
+</body>
+</html>

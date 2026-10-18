@@ -237,8 +237,23 @@ h1 {
   border-radius: 28px; border: 6px solid var(--surface); box-shadow: var(--shadow);
 }
 
+.sticker {
+  position: absolute; padding: 9px 14px; border-radius: 999px; white-space: nowrap;
+  font: 700 14px/1 var(--display); letter-spacing: -0.01em;
+  background: var(--surface); color: var(--text); border: 1.5px solid var(--text); box-shadow: var(--shadow);
+}
+.sticker-phd { right: -6%; top: 7%; rotate: 9deg; }
+.sticker-oss { left: -7%; top: 27%; rotate: -5deg; }
+.sticker-std { left: -9%; bottom: 17%; rotate: -7deg; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.sticker-geo { right: -3%; bottom: 5%; rotate: 5deg; background: var(--tint); border-color: transparent; color: var(--link); }
+
 @media (max-width: 1100px) {
   .portrait::before { inset: 6% -3% -5% 8%; }
+  .sticker-phd { right: -2%; }
+}
+@media (max-width: 860px) {
+  .sticker { font-size: 12px; padding: 7px 11px; }
+  .sticker-oss, .sticker-std { left: -3%; }
 }
 
 @media (max-width: 860px) {

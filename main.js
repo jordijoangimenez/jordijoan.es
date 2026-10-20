@@ -15,7 +15,8 @@
       badge: {},
       none: 'Nothing matches “{q}”. Try another word.', one: '{n} publication', many: '{n} publications',
       morePhotos: 'Show {n} more photos',
-      newTab: '(opens in a new tab)', toTop: 'Back to top', prev: 'Previous photo', next: 'Next photo'
+      newTab: '(opens in a new tab)', toTop: 'Back to top', prev: 'Previous photo', next: 'Next photo',
+      pdf: 'PDF, 320 KB'
     },
     ca: {
       menuOpen: 'Obrir el menú', menuClose: 'Tancar el menú', sep: '.',
@@ -23,7 +24,8 @@
       badge: { 'Editorial': 'Editorial', 'Patent application': 'Sol·licitud de patent', 'Project report': 'Informe de projecte', 'White paper': 'Llibre blanc', 'PhD thesis': 'Tesi doctoral' },
       none: 'Cap resultat per a «{q}». Prova una altra paraula.', one: '{n} publicació', many: '{n} publicacions',
       morePhotos: 'Mostrar {n} fotos més',
-      newTab: '(en una pestanya nova)', toTop: 'Tornar a dalt', prev: 'Foto anterior', next: 'Foto següent'
+      newTab: '(en una pestanya nova)', toTop: 'Tornar a dalt', prev: 'Foto anterior', next: 'Foto següent',
+      pdf: 'PDF, 320 kB'
     },
     es: {
       menuOpen: 'Abrir el menú', menuClose: 'Cerrar el menú', sep: '.',
@@ -31,7 +33,8 @@
       badge: { 'Editorial': 'Editorial', 'Patent application': 'Solicitud de patente', 'Project report': 'Informe de proyecto', 'White paper': 'Libro blanco', 'PhD thesis': 'Tesis doctoral' },
       none: 'Ningún resultado para «{q}». Prueba con otra palabra.', one: '{n} publicación', many: '{n} publicaciones',
       morePhotos: 'Ver {n} fotos más',
-      newTab: '(se abre en una pestaña nueva)', toTop: 'Volver arriba', prev: 'Foto anterior', next: 'Foto siguiente'
+      newTab: '(se abre en una pestaña nueva)', toTop: 'Volver arriba', prev: 'Foto anterior', next: 'Foto siguiente',
+      pdf: 'PDF, 320 kB'
     },
     de: {
       menuOpen: 'Menü öffnen', menuClose: 'Menü schließen', sep: '.',
@@ -39,7 +42,8 @@
       badge: { 'Editorial': 'Editorial', 'Patent application': 'Patentanmeldung', 'Project report': 'Projektbericht', 'White paper': 'White Paper', 'PhD thesis': 'Dissertation' },
       none: 'Keine Treffer für „{q}“. Versuchen Sie ein anderes Wort.', one: '{n} Publikation', many: '{n} Publikationen',
       morePhotos: '{n} weitere Fotos anzeigen',
-      newTab: '(öffnet in neuem Tab)', toTop: 'Nach oben', prev: 'Vorheriges Foto', next: 'Nächstes Foto'
+      newTab: '(öffnet in neuem Tab)', toTop: 'Nach oben', prev: 'Vorheriges Foto', next: 'Nächstes Foto',
+      pdf: 'PDF, 320 KB'
     },
     fr: {
       menuOpen: 'Ouvrir le menu', menuClose: 'Fermer le menu', sep: ' ',
@@ -47,7 +51,8 @@
       badge: { 'Editorial': 'Éditorial', 'Patent application': 'Demande de brevet', 'Project report': 'Rapport de projet', 'White paper': 'Livre blanc', 'PhD thesis': 'Thèse de doctorat' },
       none: 'Aucun résultat pour « {q} ». Essayez un autre mot.', one: '{n} publication', many: '{n} publications',
       morePhotos: 'Afficher {n} photos de plus',
-      newTab: '(s’ouvre dans un nouvel onglet)', toTop: 'Retour en haut', prev: 'Photo précédente', next: 'Photo suivante'
+      newTab: '(s’ouvre dans un nouvel onglet)', toTop: 'Retour en haut', prev: 'Photo précédente', next: 'Photo suivante',
+      pdf: 'PDF, 320 Ko'
     },
     zh: {
       menuOpen: '打开菜单', menuClose: '关闭菜单', sep: ',',
@@ -55,7 +60,8 @@
       badge: { 'Editorial': '社论', 'Patent application': '专利申请', 'Project report': '项目报告', 'White paper': '白皮书', 'PhD thesis': '博士论文' },
       none: '没有与“{q}”匹配的结果，请换个关键词。', one: '{n} 项', many: '{n} 项',
       morePhotos: '再显示 {n} 张照片',
-      newTab: '（在新标签页中打开）', toTop: '返回顶部', prev: '上一张', next: '下一张'
+      newTab: '（在新标签页中打开）', toTop: '返回顶部', prev: '上一张', next: '下一张',
+      pdf: 'PDF，320 KB'
     }
   };
   var T = I18N[(root.lang || 'en').slice(0, 2).toLowerCase()] || I18N.en;
@@ -71,6 +77,7 @@
 
   /* ---------- Screen readers: announce new tabs, mark English titles on translated pages ---------- */
   document.querySelectorAll('a[target="_blank"]').forEach(function (a) { a.appendChild(srOnly(' ' + T.newTab)); });
+  document.querySelectorAll('a[download][href$=".pdf"]').forEach(function (a) { a.appendChild(srOnly(', ' + T.pdf)); });
   if (!/^en/i.test(root.lang || 'en')) {
     document.querySelectorAll('.talk-list b, .std-docs li, a[href*="doi.org/10.4995/thesis"], a[href*="hdl.handle.net"]')
       .forEach(function (el) { el.lang = 'en'; });
@@ -346,6 +353,7 @@
     }
 
     shots.forEach(function (a, i) {
+      a.setAttribute('aria-haspopup', 'dialog');
       a.addEventListener('click', function (e) {
         e.preventDefault();
         opener = a;
@@ -447,7 +455,12 @@
     document.addEventListener('click', function (e) {
       if (langMenu.open && !langMenu.contains(e.target)) langMenu.open = false;
     });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') langMenu.open = false; });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !langMenu.open) return;
+      var inside = langMenu.contains(document.activeElement);
+      langMenu.open = false;
+      if (inside) langMenu.querySelector('summary').focus();
+    });
   }
 
   /* ---------- Footer year ---------- */

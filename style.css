@@ -5,7 +5,7 @@
   --surface-2: #f2eee8;
   --text: #1b1a17;
   --muted: #5d5952;
-  --faint: #78736b;
+  --faint: #6f6a62;
   --line: #e7e1d8;
   --accent: #0f5466;
   --link: #0f5466;
@@ -30,7 +30,7 @@
     --surface-2: #25221e;
     --text: #f2eee8;
     --muted: #b6aea3;
-    --faint: #8e877d;
+    --faint: #948d83;
     --line: #2e2a25;
     --accent: #6fc3d1;
     --link: #8fd3de;
@@ -48,7 +48,7 @@
   --surface-2: #25221e;
   --text: #f2eee8;
   --muted: #b6aea3;
-  --faint: #8e877d;
+  --faint: #948d83;
   --line: #2e2a25;
   --accent: #6fc3d1;
   --link: #8fd3de;
@@ -62,7 +62,8 @@
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+/* Keep focused elements clear of the sticky header and the back-to-top button */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; scroll-padding-bottom: 84px; }
 
 body {
   margin: 0;

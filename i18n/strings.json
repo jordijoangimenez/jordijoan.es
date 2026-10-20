@@ -2232,12 +2232,12 @@
     "zh": "使用提示"
   },
   "a11y_t_theme": {
-    "en": "Switch between the dark and the light look with the sun or moon button at the top of the page.",
-    "ca": "Canvieu entre l'aspecte fosc i el clar amb el botó del sol o la lluna, a dalt de la pàgina.",
-    "es": "Cambia entre el aspecto oscuro y el claro con el botón del sol o la luna, arriba de la página.",
-    "de": "Mit der Sonnen- bzw. Mondtaste oben auf der Seite wechseln Sie zwischen dunkler und heller Darstellung.",
-    "fr": "Passez de l'affichage sombre à l'affichage clair avec le bouton soleil ou lune, en haut de la page.",
-    "zh": "点击页面顶部的太阳或月亮按钮，可在深色和浅色外观之间切换。"
+    "en": "The site opens in the same light or dark look as your device. Switch any time with the sun or moon button at the top of the page.",
+    "ca": "El lloc s'obri amb el mateix aspecte clar o fosc que el vostre dispositiu. Podeu canviar-lo quan vulgueu amb el botó del sol o la lluna, a dalt de la pàgina.",
+    "es": "El sitio se abre con el mismo aspecto claro u oscuro que tu dispositivo. Puedes cambiarlo cuando quieras con el botón del sol o la luna, arriba de la página.",
+    "de": "Die Website übernimmt die helle oder dunkle Darstellung Ihres Geräts. Mit der Sonnen- bzw. Mondtaste oben auf der Seite können Sie jederzeit wechseln.",
+    "fr": "Le site s'affiche en clair ou en sombre, comme votre appareil. Changez à tout moment avec le bouton soleil ou lune, en haut de la page.",
+    "zh": "网站默认采用与您设备相同的浅色或深色外观，可随时点击页面顶部的太阳或月亮按钮切换。"
   },
   "a11y_t_language": {
     "en": "Change the language with the globe button next to it. Each page has the same content in six languages.",

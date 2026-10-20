@@ -1,0 +1,8 @@
+[
+  { "id": "en", "dir": "",   "html": "en",      "locale": "en_GB", "name": "English",  "code": "EN",  "label": "EN, Language: English" },
+  { "id": "ca", "dir": "ca", "html": "ca",      "locale": "ca_ES", "name": "Català",   "code": "CA",  "label": "CA, Idioma: català" },
+  { "id": "es", "dir": "es", "html": "es",      "locale": "es_ES", "name": "Español",  "code": "ES",  "label": "ES, Idioma: español" },
+  { "id": "de", "dir": "de", "html": "de",      "locale": "de_DE", "name": "Deutsch",  "code": "DE",  "label": "DE, Sprache: Deutsch" },
+  { "id": "fr", "dir": "fr", "html": "fr",      "locale": "fr_FR", "name": "Français", "code": "FR",  "label": "FR, Langue : français" },
+  { "id": "zh", "dir": "zh", "html": "zh-Hans", "locale": "zh_CN", "name": "中文",     "code": "中文", "label": "语言：中文" }
+]

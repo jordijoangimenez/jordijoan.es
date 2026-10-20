@@ -135,7 +135,7 @@ section[id], [id="academic"] { scroll-margin-top: 80px; }
 }
 .nav.scrolled { border-bottom-color: var(--line); }
 
-.nav-inner { position: relative; display: flex; align-items: center; gap: 12px; height: 68px; }
+.nav-inner { position: relative; display: flex; align-items: center; gap: 12px; min-height: 68px; }
 
 .brand {
   margin-right: auto;
@@ -144,7 +144,8 @@ section[id], [id="academic"] { scroll-margin-top: 80px; }
 }
 .brand span { color: var(--accent); }
 
-.menu { display: flex; align-items: center; gap: 2px; }
+/* Links wrap onto a second row rather than overflow when visitors enlarge text spacing */
+.menu { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 2px; min-width: 0; }
 .menu a {
   padding: 8px 12px; border-radius: 999px; white-space: nowrap;
   color: var(--muted); text-decoration: none; font-size: 15px; font-weight: 500;
@@ -206,7 +207,8 @@ section[id], [id="academic"] { scroll-margin-top: 80px; }
 }
 :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 { letter-spacing: 0; }
 :lang(de) h2, :lang(de) h3, :lang(de) .kicker, :lang(de) .std-stats span, :lang(de) .facts span, :lang(de) .std-logos-title { hyphens: auto; overflow-wrap: break-word; }
-.label, .kicker, .std-logos-title, .now-label { overflow-wrap: break-word; }
+.label, .kicker, .std-logos-title, .now-label, h1, h2, h3 { overflow-wrap: break-word; }
+:lang(de) h1 { hyphens: auto; }
 
 .theme-toggle .i-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
@@ -667,6 +669,35 @@ h2 {
 .back-link:hover { text-decoration: underline; }
 .page-title { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 800; margin-bottom: 28px; }
 .page-head .section-sub { margin-top: 0; }
+
+/* Language suggestion strip (added by main.js; sits in the page flow, never over content) */
+.lang-offer {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px;
+  padding: 12px var(--gutter); background: var(--tint); color: var(--text);
+}
+.lang-offer p { margin: 0; font-weight: 600; }
+.lang-offer .btn { min-height: 40px; padding: 0 18px; font-size: 15px; }
+.lang-offer-close { width: 36px; height: 36px; }
+
+/* Page not found */
+.notfound-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.notfound-list a {
+  display: block; height: 100%; padding: 18px 20px; border-radius: 16px; text-decoration: none;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text);
+}
+.notfound-list a:hover { border-color: var(--accent); }
+.notfound-list b { display: block; font: 700 1.1rem/1.3 var(--display); margin-bottom: 4px; }
+.notfound-list span { color: var(--link); font-weight: 600; }
+
+/* Plain reading pages (accessibility statement) */
+.prose h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); letter-spacing: -0.02em; line-height: 1.2; margin: 40px 0 12px; max-width: none; }
+.prose p, .prose li { color: var(--muted); max-width: 68ch; }
+.prose p { margin: 0 0 12px; }
+.prose ul { margin: 0; padding-left: 1.2em; display: grid; gap: 10px; }
+.prose li::marker { color: var(--accent); }
+.prose .note { margin-top: 40px; }
+.footer a { color: var(--muted); }
+.footer a:hover { color: var(--text); }
 
 /* ---------- Footer ---------- */
 .footer { padding: 0 0 40px; color: var(--faint); font-size: 14px; }

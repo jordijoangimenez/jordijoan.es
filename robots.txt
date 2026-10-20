@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /cv.html
+Disallow: /cv-es.html
+Disallow: /cv-ca.html
 
 Sitemap: https://jordijoan.es/sitemap.xml

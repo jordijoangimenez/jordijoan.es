@@ -1,0 +1,2418 @@
+{
+  "jordi_joan_gim_nez_phd_head_of_technolog": {
+    "en": "Jordi-Joan Giménez, PhD: Head of Technology in the 5G-MAG Project Office and Senior Project Manager at the EBU. 15+ years in media delivery, 3GPP standards and open-source media technology.",
+    "ca": "Jordi-Joan Giménez, doctor en Telecomunicació: responsable de Tecnologia a l'Oficina de Projectes de 5G-MAG i gestor sènior de projectes a l'EBU. Més de 15 anys en distribució de continguts, estàndards 3GPP i tecnologia de codi obert.",
+    "es": "Jordi-Joan Giménez, doctor en Telecomunicación: responsable de Tecnología en la Oficina de Proyectos de 5G-MAG y jefe de proyectos sénior en la EBU. Más de 15 años en distribución de contenidos, estándares 3GPP y tecnología de código abierto.",
+    "de": "Dr. Jordi-Joan Giménez: Head of Technology im 5G-MAG Project Office und Senior Project Manager bei der EBU. Über 15 Jahre in Mediendistribution, 3GPP-Standardisierung und Open-Source-Medientechnologie.",
+    "fr": "Jordi-Joan Giménez, docteur en télécommunications : Head of Technology au bureau de projets de 5G-MAG et Senior Project Manager à l'UER. Plus de 15 ans dans la distribution de contenus, la normalisation 3GPP et les technologies open source.",
+    "zh": "Jordi-Joan Giménez 博士：5G-MAG 项目办公室技术主管、EBU 高级项目经理。拥有 15 年以上媒体分发、3GPP 标准化和开源媒体技术经验。"
+  },
+  "head_of_technology_in_the_5g_mag_project": {
+    "en": "Head of Technology in the 5G-MAG Project Office and Senior Project Manager at the EBU. Media delivery, 3GPP standards and open-source media technology.",
+    "ca": "Responsable de Tecnologia a l'Oficina de Projectes de 5G-MAG i gestor sènior de projectes a l'EBU. Distribució de continguts, estàndards 3GPP i tecnologia de codi obert.",
+    "es": "Responsable de Tecnología en la Oficina de Proyectos de 5G-MAG y jefe de proyectos sénior en la EBU. Distribución de contenidos, estándares 3GPP y tecnología de código abierto.",
+    "de": "Head of Technology im 5G-MAG Project Office und Senior Project Manager bei der EBU. Mediendistribution, 3GPP-Standardisierung und Open-Source-Medientechnologie.",
+    "fr": "Head of Technology au bureau de projets de 5G-MAG et Senior Project Manager à l'UER. Distribution de contenus, normalisation 3GPP et technologies open source.",
+    "zh": "5G-MAG 项目办公室技术主管、EBU 高级项目经理。媒体分发、3GPP 标准化与开源媒体技术。"
+  },
+  "skip_to_content": {
+    "en": "Skip to content",
+    "ca": "Salta al contingut",
+    "es": "Saltar al contenido",
+    "de": "Zum Inhalt springen",
+    "fr": "Aller au contenu",
+    "zh": "跳到正文"
+  },
+  "jordi_joan_gim_nez_home": {
+    "en": "Jordi-Joan Giménez, home",
+    "ca": "Jordi-Joan Giménez, inici",
+    "es": "Jordi-Joan Giménez, inicio",
+    "de": "Jordi-Joan Giménez, Startseite",
+    "fr": "Jordi-Joan Giménez, accueil",
+    "zh": "Jordi-Joan Giménez，首页"
+  },
+  "sections": {
+    "en": "Sections",
+    "ca": "Seccions",
+    "es": "Secciones",
+    "de": "Abschnitte",
+    "fr": "Sections",
+    "zh": "页面导航"
+  },
+  "what_i_do": {
+    "en": "What I do",
+    "ca": "Què faig",
+    "es": "Qué hago",
+    "de": "Was ich mache",
+    "fr": "Activités",
+    "zh": "我的工作"
+  },
+  "standards": {
+    "en": "Standards",
+    "ca": "Estàndards",
+    "es": "Estándares",
+    "de": "Standards",
+    "fr": "Normalisation",
+    "zh": "标准"
+  },
+  "experience": {
+    "en": "Experience",
+    "ca": "Experiència",
+    "es": "Experiencia",
+    "de": "Werdegang",
+    "fr": "Parcours",
+    "zh": "经历"
+  },
+  "talks": {
+    "en": "Talks",
+    "ca": "Xerrades",
+    "es": "Charlas",
+    "de": "Vorträge",
+    "fr": "Conférences",
+    "zh": "演讲"
+  },
+  "publications": {
+    "en": "Publications",
+    "ca": "Publicacions",
+    "es": "Publicaciones",
+    "de": "Publikationen",
+    "fr": "Publications",
+    "zh": "论文"
+  },
+  "supervision_phd": {
+    "en": "Supervision &amp; PhD",
+    "ca": "Supervisió",
+    "es": "Supervisión",
+    "de": "Betreuung",
+    "fr": "Encadrement",
+    "zh": "指导与博士"
+  },
+  "get_in_touch": {
+    "en": "Get in touch",
+    "ca": "Contacte",
+    "es": "Contacto",
+    "de": "Kontakt",
+    "fr": "Contact",
+    "zh": "联系"
+  },
+  "dark_mode": {
+    "en": "Dark mode",
+    "ca": "Mode fosc",
+    "es": "Modo oscuro",
+    "de": "Dunkelmodus",
+    "fr": "Mode sombre",
+    "zh": "深色模式"
+  },
+  "open_menu": {
+    "en": "Open menu",
+    "ca": "Obrir el menú",
+    "es": "Abrir el menú",
+    "de": "Menü öffnen",
+    "fr": "Ouvrir le menu",
+    "zh": "打开菜单"
+  },
+  "item": {
+    "en": "<p class=\"pill\">",
+    "ca": "<p class=\"pill\">",
+    "es": "<p class=\"pill\">",
+    "de": "<p class=\"pill\" lang=\"en\">",
+    "fr": "<p class=\"pill\" lang=\"en\">",
+    "zh": "<p class=\"pill\">"
+  },
+  "head_of_technology_5g_mag_project_office": {
+    "en": "Head of Technology, 5G-MAG Project Office · Senior Project Manager, EBU",
+    "ca": "Responsable de Tecnologia, Oficina de Projectes de 5G-MAG · Gestor sènior de projectes, EBU",
+    "es": "Responsable de Tecnología, Oficina de Proyectos de 5G-MAG · Jefe de proyectos sénior, EBU",
+    "de": "Head of Technology, 5G-MAG Project Office · Senior Project Manager, EBU",
+    "fr": "Head of Technology, 5G-MAG Project Office · Senior Project Manager, UER",
+    "zh": "5G-MAG 项目办公室技术主管 · EBU 高级项目经理"
+  },
+  "hi_i_m": {
+    "en": "Hi, I'm ",
+    "ca": "Hola, sóc ",
+    "es": "Hola, soy ",
+    "de": "Hallo, ich bin ",
+    "fr": "Bonjour, je suis ",
+    "zh": "你好，我是 "
+  },
+  "i_m_a_telecom_engineer_working_on_how_vi": {
+    "en": "I'm a telecom engineer working on how video, audio and immersive content reach people over the internet. I have contributed to standardization efforts and currently work with the industry translating specifications into open-source software.",
+    "ca": "Sóc enginyer de telecomunicació i treballe en com el vídeo, l'àudio i els continguts immersius arriben a les persones a través d'internet. He contribuït a treballs d'estandardització i actualment col·labore amb la indústria per a convertir les especificacions en programari de codi obert.",
+    "es": "Soy ingeniero de telecomunicación y trabajo en cómo el vídeo, el audio y los contenidos inmersivos llegan a las personas a través de internet. He contribuido a trabajos de estandarización y actualmente colaboro con la industria para convertir las especificaciones en software de código abierto.",
+    "de": "Ich bin Telekommunikationsingenieur und beschäftige mich damit, wie Video, Audio und immersive Inhalte die Menschen über das Internet erreichen. Ich habe an Standardisierungsarbeiten mitgewirkt und arbeite heute mit der Industrie daran, Spezifikationen in Open-Source-Software umzusetzen.",
+    "fr": "Ingénieur en télécommunications, je travaille sur la manière dont la vidéo, l'audio et les contenus immersifs parviennent au public via internet. J'ai contribué à des travaux de normalisation et je collabore aujourd'hui avec l'industrie pour transformer les spécifications en logiciels open source.",
+    "zh": "我是一名电信工程师，研究视频、音频和沉浸式内容如何通过互联网触达用户。我曾参与标准化工作，目前与业界合作，将技术规范转化为开源软件。"
+  },
+  "download_cv": {
+    "en": "Download CV",
+    "ca": "Descarrega el CV",
+    "es": "Descargar CV",
+    "de": "Lebenslauf (EN)",
+    "fr": "Télécharger le CV (EN)",
+    "zh": "下载简历（英文）"
+  },
+  "connect_on_linkedin": {
+    "en": "Connect on LinkedIn",
+    "ca": "Connectem a LinkedIn",
+    "es": "Conectar en LinkedIn",
+    "de": "Auf LinkedIn vernetzen",
+    "fr": "Me retrouver sur LinkedIn",
+    "zh": "在 LinkedIn 上联系"
+  },
+  "geneva_switzerland_phd_in_telecommunicat": {
+    "en": "Geneva, Switzerland · PhD in Telecommunications · Catalan, Spanish, English",
+    "ca": "Ginebra, Suïssa · Doctor en Telecomunicació · Català, castellà i anglés",
+    "es": "Ginebra, Suiza · Doctor en Telecomunicación · Catalán, español e inglés",
+    "de": "Genf, Schweiz · Promotion in Telekommunikation · Katalanisch, Spanisch, Englisch",
+    "fr": "Genève, Suisse · Docteur en télécommunications · Catalan, espagnol, anglais",
+    "zh": "瑞士日内瓦 · 电信博士 · 加泰罗尼亚语、西班牙语、英语"
+  },
+  "jordi_joan_gim_nez_smiling_in_a_grey_bla": {
+    "en": "Jordi-Joan Giménez smiling, in a grey blazer and white shirt",
+    "ca": "Jordi-Joan Giménez somrient, amb americana grisa i camisa blanca",
+    "es": "Jordi-Joan Giménez sonriendo, con americana gris y camisa blanca",
+    "de": "Jordi-Joan Giménez lächelnd, in grauem Sakko und weißem Hemd",
+    "fr": "Jordi-Joan Giménez souriant, en blazer gris et chemise blanche",
+    "zh": "Jordi-Joan Giménez 面带微笑，身穿灰色西装外套和白衬衫"
+  },
+  "phd": {
+    "en": "PhD 🎓",
+    "ca": "PhD 🎓",
+    "es": "PhD 🎓",
+    "de": "PhD 🎓",
+    "fr": "PhD 🎓",
+    "zh": "博士 🎓"
+  },
+  "software": {
+    "en": "💻 Software",
+    "ca": "💻 Programari",
+    "es": "💻 Software",
+    "de": "💻 Software",
+    "fr": "💻 Logiciel",
+    "zh": "💻 软件"
+  },
+  "standards_2": {
+    "en": "📡 Standards",
+    "ca": "📡 Estàndards",
+    "es": "📡 Estándares",
+    "de": "📡 Standards",
+    "fr": "📡 Normes",
+    "zh": "📡 标准"
+  },
+  "what_i_do_2": {
+    "en": "What I do",
+    "ca": "Què faig",
+    "es": "Qué hago",
+    "de": "Was ich mache",
+    "fr": "Ce que je fais",
+    "zh": "我的工作"
+  },
+  "now_october_2026": {
+    "en": "Now · October 2026",
+    "ca": "Ara · octubre de 2026",
+    "es": "Ahora · octubre de 2026",
+    "de": "Aktuell · Oktober 2026",
+    "fr": "Actuellement · octobre 2026",
+    "zh": "现在 · 2026 年 10 月"
+  },
+  "item_2": {
+    "en": "<p class=\"kicker\">",
+    "ca": "<p class=\"kicker\">",
+    "es": "<p class=\"kicker\">",
+    "de": "<p class=\"kicker\" lang=\"en\">",
+    "fr": "<p class=\"kicker\">",
+    "zh": "<p class=\"kicker\">"
+  },
+  "5g_mag_project_office": {
+    "en": "5G-MAG Project Office",
+    "ca": "Oficina de Projectes de 5G-MAG",
+    "es": "Oficina de Proyectos de 5G-MAG",
+    "de": "5G-MAG Project Office",
+    "fr": "Bureau de projets de 5G-MAG",
+    "zh": "5G-MAG 项目办公室"
+  },
+  "running_a_global_industry_association": {
+    "en": "Running a global industry association",
+    "ca": "La gestió d'una associació internacional del sector",
+    "es": "La gestión de una asociación internacional del sector",
+    "de": "Das Management eines globalen Branchenverbands",
+    "fr": "Faire vivre une association industrielle mondiale",
+    "zh": "运营一个全球性行业协会"
+  },
+  "i_help_run": {
+    "en": "I help run ",
+    "ca": "Ajude a gestionar el dia a dia de ",
+    "es": "Ayudo a gestionar el día a día de ",
+    "de": "Ich unterstütze das Tagesgeschäft von ",
+    "fr": "J'aide à gérer au quotidien ",
+    "zh": "我参与 "
+  },
+  "day_to_day_member_projects_and_activitie": {
+    "en": " day to day: member projects and activities, workshops and events such as the Future Media Townhall at IBC, and relations with members, the media and international fora.",
+    "ca": ": projectes i activitats dels membres, tallers i esdeveniments com el Future Media Townhall a l'IBC, i les relacions amb els membres, els mitjans de comunicació i els fòrums internacionals.",
+    "es": ": proyectos y actividades de los miembros, talleres y eventos como el Future Media Townhall en IBC, y las relaciones con los miembros, los medios de comunicación y los foros internacionales.",
+    "de": ": Projekte und Aktivitäten der Mitglieder, Workshops und Veranstaltungen wie das Future Media Townhall auf der IBC sowie die Beziehungen zu Mitgliedern, Medien und internationalen Gremien.",
+    "fr": "&nbsp;: projets et activités des membres, ateliers et événements comme le Future Media Townhall à l'IBC, et relations avec les membres, les médias et les instances internationales.",
+    "zh": " 的日常运营：会员项目与活动、研讨会和各类活动（如 IBC 上的 Future Media Townhall），以及与会员、媒体和国际组织的联络。"
+  },
+  "writing_the_specifications": {
+    "en": "Writing the specifications",
+    "ca": "Redacció d'especificacions",
+    "es": "Redacción de especificaciones",
+    "de": "Spezifikationen mitschreiben",
+    "fr": "Écrire les spécifications",
+    "zh": "编写技术规范"
+  },
+  "30_technical_contributions_since_2011_mo": {
+    "en": "30+ technical contributions since 2011. Most recently, feature lead for time-frequency interleaving in 3GPP RAN1 Rel-19 for the EBU.",
+    "ca": "Més de 30 contribucions tècniques des de 2011. Més recentment, responsable (feature lead) de l'entrellaçat temps-freqüència a 3GPP RAN1 Rel-19 per a l'EBU.",
+    "es": "Más de 30 contribuciones técnicas desde 2011. Recientemente, responsable (feature lead) del entrelazado tiempo-frecuencia en 3GPP RAN1 Rel-19 para la EBU.",
+    "de": "Mehr als 30 technische Beiträge seit 2011. Zuletzt Feature Lead für Time-Frequency-Interleaving in 3GPP RAN1 Rel-19 für die EBU.",
+    "fr": "Plus de 30 contributions techniques depuis 2011. Dernièrement, responsable (feature lead) de l'entrelacement temps-fréquence au 3GPP RAN1 Rel-19 pour l'UER.",
+    "zh": "自 2011 年以来提交了 30 多项技术文稿。最近代表 EBU 担任 3GPP RAN1 Rel-19 时频交织特性负责人（feature lead）。"
+  },
+  "see_my_contributions": {
+    "en": "See my contributions ",
+    "ca": "Les meues contribucions ",
+    "es": "Ver mis contribuciones ",
+    "de": "Meine Beiträge ",
+    "fr": "Voir mes contributions ",
+    "zh": "查看我的贡献 "
+  },
+  "open_source": {
+    "en": "Open source",
+    "ca": "Codi obert",
+    "es": "Código abierto",
+    "de": "Open Source",
+    "fr": "Open source",
+    "zh": "开源"
+  },
+  "turning_specifications_into_running_code": {
+    "en": "Turning specifications into running code",
+    "ca": "De les especificacions al codi",
+    "es": "De las especificaciones al código",
+    "de": "Von der Spezifikation zum lauffähigen Code",
+    "fr": "Des spécifications au code",
+    "zh": "把规范变成可运行的代码"
+  },
+  "maintainer_of_the_5g_mag_reference_tools": {
+    "en": "Maintainer of the 5G-MAG Reference Tools: 2,300+ contributions in the last year, 430+ pull requests and 140+ code reviews.",
+    "ca": "Mantenidor de les 5G-MAG Reference Tools: més de 2.300 contribucions l'últim any, més de 430 pull requests i més de 140 revisions de codi.",
+    "es": "Mantenedor de las 5G-MAG Reference Tools: más de 2.300 contribuciones en el último año, más de 430 pull requests y más de 140 revisiones de código.",
+    "de": "Maintainer der 5G-MAG Reference Tools: über 2.300 Beiträge im letzten Jahr, über 430 Pull Requests und über 140 Code-Reviews.",
+    "fr": "Mainteneur des 5G-MAG Reference Tools&nbsp;: plus de 2&#8239;300 contributions au cours de l'année écoulée, plus de 430 pull requests et plus de 140 revues de code.",
+    "zh": "5G-MAG Reference Tools 维护者：过去一年贡献 2,300 多次，提交 430 多个 Pull Request，完成 140 多次代码审查。"
+  },
+  "my_github": {
+    "en": "My GitHub ",
+    "ca": "El meu GitHub ",
+    "es": "Mi GitHub ",
+    "de": "Mein GitHub ",
+    "fr": "Mon GitHub ",
+    "zh": "我的 GitHub "
+  },
+  "key_figures": {
+    "en": "Key figures",
+    "ca": "Xifres clau",
+    "es": "Cifras clave",
+    "de": "Kennzahlen",
+    "fr": "Chiffres clés",
+    "zh": "关键数据"
+  },
+  "years_in_media_delivery": {
+    "en": "years in media delivery",
+    "ca": "anys en distribució de continguts",
+    "es": "años en distribución de contenidos",
+    "de": "Jahre in der Mediendistribution",
+    "fr": "ans dans la distribution de contenus",
+    "zh": "年媒体分发经验"
+  },
+  "standards_contributions": {
+    "en": "standards contributions",
+    "ca": "contribucions a estàndards",
+    "es": "contribuciones a estándares",
+    "de": "Standardbeiträge",
+    "fr": "contributions à la normalisation",
+    "zh": "项标准文稿"
+  },
+  "papers": {
+    "en": "papers",
+    "ca": "articles",
+    "es": "artículos",
+    "de": "Fachartikel",
+    "fr": "articles",
+    "zh": "篇论文"
+  },
+  "1_000": {
+    "en": "1,000+",
+    "ca": "1.000+",
+    "es": "1.000+",
+    "de": "1.000+",
+    "fr": "1&#8239;000+",
+    "zh": "1,000+"
+  },
+  "citations": {
+    "en": "citations",
+    "ca": "cites",
+    "es": "citas",
+    "de": "Zitationen",
+    "fr": "citations",
+    "zh": "次引用"
+  },
+  "granted_us_patents": {
+    "en": "granted US patents",
+    "ca": "patents concedides als EUA",
+    "es": "patentes concedidas en EE. UU.",
+    "de": "erteilte US-Patente",
+    "fr": "brevets américains délivrés",
+    "zh": "项美国授权专利"
+  },
+  "standards_contributions_2": {
+    "en": "Standards contributions",
+    "ca": "Contribucions a estàndards",
+    "es": "Contribuciones a estándares",
+    "de": "Beiträge zur Standardisierung",
+    "fr": "Contributions à la normalisation",
+    "zh": "标准贡献"
+  },
+  "since_2011_i_have_contributed_to_the_spe": {
+    "en": "Since 2011 I have contributed to the specifications behind digital TV and mobile media delivery, from DVB and ATSC 3.0 to 3GPP 5G.",
+    "ca": "Des de 2011 he contribuït a les especificacions de la televisió digital i de la distribució de continguts per xarxes mòbils, des de DVB i ATSC 3.0 fins al 5G de 3GPP.",
+    "es": "Desde 2011 he contribuido a las especificaciones de la televisión digital y de la distribución de contenidos por redes móviles, desde DVB y ATSC 3.0 hasta el 5G de 3GPP.",
+    "de": "Seit 2011 arbeite ich an den Spezifikationen für digitales Fernsehen und mobile Mediendistribution mit, von DVB und ATSC 3.0 bis 3GPP 5G.",
+    "fr": "Depuis 2011, je contribue aux spécifications de la télévision numérique et de la distribution de contenus sur les réseaux mobiles, de DVB et ATSC 3.0 jusqu'à la 5G du 3GPP.",
+    "zh": "自 2011 年起，我参与制定数字电视和移动媒体分发的相关规范，从 DVB、ATSC 3.0 到 3GPP 5G。"
+  },
+  "technical_contributions": {
+    "en": "technical contributions",
+    "ca": "contribucions tècniques",
+    "es": "contribuciones técnicas",
+    "de": "technische Beiträge",
+    "fr": "contributions techniques",
+    "zh": "项技术文稿"
+  },
+  "3gpp_ran1_feature_lead": {
+    "en": "3GPP RAN1 feature lead",
+    "ca": "responsable de funcionalitat a 3GPP RAN1",
+    "es": "responsable de funcionalidad en 3GPP RAN1",
+    "de": "Feature Lead in 3GPP RAN1",
+    "fr": "feature lead au 3GPP RAN1",
+    "zh": "3GPP RAN1 特性负责人"
+  },
+  "ran1_contributions_with_ebu_bbc_irt": {
+    "en": "RAN1 contributions with EBU, BBC &amp; IRT",
+    "ca": "contribucions a RAN1 amb l'EBU, la BBC i l'IRT",
+    "es": "contribuciones a RAN1 con la EBU, la BBC y el IRT",
+    "de": "RAN1-Beiträge mit EBU, BBC und IRT",
+    "fr": "contributions RAN1 avec l'UER, la BBC et l'IRT",
+    "zh": "项与 EBU、BBC、IRT 联合提交的 RAN1 文稿"
+  },
+  "dvb_contributions": {
+    "en": "DVB contributions",
+    "ca": "contribucions a DVB",
+    "es": "contribuciones a DVB",
+    "de": "DVB-Beiträge",
+    "fr": "contributions DVB",
+    "zh": "项 DVB 文稿"
+  },
+  "2018_now": {
+    "en": "2018 → now",
+    "ca": "2018 → ara",
+    "es": "2018 → hoy",
+    "de": "2018 → heute",
+    "fr": "2018 → aujourd'hui",
+    "zh": "2018 → 至今"
+  },
+  "feature_lead_for_time_frequency_interlea": {
+    "en": "Feature lead for time-frequency interleaving in Rel-19 for the EBU, including the definition of RRC parameters. Earlier, delegate for LTE-based 5G Terrestrial Broadcast (Rel-16) with the EBU, BBC and IRT: requirements, simulation assumptions, evaluation results and new numerologies for rooftop reception.",
+    "ca": "Responsable de l'entrellaçat temps-freqüència a la Rel-19 per a l'EBU, inclosa la definició dels paràmetres RRC. Abans, delegat per a LTE-based 5G Terrestrial Broadcast (Rel-16) amb l'EBU, la BBC i l'IRT: requisits, hipòtesis de simulació, resultats d'avaluació i noves numerologies per a la recepció amb antena de terrat.",
+    "es": "Responsable del entrelazado tiempo-frecuencia en la Rel-19 para la EBU, incluida la definición de los parámetros RRC. Anteriormente, delegado para LTE-based 5G Terrestrial Broadcast (Rel-16) con la EBU, la BBC y el IRT: requisitos, hipótesis de simulación, resultados de evaluación y nuevas numerologías para recepción con antena en tejado.",
+    "de": "Feature Lead für Time-Frequency-Interleaving in Rel-19 für die EBU, einschließlich der Definition der RRC-Parameter. Zuvor Delegierter für LTE-based 5G Terrestrial Broadcast (Rel-16) mit EBU, BBC und IRT: Anforderungen, Simulationsannahmen, Evaluierungsergebnisse und neue Numerologien für den Empfang über Dachantenne.",
+    "fr": "Responsable de l'entrelacement temps-fréquence dans la Rel-19 pour l'UER, y compris la définition des paramètres RRC. Auparavant, délégué pour LTE-based 5G Terrestrial Broadcast (Rel-16) avec l'UER, la BBC et l'IRT&nbsp;: exigences, hypothèses de simulation, résultats d'évaluation et nouvelles numérologies pour la réception sur antenne de toit.",
+    "zh": "代表 EBU 担任 Rel-19 时频交织特性负责人，包括 RRC 参数的定义。此前与 EBU、BBC 和 IRT 一起担任 LTE-based 5G Terrestrial Broadcast（Rel-16）代表，负责需求、仿真假设、评估结果以及面向屋顶天线接收的新参数集（numerology）。"
+  },
+  "2020_now": {
+    "en": "2020 → now",
+    "ca": "2020 → ara",
+    "es": "2020 → hoy",
+    "de": "2020 → heute",
+    "fr": "2020 → aujourd'hui",
+    "zh": "2020 → 至今"
+  },
+  "media_standards_via_5g_mag": {
+    "en": "Media standards via 5G-MAG",
+    "ca": "Estàndards de mitjans a través de 5G-MAG",
+    "es": "Estándares de medios a través de 5G-MAG",
+    "de": "Medienstandards über 5G-MAG",
+    "fr": "Normes médias via 5G-MAG",
+    "zh": "通过 5G-MAG 参与媒体标准"
+  },
+  "representing_5g_mag_in_standardization_f": {
+    "en": "Representing 5G-MAG in standardization forums on codecs, delivery protocols, cloud/edge architectures and XR services.",
+    "ca": "Representació de 5G-MAG en fòrums d'estandardització sobre còdecs, protocols de distribució, arquitectures cloud/edge i serveis XR.",
+    "es": "Representación de 5G-MAG en foros de estandarización sobre códecs, protocolos de distribución, arquitecturas cloud/edge y servicios XR.",
+    "de": "Vertretung von 5G-MAG in Standardisierungsgremien zu Codecs, Übertragungsprotokollen, Cloud-/Edge-Architekturen und XR-Diensten.",
+    "fr": "Représentation de 5G-MAG dans les instances de normalisation sur les codecs, les protocoles de diffusion, les architectures cloud/edge et les services XR.",
+    "zh": "代表 5G-MAG 参与编解码器、传输协议、云/边缘架构和 XR 服务等领域的标准化论坛。"
+  },
+  "dvb_ngh_time_frequency_slicing_framing_s": {
+    "en": "DVB-NGH (Time Frequency Slicing; framing, sounding and synchronization), the TM-MIMO study mission on next-generation terrestrial TV, and the TM-WIB study on Wideband Broadcasting, including its final report.",
+    "ca": "DVB-NGH (Time Frequency Slicing; estructura de trama, sondeig i sincronització), la missió d'estudi TM-MIMO sobre la televisió terrestre de nova generació i l'estudi TM-WIB sobre Wideband Broadcasting, inclòs el seu informe final.",
+    "es": "DVB-NGH (Time Frequency Slicing; estructura de trama, sondeo y sincronización), la misión de estudio TM-MIMO sobre la televisión terrestre de nueva generación y el estudio TM-WIB sobre Wideband Broadcasting, incluido su informe final.",
+    "de": "DVB-NGH (Time Frequency Slicing; Rahmenstruktur, Sounding und Synchronisation), die TM-MIMO-Studienmission zum terrestrischen Fernsehen der nächsten Generation und die TM-WIB-Studie zu Wideband Broadcasting einschließlich ihres Abschlussberichts.",
+    "fr": "DVB-NGH (Time Frequency Slicing&nbsp;; structure de trame, sondage et synchronisation), la mission d'étude TM-MIMO sur la télévision terrestre de nouvelle génération et l'étude TM-WIB sur le Wideband Broadcasting, y compris son rapport final.",
+    "zh": "DVB-NGH（时频分片 Time Frequency Slicing；帧结构、信道探测与同步）、关于下一代地面电视的 TM-MIMO 研究任务，以及关于宽带广播（Wideband Broadcasting）的 TM-WIB 研究及其最终报告。"
+  },
+  "proposals_on_time_frequency_slicing_and": {
+    "en": "Proposals on Time Frequency Slicing and Advanced Network Planning to the TG3/S32-3 ad-hoc group on the ATSC 3.0 waveform.",
+    "ca": "Propostes sobre Time Frequency Slicing i planificació avançada de xarxes al grup ad hoc TG3/S32-3 sobre la forma d'ona d'ATSC 3.0.",
+    "es": "Propuestas sobre Time Frequency Slicing y planificación avanzada de redes al grupo ad hoc TG3/S32-3 sobre la forma de onda de ATSC 3.0.",
+    "de": "Vorschläge zu Time Frequency Slicing und Advanced Network Planning an die Ad-hoc-Gruppe TG3/S32-3 zur ATSC-3.0-Wellenform.",
+    "fr": "Propositions sur le Time Frequency Slicing et la planification avancée des réseaux au groupe ad hoc TG3/S32-3 sur la forme d'onde ATSC 3.0.",
+    "zh": "向 ATSC 3.0 波形 TG3/S32-3 特设小组提交关于时频分片和高级网络规划的提案。"
+  },
+  "ebu": {
+    "en": "EBU",
+    "ca": "EBU",
+    "es": "EBU",
+    "de": "EBU",
+    "fr": "UER",
+    "zh": "EBU"
+  },
+  "while_at_irt_chair_of_the_ebu_5g_deploym": {
+    "en": "While at IRT: chair of the EBU 5G-Deployments industry group and delegate to the EBU Mobile Technology Standards group.",
+    "ca": "Durant l'etapa a l'IRT: president del grup industrial EBU 5G-Deployments i delegat al grup EBU Mobile Technology Standards.",
+    "es": "Durante mi etapa en el IRT: presidente del grupo industrial EBU 5G-Deployments y delegado en el grupo EBU Mobile Technology Standards.",
+    "de": "Während der Zeit am IRT: Vorsitzender der EBU-Industriegruppe 5G-Deployments und Delegierter in der Gruppe EBU Mobile Technology Standards.",
+    "fr": "Pendant mes années à l'IRT&nbsp;: président du groupe industriel EBU 5G-Deployments et délégué au groupe EBU Mobile Technology Standards.",
+    "zh": "在 IRT 任职期间：担任 EBU 5G-Deployments 行业工作组主席，并作为代表参加 EBU Mobile Technology Standards 工作组。"
+  },
+  "3gpp_ran1_contributions": {
+    "en": "3GPP RAN1 contributions ",
+    "ca": "Contribucions a 3GPP RAN1 ",
+    "es": "Contribuciones a 3GPP RAN1 ",
+    "de": "Beiträge zu 3GPP RAN1 ",
+    "fr": "Contributions au 3GPP RAN1 ",
+    "zh": "3GPP RAN1 文稿 "
+  },
+  "ran1_97_reno_2019": {
+    "en": "RAN1#97, Reno, 2019",
+    "ca": "RAN1#97, Reno, 2019",
+    "es": "RAN1#97, Reno, 2019",
+    "de": "RAN1#97, Reno, 2019",
+    "fr": "RAN1#97, Reno, 2019",
+    "zh": "RAN1#97，里诺，2019"
+  },
+  "ran1_96bis_xi_an_2019": {
+    "en": "RAN1#96bis, Xi'an, 2019",
+    "ca": "RAN1#96bis, Xi'an, 2019",
+    "es": "RAN1#96bis, Xi'an, 2019",
+    "de": "RAN1#96bis, Xi'an, 2019",
+    "fr": "RAN1#96bis, Xi'an, 2019",
+    "zh": "RAN1#96bis，西安，2019"
+  },
+  "ran1_96_athens_2019": {
+    "en": "RAN1#96, Athens, 2019",
+    "ca": "RAN1#96, Atenes, 2019",
+    "es": "RAN1#96, Atenas, 2019",
+    "de": "RAN1#96, Athen, 2019",
+    "fr": "RAN1#96, Athènes, 2019",
+    "zh": "RAN1#96，雅典，2019"
+  },
+  "ran1_95_spokane_2018": {
+    "en": "RAN1#95, Spokane, 2018",
+    "ca": "RAN1#95, Spokane, 2018",
+    "es": "RAN1#95, Spokane, 2018",
+    "de": "RAN1#95, Spokane, 2018",
+    "fr": "RAN1#95, Spokane, 2018",
+    "zh": "RAN1#95，斯波坎，2018"
+  },
+  "ran1_94bis_chengdu_2018": {
+    "en": "RAN1#94bis, Chengdu, 2018",
+    "ca": "RAN1#94bis, Chengdu, 2018",
+    "es": "RAN1#94bis, Chengdu, 2018",
+    "de": "RAN1#94bis, Chengdu, 2018",
+    "fr": "RAN1#94bis, Chengdu, 2018",
+    "zh": "RAN1#94bis，成都，2018"
+  },
+  "all_in_collaboration_between_the_ebu_bbc": {
+    "en": "All in collaboration between the EBU, BBC and IRT.",
+    "ca": "Totes en col·laboració entre l'EBU, la BBC i l'IRT.",
+    "es": "Todas en colaboración entre la EBU, la BBC y el IRT.",
+    "de": "Alle in Zusammenarbeit von EBU, BBC und IRT.",
+    "fr": "Toutes en collaboration entre l'UER, la BBC et l'IRT.",
+    "zh": "均由 EBU、BBC 和 IRT 联合提交。"
+  },
+  "dvb_contributions_2": {
+    "en": "DVB contributions ",
+    "ca": "Contribucions a DVB ",
+    "es": "Contribuciones a DVB ",
+    "de": "Beiträge zu DVB ",
+    "fr": "Contributions DVB ",
+    "zh": "DVB 文稿 "
+  },
+  "dvb_tm_wib_may_2018": {
+    "en": "DVB TM-WIB, May 2018",
+    "ca": "DVB TM-WIB, maig 2018",
+    "es": "DVB TM-WIB, may. 2018",
+    "de": "DVB TM-WIB, Mai 2018",
+    "fr": "DVB TM-WIB, mai 2018",
+    "zh": "DVB TM-WIB，2018 年 5 月"
+  },
+  "dvb_tm_wib_feb_2018": {
+    "en": "DVB TM-WIB, Feb 2018",
+    "ca": "DVB TM-WIB, febr. 2018",
+    "es": "DVB TM-WIB, feb. 2018",
+    "de": "DVB TM-WIB, Feb. 2018",
+    "fr": "DVB TM-WIB, févr. 2018",
+    "zh": "DVB TM-WIB，2018 年 2 月"
+  },
+  "dvb_tm_wib_sep_2017": {
+    "en": "DVB TM-WIB, Sep 2017",
+    "ca": "DVB TM-WIB, set. 2017",
+    "es": "DVB TM-WIB, sept. 2017",
+    "de": "DVB TM-WIB, Sep. 2017",
+    "fr": "DVB TM-WIB, sept. 2017",
+    "zh": "DVB TM-WIB，2017 年 9 月"
+  },
+  "dvb_tm_wib_jul_2017": {
+    "en": "DVB TM-WIB, Jul 2017",
+    "ca": "DVB TM-WIB, jul. 2017",
+    "es": "DVB TM-WIB, jul. 2017",
+    "de": "DVB TM-WIB, Juli 2017",
+    "fr": "DVB TM-WIB, juil. 2017",
+    "zh": "DVB TM-WIB，2017 年 7 月"
+  },
+  "dvb_tm_wib_jun_2017": {
+    "en": "DVB TM-WIB, Jun 2017",
+    "ca": "DVB TM-WIB, juny 2017",
+    "es": "DVB TM-WIB, jun. 2017",
+    "de": "DVB TM-WIB, Juni 2017",
+    "fr": "DVB TM-WIB, juin 2017",
+    "zh": "DVB TM-WIB，2017 年 6 月"
+  },
+  "dvb_tm_wib_apr_2017": {
+    "en": "DVB TM-WIB, Apr 2017",
+    "ca": "DVB TM-WIB, abr. 2017",
+    "es": "DVB TM-WIB, abr. 2017",
+    "de": "DVB TM-WIB, Apr. 2017",
+    "fr": "DVB TM-WIB, avr. 2017",
+    "zh": "DVB TM-WIB，2017 年 4 月"
+  },
+  "dvb_tm_mimo_apr_2014": {
+    "en": "DVB TM-MIMO, Apr 2014",
+    "ca": "DVB TM-MIMO, abr. 2014",
+    "es": "DVB TM-MIMO, abr. 2014",
+    "de": "DVB TM-MIMO, Apr. 2014",
+    "fr": "DVB TM-MIMO, avr. 2014",
+    "zh": "DVB TM-MIMO，2014 年 4 月"
+  },
+  "dvb_tm_mimo_jul_2013": {
+    "en": "DVB TM-MIMO, Jul 2013",
+    "ca": "DVB TM-MIMO, jul. 2013",
+    "es": "DVB TM-MIMO, jul. 2013",
+    "de": "DVB TM-MIMO, Juli 2013",
+    "fr": "DVB TM-MIMO, juil. 2013",
+    "zh": "DVB TM-MIMO，2013 年 7 月"
+  },
+  "dvb_tm_mimo_may_2013": {
+    "en": "DVB TM-MIMO, May 2013",
+    "ca": "DVB TM-MIMO, maig 2013",
+    "es": "DVB TM-MIMO, may. 2013",
+    "de": "DVB TM-MIMO, Mai 2013",
+    "fr": "DVB TM-MIMO, mai 2013",
+    "zh": "DVB TM-MIMO，2013 年 5 月"
+  },
+  "dvb_tm_mimo_apr_2013": {
+    "en": "DVB TM-MIMO, Apr 2013",
+    "ca": "DVB TM-MIMO, abr. 2013",
+    "es": "DVB TM-MIMO, abr. 2013",
+    "de": "DVB TM-MIMO, Apr. 2013",
+    "fr": "DVB TM-MIMO, avr. 2013",
+    "zh": "DVB TM-MIMO，2013 年 4 月"
+  },
+  "dvb_tm_mimo_mar_2013": {
+    "en": "DVB TM-MIMO, Mar 2013",
+    "ca": "DVB TM-MIMO, març 2013",
+    "es": "DVB TM-MIMO, mar. 2013",
+    "de": "DVB TM-MIMO, März 2013",
+    "fr": "DVB TM-MIMO, mars 2013",
+    "zh": "DVB TM-MIMO，2013 年 3 月"
+  },
+  "dvb_tm_mimo_feb_2013": {
+    "en": "DVB TM-MIMO, Feb 2013",
+    "ca": "DVB TM-MIMO, febr. 2013",
+    "es": "DVB TM-MIMO, feb. 2013",
+    "de": "DVB TM-MIMO, Feb. 2013",
+    "fr": "DVB TM-MIMO, févr. 2013",
+    "zh": "DVB TM-MIMO，2013 年 2 月"
+  },
+  "dvb_ngh_jul_2011": {
+    "en": "DVB-NGH, Jul 2011",
+    "ca": "DVB-NGH, jul. 2011",
+    "es": "DVB-NGH, jul. 2011",
+    "de": "DVB-NGH, Juli 2011",
+    "fr": "DVB-NGH, juil. 2011",
+    "zh": "DVB-NGH，2011 年 7 月"
+  },
+  "dvb_ngh_jun_2011": {
+    "en": "DVB-NGH, Jun 2011",
+    "ca": "DVB-NGH, juny 2011",
+    "es": "DVB-NGH, jun. 2011",
+    "de": "DVB-NGH, Juni 2011",
+    "fr": "DVB-NGH, juin 2011",
+    "zh": "DVB-NGH，2011 年 6 月"
+  },
+  "atsc_3_0_contributions": {
+    "en": "ATSC 3.0 contributions ",
+    "ca": "Contribucions a ATSC 3.0 ",
+    "es": "Contribuciones a ATSC 3.0 ",
+    "de": "Beiträge zu ATSC 3.0 ",
+    "fr": "Contributions ATSC 3.0 ",
+    "zh": "ATSC 3.0 文稿 "
+  },
+  "with_e_stare_tg3_s32_3_ad_hoc_group_on_w": {
+    "en": "with E. Stare · TG3/S32-3 Ad-hoc Group on Waveform",
+    "ca": "amb E. Stare · TG3/S32-3 Ad-hoc Group on Waveform",
+    "es": "con E. Stare · TG3/S32-3 Ad-hoc Group on Waveform",
+    "de": "mit E. Stare · TG3/S32-3 Ad-hoc Group on Waveform",
+    "fr": "avec E. Stare · TG3/S32-3 Ad-hoc Group on Waveform",
+    "zh": "与 E. Stare 合作 · TG3/S32-3 Ad-hoc Group on Waveform"
+  },
+  "research_project_reports_feeding_standar": {
+    "en": "Research project reports feeding standards ",
+    "ca": "Informes de projectes de recerca amb impacte en estàndards ",
+    "es": "Informes de proyectos de investigación con impacto en estándares ",
+    "de": "Berichte aus Forschungsprojekten als Grundlage für Standards ",
+    "fr": "Rapports de projets de recherche alimentant la normalisation ",
+    "zh": "为标准提供输入的研究项目报告 "
+  },
+  "standards_organizations_i_ve_worked_with": {
+    "en": "Standards organizations I've worked with",
+    "ca": "Organismes d'estandardització amb què he treballat",
+    "es": "Organismos de estandarización con los que he trabajado",
+    "de": "Standardisierungsgremien, mit denen ich gearbeitet habe",
+    "fr": "Organismes de normalisation avec lesquels j'ai travaillé",
+    "zh": "合作过的标准组织"
+  },
+  "geneva": {
+    "en": "Geneva",
+    "ca": "Ginebra",
+    "es": "Ginebra",
+    "de": "Genf",
+    "fr": "Genève",
+    "zh": "日内瓦"
+  },
+  "item_3": {
+    "en": "<h3>",
+    "ca": "<h3>",
+    "es": "<h3>",
+    "de": "<h3 lang=\"en\">",
+    "fr": "<h3 lang=\"en\">",
+    "zh": "<h3>"
+  },
+  "head_of_technology_5g_mag_project_office_2": {
+    "en": "Head of Technology · 5G-MAG Project Office",
+    "ca": "Responsable de Tecnologia · Oficina de Projectes de 5G-MAG",
+    "es": "Responsable de Tecnología · Oficina de Proyectos de 5G-MAG",
+    "de": "Head of Technology · 5G-MAG Project Office",
+    "fr": "Head of Technology · 5G-MAG Project Office",
+    "zh": "技术主管 · 5G-MAG 项目办公室"
+  },
+  "senior_project_manager_ebu": {
+    "en": "Senior Project Manager · EBU",
+    "ca": "Gestor sènior de projectes · EBU",
+    "es": "Jefe de proyectos sénior · EBU",
+    "de": "Senior Project Manager · EBU",
+    "fr": "Senior Project Manager · UER",
+    "zh": "高级项目经理 · EBU"
+  },
+  "day_to_day_management_of_5g_mag_the_medi": {
+    "en": "Day-to-day management of 5G-MAG – The Media Connectivity Association: member projects and activities, workshops and events, member relations, communication with the media and international fora, and the association's website, social media and GitHub. Lead of the Reference Tools programme and EBU delegate in 3GPP RAN1.",
+    "ca": "Gestió diària de 5G-MAG – The Media Connectivity Association: projectes i activitats dels membres, tallers i esdeveniments, relacions amb els membres, comunicació amb els mitjans i els fòrums internacionals, i el web, les xarxes socials i el GitHub de l'associació. Responsable del programa Reference Tools i delegat de l'EBU a 3GPP RAN1.",
+    "es": "Gestión diaria de 5G-MAG – The Media Connectivity Association: proyectos y actividades de los miembros, talleres y eventos, relaciones con los miembros, comunicación con los medios y los foros internacionales, y la web, las redes sociales y el GitHub de la asociación. Responsable del programa Reference Tools y delegado de la EBU en 3GPP RAN1.",
+    "de": "Tagesgeschäft von 5G-MAG – The Media Connectivity Association: Projekte und Aktivitäten der Mitglieder, Workshops und Veranstaltungen, Mitgliederbeziehungen, Kommunikation mit Medien und internationalen Gremien sowie Website, Social Media und GitHub des Verbands. Leiter des Reference-Tools-Programms und EBU-Delegierter in 3GPP RAN1.",
+    "fr": "Gestion quotidienne de 5G-MAG – The Media Connectivity Association&nbsp;: projets et activités des membres, ateliers et événements, relations avec les membres, communication avec les médias et les instances internationales, ainsi que le site web, les réseaux sociaux et le GitHub de l'association. Responsable du programme Reference Tools et délégué de l'UER au 3GPP RAN1.",
+    "zh": "负责 5G-MAG – The Media Connectivity Association 的日常管理：会员项目与活动、研讨会与活动、会员关系、与媒体及国际组织的沟通，以及协会网站、社交媒体和 GitHub。Reference Tools 项目负责人，EBU 驻 3GPP RAN1 代表。"
+  },
+  "munich": {
+    "en": "Munich",
+    "ca": "Múnic",
+    "es": "Múnich",
+    "de": "München",
+    "fr": "Munich",
+    "zh": "慕尼黑"
+  },
+  "project_lead_research_engineer_irt": {
+    "en": "Project Lead &amp; Research Engineer · IRT",
+    "ca": "Cap de projecte i enginyer d'investigació · IRT",
+    "es": "Jefe de proyecto e ingeniero de investigación · IRT",
+    "de": "Projektleiter &amp; wissenschaftlicher Mitarbeiter · IRT",
+    "fr": "Chef de projet et ingénieur de recherche · IRT",
+    "zh": "项目负责人兼研究工程师 · IRT"
+  },
+  "3gpp_ran1_delegate_for_lte_based_5g_terr": {
+    "en": "3GPP RAN1 delegate for LTE-based 5G Terrestrial Broadcast (Rel-16), chair of the EBU 5G-Deployments group, and project leader for the 5G-PPP projects 5G-Xcast and 5G-SOLUTIONS. Built software-defined-radio demonstrators for IBC and MWC.",
+    "ca": "Delegat a 3GPP RAN1 per a LTE-based 5G Terrestrial Broadcast (Rel-16), president del grup EBU 5G-Deployments i cap de projecte dels projectes 5G-PPP 5G-Xcast i 5G-SOLUTIONS. Desenvolupament de demostradors de ràdio definida per programari per a l'IBC i el MWC.",
+    "es": "Delegado en 3GPP RAN1 para LTE-based 5G Terrestrial Broadcast (Rel-16), presidente del grupo EBU 5G-Deployments y jefe de proyecto de los proyectos 5G-PPP 5G-Xcast y 5G-SOLUTIONS. Desarrollo de demostradores de radio definida por software para IBC y MWC.",
+    "de": "3GPP-RAN1-Delegierter für LTE-based 5G Terrestrial Broadcast (Rel-16), Vorsitzender der EBU-Gruppe 5G-Deployments und Projektleiter der 5G-PPP-Projekte 5G-Xcast und 5G-SOLUTIONS. Entwicklung von Software-Defined-Radio-Demonstratoren für IBC und MWC.",
+    "fr": "Délégué au 3GPP RAN1 pour LTE-based 5G Terrestrial Broadcast (Rel-16), président du groupe EBU 5G-Deployments et chef de projet des projets 5G-PPP 5G-Xcast et 5G-SOLUTIONS. Développement de démonstrateurs de radio logicielle pour l'IBC et le MWC.",
+    "zh": "LTE-based 5G Terrestrial Broadcast（Rel-16）3GPP RAN1 代表、EBU 5G-Deployments 工作组主席，以及 5G-PPP 项目 5G-Xcast 和 5G-SOLUTIONS 的项目负责人。为 IBC 和 MWC 开发软件定义无线电演示系统。"
+  },
+  "consulting": {
+    "en": "Consulting",
+    "ca": "Consultoria",
+    "es": "Consultoría",
+    "de": "Beratung",
+    "fr": "Conseil",
+    "zh": "咨询"
+  },
+  "technical_expert_digital_tv_in_colombia": {
+    "en": "Technical Expert · Digital TV in Colombia",
+    "ca": "Expert tècnic · Televisió digital a Colòmbia",
+    "es": "Experto técnico · Televisión digital en Colombia",
+    "de": "Technischer Experte · Digitalfernsehen in Kolumbien",
+    "fr": "Expert technique · Télévision numérique en Colombie",
+    "zh": "技术专家 · 哥伦比亚数字电视"
+  },
+  "eu_funded_technical_assistance_for_the_r": {
+    "en": "EU-funded technical assistance for the rollout of digital terrestrial television in Colombia.",
+    "ca": "Assistència tècnica finançada per la UE per al desplegament de la televisió digital terrestre a Colòmbia.",
+    "es": "Asistencia técnica financiada por la UE para el despliegue de la televisión digital terrestre en Colombia.",
+    "de": "EU-finanzierte technische Unterstützung bei der Einführung des digitalen terrestrischen Fernsehens in Kolumbien.",
+    "fr": "Assistance technique financée par l'UE pour le déploiement de la télévision numérique terrestre en Colombie.",
+    "zh": "欧盟资助的技术援助项目，支持哥伦比亚推广数字地面电视。"
+  },
+  "valencia": {
+    "en": "Valencia",
+    "ca": "València",
+    "es": "Valencia",
+    "de": "Valencia",
+    "fr": "Valence",
+    "zh": "瓦伦西亚"
+  },
+  "research_engineer_postdoctoral_researche": {
+    "en": "Research Engineer → Postdoctoral Researcher · iTEAM, Universitat Politècnica de València",
+    "ca": "Enginyer d'investigació → Investigador postdoctoral · iTEAM, Universitat Politècnica de València",
+    "es": "Ingeniero de investigación → Investigador postdoctoral · iTEAM, Universitat Politècnica de València",
+    "de": "Forschungsingenieur → Postdoc · iTEAM, Universitat Politècnica de València",
+    "fr": "Ingénieur de recherche → Chercheur postdoctoral · iTEAM, Universitat Politècnica de València",
+    "zh": "研究工程师 → 博士后研究员 · iTEAM，瓦伦西亚理工大学"
+  },
+  "standardization_of_next_generation_tv_sy": {
+    "en": "Standardization of next-generation TV systems (DVB-T2, DVB-NGH, ATSC 3.0), link-level simulation, coverage planning, field measurements, and coexistence studies between digital TV and LTE in the 700/800 MHz bands. Postdoctoral researcher from 2016 with a Generalitat Valenciana APOSTD grant. Research stays at Teracom (2013–14) and KTH (2014) in Stockholm, and at IRT in Munich (2015, 2017–18).",
+    "ca": "Estandardització de sistemes de televisió de nova generació (DVB-T2, DVB-NGH, ATSC 3.0), simulació a nivell d'enllaç, planificació de cobertura, mesures de camp i estudis de coexistència entre la televisió digital i LTE a les bandes de 700/800 MHz. Investigador postdoctoral des de 2016 amb una beca APOSTD de la Generalitat Valenciana. Estades de recerca a Teracom (2013–14) i al KTH (2014) a Estocolm, i a l'IRT a Múnic (2015, 2017–18).",
+    "es": "Estandarización de sistemas de televisión de nueva generación (DVB-T2, DVB-NGH, ATSC 3.0), simulación a nivel de enlace, planificación de cobertura, medidas de campo y estudios de coexistencia entre la televisión digital y LTE en las bandas de 700/800 MHz. Investigador postdoctoral desde 2016 con una ayuda APOSTD de la Generalitat Valenciana. Estancias de investigación en Teracom (2013–14) y el KTH (2014) en Estocolmo, y en el IRT en Múnich (2015, 2017–18).",
+    "de": "Standardisierung von TV-Systemen der nächsten Generation (DVB-T2, DVB-NGH, ATSC 3.0), Link-Level-Simulation, Versorgungsplanung, Feldmessungen und Koexistenzstudien zwischen Digitalfernsehen und LTE in den Bändern 700/800 MHz. Ab 2016 Postdoc mit einem APOSTD-Stipendium der Generalitat Valenciana. Forschungsaufenthalte bei Teracom (2013–14) und an der KTH (2014) in Stockholm sowie am IRT in München (2015, 2017–18).",
+    "fr": "Normalisation des systèmes de télévision de nouvelle génération (DVB-T2, DVB-NGH, ATSC 3.0), simulation au niveau liaison, planification de couverture, mesures sur le terrain et études de coexistence entre la télévision numérique et le LTE dans les bandes 700/800 MHz. Chercheur postdoctoral à partir de 2016 grâce à une bourse APOSTD de la Generalitat Valenciana. Séjours de recherche chez Teracom (2013–14) et au KTH (2014) à Stockholm, et à l'IRT à Munich (2015, 2017–18).",
+    "zh": "下一代电视系统（DVB-T2、DVB-NGH、ATSC 3.0）标准化、链路级仿真、覆盖规划、外场测试，以及 700/800 MHz 频段数字电视与 LTE 的共存研究。2016 年起获瓦伦西亚自治区政府 APOSTD 资助任博士后研究员。曾在斯德哥尔摩的 Teracom（2013–14）和 KTH（2014）以及慕尼黑的 IRT（2015、2017–18）开展访问研究。"
+  },
+  "education": {
+    "en": "Education",
+    "ca": "Formació",
+    "es": "Formación",
+    "de": "Ausbildung",
+    "fr": "Formation",
+    "zh": "教育"
+  },
+  "phd_in_telecommunications_upv_2015": {
+    "en": "PhD in Telecommunications · UPV, 2015",
+    "ca": "Doctor en Telecomunicació · UPV, 2015",
+    "es": "Doctor en Telecomunicación · UPV, 2015",
+    "de": "Promotion in Telekommunikation · UPV, 2015",
+    "fr": "Doctorat en télécommunications · UPV, 2015",
+    "zh": "电信博士 · UPV，2015"
+  },
+  "cum_laude_with_international_doctorate_m": {
+    "en": "Cum laude, with International Doctorate mention. Thesis: ",
+    "ca": "Cum laude, amb menció de Doctorat Internacional. Tesi: ",
+    "es": "Cum laude, con mención de Doctorado Internacional. Tesis: ",
+    "de": "Cum laude, mit dem Prädikat „International Doctorate“. Dissertation: ",
+    "fr": "Mention cum laude et label de doctorat international. Thèse&nbsp;: ",
+    "zh": "以 Cum laude 成绩毕业，并获国际博士称号。论文："
+  },
+  "m_sc_in_telecommunication_engineering_20": {
+    "en": ". M.Sc. in Telecommunication Engineering (2010) and M.Sc. in Technologies, Systems and Telecommunication Networks (2011), both at UPV.",
+    "ca": ". Enginyer de Telecomunicació (2010) i Màster en Tecnologies, Sistemes i Xarxes de Telecomunicació (2011), tots dos per la UPV.",
+    "es": ". Ingeniero de Telecomunicación (2010) y Máster en Tecnologías, Sistemas y Redes de Telecomunicación (2011), ambos por la UPV.",
+    "de": ". M.Sc. in Telekommunikationstechnik (2010) und M.Sc. in Technologien, Systemen und Netzen der Telekommunikation (2011), beide an der UPV.",
+    "fr": ". Diplôme d'ingénieur en télécommunications (2010) et master en technologies, systèmes et réseaux de télécommunication (2011), tous deux à l'UPV.",
+    "zh": "。电信工程硕士（2010）及电信技术、系统与网络硕士（2011），均毕业于 UPV。"
+  },
+  "leadership": {
+    "en": "Leadership",
+    "ca": "Lideratge",
+    "es": "Liderazgo",
+    "de": "Führung",
+    "fr": "Leadership",
+    "zh": "领导力"
+  },
+  "association_management": {
+    "en": "Association management",
+    "ca": "Gestió d'associacions",
+    "es": "Gestión de asociaciones",
+    "de": "Verbandsmanagement",
+    "fr": "Gestion d'association",
+    "zh": "协会管理"
+  },
+  "programme_project_management": {
+    "en": "Programme &amp; project management",
+    "ca": "Gestió de programes i projectes",
+    "es": "Gestión de programas y proyectos",
+    "de": "Programm- &amp; Projektmanagement",
+    "fr": "Gestion de programmes et de projets",
+    "zh": "项目群与项目管理"
+  },
+  "member_stakeholder_relations": {
+    "en": "Member &amp; stakeholder relations",
+    "ca": "Relació amb membres i grups d'interés",
+    "es": "Relación con miembros y grupos de interés",
+    "de": "Mitglieder- &amp; Stakeholder-Beziehungen",
+    "fr": "Relations avec les membres et les parties prenantes",
+    "zh": "会员与利益相关方关系"
+  },
+  "events_workshops": {
+    "en": "Events &amp; workshops",
+    "ca": "Esdeveniments i tallers",
+    "es": "Eventos y talleres",
+    "de": "Veranstaltungen &amp; Workshops",
+    "fr": "Événements et ateliers",
+    "zh": "活动与研讨会"
+  },
+  "communication_outreach": {
+    "en": "Communication &amp; outreach",
+    "ca": "Comunicació i divulgació",
+    "es": "Comunicación y divulgación",
+    "de": "Kommunikation &amp; Öffentlichkeitsarbeit",
+    "fr": "Communication et rayonnement",
+    "zh": "传播与推广"
+  },
+  "standards_delegation_consensus_building": {
+    "en": "Standards delegation &amp; consensus building",
+    "ca": "Delegació en estàndards i construcció de consens",
+    "es": "Delegación en estándares y construcción de consenso",
+    "de": "Standardisierungsarbeit &amp; Konsensbildung",
+    "fr": "Délégation en normalisation et recherche de consensus",
+    "zh": "标准化代表与共识构建"
+  },
+  "open_source_community_building": {
+    "en": "Open-source community building",
+    "ca": "Creació de comunitats de codi obert",
+    "es": "Creación de comunidades de código abierto",
+    "de": "Aufbau von Open-Source-Communities",
+    "fr": "Animation de communautés open source",
+    "zh": "开源社区建设"
+  },
+  "eu_proposals_h2020_horizon_europe": {
+    "en": "EU proposals (H2020, Horizon Europe)",
+    "ca": "Propostes europees (H2020, Horizon Europe)",
+    "es": "Propuestas europeas (H2020, Horizon Europe)",
+    "de": "EU-Anträge (H2020, Horizon Europe)",
+    "fr": "Propositions européennes (H2020, Horizon Europe)",
+    "zh": "欧盟项目申请（H2020、Horizon Europe）"
+  },
+  "moderation_public_speaking": {
+    "en": "Moderation &amp; public speaking",
+    "ca": "Moderació i parlar en públic",
+    "es": "Moderación y hablar en público",
+    "de": "Moderation &amp; Vorträge",
+    "fr": "Modération et prise de parole en public",
+    "zh": "主持与公开演讲"
+  },
+  "technology": {
+    "en": "Technology",
+    "ca": "Tecnologia",
+    "es": "Tecnología",
+    "de": "Technologie",
+    "fr": "Technologie",
+    "zh": "技术"
+  },
+  "5g_multicast_broadcast_mbs": {
+    "en": "5G multicast/broadcast (MBS)",
+    "ca": "Multicast/broadcast 5G (MBS)",
+    "es": "Multicast/broadcast 5G (MBS)",
+    "de": "5G Multicast/Broadcast (MBS)",
+    "fr": "Multicast/broadcast 5G (MBS)",
+    "zh": "5G 组播/广播（MBS）"
+  },
+  "network_apis_camara": {
+    "en": "Network APIs (CAMARA)",
+    "ca": "APIs de xarxa (CAMARA)",
+    "es": "APIs de red (CAMARA)",
+    "de": "Netzwerk-APIs (CAMARA)",
+    "fr": "API réseau (CAMARA)",
+    "zh": "网络 API（CAMARA）"
+  },
+  "ntn": {
+    "en": "NTN",
+    "ca": "NTN",
+    "es": "NTN",
+    "de": "NTN",
+    "fr": "NTN",
+    "zh": "NTN 非地面网络"
+  },
+  "mpeg_i_v3c_xr": {
+    "en": "MPEG-I, V3C &amp; XR",
+    "ca": "MPEG-I, V3C i XR",
+    "es": "MPEG-I, V3C y XR",
+    "de": "MPEG-I, V3C &amp; XR",
+    "fr": "MPEG-I, V3C et XR",
+    "zh": "MPEG-I、V3C 与 XR"
+  },
+  "qos_enabled_streaming_qoe_metrics": {
+    "en": "QoS-enabled streaming &amp; QoE metrics",
+    "ca": "Streaming amb QoS i mètriques de QoE",
+    "es": "Streaming con QoS y métricas de QoE",
+    "de": "Streaming mit QoS &amp; QoE-Metriken",
+    "fr": "Streaming avec QoS et métriques de QoE",
+    "zh": "支持 QoS 的流媒体与 QoE 指标"
+  },
+  "dvb_atsc_3_0": {
+    "en": "DVB &amp; ATSC 3.0",
+    "ca": "DVB i ATSC 3.0",
+    "es": "DVB y ATSC 3.0",
+    "de": "DVB &amp; ATSC 3.0",
+    "fr": "DVB et ATSC 3.0",
+    "zh": "DVB 与 ATSC 3.0"
+  },
+  "network_planning_propagation": {
+    "en": "Network planning &amp; propagation",
+    "ca": "Planificació de xarxes i propagació",
+    "es": "Planificación de redes y propagación",
+    "de": "Netzplanung &amp; Wellenausbreitung",
+    "fr": "Planification réseau et propagation",
+    "zh": "网络规划与电波传播"
+  },
+  "phy_signal_processing": {
+    "en": "PHY &amp; signal processing",
+    "ca": "Capa física i processament de senyal",
+    "es": "Capa física y procesado de señal",
+    "de": "PHY &amp; Signalverarbeitung",
+    "fr": "Couche physique et traitement du signal",
+    "zh": "物理层与信号处理"
+  },
+  "recognition": {
+    "en": "Recognition",
+    "ca": "Reconeixements",
+    "es": "Reconocimientos",
+    "de": "Auszeichnungen",
+    "fr": "Distinctions",
+    "zh": "荣誉"
+  },
+  "ibc_best_paper_award": {
+    "en": "IBC Best Paper Award",
+    "ca": "IBC Best Paper Award",
+    "es": "IBC Best Paper Award",
+    "de": "IBC Best Paper Award",
+    "fr": "IBC Best Paper Award",
+    "zh": "IBC 最佳论文奖"
+  },
+  "ieee_bmsb_best_student_paper": {
+    "en": "IEEE BMSB Best Student Paper",
+    "ca": "IEEE BMSB Best Student Paper",
+    "es": "IEEE BMSB Best Student Paper",
+    "de": "IEEE BMSB Best Student Paper",
+    "fr": "IEEE BMSB Best Student Paper",
+    "zh": "IEEE BMSB 最佳学生论文"
+  },
+  "best_m_sc_thesis": {
+    "en": "Best M.Sc. Thesis",
+    "ca": "Millor tesi de màster",
+    "es": "Mejor tesis de máster",
+    "de": "Beste Masterarbeit",
+    "fr": "Meilleur mémoire de master",
+    "zh": "最佳硕士论文"
+  },
+  "dtt_gap_fillers_vodafone_ono_prize_coit": {
+    "en": " (DTT gap-fillers), Vodafone/ONO prize, COIT · 2012",
+    "ca": " (gap-fillers de TDT), premi Vodafone/ONO, COIT · 2012",
+    "es": " (gap-fillers de TDT), premio Vodafone/ONO, COIT · 2012",
+    "de": " (DTT-Gap-Filler), Vodafone/ONO-Preis, COIT · 2012",
+    "fr": " (réémetteurs TNT), prix Vodafone/ONO, COIT · 2012",
+    "zh": "（数字地面电视补点器），Vodafone/ONO 奖，COIT · 2012"
+  },
+  "guest_editor": {
+    "en": "Guest editor",
+    "ca": "Editor convidat",
+    "es": "Editor invitado",
+    "de": "Gastherausgeber",
+    "fr": "Rédacteur invité",
+    "zh": "客座编辑"
+  },
+  "ieee_transactions_on_broadcasting_2022_2": {
+    "en": ", IEEE Transactions on Broadcasting · 2022, 2024",
+    "ca": ", IEEE Transactions on Broadcasting · 2022, 2024",
+    "es": ", IEEE Transactions on Broadcasting · 2022, 2024",
+    "de": ", IEEE Transactions on Broadcasting · 2022, 2024",
+    "fr": ", IEEE Transactions on Broadcasting · 2022, 2024",
+    "zh": "，IEEE Transactions on Broadcasting · 2022、2024"
+  },
+  "keynote": {
+    "en": "Keynote",
+    "ca": "Ponència principal",
+    "es": "Ponencia principal",
+    "de": "Keynote",
+    "fr": "Keynote",
+    "zh": "主题演讲"
+  },
+  "ieee_bmsb_2022": {
+    "en": ", IEEE BMSB · 2022",
+    "ca": ", IEEE BMSB · 2022",
+    "es": ", IEEE BMSB · 2022",
+    "de": ", IEEE BMSB · 2022",
+    "fr": ", IEEE BMSB · 2022",
+    "zh": "，IEEE BMSB · 2022"
+  },
+  "languages": {
+    "en": "Languages",
+    "ca": "Idiomes",
+    "es": "Idiomas",
+    "de": "Sprachen",
+    "fr": "Langues",
+    "zh": "语言"
+  },
+  "catalan_spanish": {
+    "en": "Catalan &amp; Spanish",
+    "ca": "Català i castellà",
+    "es": "Catalán y español",
+    "de": "Katalanisch &amp; Spanisch",
+    "fr": "Catalan et espagnol",
+    "zh": "加泰罗尼亚语、西班牙语"
+  },
+  "native": {
+    "en": " · native",
+    "ca": " · nadiu",
+    "es": " · nativo",
+    "de": " · Muttersprache",
+    "fr": " · langues maternelles",
+    "zh": " · 母语"
+  },
+  "english": {
+    "en": "English",
+    "ca": "Anglés",
+    "es": "Inglés",
+    "de": "Englisch",
+    "fr": "Anglais",
+    "zh": "英语"
+  },
+  "professional": {
+    "en": " · professional",
+    "ca": " · professional",
+    "es": " · profesional",
+    "de": " · verhandlungssicher",
+    "fr": " · niveau professionnel",
+    "zh": " · 工作语言"
+  },
+  "german_french": {
+    "en": "German &amp; French",
+    "ca": "Alemany i francés",
+    "es": "Alemán y francés",
+    "de": "Deutsch &amp; Französisch",
+    "fr": "Allemand et français",
+    "zh": "德语、法语"
+  },
+  "basic": {
+    "en": " · basic",
+    "ca": " · bàsic",
+    "es": " · básico",
+    "de": " · Grundkenntnisse",
+    "fr": " · notions",
+    "zh": " · 基础"
+  },
+  "projects_contracts": {
+    "en": "Projects &amp; contracts",
+    "ca": "Projectes i contractes",
+    "es": "Proyectos y contratos",
+    "de": "Projekte &amp; Aufträge",
+    "fr": "Projets et contrats",
+    "zh": "项目与合同"
+  },
+  "7_r_d_projects_and_8_industry_contracts": {
+    "en": "7 R&amp;D projects and 8 industry contracts, from EU research programmes to engagements with broadcasters, operators and technology companies. Project leader at IRT for 5G-Xcast and 5G-SOLUTIONS, with live demonstrators at IBC and MWC.",
+    "ca": "7 projectes d'R+D i 8 contractes amb la indústria, des de programes de recerca europeus fins a col·laboracions amb radiodifusors, operadors i empreses tecnològiques. Cap de projecte a l'IRT per a 5G-Xcast i 5G-SOLUTIONS, amb demostradors en directe a l'IBC i al MWC.",
+    "es": "7 proyectos de I+D y 8 contratos con la industria, desde programas de investigación europeos hasta colaboraciones con radiodifusores, operadores y empresas tecnológicas. Jefe de proyecto en el IRT para 5G-Xcast y 5G-SOLUTIONS, con demostradores en directo en IBC y MWC.",
+    "de": "7 F&amp;E-Projekte und 8 Industrieaufträge, von EU-Forschungsprogrammen bis zu Aufträgen für Rundfunkanstalten, Netzbetreiber und Technologieunternehmen. Projektleiter am IRT für 5G-Xcast und 5G-SOLUTIONS, mit Live-Demonstratoren auf der IBC und dem MWC.",
+    "fr": "7 projets de R&amp;D et 8 contrats industriels, des programmes de recherche européens aux missions pour des radiodiffuseurs, des opérateurs et des entreprises technologiques. Chef de projet à l'IRT pour 5G-Xcast et 5G-SOLUTIONS, avec des démonstrateurs en direct à l'IBC et au MWC.",
+    "zh": "7 个研发项目和 8 个产业合同，涵盖欧盟科研计划以及与广播机构、运营商和科技公司的合作。在 IRT 担任 5G-Xcast 和 5G-SOLUTIONS 的项目负责人，并在 IBC 和 MWC 进行现场演示。"
+  },
+  "h2020_irt_14_3m_consortium_budget": {
+    "en": "H2020 · IRT · €14.3M consortium budget",
+    "ca": "H2020 · IRT · pressupost del consorci: 14,3 M€",
+    "es": "H2020 · IRT · presupuesto del consorcio: 14,3 M€",
+    "de": "H2020 · IRT · Konsortialbudget 14,3 Mio. €",
+    "fr": "H2020 · IRT · budget du consortium&nbsp;: 14,3&nbsp;M€",
+    "zh": "H2020 · IRT · 联合体预算 1,430 万欧元"
+  },
+  "h2020_upv_8_0m_consortium_budget": {
+    "en": "H2020 · UPV · €8.0M consortium budget",
+    "ca": "H2020 · UPV · pressupost del consorci: 8,0 M€",
+    "es": "H2020 · UPV · presupuesto del consorcio: 8,0 M€",
+    "de": "H2020 · UPV · Konsortialbudget 8,0 Mio. €",
+    "fr": "H2020 · UPV · budget du consortium&nbsp;: 8,0&nbsp;M€",
+    "zh": "H2020 · UPV · 联合体预算 800 万欧元"
+  },
+  "technical_assistance_for_the_implementat": {
+    "en": "Technical assistance for the implementation of digital TV in Colombia",
+    "ca": "Assistència tècnica per a la implantació de la televisió digital a Colòmbia",
+    "es": "Asistencia técnica para la implantación de la televisión digital en Colombia",
+    "de": "Technische Unterstützung bei der Einführung des Digitalfernsehens in Kolumbien",
+    "fr": "Assistance technique pour la mise en place de la télévision numérique en Colombie",
+    "zh": "哥伦比亚数字电视实施技术援助"
+  },
+  "europeaid_3_8m_contract": {
+    "en": "EuropeAid · €3.8M contract",
+    "ca": "EuropeAid · contracte de 3,8 M€",
+    "es": "EuropeAid · contrato de 3,8 M€",
+    "de": "EuropeAid · Auftrag über 3,8 Mio. €",
+    "fr": "EuropeAid · contrat de 3,8&nbsp;M€",
+    "zh": "EuropeAid · 合同金额 380 万欧元"
+  },
+  "three_atsc_3_0_contracts_ldm_non_uniform": {
+    "en": "Three ATSC 3.0 contracts: LDM, non-uniform constellations and Time Frequency Slicing",
+    "ca": "Tres contractes d'ATSC 3.0: LDM, constel·lacions no uniformes i Time Frequency Slicing",
+    "es": "Tres contratos de ATSC 3.0: LDM, constelaciones no uniformes y Time Frequency Slicing",
+    "de": "Drei ATSC-3.0-Aufträge: LDM, nicht-uniforme Konstellationen und Time Frequency Slicing",
+    "fr": "Trois contrats ATSC 3.0&nbsp;: LDM, constellations non uniformes et Time Frequency Slicing",
+    "zh": "三项 ATSC 3.0 合同：LDM、非均匀星座和时频分片"
+  },
+  "etri_south_korea": {
+    "en": "ETRI, South Korea",
+    "ca": "ETRI, Corea del Sud",
+    "es": "ETRI, Corea del Sur",
+    "de": "ETRI, Südkorea",
+    "fr": "ETRI, Corée du Sud",
+    "zh": "韩国 ETRI"
+  },
+  "see_all_projects_and_contracts": {
+    "en": "See all projects and contracts ",
+    "ca": "Tots els projectes i contractes ",
+    "es": "Ver todos los proyectos y contratos ",
+    "de": "Alle Projekte und Aufträge ",
+    "fr": "Voir tous les projets et contrats ",
+    "zh": "查看全部项目与合同 "
+  },
+  "phd_committees": {
+    "en": "PhD committees",
+    "ca": "Tribunals de tesi doctoral",
+    "es": "Tribunales de tesis doctoral",
+    "de": "Promotionskommissionen",
+    "fr": "Jurys de thèse",
+    "zh": "博士论文答辩委员会"
+  },
+  "phd_thesis_by_eneko_iradier_upv_ehu_secr": {
+    "en": "PhD thesis by Eneko Iradier · UPV/EHU · Secretary of the examination committee",
+    "ca": "Tesi doctoral d'Eneko Iradier · UPV/EHU · Secretari del tribunal",
+    "es": "Tesis doctoral de Eneko Iradier · UPV/EHU · Secretario del tribunal",
+    "de": "Dissertation von Eneko Iradier · UPV/EHU · Schriftführer der Prüfungskommission",
+    "fr": "Thèse de doctorat d'Eneko Iradier · UPV/EHU · Secrétaire du jury",
+    "zh": "Eneko Iradier 的博士论文 · UPV/EHU · 答辩委员会秘书"
+  },
+  "supervision": {
+    "en": "Supervision",
+    "ca": "Supervisió",
+    "es": "Supervisión",
+    "de": "Betreuung",
+    "fr": "Encadrement",
+    "zh": "指导"
+  },
+  "design_and_performance_evaluation_of_a_5": {
+    "en": "Design and performance evaluation of a 5G New Radio broadcast mode for single frequency networks",
+    "ca": "Disseny i avaluació de prestacions d'un mode broadcast de 5G New Radio per a xarxes de freqüència única",
+    "es": "Diseño y evaluación de prestaciones de un modo broadcast de 5G New Radio para redes de frecuencia única",
+    "de": "Entwurf und Leistungsbewertung eines Broadcast-Modus für 5G New Radio in Gleichwellennetzen",
+    "fr": "Conception et évaluation des performances d'un mode broadcast 5G New Radio pour les réseaux monofréquence",
+    "zh": "面向单频网的 5G New Radio 广播模式设计与性能评估"
+  },
+  "m_sc_thesis_upv": {
+    "en": "M.Sc. thesis · UPV",
+    "ca": "Tesi de màster · UPV",
+    "es": "Tesis de máster · UPV",
+    "de": "Masterarbeit · UPV",
+    "fr": "Mémoire de master · UPV",
+    "zh": "硕士论文 · UPV"
+  },
+  "coverage_estimation_for_atsc_3_0_ldm_cha": {
+    "en": "Coverage estimation for ATSC 3.0: LDM, channel bonding and MIMO",
+    "ca": "Estimació de cobertura per a ATSC 3.0: LDM, channel bonding i MIMO",
+    "es": "Estimación de cobertura para ATSC 3.0: LDM, channel bonding y MIMO",
+    "de": "Versorgungsabschätzung für ATSC 3.0: LDM, Channel Bonding und MIMO",
+    "fr": "Estimation de couverture pour ATSC 3.0&nbsp;: LDM, agrégation de canaux et MIMO",
+    "zh": "ATSC 3.0 覆盖估算：LDM、信道绑定与 MIMO"
+  },
+  "multi_wall_propagation_model_for_indoor": {
+    "en": "Multi-wall propagation model for indoor LTE femtocell coverage",
+    "ca": "Model de propagació multiparet per a la cobertura LTE de femtocel·les en interiors",
+    "es": "Modelo de propagación multipared para la cobertura LTE de femtoceldas en interiores",
+    "de": "Multi-Wall-Ausbreitungsmodell für die LTE-Femtozellenversorgung in Gebäuden",
+    "fr": "Modèle de propagation multi-murs pour la couverture LTE de femtocellules en intérieur",
+    "zh": "室内 LTE 毫微微小区覆盖的多墙传播模型"
+  },
+  "final_degree_project_upv_10_10_with_hono": {
+    "en": "Final-degree project · UPV · 10/10 with honours",
+    "ca": "Projecte final de carrera · UPV · Matrícula d'honor (10/10)",
+    "es": "Proyecto final de carrera · UPV · Matrícula de honor (10/10)",
+    "de": "Abschlussarbeit · UPV · 10/10 mit Auszeichnung",
+    "fr": "Projet de fin d'études · UPV · 10/10 avec félicitations",
+    "zh": "本科毕业设计 · UPV · 10/10 优秀"
+  },
+  "energy_optimization_of_the_valencia_umts": {
+    "en": "Energy optimization of the Valencia UMTS network with microcells",
+    "ca": "Optimització energètica de la xarxa UMTS de València amb microcel·les",
+    "es": "Optimización energética de la red UMTS de Valencia con microceldas",
+    "de": "Energieoptimierung des UMTS-Netzes in Valencia mit Mikrozellen",
+    "fr": "Optimisation énergétique du réseau UMTS de Valence avec des microcellules",
+    "zh": "利用微蜂窝优化瓦伦西亚 UMTS 网络能耗"
+  },
+  "final_degree_project_upv_9_5_10": {
+    "en": "Final-degree project · UPV · 9.5/10",
+    "ca": "Projecte final de carrera · UPV · 9,5/10",
+    "es": "Proyecto final de carrera · UPV · 9,5/10",
+    "de": "Abschlussarbeit · UPV · 9,5/10",
+    "fr": "Projet de fin d'études · UPV · 9,5/10",
+    "zh": "本科毕业设计 · UPV · 9.5/10"
+  },
+  "talks_keynotes": {
+    "en": "Talks &amp; keynotes",
+    "ca": "Xerrades i ponències",
+    "es": "Charlas y ponencias",
+    "de": "Vorträge &amp; Keynotes",
+    "fr": "Conférences et keynotes",
+    "zh": "演讲与主题报告"
+  },
+  "ibc_2026_amsterdam_introduced_the_papers": {
+    "en": "IBC 2026, Amsterdam · introduced the papers &amp; demos session",
+    "ca": "IBC 2026, Amsterdam · presentació de la sessió d'articles i demostracions",
+    "es": "IBC 2026, Ámsterdam · presentación de la sesión de artículos y demostraciones",
+    "de": "IBC 2026, Amsterdam · Einführung in die Session mit Papers &amp; Demos",
+    "fr": "IBC 2026, Amsterdam · introduction de la session articles et démos",
+    "zh": "IBC 2026，阿姆斯特丹 · 主持论文与演示环节开场"
+  },
+  "13th_fraunhofer_fokus_media_web_symposiu": {
+    "en": "13th Fraunhofer FOKUS Media Web Symposium",
+    "ca": "13th Fraunhofer FOKUS Media Web Symposium",
+    "es": "13th Fraunhofer FOKUS Media Web Symposium",
+    "de": "13th Fraunhofer FOKUS Media Web Symposium",
+    "fr": "13th Fraunhofer FOKUS Media Web Symposium",
+    "zh": "第 13 届 Fraunhofer FOKUS Media Web Symposium"
+  },
+  "12th_fraunhofer_fokus_media_web_symposiu": {
+    "en": "12th Fraunhofer FOKUS Media Web Symposium, Berlin",
+    "ca": "12th Fraunhofer FOKUS Media Web Symposium, Berlín",
+    "es": "12th Fraunhofer FOKUS Media Web Symposium, Berlín",
+    "de": "12th Fraunhofer FOKUS Media Web Symposium, Berlin",
+    "fr": "12th Fraunhofer FOKUS Media Web Symposium, Berlin",
+    "zh": "第 12 届 Fraunhofer FOKUS Media Web Symposium，柏林"
+  },
+  "fosdem_brussels_open_media_devroom": {
+    "en": "FOSDEM, Brussels · Open Media devroom",
+    "ca": "FOSDEM, Brussel·les · Open Media devroom",
+    "es": "FOSDEM, Bruselas · Open Media devroom",
+    "de": "FOSDEM, Brüssel · Open Media Devroom",
+    "fr": "FOSDEM, Bruxelles · devroom Open Media",
+    "zh": "FOSDEM，布鲁塞尔 · Open Media devroom"
+  },
+  "ebu_ibc_2023_amsterdam": {
+    "en": "EBU @ IBC 2023, Amsterdam",
+    "ca": "EBU @ IBC 2023, Amsterdam",
+    "es": "EBU @ IBC 2023, Ámsterdam",
+    "de": "EBU @ IBC 2023, Amsterdam",
+    "fr": "EBU @ IBC 2023, Amsterdam",
+    "zh": "EBU @ IBC 2023，阿姆斯特丹"
+  },
+  "9th_fraunhofer_fokus_media_web_symposium": {
+    "en": "9th Fraunhofer FOKUS Media Web Symposium",
+    "ca": "9th Fraunhofer FOKUS Media Web Symposium",
+    "es": "9th Fraunhofer FOKUS Media Web Symposium",
+    "de": "9th Fraunhofer FOKUS Media Web Symposium",
+    "fr": "9th Fraunhofer FOKUS Media Web Symposium",
+    "zh": "第 9 届 Fraunhofer FOKUS Media Web Symposium"
+  },
+  "also_an_invited_talk_on_5g_technology_an": {
+    "en": "Also an invited talk on 5G technology and multimedia applications (2024), talks at ETSI, SMPTE, ITU WSIS and TII Abu Dhabi, demonstrations at IBC and MWC, and many 3GPP, DVB and EBU meetings.",
+    "ca": "També una conferència convidada sobre tecnologia 5G i aplicacions multimèdia (2024), xerrades a l'ETSI, SMPTE, ITU WSIS i TII Abu Dhabi, demostracions a l'IBC i al MWC, i nombroses reunions de 3GPP, DVB i l'EBU.",
+    "es": "Además, una conferencia invitada sobre tecnología 5G y aplicaciones multimedia (2024), charlas en ETSI, SMPTE, ITU WSIS y TII Abu Dabi, demostraciones en IBC y MWC, y numerosas reuniones de 3GPP, DVB y la EBU.",
+    "de": "Außerdem ein eingeladener Vortrag zu 5G-Technologie und Multimedia-Anwendungen (2024), Vorträge bei ETSI, SMPTE, ITU WSIS und TII Abu Dhabi, Demonstrationen auf der IBC und dem MWC sowie zahlreiche 3GPP-, DVB- und EBU-Sitzungen.",
+    "fr": "Également une conférence invitée sur la technologie 5G et les applications multimédias (2024), des interventions à l'ETSI, à la SMPTE, à l'ITU WSIS et au TII d'Abou Dhabi, des démonstrations à l'IBC et au MWC, et de nombreuses réunions du 3GPP, du DVB et de l'UER.",
+    "zh": "此外还有一场关于 5G 技术与多媒体应用的特邀报告（2024），在 ETSI、SMPTE、ITU WSIS 和阿布扎比 TII 的演讲，在 IBC 和 MWC 的演示，以及多次 3GPP、DVB 和 EBU 会议。"
+  },
+  "publications_patents": {
+    "en": "Publications &amp; patents",
+    "ca": "Publicacions i patents",
+    "es": "Publicaciones y patentes",
+    "de": "Publikationen &amp; Patente",
+    "fr": "Publications et brevets",
+    "zh": "论文与专利"
+  },
+  "papers_book_chapters_and_patents_on_medi": {
+    "en": "Papers, book chapters and patents on media delivery, 5G and open media technology. Latest highlights:",
+    "ca": "Articles, capítols de llibre i patents sobre distribució de continguts, 5G i tecnologia oberta de mitjans. Les novetats més destacades:",
+    "es": "Artículos, capítulos de libro y patentes sobre distribución de contenidos, 5G y tecnología abierta de medios. Lo más reciente:",
+    "de": "Fachartikel, Buchkapitel und Patente zu Mediendistribution, 5G und offener Medientechnologie. Aktuelle Highlights:",
+    "fr": "Articles, chapitres d'ouvrages et brevets sur la distribution de contenus, la 5G et les technologies médias ouvertes. Points forts récents&nbsp;:",
+    "zh": "关于媒体分发、5G 和开放媒体技术的论文、书籍章节和专利。最新亮点："
+  },
+  "browse_all": {
+    "en": "Browse all ",
+    "ca": "Totes les ",
+    "es": "Ver las ",
+    "de": "Alle ",
+    "fr": "Voir les ",
+    "zh": "浏览全部 "
+  },
+  "publications_and_patents": {
+    "en": " publications and patents ",
+    "ca": " publicacions i patents ",
+    "es": " publicaciones y patentes ",
+    "de": " Publikationen und Patente ",
+    "fr": " publications et brevets ",
+    "zh": " 项论文与专利 "
+  },
+  "in_pictures": {
+    "en": "In pictures",
+    "ca": "En imatges",
+    "es": "En imágenes",
+    "de": "In Bildern",
+    "fr": "En images",
+    "zh": "图片"
+  },
+  "jordi_joan_standing_next_to_a_studio_tv": {
+    "en": "Jordi-Joan standing next to a studio TV camera with the IRT logo",
+    "ca": "Jordi-Joan al costat d'una càmera de televisió d'estudi amb el logotip de l'IRT",
+    "es": "Jordi-Joan junto a una cámara de televisión de estudio con el logotipo del IRT",
+    "de": "Jordi-Joan neben einer Studio-Fernsehkamera mit dem IRT-Logo",
+    "fr": "Jordi-Joan à côté d'une caméra de télévision de studio portant le logo de l'IRT",
+    "zh": "Jordi-Joan 站在一台带有 IRT 标志的演播室摄像机旁"
+  },
+  "irt_munich": {
+    "en": "IRT, Munich",
+    "ca": "IRT, Múnic",
+    "es": "IRT, Múnich",
+    "de": "IRT, München",
+    "fr": "IRT, Munich",
+    "zh": "IRT，慕尼黑"
+  },
+  "a_meeting_room_with_the_5g_xcast_project": {
+    "en": "A meeting room with the 5G-Xcast project overview on the screen",
+    "ca": "Una sala de reunions amb la presentació del projecte 5G-Xcast a la pantalla",
+    "es": "Una sala de reuniones con la presentación del proyecto 5G-Xcast en la pantalla",
+    "de": "Ein Besprechungsraum mit der Projektübersicht von 5G-Xcast auf dem Bildschirm",
+    "fr": "Une salle de réunion avec la présentation du projet 5G-Xcast à l'écran",
+    "zh": "会议室屏幕上显示 5G-Xcast 项目概览"
+  },
+  "5g_xcast_project_meeting": {
+    "en": "5G-Xcast project meeting",
+    "ca": "Reunió del projecte 5G-Xcast",
+    "es": "Reunión del proyecto 5G-Xcast",
+    "de": "5G-Xcast-Projekttreffen",
+    "fr": "Réunion du projet 5G-Xcast",
+    "zh": "5G-Xcast 项目会议"
+  },
+  "a_camera_crew_filming_a_demo_in_a_lab_fu": {
+    "en": "A camera crew filming a demo in a lab full of project posters",
+    "ca": "Un equip de càmera gravant una demostració en un laboratori ple de pòsters de projectes",
+    "es": "Un equipo de cámara grabando una demostración en un laboratorio lleno de pósteres de proyectos",
+    "de": "Ein Kamerateam filmt eine Demo in einem Labor voller Projektposter",
+    "fr": "Une équipe de tournage filme une démo dans un laboratoire rempli d'affiches de projets",
+    "zh": "摄制组在贴满项目海报的实验室里拍摄演示"
+  },
+  "filming_a_5g_demo": {
+    "en": "Filming a 5G demo",
+    "ca": "Gravant una demo de 5G",
+    "es": "Grabando una demo de 5G",
+    "de": "Dreh einer 5G-Demo",
+    "fr": "Tournage d'une démo 5G",
+    "zh": "拍摄 5G 演示"
+  },
+  "two_people_at_a_conference_demo_booth_wi": {
+    "en": "Two people at a conference demo booth with screens",
+    "ca": "Dues persones en un estand de demostració d'un congrés, amb pantalles",
+    "es": "Dos personas en un stand de demostración de un congreso, con pantallas",
+    "de": "Zwei Personen an einem Konferenz-Demostand mit Bildschirmen",
+    "fr": "Deux personnes sur un stand de démonstration en conférence, avec des écrans",
+    "zh": "两人站在会议演示展台的屏幕前"
+  },
+  "conference_demo_booth": {
+    "en": "Conference demo booth",
+    "ca": "Estand de demostració en un congrés",
+    "es": "Stand de demostración en un congreso",
+    "de": "Demo-Stand auf einer Konferenz",
+    "fr": "Stand de démonstration en conférence",
+    "zh": "会议演示展台"
+  },
+  "a_group_of_researchers_and_visitors_posi": {
+    "en": "A group of researchers and visitors posing in a lab",
+    "ca": "Un grup d'investigadors i visitants posant en un laboratori",
+    "es": "Un grupo de investigadores y visitantes posando en un laboratorio",
+    "de": "Eine Gruppe von Forschenden und Gästen posiert in einem Labor",
+    "fr": "Un groupe de chercheurs et de visiteurs posant dans un laboratoire",
+    "zh": "一群研究人员和访客在实验室合影"
+  },
+  "lab_visit_with_partners": {
+    "en": "Lab visit with partners",
+    "ca": "Visita al laboratori amb socis",
+    "es": "Visita al laboratorio con socios",
+    "de": "Laborbesuch mit Partnern",
+    "fr": "Visite du labo avec des partenaires",
+    "zh": "与合作伙伴参观实验室"
+  },
+  "four_people_in_a_lab_in_front_of_a_tv_de": {
+    "en": "Four people in a lab in front of a TV demo",
+    "ca": "Quatre persones en un laboratori davant d'una demo de televisió",
+    "es": "Cuatro personas en un laboratorio delante de una demo de televisión",
+    "de": "Vier Personen in einem Labor vor einer TV-Demo",
+    "fr": "Quatre personnes dans un laboratoire devant une démo de télévision",
+    "zh": "四人在实验室的电视演示前"
+  },
+  "demo_day_in_the_lab": {
+    "en": "Demo day in the lab",
+    "ca": "Dia de demos al laboratori",
+    "es": "Día de demos en el laboratorio",
+    "de": "Demo-Tag im Labor",
+    "fr": "Journée démo au labo",
+    "zh": "实验室演示日"
+  },
+  "two_graduates_in_doctoral_robes_and_caps": {
+    "en": "Two graduates in doctoral robes and caps at a ceremony",
+    "ca": "Dos doctors amb toga i birret en una cerimònia",
+    "es": "Dos doctores con toga y birrete en una ceremonia",
+    "de": "Zwei Promovierte in Talar und Doktorhut bei einer Feier",
+    "fr": "Deux docteurs en toge et toque lors d'une cérémonie",
+    "zh": "两位身穿博士服、头戴博士帽的毕业生在典礼上"
+  },
+  "phd_ceremony_upv": {
+    "en": "PhD ceremony, UPV",
+    "ca": "Investidura de doctors, UPV",
+    "es": "Investidura de doctores, UPV",
+    "de": "Promotionsfeier, UPV",
+    "fr": "Cérémonie de doctorat, UPV",
+    "zh": "博士学位授予仪式，UPV"
+  },
+  "three_people_holding_ibc_award_trophies": {
+    "en": "Three people holding IBC award trophies in front of an IBC backdrop",
+    "ca": "Tres persones amb els trofeus dels premis IBC davant d'un photocall de l'IBC",
+    "es": "Tres personas con los trofeos de los premios IBC delante de un photocall de IBC",
+    "de": "Drei Personen mit IBC-Award-Trophäen vor einer IBC-Fotowand",
+    "fr": "Trois personnes tenant des trophées IBC devant un fond IBC",
+    "zh": "三人手持 IBC 奖杯站在 IBC 背景板前"
+  },
+  "colourful_old_houses_on_stortorget_squar": {
+    "en": "Colourful old houses on Stortorget square in Stockholm",
+    "ca": "Cases antigues de colors a la plaça Stortorget d'Estocolm",
+    "es": "Casas antiguas de colores en la plaza Stortorget de Estocolmo",
+    "de": "Bunte alte Häuser am Stortorget in Stockholm",
+    "fr": "Vieilles maisons colorées sur la place Stortorget à Stockholm",
+    "zh": "斯德哥尔摩大广场上色彩缤纷的老房子"
+  },
+  "research_stays_in_stockholm": {
+    "en": "Research stays in Stockholm",
+    "ca": "Estades de recerca a Estocolm",
+    "es": "Estancias de investigación en Estocolmo",
+    "de": "Forschungsaufenthalte in Stockholm",
+    "fr": "Séjours de recherche à Stockholm",
+    "zh": "斯德哥尔摩访问研究"
+  },
+  "receiving_an_award_diploma_on_stage_at_t": {
+    "en": "Receiving an award diploma on stage at the telecommunication engineering awards",
+    "ca": "Recollint un diploma a l'escenari en uns premis d'enginyeria de telecomunicació",
+    "es": "Recogiendo un diploma en el escenario de unos premios de ingeniería de telecomunicación",
+    "de": "Entgegennahme einer Urkunde auf der Bühne einer Preisverleihung für Telekommunikationsingenieure",
+    "fr": "Remise d'un diplôme sur scène lors d'une cérémonie de prix d'ingénierie des télécommunications",
+    "zh": "在电信工程颁奖典礼上台领取证书"
+  },
+  "m_sc_thesis_award_2012": {
+    "en": "M.Sc. thesis award, 2012",
+    "ca": "Premi a la tesi de màster, 2012",
+    "es": "Premio a la tesis de máster, 2012",
+    "de": "Preis für die Masterarbeit, 2012",
+    "fr": "Prix du mémoire de master, 2012",
+    "zh": "硕士论文奖，2012"
+  },
+  "award_winners_on_stage_at_the_ibc_2016_c": {
+    "en": "Award winners on stage at the IBC 2016 ceremony, with the WiB paper on the screen",
+    "ca": "Guanyadors dels premis a l'escenari de la cerimònia de l'IBC 2016, amb l'article de WiB a la pantalla",
+    "es": "Ganadores de los premios en el escenario de la ceremonia de IBC 2016, con el artículo de WiB en la pantalla",
+    "de": "Preisträger auf der Bühne der IBC-2016-Verleihung, mit dem WiB-Paper auf dem Bildschirm",
+    "fr": "Lauréats sur la scène de la cérémonie IBC 2016, avec l'article WiB à l'écran",
+    "zh": "IBC 2016 颁奖典礼上的获奖者，屏幕上显示 WiB 论文"
+  },
+  "ibc_2016_ceremony": {
+    "en": "IBC 2016 ceremony",
+    "ca": "Cerimònia de l'IBC 2016",
+    "es": "Ceremonia de IBC 2016",
+    "de": "IBC-2016-Preisverleihung",
+    "fr": "Cérémonie de l'IBC 2016",
+    "zh": "IBC 2016 颁奖典礼"
+  },
+  "the_wib_paper_presented_on_the_ibc_2016": {
+    "en": "The WiB paper presented on the IBC 2016 conference stage",
+    "ca": "L'article de WiB presentat a l'escenari de la conferència de l'IBC 2016",
+    "es": "El artículo de WiB presentado en el escenario de la conferencia de IBC 2016",
+    "de": "Das WiB-Paper auf der Bühne der IBC-2016-Konferenz",
+    "fr": "L'article WiB présenté sur la scène de la conférence IBC 2016",
+    "zh": "WiB 论文在 IBC 2016 会议舞台上展示"
+  },
+  "wib_at_ibc_2016": {
+    "en": "WiB at IBC 2016",
+    "ca": "WiB a l'IBC 2016",
+    "es": "WiB en IBC 2016",
+    "de": "WiB auf der IBC 2016",
+    "fr": "WiB à l'IBC 2016",
+    "zh": "IBC 2016 上的 WiB"
+  },
+  "a_large_group_photo_of_project_partners": {
+    "en": "A large group photo of project partners outside a building",
+    "ca": "Foto de grup nombrosa dels socis d'un projecte davant d'un edifici",
+    "es": "Foto de grupo numerosa de los socios de un proyecto delante de un edificio",
+    "de": "Großes Gruppenfoto der Projektpartner vor einem Gebäude",
+    "fr": "Grande photo de groupe des partenaires d'un projet devant un bâtiment",
+    "zh": "项目合作伙伴在建筑前的大合影"
+  },
+  "project_plenary": {
+    "en": "Project plenary",
+    "ca": "Plenari del projecte",
+    "es": "Plenario del proyecto",
+    "de": "Projektplenum",
+    "fr": "Plénière du projet",
+    "zh": "项目全体会议"
+  },
+  "a_project_team_group_photo_outdoors": {
+    "en": "A project team group photo outdoors",
+    "ca": "Foto de grup d'un equip de projecte a l'aire lliure",
+    "es": "Foto de grupo de un equipo de proyecto al aire libre",
+    "de": "Gruppenfoto eines Projektteams im Freien",
+    "fr": "Photo de groupe d'une équipe projet en extérieur",
+    "zh": "项目团队户外合影"
+  },
+  "project_meeting": {
+    "en": "Project meeting",
+    "ca": "Reunió de projecte",
+    "es": "Reunión de proyecto",
+    "de": "Projekttreffen",
+    "fr": "Réunion de projet",
+    "zh": "项目会议"
+  },
+  "people_with_conference_lanyards_chatting": {
+    "en": "People with conference lanyards chatting and toasting",
+    "ca": "Persones amb acreditacions de congrés conversant i brindant",
+    "es": "Personas con acreditaciones de congreso conversando y brindando",
+    "de": "Menschen mit Konferenzausweisen im Gespräch und beim Anstoßen",
+    "fr": "Des participants avec badges de conférence discutant et trinquant",
+    "zh": "佩戴会议胸牌的人们交谈并举杯"
+  },
+  "conference_networking": {
+    "en": "Conference networking",
+    "ca": "Networking en un congrés",
+    "es": "Networking en un congreso",
+    "de": "Networking auf einer Konferenz",
+    "fr": "Networking en conférence",
+    "zh": "会议交流"
+  },
+  "a_group_of_colleagues_posing_in_an_offic": {
+    "en": "A group of colleagues posing in an office",
+    "ca": "Un grup de companys posant en una oficina",
+    "es": "Un grupo de compañeros posando en una oficina",
+    "de": "Eine Gruppe von Kollegen posiert in einem Büro",
+    "fr": "Un groupe de collègues posant dans un bureau",
+    "zh": "同事们在办公室合影"
+  },
+  "team_photo": {
+    "en": "Team photo",
+    "ca": "Foto d'equip",
+    "es": "Foto de equipo",
+    "de": "Teamfoto",
+    "fr": "Photo d'équipe",
+    "zh": "团队合影"
+  },
+  "large_graduation_group_photo_on_a_grand": {
+    "en": "Large graduation group photo on a grand staircase",
+    "ca": "Foto de grup d'una graduació en una gran escalinata",
+    "es": "Foto de grupo de una graduación en una gran escalinata",
+    "de": "Großes Gruppenfoto einer Abschlussfeier auf einer prächtigen Treppe",
+    "fr": "Grande photo de groupe de remise des diplômes sur un escalier monumental",
+    "zh": "毕业生在宏伟的台阶上大合影"
+  },
+  "graduation_day": {
+    "en": "Graduation day",
+    "ca": "Dia de la graduació",
+    "es": "Día de la graduación",
+    "de": "Abschlussfeier",
+    "fr": "Remise des diplômes",
+    "zh": "毕业典礼"
+  },
+  "colleagues_having_lunch_on_a_sunny_terra": {
+    "en": "Colleagues having lunch on a sunny terrace",
+    "ca": "Companys dinant en una terrassa assolellada",
+    "es": "Compañeros comiendo en una terraza soleada",
+    "de": "Kollegen beim Mittagessen auf einer sonnigen Terrasse",
+    "fr": "Des collègues déjeunant sur une terrasse ensoleillée",
+    "zh": "同事们在阳光明媚的露台上吃午饭"
+  },
+  "with_colleagues": {
+    "en": "With colleagues",
+    "ca": "Amb companys",
+    "es": "Con compañeros",
+    "de": "Mit Kollegen",
+    "fr": "Avec des collègues",
+    "zh": "与同事在一起"
+  },
+  "a_group_in_running_gear_with_race_number": {
+    "en": "A group in running gear with race numbers at a finish line",
+    "ca": "Un grup amb roba d'esport i dorsals a la meta d'una cursa",
+    "es": "Un grupo con ropa deportiva y dorsales en la meta de una carrera",
+    "de": "Eine Gruppe in Laufkleidung mit Startnummern im Ziel eines Laufs",
+    "fr": "Un groupe en tenue de course avec dossards à l'arrivée d'une course",
+    "zh": "一群身穿运动服、佩戴号码布的人在终点线"
+  },
+  "team_run": {
+    "en": "Team run",
+    "ca": "Cursa en equip",
+    "es": "Carrera en equipo",
+    "de": "Teamlauf",
+    "fr": "Course en équipe",
+    "zh": "团队跑步"
+  },
+  "a_group_in_festive_jumpers_posing_for_a": {
+    "en": "A group in festive jumpers posing for a Christmas photo",
+    "ca": "Un grup amb jerseis nadalencs posant per a una foto de Nadal",
+    "es": "Un grupo con jerséis navideños posando para una foto de Navidad",
+    "de": "Eine Gruppe in Weihnachtspullovern posiert für ein Weihnachtsfoto",
+    "fr": "Un groupe en pulls de Noël posant pour une photo de fin d'année",
+    "zh": "一群身穿圣诞毛衣的人合影"
+  },
+  "team_christmas": {
+    "en": "Team Christmas",
+    "ca": "Nadal amb l'equip",
+    "es": "Navidad con el equipo",
+    "de": "Weihnachten im Team",
+    "fr": "Noël en équipe",
+    "zh": "团队圣诞"
+  },
+  "friends_smiling_around_a_table_in_a_bar": {
+    "en": "Friends smiling around a table in a bar",
+    "ca": "Amics somrients al voltant d'una taula en un bar",
+    "es": "Amigos sonrientes alrededor de una mesa en un bar",
+    "de": "Lächelnde Freunde an einem Tisch in einer Bar",
+    "fr": "Des amis souriants autour d'une table dans un bar",
+    "zh": "朋友们在酒吧围坐一桌微笑"
+  },
+  "team_dinner": {
+    "en": "Team dinner",
+    "ca": "Sopar d'equip",
+    "es": "Cena de equipo",
+    "de": "Teamessen",
+    "fr": "Dîner d'équipe",
+    "zh": "团队聚餐"
+  },
+  "show_more_photos": {
+    "en": "Show more photos",
+    "ca": "Mostrar més fotos",
+    "es": "Ver más fotos",
+    "de": "Weitere Fotos anzeigen",
+    "fr": "Afficher plus de photos",
+    "zh": "显示更多照片"
+  },
+  "photo_viewer": {
+    "en": "Photo viewer",
+    "ca": "Visor de fotos",
+    "es": "Visor de fotos",
+    "de": "Fotoansicht",
+    "fr": "Visionneuse de photos",
+    "zh": "照片查看器"
+  },
+  "close": {
+    "en": "Close",
+    "ca": "Tancar",
+    "es": "Cerrar",
+    "de": "Schließen",
+    "fr": "Fermer",
+    "zh": "关闭"
+  },
+  "jordi_joan_smiling_in_a_light_shirt": {
+    "en": "Jordi-Joan smiling, in a light shirt",
+    "ca": "Jordi-Joan somrient, amb camisa clara",
+    "es": "Jordi-Joan sonriendo, con camisa clara",
+    "de": "Jordi-Joan lächelnd, in hellem Hemd",
+    "fr": "Jordi-Joan souriant, en chemise claire",
+    "zh": "Jordi-Joan 面带微笑，身穿浅色衬衫"
+  },
+  "let_s_connect": {
+    "en": "Let's connect",
+    "ca": "Parlem",
+    "es": "Hablemos",
+    "de": "Vernetzen wir uns",
+    "fr": "Restons en contact",
+    "zh": "保持联系"
+  },
+  "for_collaborations_speaking_invitations": {
+    "en": "For collaborations, speaking invitations or projects in media delivery and 5G, LinkedIn is the best way to reach me.",
+    "ca": "Per a col·laboracions, invitacions com a ponent o projectes de distribució de continguts i 5G, LinkedIn és la millor manera de contactar amb mi.",
+    "es": "Para colaboraciones, invitaciones como ponente o proyectos de distribución de contenidos y 5G, LinkedIn es la mejor forma de contactarme.",
+    "de": "Für Kooperationen, Vortragsanfragen oder Projekte in Mediendistribution und 5G erreichen Sie mich am besten über LinkedIn.",
+    "fr": "Pour des collaborations, des invitations à intervenir ou des projets en distribution de contenus et 5G, le plus simple est de me contacter sur LinkedIn.",
+    "zh": "如需合作、演讲邀请或洽谈媒体分发与 5G 相关项目，欢迎通过 LinkedIn 与我联系。"
+  },
+  "patents": {
+    "en": "Patents ",
+    "ca": "Patents ",
+    "es": "Patentes ",
+    "de": "Patente ",
+    "fr": "Brevets ",
+    "zh": "专利 "
+  },
+  "jordi_joan_gim_nez_last_updated_october": {
+    "en": " Jordi-Joan Giménez · Last updated October 2026",
+    "ca": " Jordi-Joan Giménez · Última actualització: octubre de 2026",
+    "es": " Jordi-Joan Giménez · Última actualización: octubre de 2026",
+    "de": " Jordi-Joan Giménez · Zuletzt aktualisiert: Oktober 2026",
+    "fr": " Jordi-Joan Giménez · Dernière mise à jour&nbsp;: octobre 2026",
+    "zh": " Jordi-Joan Giménez · 最后更新：2026 年 10 月"
+  },
+  "knowledge_focus_action": {
+    "en": "Knowledge + Focus + Action",
+    "ca": "Coneixement + Focus + Acció",
+    "es": "Conocimiento + Enfoque + Acción",
+    "de": "Wissen + Fokus + Handeln",
+    "fr": "Savoir + Concentration + Action",
+    "zh": "知识 + 专注 + 行动"
+  },
+  "publications_patents_jordi_joan_gim_nez": {
+    "en": "Publications &amp; patents — Jordi-Joan Giménez",
+    "ca": "Publicacions i patents — Jordi-Joan Giménez",
+    "es": "Publicaciones y patentes — Jordi-Joan Giménez",
+    "de": "Publikationen &amp; Patente — Jordi-Joan Giménez",
+    "fr": "Publications et brevets — Jordi-Joan Giménez",
+    "zh": "论文与专利 — Jordi-Joan Giménez"
+  },
+  "all_publications_and_patents_by_jordi_jo": {
+    "en": "All publications and patents by Jordi-Joan Giménez: journal and conference papers, book chapters and patents on media delivery, 5G and broadcast technology.",
+    "ca": "Totes les publicacions i patents de Jordi-Joan Giménez: articles en revistes i congressos, capítols de llibre i patents sobre distribució de continguts, 5G i radiodifusió.",
+    "es": "Todas las publicaciones y patentes de Jordi-Joan Giménez: artículos en revistas y congresos, capítulos de libro y patentes sobre distribución de contenidos, 5G y radiodifusión.",
+    "de": "Alle Publikationen und Patente von Jordi-Joan Giménez: Zeitschriften- und Konferenzbeiträge, Buchkapitel und Patente zu Mediendistribution, 5G und Rundfunktechnik.",
+    "fr": "Toutes les publications et tous les brevets de Jordi-Joan Giménez : articles de revues et de conférences, chapitres d'ouvrages et brevets sur la distribution de contenus, la 5G et la radiodiffusion.",
+    "zh": "Jordi-Joan Giménez 的全部论文与专利：关于媒体分发、5G 和广播技术的期刊论文、会议论文、书籍章节和专利。"
+  },
+  "publications_patents_jordi_joan_gim_nez_2": {
+    "en": "Publications & patents — Jordi-Joan Giménez",
+    "ca": "Publicacions i patents — Jordi-Joan Giménez",
+    "es": "Publicaciones y patentes — Jordi-Joan Giménez",
+    "de": "Publikationen & Patente — Jordi-Joan Giménez",
+    "fr": "Publications et brevets — Jordi-Joan Giménez",
+    "zh": "论文与专利 — Jordi-Joan Giménez"
+  },
+  "back_to_jordijoan_es": {
+    "en": " Back to jordijoan.es",
+    "ca": " Tornar a jordijoan.es",
+    "es": " Volver a jordijoan.es",
+    "de": " Zurück zu jordijoan.es",
+    "fr": " Retour à jordijoan.es",
+    "zh": " 返回 jordijoan.es"
+  },
+  "journal_and_conference_papers_book_chapt": {
+    "en": "Journal and conference papers, book chapters, patents and reports, newest first. Use the filters or search by title, co-author or venue.",
+    "ca": "Articles en revistes i congressos, capítols de llibre, patents i informes, dels més recents als més antics. Feu servir els filtres o cerqueu per títol, coautor o publicació.",
+    "es": "Artículos en revistas y congresos, capítulos de libro, patentes e informes, de los más recientes a los más antiguos. Usa los filtros o busca por título, coautor o publicación.",
+    "de": "Zeitschriften- und Konferenzbeiträge, Buchkapitel, Patente und Berichte, die neuesten zuerst. Nutzen Sie die Filter oder suchen Sie nach Titel, Mitautor oder Veröffentlichungsort.",
+    "fr": "Articles de revues et de conférences, chapitres d'ouvrages, brevets et rapports, du plus récent au plus ancien. Utilisez les filtres ou recherchez par titre, coauteur ou support.",
+    "zh": "期刊与会议论文、书籍章节、专利和报告，按时间由新到旧排列。可使用筛选按钮，或按标题、合著者、发表刊物搜索。"
+  },
+  "filter_by_type": {
+    "en": "Filter by type",
+    "ca": "Filtrar per tipus",
+    "es": "Filtrar por tipo",
+    "de": "Nach Typ filtern",
+    "fr": "Filtrer par type",
+    "zh": "按类型筛选"
+  },
+  "all": {
+    "en": "All ",
+    "ca": "Tot ",
+    "es": "Todo ",
+    "de": "Alle ",
+    "fr": "Tout ",
+    "zh": "全部 "
+  },
+  "journals": {
+    "en": "Journals ",
+    "ca": "Revistes ",
+    "es": "Revistas ",
+    "de": "Zeitschriften ",
+    "fr": "Revues ",
+    "zh": "期刊 "
+  },
+  "conferences": {
+    "en": "Conferences ",
+    "ca": "Congressos ",
+    "es": "Congresos ",
+    "de": "Konferenzen ",
+    "fr": "Conférences ",
+    "zh": "会议 "
+  },
+  "chapters": {
+    "en": "Chapters ",
+    "ca": "Capítols ",
+    "es": "Capítulos ",
+    "de": "Buchkapitel ",
+    "fr": "Chapitres ",
+    "zh": "书籍章节 "
+  },
+  "other": {
+    "en": "Other ",
+    "ca": "Altres ",
+    "es": "Otros ",
+    "de": "Sonstiges ",
+    "fr": "Autres ",
+    "zh": "其他 "
+  },
+  "search_publications": {
+    "en": "Search publications",
+    "ca": "Cercar publicacions",
+    "es": "Buscar publicaciones",
+    "de": "Publikationen durchsuchen",
+    "fr": "Rechercher dans les publications",
+    "zh": "搜索论文"
+  },
+  "search_title_co_author_venue": {
+    "en": "Search title, co-author, venue…",
+    "ca": "Títol, coautor, publicació…",
+    "es": "Título, coautor, publicación…",
+    "de": "Titel, Mitautor, Ort…",
+    "fr": "Titre, coauteur, support…",
+    "zh": "标题、合著者、刊物…"
+  },
+  "enable_javascript_to_browse_the_list_or": {
+    "en": "Enable JavaScript to browse the list, or see the full record on ",
+    "ca": "Activeu JavaScript per a veure la llista, o consulteu el registre complet a ",
+    "es": "Activa JavaScript para ver la lista, o consulta el registro completo en ",
+    "de": "Aktivieren Sie JavaScript, um die Liste zu sehen, oder öffnen Sie das vollständige Verzeichnis auf ",
+    "fr": "Activez JavaScript pour afficher la liste, ou consultez la liste complète sur ",
+    "zh": "请启用 JavaScript 查看列表，或在 "
+  },
+  "item_4": {
+    "en": ".",
+    "ca": ".",
+    "es": ".",
+    "de": ".",
+    "fr": ".",
+    "zh": " 上查看完整记录。"
+  },
+  "full_up_to_date_record_on": {
+    "en": "Full, up-to-date record on ",
+    "ca": "Registre complet i actualitzat a ",
+    "es": "Registro completo y actualizado en ",
+    "de": "Vollständiges, aktuelles Verzeichnis auf ",
+    "fr": "Liste complète et à jour sur ",
+    "zh": "完整及最新记录见 "
+  },
+  "and": {
+    "en": " and ",
+    "ca": " i ",
+    "es": " y ",
+    "de": " und ",
+    "fr": " et ",
+    "zh": " 和 "
+  },
+  "item_5": {
+    "en": ".",
+    "ca": ". Els títols es mostren en l'idioma original.",
+    "es": ". Los títulos se muestran en su idioma original.",
+    "de": ". Titel werden in der Originalsprache angezeigt.",
+    "fr": ". Les titres sont affichés dans leur langue d'origine.",
+    "zh": "。标题以原文显示。"
+  },
+  "projects_contracts_jordi_joan_gim_nez": {
+    "en": "Projects &amp; contracts — Jordi-Joan Giménez",
+    "ca": "Projectes i contractes — Jordi-Joan Giménez",
+    "es": "Proyectos y contratos — Jordi-Joan Giménez",
+    "de": "Projekte &amp; Aufträge — Jordi-Joan Giménez",
+    "fr": "Projets et contrats — Jordi-Joan Giménez",
+    "zh": "项目与合同 — Jordi-Joan Giménez"
+  },
+  "r_d_projects_and_industry_contracts_by_j": {
+    "en": "R&amp;D projects and industry contracts by Jordi-Joan Giménez, from EU H2020 projects to contracts with ETRI, EuropeAid and mobile operators.",
+    "ca": "Projectes d'R+D i contractes amb la indústria de Jordi-Joan Giménez, des de projectes europeus H2020 fins a contractes amb ETRI, EuropeAid i operadors mòbils.",
+    "es": "Proyectos de I+D y contratos con la industria de Jordi-Joan Giménez, desde proyectos europeos H2020 hasta contratos con ETRI, EuropeAid y operadores móviles.",
+    "de": "F&amp;E-Projekte und Industrieaufträge von Jordi-Joan Giménez, von EU-H2020-Projekten bis zu Aufträgen für ETRI, EuropeAid und Mobilfunkbetreiber.",
+    "fr": "Projets de R&amp;D et contrats industriels de Jordi-Joan Giménez, des projets européens H2020 aux contrats avec l'ETRI, EuropeAid et des opérateurs mobiles.",
+    "zh": "Jordi-Joan Giménez 参与的研发项目和产业合同，涵盖欧盟 H2020 项目以及与 ETRI、EuropeAid 和移动运营商的合同。"
+  },
+  "projects_contracts_jordi_joan_gim_nez_2": {
+    "en": "Projects & contracts — Jordi-Joan Giménez",
+    "ca": "Projectes i contractes — Jordi-Joan Giménez",
+    "es": "Proyectos y contratos — Jordi-Joan Giménez",
+    "de": "Projekte & Aufträge — Jordi-Joan Giménez",
+    "fr": "Projets et contrats — Jordi-Joan Giménez",
+    "zh": "项目与合同 — Jordi-Joan Giménez"
+  },
+  "r_d_projects_and_industry_contracts_from": {
+    "en": "R&amp;D projects and industry contracts, from EU research programmes to engagements with broadcasters, operators and technology companies.",
+    "ca": "Projectes d'R+D i contractes amb la indústria, des de programes de recerca europeus fins a col·laboracions amb radiodifusors, operadors i empreses tecnològiques.",
+    "es": "Proyectos de I+D y contratos con la industria, desde programas de investigación europeos hasta colaboraciones con radiodifusores, operadores y empresas tecnológicas.",
+    "de": "F&amp;E-Projekte und Industrieaufträge, von EU-Forschungsprogrammen bis zu Aufträgen für Rundfunkanstalten, Netzbetreiber und Technologieunternehmen.",
+    "fr": "Projets de R&amp;D et contrats industriels, des programmes de recherche européens aux missions pour des radiodiffuseurs, des opérateurs et des entreprises technologiques.",
+    "zh": "研发项目和产业合同，涵盖欧盟科研计划以及与广播机构、运营商和科技公司的合作。"
+  },
+  "r_d_projects": {
+    "en": "R&amp;D projects",
+    "ca": "projectes d'R+D",
+    "es": "proyectos de I+D",
+    "de": "F&amp;E-Projekte",
+    "fr": "projets de R&amp;D",
+    "zh": "个研发项目"
+  },
+  "industry_contracts": {
+    "en": "industry contracts",
+    "ca": "contractes amb la indústria",
+    "es": "contratos con la industria",
+    "de": "Industrieaufträge",
+    "fr": "contrats industriels",
+    "zh": "个产业合同"
+  },
+  "r_d_projects_2": {
+    "en": "R&amp;D projects",
+    "ca": "Projectes d'R+D",
+    "es": "Proyectos de I+D",
+    "de": "F&amp;E-Projekte",
+    "fr": "Projets de R&amp;D",
+    "zh": "研发项目"
+  },
+  "h2020_irt_led_by_andrea_di_giglio_14_3m": {
+    "en": "H2020 · IRT · led by Andrea di Giglio · €14.3M consortium budget",
+    "ca": "H2020 · IRT · dirigit per Andrea di Giglio · pressupost del consorci: 14,3 M€",
+    "es": "H2020 · IRT · dirigido por Andrea di Giglio · presupuesto del consorcio: 14,3 M€",
+    "de": "H2020 · IRT · Leitung: Andrea di Giglio · Konsortialbudget 14,3 Mio. €",
+    "fr": "H2020 · IRT · dirigé par Andrea di Giglio · budget du consortium&nbsp;: 14,3&nbsp;M€",
+    "zh": "H2020 · IRT · 负责人 Andrea di Giglio · 联合体预算 1,430 万欧元"
+  },
+  "integration_of_multicast_delivery_and_hb": {
+    "en": "Integration of multicast delivery and HbbTV web apps in Android",
+    "ca": "Integració de la distribució multicast i les aplicacions web HbbTV en Android",
+    "es": "Integración de la distribución multicast y las aplicaciones web HbbTV en Android",
+    "de": "Integration von Multicast-Übertragung und HbbTV-Web-Apps in Android",
+    "fr": "Intégration de la diffusion multicast et des applications web HbbTV sous Android",
+    "zh": "在 Android 上集成组播传输与 HbbTV 网页应用"
+  },
+  "principal_investigator": {
+    "en": "Principal investigator",
+    "ca": "Investigador principal",
+    "es": "Investigador principal",
+    "de": "Projektleitung",
+    "fr": "Chercheur principal",
+    "zh": "首席研究员"
+  },
+  "h2020_upv_led_by_david_g_mez_barquero_8": {
+    "en": "H2020 · UPV · led by David Gómez-Barquero · €8.0M consortium budget",
+    "ca": "H2020 · UPV · dirigit per David Gómez-Barquero · pressupost del consorci: 8,0 M€",
+    "es": "H2020 · UPV · dirigido por David Gómez-Barquero · presupuesto del consorcio: 8,0 M€",
+    "de": "H2020 · UPV · Leitung: David Gómez-Barquero · Konsortialbudget 8,0 Mio. €",
+    "fr": "H2020 · UPV · dirigé par David Gómez-Barquero · budget du consortium&nbsp;: 8,0&nbsp;M€",
+    "zh": "H2020 · UPV · 负责人 David Gómez-Barquero · 联合体预算 800 万欧元"
+  },
+  "extra_terrestrial_digital_broadcasting_t": {
+    "en": "Extra-terrestrial digital broadcasting technologies",
+    "ca": "Tecnologies de radiodifusió digital extraterrestre",
+    "es": "Tecnologías de radiodifusión digital extraterrestre",
+    "de": "Extraterrestrische digitale Rundfunktechnologien",
+    "fr": "Technologies de radiodiffusion numérique extraterrestre",
+    "zh": "地外数字广播技术"
+  },
+  "spanish_ministry_of_economy_upv_led_by_d": {
+    "en": "Spanish Ministry of Economy · UPV · led by David Gómez-Barquero · €119k project budget",
+    "ca": "Ministeri d'Economia · UPV · dirigit per David Gómez-Barquero · pressupost del projecte: 119 k€",
+    "es": "Ministerio de Economía · UPV · dirigido por David Gómez-Barquero · presupuesto del proyecto: 119 k€",
+    "de": "Spanisches Wirtschaftsministerium · UPV · Leitung: David Gómez-Barquero · Projektbudget 119 Tsd. €",
+    "fr": "Ministère espagnol de l'Économie · UPV · dirigé par David Gómez-Barquero · budget du projet&nbsp;: 119&nbsp;k€",
+    "zh": "西班牙经济部 · UPV · 负责人 David Gómez-Barquero · 项目预算 11.9 万欧元"
+  },
+  "non_uniform_constellations_for_next_gene": {
+    "en": "Non-uniform constellations for next-generation digital terrestrial TV (ATSC 3.0)",
+    "ca": "Constel·lacions no uniformes per a la televisió digital terrestre de nova generació (ATSC 3.0)",
+    "es": "Constelaciones no uniformes para la televisión digital terrestre de nueva generación (ATSC 3.0)",
+    "de": "Nicht-uniforme Konstellationen für das terrestrische Digitalfernsehen der nächsten Generation (ATSC 3.0)",
+    "fr": "Constellations non uniformes pour la télévision numérique terrestre de nouvelle génération (ATSC 3.0)",
+    "zh": "面向下一代数字地面电视（ATSC 3.0）的非均匀星座"
+  },
+  "upv_led_by_david_g_mez_barquero_5k_proje": {
+    "en": "UPV · led by David Gómez-Barquero · €5k project budget",
+    "ca": "UPV · dirigit per David Gómez-Barquero · pressupost del projecte: 5 k€",
+    "es": "UPV · dirigido por David Gómez-Barquero · presupuesto del proyecto: 5 k€",
+    "de": "UPV · Leitung: David Gómez-Barquero · Projektbudget 5 Tsd. €",
+    "fr": "UPV · dirigé par David Gómez-Barquero · budget du projet&nbsp;: 5&nbsp;k€",
+    "zh": "UPV · 负责人 David Gómez-Barquero · 项目预算 5 千欧元"
+  },
+  "freedom_high_efficiency_video_communicat": {
+    "en": "FREEDOM: high-efficiency video communications for next-generation mobile networks",
+    "ca": "FREEDOM: comunicacions de vídeo d'alta eficiència per a xarxes mòbils de nova generació",
+    "es": "FREEDOM: comunicaciones de vídeo de alta eficiencia para redes móviles de nueva generación",
+    "de": "FREEDOM: hocheffiziente Videokommunikation für Mobilfunknetze der nächsten Generation",
+    "fr": "FREEDOM&nbsp;: communications vidéo à haute efficacité pour les réseaux mobiles de nouvelle génération",
+    "zh": "FREEDOM：面向下一代移动网络的高效视频通信"
+  },
+  "cdti_spanish_ministry_of_economy_upv_led": {
+    "en": "CDTI, Spanish Ministry of Economy · UPV · led by Narcís Cardona · €161k project budget",
+    "ca": "CDTI, Ministeri d'Economia · UPV · dirigit per Narcís Cardona · pressupost del projecte: 161 k€",
+    "es": "CDTI, Ministerio de Economía · UPV · dirigido por Narcís Cardona · presupuesto del proyecto: 161 k€",
+    "de": "CDTI, Spanisches Wirtschaftsministerium · UPV · Leitung: Narcís Cardona · Projektbudget 161 Tsd. €",
+    "fr": "CDTI, ministère espagnol de l'Économie · UPV · dirigé par Narcís Cardona · budget du projet&nbsp;: 161&nbsp;k€",
+    "zh": "CDTI，西班牙经济部 · UPV · 负责人 Narcís Cardona · 项目预算 16.1 万欧元"
+  },
+  "celtic_plus_spanish_ministry_of_industry": {
+    "en": "Celtic-Plus · Spanish Ministry of Industry · UPV · led by Narcís Cardona · €56k project budget",
+    "ca": "Celtic-Plus · Ministeri d'Indústria · UPV · dirigit per Narcís Cardona · pressupost del projecte: 56 k€",
+    "es": "Celtic-Plus · Ministerio de Industria · UPV · dirigido por Narcís Cardona · presupuesto del proyecto: 56 k€",
+    "de": "Celtic-Plus · Spanisches Industrieministerium · UPV · Leitung: Narcís Cardona · Projektbudget 56 Tsd. €",
+    "fr": "Celtic-Plus · ministère espagnol de l'Industrie · UPV · dirigé par Narcís Cardona · budget du projet&nbsp;: 56&nbsp;k€",
+    "zh": "Celtic-Plus · 西班牙工业部 · UPV · 负责人 Narcís Cardona · 项目预算 5.6 万欧元"
+  },
+  "industry_contracts_2": {
+    "en": "Industry contracts",
+    "ca": "Contractes amb la indústria",
+    "es": "Contratos con la industria",
+    "de": "Industrieaufträge",
+    "fr": "Contrats industriels",
+    "zh": "产业合同"
+  },
+  "technical_assistance_for_the_implementat_2": {
+    "en": "Technical assistance for the implementation of digital TV in Colombia (EuropeAid/136352/DH/SER/CO)",
+    "ca": "Assistència tècnica per a la implantació de la televisió digital a Colòmbia (EuropeAid/136352/DH/SER/CO)",
+    "es": "Asistencia técnica para la implantación de la televisión digital en Colombia (EuropeAid/136352/DH/SER/CO)",
+    "de": "Technische Unterstützung bei der Einführung des Digitalfernsehens in Kolumbien (EuropeAid/136352/DH/SER/CO)",
+    "fr": "Assistance technique pour la mise en place de la télévision numérique en Colombie (EuropeAid/136352/DH/SER/CO)",
+    "zh": "哥伦比亚数字电视实施技术援助（EuropeAid/136352/DH/SER/CO）"
+  },
+  "coexistence_of_tv_services_and_4g_lte_in": {
+    "en": "Coexistence of TV services and 4G LTE in the 700 MHz band in Peru and Argentina",
+    "ca": "Coexistència dels serveis de televisió i el 4G LTE a la banda de 700 MHz al Perú i l'Argentina",
+    "es": "Coexistencia de los servicios de televisión y el 4G LTE en la banda de 700 MHz en Perú y Argentina",
+    "de": "Koexistenz von TV-Diensten und 4G LTE im 700-MHz-Band in Peru und Argentinien",
+    "fr": "Coexistence des services de télévision et de la 4G LTE dans la bande des 700&nbsp;MHz au Pérou et en Argentine",
+    "zh": "秘鲁和阿根廷 700 MHz 频段电视业务与 4G LTE 的共存"
+  },
+  "backhaul_advisory_36k_contract": {
+    "en": "Backhaul Advisory · €36k contract",
+    "ca": "Backhaul Advisory · contracte de 36 k€",
+    "es": "Backhaul Advisory · contrato de 36 k€",
+    "de": "Backhaul Advisory · Auftrag über 36 Tsd. €",
+    "fr": "Backhaul Advisory · contrat de 36&nbsp;k€",
+    "zh": "Backhaul Advisory · 合同金额 3.6 万欧元"
+  },
+  "optimization_and_performance_evaluation": {
+    "en": "Optimization and performance evaluation of LDM for ATSC 3.0",
+    "ca": "Optimització i avaluació de prestacions de LDM per a ATSC 3.0",
+    "es": "Optimización y evaluación de prestaciones de LDM para ATSC 3.0",
+    "de": "Optimierung und Leistungsbewertung von LDM für ATSC 3.0",
+    "fr": "Optimisation et évaluation des performances du LDM pour ATSC 3.0",
+    "zh": "ATSC 3.0 中 LDM 的优化与性能评估"
+  },
+  "etri_south_korea_led_by_david_g_mez_barq": {
+    "en": "ETRI, South Korea · led by David Gómez-Barquero · €35k contract",
+    "ca": "ETRI, Corea del Sud · dirigit per David Gómez-Barquero · contracte de 35 k€",
+    "es": "ETRI, Corea del Sur · dirigido por David Gómez-Barquero · contrato de 35 k€",
+    "de": "ETRI, Südkorea · Leitung: David Gómez-Barquero · Auftrag über 35 Tsd. €",
+    "fr": "ETRI, Corée du Sud · dirigé par David Gómez-Barquero · contrat de 35&nbsp;k€",
+    "zh": "韩国 ETRI · 负责人 David Gómez-Barquero · 合同金额 3.5 万欧元"
+  },
+  "non_uniform_constellations_for_the_atsc": {
+    "en": "Non-uniform constellations for the ATSC 3.0 system",
+    "ca": "Constel·lacions no uniformes per al sistema ATSC 3.0",
+    "es": "Constelaciones no uniformes para el sistema ATSC 3.0",
+    "de": "Nicht-uniforme Konstellationen für das ATSC-3.0-System",
+    "fr": "Constellations non uniformes pour le système ATSC 3.0",
+    "zh": "ATSC 3.0 系统的非均匀星座"
+  },
+  "time_frequency_slicing_for_cloud_transmi": {
+    "en": "Time Frequency Slicing for cloud transmission: implementation and performance evaluation",
+    "ca": "Time Frequency Slicing per a cloud transmission: implementació i avaluació de prestacions",
+    "es": "Time Frequency Slicing para cloud transmission: implementación y evaluación de prestaciones",
+    "de": "Time Frequency Slicing für Cloud Transmission: Implementierung und Leistungsbewertung",
+    "fr": "Time Frequency Slicing pour la cloud transmission&nbsp;: mise en œuvre et évaluation des performances",
+    "zh": "面向云传输的时频分片：实现与性能评估"
+  },
+  "etri_south_korea_led_by_david_g_mez_barq_2": {
+    "en": "ETRI, South Korea · led by David Gómez-Barquero",
+    "ca": "ETRI, Corea del Sud · dirigit per David Gómez-Barquero",
+    "es": "ETRI, Corea del Sur · dirigido por David Gómez-Barquero",
+    "de": "ETRI, Südkorea · Leitung: David Gómez-Barquero",
+    "fr": "ETRI, Corée du Sud · dirigé par David Gómez-Barquero",
+    "zh": "韩国 ETRI · 负责人 David Gómez-Barquero"
+  },
+  "technical_impact_of_a_municipal_ordinanc": {
+    "en": "Technical impact of a municipal ordinance on radio infrastructure (L'Alcúdia, Valencia)",
+    "ca": "Impacte tècnic d'una ordenança municipal sobre infraestructures de radiocomunicació (l'Alcúdia, València)",
+    "es": "Impacto técnico de una ordenanza municipal sobre infraestructuras de radiocomunicación (L'Alcúdia, Valencia)",
+    "de": "Technische Auswirkungen einer kommunalen Verordnung zur Funkinfrastruktur (L'Alcúdia, Valencia)",
+    "fr": "Impact technique d'un arrêté municipal sur les infrastructures de radiocommunication (L'Alcúdia, Valence)",
+    "zh": "市政条例对无线通信基础设施的技术影响（瓦伦西亚 L'Alcúdia）"
+  },
+  "orange_vodafone_and_telef_nica": {
+    "en": "Orange, Vodafone and Telefónica",
+    "ca": "Orange, Vodafone i Telefónica",
+    "es": "Orange, Vodafone y Telefónica",
+    "de": "Orange, Vodafone und Telefónica",
+    "fr": "Orange, Vodafone et Telefónica",
+    "zh": "Orange、Vodafone 和 Telefónica"
+  },
+  "freedom_high_efficiency_video_communicat_2": {
+    "en": "FREEDOM: high-efficiency video communications in mobility",
+    "ca": "FREEDOM: comunicacions de vídeo d'alta eficiència en mobilitat",
+    "es": "FREEDOM: comunicaciones de vídeo de alta eficiencia en movilidad",
+    "de": "FREEDOM: hocheffiziente Videokommunikation in Mobilität",
+    "fr": "FREEDOM&nbsp;: communications vidéo à haute efficacité en mobilité",
+    "zh": "FREEDOM：移动场景下的高效视频通信"
+  },
+  "sapec_egatel_and_axi_n": {
+    "en": "SAPEC, Egatel and Axión",
+    "ca": "SAPEC, Egatel i Axión",
+    "es": "SAPEC, Egatel y Axión",
+    "de": "SAPEC, Egatel und Axión",
+    "fr": "SAPEC, Egatel et Axión",
+    "zh": "SAPEC、Egatel 和 Axión"
+  },
+  "dvb_h_sh_network_planning_and_deployment": {
+    "en": "DVB-H/SH network planning and deployment",
+    "ca": "Planificació i desplegament de xarxes DVB-H/SH",
+    "es": "Planificación y despliegue de redes DVB-H/SH",
+    "de": "Planung und Aufbau von DVB-H/SH-Netzen",
+    "fr": "Planification et déploiement de réseaux DVB-H/SH",
+    "zh": "DVB-H/SH 网络规划与部署"
+  },
+  "abertis_retevisi_n_led_by_narc_s_cardona": {
+    "en": "Abertis Retevisión · led by Narcís Cardona · €30k contract",
+    "ca": "Abertis Retevisión · dirigit per Narcís Cardona · contracte de 30 k€",
+    "es": "Abertis Retevisión · dirigido por Narcís Cardona · contrato de 30 k€",
+    "de": "Abertis Retevisión · Leitung: Narcís Cardona · Auftrag über 30 Tsd. €",
+    "fr": "Abertis Retevisión · dirigé par Narcís Cardona · contrat de 30&nbsp;k€",
+    "zh": "Abertis Retevisión · 负责人 Narcís Cardona · 合同金额 3 万欧元"
+  },
+  "cv_file": {
+    "en": "Jordi-Joan-Gimenez-CV.pdf",
+    "ca": "Jordi-Joan-Gimenez-CV-CA.pdf",
+    "es": "Jordi-Joan-Gimenez-CV-ES.pdf",
+    "de": "Jordi-Joan-Gimenez-CV.pdf",
+    "fr": "Jordi-Joan-Gimenez-CV.pdf",
+    "zh": "Jordi-Joan-Gimenez-CV.pdf"
+  },
+  "footer_accessibility": {
+    "en": "Accessibility",
+    "ca": "Accessibilitat",
+    "es": "Accesibilidad",
+    "de": "Barrierefreiheit",
+    "fr": "Accessibilité",
+    "zh": "无障碍"
+  },
+  "a11y_title": {
+    "en": "Accessibility",
+    "ca": "Accessibilitat",
+    "es": "Accesibilidad",
+    "de": "Barrierefreiheit",
+    "fr": "Accessibilité",
+    "zh": "无障碍"
+  },
+  "a11y_description": {
+    "en": "How jordijoan.es is built to be usable by everyone: the accessibility standard it follows, what is in place, known limitations and how to report a problem.",
+    "ca": "Com està feta jordijoan.es perquè la puga utilitzar tothom: l'estàndard d'accessibilitat que seguix, què s'hi ha fet, les limitacions conegudes i com informar d'un problema.",
+    "es": "Cómo está hecha jordijoan.es para que la pueda usar todo el mundo: el estándar de accesibilidad que sigue, qué se ha hecho, las limitaciones conocidas y cómo informar de un problema.",
+    "de": "Wie jordijoan.es für alle nutzbar gemacht ist: der zugrunde liegende Standard, umgesetzte Maßnahmen, bekannte Einschränkungen und wie Sie ein Problem melden können.",
+    "fr": "Comment jordijoan.es est conçu pour être utilisable par tous&nbsp;: la norme d'accessibilité suivie, les mesures en place, les limites connues et comment signaler un problème.",
+    "zh": "jordijoan.es 如何让所有人都能使用：所遵循的无障碍标准、已采取的措施、已知限制以及如何反馈问题。"
+  },
+  "a11y_intro": {
+    "en": "I want this site to work for everyone, whatever device, browser or assistive technology you use.",
+    "ca": "Vull que aquest lloc funcione per a tothom, independentment del dispositiu, el navegador o la tecnologia d'assistència que utilitzeu.",
+    "es": "Quiero que este sitio funcione para todo el mundo, sea cual sea el dispositivo, el navegador o la tecnología de apoyo que utilices.",
+    "de": "Diese Website soll für alle funktionieren – unabhängig von Gerät, Browser oder assistiver Technologie.",
+    "fr": "Je souhaite que ce site fonctionne pour tout le monde, quels que soient l'appareil, le navigateur ou la technologie d'assistance utilisés.",
+    "zh": "无论您使用何种设备、浏览器或辅助技术，我都希望本网站对每个人都可用。"
+  },
+  "a11y_h_tips": {
+    "en": "Tips for using this site",
+    "ca": "Consells per a utilitzar aquest lloc",
+    "es": "Consejos para usar este sitio",
+    "de": "Tipps zur Bedienung",
+    "fr": "Conseils d'utilisation",
+    "zh": "使用提示"
+  },
+  "a11y_t_theme": {
+    "en": "Switch between the dark and the light look with the sun or moon button at the top of the page.",
+    "ca": "Canvieu entre l'aspecte fosc i el clar amb el botó del sol o la lluna, a dalt de la pàgina.",
+    "es": "Cambia entre el aspecto oscuro y el claro con el botón del sol o la luna, arriba de la página.",
+    "de": "Mit der Sonnen- bzw. Mondtaste oben auf der Seite wechseln Sie zwischen dunkler und heller Darstellung.",
+    "fr": "Passez de l'affichage sombre à l'affichage clair avec le bouton soleil ou lune, en haut de la page.",
+    "zh": "点击页面顶部的太阳或月亮按钮，可在深色和浅色外观之间切换。"
+  },
+  "a11y_t_language": {
+    "en": "Change the language with the globe button next to it. Each page has the same content in six languages.",
+    "ca": "Canvieu l'idioma amb el botó del globus, al costat. Cada pàgina té el mateix contingut en sis idiomes.",
+    "es": "Cambia el idioma con el botón del globo, al lado. Cada página tiene el mismo contenido en seis idiomas.",
+    "de": "Die Sprache ändern Sie mit der Globustaste daneben. Jede Seite gibt es mit gleichem Inhalt in sechs Sprachen.",
+    "fr": "Changez de langue avec le bouton globe, juste à côté. Chaque page propose le même contenu en six langues.",
+    "zh": "点击旁边的地球按钮可切换语言，每个页面都有六种语言的相同内容。"
+  },
+  "a11y_t_zoom": {
+    "en": "Make text bigger with Ctrl and + (Cmd and + on a Mac). The page rearranges itself so nothing is cut off.",
+    "ca": "Feu el text més gran amb Ctrl i + (Cmd i + en un Mac). La pàgina es reorganitza perquè no es talle res.",
+    "es": "Haz el texto más grande con Ctrl y + (Cmd y + en un Mac). La página se reorganiza para que no se corte nada.",
+    "de": "Text vergrößern Sie mit Strg und + (Cmd und + auf dem Mac). Die Seite ordnet sich neu, damit nichts abgeschnitten wird.",
+    "fr": "Agrandissez le texte avec Ctrl et + (Cmd et + sur Mac). La page se réorganise pour que rien ne soit coupé.",
+    "zh": "按 Ctrl 和 +（Mac 上为 Cmd 和 +）可放大文字，页面会自动重新排列，不会有内容被截断。"
+  },
+  "a11y_t_keyboard": {
+    "en": "Press Tab to move through links and buttons. The first stop lets you skip straight to the main content.",
+    "ca": "Premeu Tab per a passar d'un enllaç o botó al següent. La primera parada us permet saltar directament al contingut.",
+    "es": "Pulsa Tab para pasar de un enlace o botón al siguiente. La primera parada te permite saltar directamente al contenido.",
+    "de": "Mit der Tabulatortaste springen Sie von Link zu Link. Der erste Halt führt direkt zum Hauptinhalt.",
+    "fr": "Appuyez sur Tab pour passer d'un lien ou d'un bouton à l'autre. Le premier arrêt permet d'aller directement au contenu.",
+    "zh": "按 Tab 键可在链接和按钮之间移动，第一个位置可直接跳到正文。"
+  },
+  "a11y_t_photos": {
+    "en": "Open a photo to see it larger. Use the arrow keys or swipe to see the next one, and Esc to close.",
+    "ca": "Obriu una foto per a veure-la més gran. Feu servir les fletxes del teclat o llisqueu per a passar a la següent, i Esc per a tancar.",
+    "es": "Abre una foto para verla más grande. Usa las flechas del teclado o desliza para ver la siguiente, y Esc para cerrar.",
+    "de": "Öffnen Sie ein Foto, um es größer zu sehen. Mit den Pfeiltasten oder durch Wischen geht es weiter, mit Esc schließen Sie es.",
+    "fr": "Ouvrez une photo pour l'agrandir. Utilisez les flèches du clavier ou balayez pour passer à la suivante, et Échap pour fermer.",
+    "zh": "点击照片可放大查看，用方向键或滑动切换下一张，按 Esc 关闭。"
+  },
+  "a11y_h_standard": {
+    "en": "Standard",
+    "ca": "Estàndard",
+    "es": "Estándar",
+    "de": "Standard",
+    "fr": "Référentiel",
+    "zh": "标准"
+  },
+  "a11y_standard": {
+    "en": "The site aims to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA.",
+    "ca": "El lloc pretén complir les Pautes d'Accessibilitat per al Contingut Web (WCAG) 2.2 en el nivell AA.",
+    "es": "El sitio aspira a cumplir las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.2 en el nivel AA.",
+    "de": "Die Website orientiert sich an den Web Content Accessibility Guidelines (WCAG) 2.2, Konformitätsstufe AA.",
+    "fr": "Le site vise la conformité aux Règles pour l'accessibilité des contenus web (WCAG) 2.2, niveau AA.",
+    "zh": "本网站以符合《Web 内容无障碍指南》（WCAG）2.2 AA 级为目标。"
+  },
+  "a11y_h_measures": {
+    "en": "What is in place",
+    "ca": "Què s'hi ha fet",
+    "es": "Qué se ha hecho",
+    "de": "Umgesetzte Maßnahmen",
+    "fr": "Mesures en place",
+    "zh": "已采取的措施"
+  },
+  "a11y_m_keyboard": {
+    "en": "Everything works with a keyboard alone, with a visible focus indicator and a “skip to content” link.",
+    "ca": "Tot funciona només amb el teclat, amb un indicador de focus visible i un enllaç per a saltar al contingut.",
+    "es": "Todo funciona solo con el teclado, con un indicador de foco visible y un enlace para saltar al contenido.",
+    "de": "Alles lässt sich allein mit der Tastatur bedienen, mit sichtbarem Fokus und einem Link „Zum Inhalt springen“.",
+    "fr": "Tout fonctionne au clavier seul, avec un indicateur de focus visible et un lien «&nbsp;Aller au contenu&nbsp;».",
+    "zh": "所有功能都可仅用键盘操作，并有清晰可见的焦点指示和“跳到正文”链接。"
+  },
+  "a11y_m_screenreader": {
+    "en": "Pages use proper headings and landmarks, images have text alternatives, and screen readers are told when a link opens a new tab or a file.",
+    "ca": "Les pàgines tenen encapçalaments i regions ben definits, les imatges tenen text alternatiu i els lectors de pantalla avisen quan un enllaç obri una pestanya nova o un fitxer.",
+    "es": "Las páginas usan encabezados y regiones bien definidos, las imágenes tienen texto alternativo y los lectores de pantalla avisan cuando un enlace abre una pestaña nueva o un archivo.",
+    "de": "Die Seiten haben eine klare Überschriften- und Bereichsstruktur, Bilder haben Textalternativen, und Screenreader kündigen an, wenn ein Link einen neuen Tab oder eine Datei öffnet.",
+    "fr": "Les pages utilisent des titres et des zones bien structurés, les images ont un texte alternatif et les lecteurs d'écran annoncent quand un lien ouvre un nouvel onglet ou un fichier.",
+    "zh": "页面使用规范的标题和区域结构，图片配有替代文本；链接打开新标签页或文件时，读屏软件会给出提示。"
+  },
+  "a11y_m_motion": {
+    "en": "Animations are switched off when your system asks for reduced motion, and nothing plays automatically.",
+    "ca": "Les animacions es desactiven quan el sistema demana menys moviment, i no es reprodueix res automàticament.",
+    "es": "Las animaciones se desactivan cuando el sistema pide reducir el movimiento, y nada se reproduce automáticamente.",
+    "de": "Animationen werden abgeschaltet, wenn Ihr System reduzierte Bewegung wünscht, und nichts startet automatisch.",
+    "fr": "Les animations sont désactivées lorsque votre système demande de réduire les mouvements, et rien ne se lance automatiquement.",
+    "zh": "当系统设置要求减少动态效果时，动画会自动关闭，也不会自动播放任何内容。"
+  },
+  "a11y_m_contrast": {
+    "en": "Text has a contrast ratio of at least 4.5:1 in both the dark and the light theme, and the site adapts to high-contrast modes.",
+    "ca": "El text té un contrast mínim de 4,5:1 tant en el tema fosc com en el clar, i el lloc s'adapta als modes d'alt contrast.",
+    "es": "El texto tiene un contraste mínimo de 4,5:1 tanto en el tema oscuro como en el claro, y el sitio se adapta a los modos de alto contraste.",
+    "de": "Text hat im dunklen wie im hellen Design ein Kontrastverhältnis von mindestens 4,5:1, und die Website passt sich Hochkontrastmodi an.",
+    "fr": "Le texte présente un rapport de contraste d'au moins 4,5:1 dans les thèmes sombre et clair, et le site s'adapte aux modes à contraste élevé.",
+    "zh": "无论深色还是浅色主题，文字对比度均不低于 4.5:1，并支持高对比度模式。"
+  },
+  "a11y_m_zoom": {
+    "en": "Text can be enlarged to 200%, and the layout adapts down to a width of 320 pixels without horizontal scrolling.",
+    "ca": "El text es pot ampliar fins al 200 % i el disseny s'adapta fins a una amplària de 320 píxels sense desplaçament horitzontal.",
+    "es": "El texto se puede ampliar hasta el 200 % y el diseño se adapta hasta un ancho de 320 píxeles sin desplazamiento horizontal.",
+    "de": "Text lässt sich auf 200 % vergrößern, und das Layout passt sich bis zu einer Breite von 320 Pixeln ohne horizontales Scrollen an.",
+    "fr": "Le texte peut être agrandi jusqu'à 200&nbsp;%, et la mise en page s'adapte jusqu'à une largeur de 320 pixels sans défilement horizontal.",
+    "zh": "文字可放大至 200%，页面在 320 像素宽度下仍可正常显示，无需横向滚动。"
+  },
+  "a11y_m_languages": {
+    "en": "The site is available in six languages, and the language of each page, and of English titles inside translated pages, is marked for assistive technology.",
+    "ca": "El lloc està disponible en sis idiomes, i l'idioma de cada pàgina, i dels títols en anglés dins de les pàgines traduïdes, està marcat per a les tecnologies d'assistència.",
+    "es": "El sitio está disponible en seis idiomas, y el idioma de cada página, y de los títulos en inglés dentro de las páginas traducidas, está marcado para las tecnologías de apoyo.",
+    "de": "Die Website ist in sechs Sprachen verfügbar; die Sprache jeder Seite und englischer Titel in übersetzten Seiten ist für assistive Technologien ausgezeichnet.",
+    "fr": "Le site est disponible en six langues&nbsp;; la langue de chaque page, et celle des titres en anglais dans les pages traduites, est indiquée pour les technologies d'assistance.",
+    "zh": "网站提供六种语言版本；每个页面的语言以及翻译页面中英文标题的语言都已为辅助技术标注。"
+  },
+  "a11y_h_limits": {
+    "en": "Known limitations",
+    "ca": "Limitacions conegudes",
+    "es": "Limitaciones conocidas",
+    "de": "Bekannte Einschränkungen",
+    "fr": "Limites connues",
+    "zh": "已知限制"
+  },
+  "a11y_l_titles": {
+    "en": "Titles of papers, talks and standards documents are kept in their original language, usually English.",
+    "ca": "Els títols d'articles, ponències i documents d'estandardització es mantenen en l'idioma original, normalment l'anglés.",
+    "es": "Los títulos de artículos, ponencias y documentos de estandarización se mantienen en su idioma original, normalmente el inglés.",
+    "de": "Titel von Fachartikeln, Vorträgen und Standarddokumenten bleiben in der Originalsprache, meist Englisch.",
+    "fr": "Les titres d'articles, de conférences et de documents de normalisation restent dans leur langue d'origine, généralement l'anglais.",
+    "zh": "论文、演讲和标准文件的标题保留原文，通常为英文。"
+  },
+  "a11y_l_cv": {
+    "en": "The CV is a PDF in English, Spanish and Catalan. It is tagged for screen readers, but a PDF is never as flexible as a web page.",
+    "ca": "El CV és un PDF en anglés, castellà i català. Està etiquetat per a lectors de pantalla, però un PDF mai és tan flexible com una pàgina web.",
+    "es": "El CV es un PDF en inglés, español y catalán. Está etiquetado para lectores de pantalla, pero un PDF nunca es tan flexible como una página web.",
+    "de": "Der Lebenslauf ist ein PDF auf Englisch, Spanisch und Katalanisch. Er ist für Screenreader getaggt, aber ein PDF ist nie so flexibel wie eine Webseite.",
+    "fr": "Le CV est un PDF en anglais, espagnol et catalan. Il est balisé pour les lecteurs d'écran, mais un PDF n'est jamais aussi souple qu'une page web.",
+    "zh": "简历为英文、西班牙文和加泰罗尼亚文 PDF，已为读屏软件添加标签，但 PDF 的灵活性始终不及网页。"
+  },
+  "a11y_l_external": {
+    "en": "Linked sites such as publishers, LinkedIn or GitHub are outside my control.",
+    "ca": "Els llocs enllaçats, com ara editorials, LinkedIn o GitHub, queden fora del meu control.",
+    "es": "Los sitios enlazados, como editoriales, LinkedIn o GitHub, quedan fuera de mi control.",
+    "de": "Verlinkte Websites wie Verlage, LinkedIn oder GitHub liegen außerhalb meines Einflusses.",
+    "fr": "Les sites liés, comme les éditeurs, LinkedIn ou GitHub, échappent à mon contrôle.",
+    "zh": "出版商、LinkedIn、GitHub 等外部网站不在我的控制范围内。"
+  },
+  "a11y_h_testing": {
+    "en": "How it is tested",
+    "ca": "Com es comprova",
+    "es": "Cómo se comprueba",
+    "de": "Wie geprüft wird",
+    "fr": "Comment il est vérifié",
+    "zh": "如何检测"
+  },
+  "a11y_testing": {
+    "en": "Every page is checked automatically with axe-core whenever the site is updated, and keyboard use is checked by hand.",
+    "ca": "Cada pàgina es revisa automàticament amb axe-core cada vegada que s'actualitza el lloc, i l'ús amb teclat es comprova a mà.",
+    "es": "Cada página se revisa automáticamente con axe-core cada vez que se actualiza el sitio, y el uso con teclado se comprueba a mano.",
+    "de": "Jede Seite wird bei jeder Aktualisierung automatisch mit axe-core geprüft, und die Tastaturbedienung wird von Hand getestet.",
+    "fr": "Chaque page est vérifiée automatiquement avec axe-core à chaque mise à jour du site, et l'utilisation au clavier est testée manuellement.",
+    "zh": "每次更新网站时，都会用 axe-core 自动检查所有页面，并手动测试键盘操作。"
+  },
+  "a11y_h_feedback": {
+    "en": "Feedback",
+    "ca": "Comentaris",
+    "es": "Comentarios",
+    "de": "Rückmeldung",
+    "fr": "Vos retours",
+    "zh": "反馈"
+  },
+  "a11y_feedback": {
+    "en": "If something does not work for you, please tell me on <a href=\"https://www.linkedin.com/in/jordijoangimenez\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> and I will fix it.",
+    "ca": "Si alguna cosa no us funciona, digueu-m'ho a <a href=\"https://www.linkedin.com/in/jordijoangimenez\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> i ho arreglaré.",
+    "es": "Si algo no te funciona, dímelo en <a href=\"https://www.linkedin.com/in/jordijoangimenez\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> y lo arreglaré.",
+    "de": "Wenn etwas für Sie nicht funktioniert, schreiben Sie mir bitte auf <a href=\"https://www.linkedin.com/in/jordijoangimenez\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> – ich behebe es.",
+    "fr": "Si quelque chose ne fonctionne pas pour vous, dites-le-moi sur <a href=\"https://www.linkedin.com/in/jordijoangimenez\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> et je le corrigerai.",
+    "zh": "如果有任何内容无法正常使用，请通过 <a href=\"https://www.linkedin.com/in/jordijoangimenez\" target=\"_blank\" rel=\"noopener\">LinkedIn</a> 告诉我，我会尽快修复。"
+  },
+  "a11y_reviewed": {
+    "en": "Last reviewed: October 2026.",
+    "ca": "Darrera revisió: octubre de 2026.",
+    "es": "Última revisión: octubre de 2026.",
+    "de": "Zuletzt geprüft: Oktober 2026.",
+    "fr": "Dernière vérification&nbsp;: octobre 2026.",
+    "zh": "最后检查：2026 年 10 月。"
+  }
+}

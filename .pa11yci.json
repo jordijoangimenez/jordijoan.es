@@ -1,0 +1,38 @@
+{
+  "defaults": {
+    "runners": ["axe"],
+    "standard": "WCAG2AA",
+    "timeout": 60000,
+    "wait": 500,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--force-prefers-reduced-motion"]
+    }
+  },
+  "urls": [
+    "http://localhost:8080/index.html",
+    "http://localhost:8080/publications.html",
+    "http://localhost:8080/projects.html",
+    "http://localhost:8080/accessibility.html",
+    "http://localhost:8080/404.html",
+    "http://localhost:8080/ca/index.html",
+    "http://localhost:8080/ca/publications.html",
+    "http://localhost:8080/ca/projects.html",
+    "http://localhost:8080/ca/accessibility.html",
+    "http://localhost:8080/es/index.html",
+    "http://localhost:8080/es/publications.html",
+    "http://localhost:8080/es/projects.html",
+    "http://localhost:8080/es/accessibility.html",
+    "http://localhost:8080/de/index.html",
+    "http://localhost:8080/de/publications.html",
+    "http://localhost:8080/de/projects.html",
+    "http://localhost:8080/de/accessibility.html",
+    "http://localhost:8080/fr/index.html",
+    "http://localhost:8080/fr/publications.html",
+    "http://localhost:8080/fr/projects.html",
+    "http://localhost:8080/fr/accessibility.html",
+    "http://localhost:8080/zh/index.html",
+    "http://localhost:8080/zh/publications.html",
+    "http://localhost:8080/zh/projects.html",
+    "http://localhost:8080/zh/accessibility.html"
+  ]
+}

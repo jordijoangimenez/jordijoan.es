@@ -16,7 +16,8 @@
       none: 'Nothing matches “{q}”. Try another word.', one: '{n} publication', many: '{n} publications',
       morePhotos: 'Show {n} more photos',
       newTab: '(opens in a new tab)', toTop: 'Back to top', prev: 'Previous photo', next: 'Next photo',
-      pdf: 'PDF, 320 KB'
+      pdf: 'PDF, 320 KB',
+      offer: 'This page is also available in English.', offerGo: 'Read in English', offerClose: 'Dismiss', offerLabel: 'Language suggestion'
     },
     ca: {
       menuOpen: 'Obrir el menú', menuClose: 'Tancar el menú', sep: '.',
@@ -25,7 +26,8 @@
       none: 'Cap resultat per a «{q}». Prova una altra paraula.', one: '{n} publicació', many: '{n} publicacions',
       morePhotos: 'Mostrar {n} fotos més',
       newTab: '(en una pestanya nova)', toTop: 'Tornar a dalt', prev: 'Foto anterior', next: 'Foto següent',
-      pdf: 'PDF, 320 kB'
+      pdf: 'PDF, 320 kB',
+      offer: 'Aquesta pàgina també està disponible en català.', offerGo: 'Llegir en català', offerClose: 'Tancar', offerLabel: 'Suggeriment d’idioma'
     },
     es: {
       menuOpen: 'Abrir el menú', menuClose: 'Cerrar el menú', sep: '.',
@@ -34,7 +36,8 @@
       none: 'Ningún resultado para «{q}». Prueba con otra palabra.', one: '{n} publicación', many: '{n} publicaciones',
       morePhotos: 'Ver {n} fotos más',
       newTab: '(se abre en una pestaña nueva)', toTop: 'Volver arriba', prev: 'Foto anterior', next: 'Foto siguiente',
-      pdf: 'PDF, 320 kB'
+      pdf: 'PDF, 310 kB',
+      offer: 'Esta página también está disponible en español.', offerGo: 'Leer en español', offerClose: 'Cerrar', offerLabel: 'Sugerencia de idioma'
     },
     de: {
       menuOpen: 'Menü öffnen', menuClose: 'Menü schließen', sep: '.',
@@ -43,7 +46,8 @@
       none: 'Keine Treffer für „{q}“. Versuchen Sie ein anderes Wort.', one: '{n} Publikation', many: '{n} Publikationen',
       morePhotos: '{n} weitere Fotos anzeigen',
       newTab: '(öffnet in neuem Tab)', toTop: 'Nach oben', prev: 'Vorheriges Foto', next: 'Nächstes Foto',
-      pdf: 'PDF, 320 KB'
+      pdf: 'PDF, 320 KB',
+      offer: 'Diese Seite gibt es auch auf Deutsch.', offerGo: 'Auf Deutsch lesen', offerClose: 'Schließen', offerLabel: 'Sprachvorschlag'
     },
     fr: {
       menuOpen: 'Ouvrir le menu', menuClose: 'Fermer le menu', sep: ' ',
@@ -52,7 +56,8 @@
       none: 'Aucun résultat pour « {q} ». Essayez un autre mot.', one: '{n} publication', many: '{n} publications',
       morePhotos: 'Afficher {n} photos de plus',
       newTab: '(s’ouvre dans un nouvel onglet)', toTop: 'Retour en haut', prev: 'Photo précédente', next: 'Photo suivante',
-      pdf: 'PDF, 320 Ko'
+      pdf: 'PDF, 320 Ko',
+      offer: 'Cette page est aussi disponible en français.', offerGo: 'Lire en français', offerClose: 'Fermer', offerLabel: 'Suggestion de langue'
     },
     zh: {
       menuOpen: '打开菜单', menuClose: '关闭菜单', sep: ',',
@@ -61,7 +66,8 @@
       none: '没有与“{q}”匹配的结果，请换个关键词。', one: '{n} 项', many: '{n} 项',
       morePhotos: '再显示 {n} 张照片',
       newTab: '（在新标签页中打开）', toTop: '返回顶部', prev: '上一张', next: '下一张',
-      pdf: 'PDF，320 KB'
+      pdf: 'PDF，320 KB',
+      offer: '本页面也有中文版本。', offerGo: '阅读中文版', offerClose: '关闭', offerLabel: '语言建议'
     }
   };
   var T = I18N[(root.lang || 'en').slice(0, 2).toLowerCase()] || I18N.en;
@@ -461,6 +467,56 @@
       langMenu.open = false;
       if (inside) langMenu.querySelector('summary').focus();
     });
+  }
+
+  /* ---------- Offer the visitor's own language, once, as a plain strip under the header ---------- */
+  var langList = document.querySelector('.lang-menu');
+  if (langList) {
+    var remember = function (key) { try { localStorage.setItem(key, '1'); } catch (e) {} };
+    var recalled = function (key) { try { return localStorage.getItem(key) === '1'; } catch (e) { return true; } };
+    langList.addEventListener('click', function (e) { if (e.target.closest('a[hreflang]')) remember('lang-chosen'); });
+
+    var pageLang = (root.lang || 'en').slice(0, 2).toLowerCase();
+    var wanted = null;
+    if (!recalled('lang-chosen') && !recalled('lang-offer-dismissed')) {
+      var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ''];
+      for (var p = 0; p < prefs.length; p++) {
+        var code = String(prefs[p]).slice(0, 2).toLowerCase();
+        if (code === pageLang) break;               // the visitor already reads this language
+        if (I18N[code]) { wanted = code; break; }
+      }
+    }
+    var target = wanted && langList.querySelector('a[hreflang^="' + wanted + '"]');
+    if (target) {
+      var O = I18N[wanted];
+      var offer = document.createElement('aside');
+      offer.className = 'lang-offer';
+      offer.lang = target.getAttribute('lang');
+      offer.setAttribute('aria-label', O.offerLabel);
+      var msg = document.createElement('p');
+      msg.textContent = O.offer;
+      var go = document.createElement('a');
+      go.className = 'btn btn-primary';
+      go.href = target.href;
+      go.textContent = O.offerGo;
+      go.addEventListener('click', function () { remember('lang-chosen'); });
+      var dismiss = document.createElement('button');
+      dismiss.type = 'button';
+      dismiss.className = 'icon-btn lang-offer-close';
+      dismiss.setAttribute('aria-label', O.offerClose);
+      dismiss.innerHTML = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+      dismiss.addEventListener('click', function () {
+        remember('lang-offer-dismissed');
+        offer.remove();
+        var brand = document.querySelector('.brand');
+        if (brand) brand.focus({ preventScroll: true });
+      });
+      offer.appendChild(msg);
+      offer.appendChild(go);
+      offer.appendChild(dismiss);
+      var header = document.querySelector('.nav');
+      if (header && header.parentNode) header.parentNode.insertBefore(offer, header.nextSibling);
+    }
   }
 
   /* ---------- Footer year ---------- */

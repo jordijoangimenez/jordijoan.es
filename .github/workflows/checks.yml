@@ -1,0 +1,31 @@
+name: Site checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pages match their templates
+        shell: pwsh
+        run: ./build.ps1 -Check
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Accessibility check (axe-core via pa11y-ci)
+        run: |
+          npx --yes http-server@14.1.1 -p 8080 -s . &
+          sleep 3
+          npx --yes pa11y-ci@3.1.0 --config .pa11yci.json

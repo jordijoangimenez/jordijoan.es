@@ -24,8 +24,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: Accessibility check (axe-core via pa11y-ci)
+      - name: Install the accessibility checker
+        run: npm install --no-save --no-audit --no-fund puppeteer@23.11.1 axe-core@4.10.2 http-server@14.1.1
+
+      - name: Accessibility check (axe-core on every page, both themes)
         run: |
-          npx --yes http-server@14.1.1 -p 8080 -s . &
-          sleep 3
-          npx --yes pa11y-ci@3.1.0 --config .pa11yci.json
+          npx http-server -p 8080 -s . &
+          sleep 2
+          node .github/a11y-check.mjs

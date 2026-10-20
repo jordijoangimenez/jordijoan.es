@@ -243,7 +243,7 @@ h1 {
   background: var(--surface); color: var(--text); border: 1.5px solid var(--text); box-shadow: var(--shadow);
 }
 .sticker-phd { right: -6%; top: 7%; rotate: 9deg; }
-.sticker-oss { left: -7%; top: 27%; rotate: -5deg; }
+.sticker-oss { left: -6%; top: -2%; rotate: -6deg; }
 .sticker-std { left: -9%; bottom: 17%; rotate: -7deg; background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .sticker-geo { right: -3%; bottom: 5%; rotate: 5deg; background: var(--tint); border-color: transparent; color: var(--link); }
 

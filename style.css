@@ -182,7 +182,8 @@ section[id], [id="academic"] { scroll-margin-top: 80px; }
   --display: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 :lang(zh) h1, :lang(zh) h2, :lang(zh) h3 { letter-spacing: 0; }
-:lang(de) h2, :lang(de) h3, :lang(de) .kicker, :lang(de) .std-stats span, :lang(de) .facts span { hyphens: auto; overflow-wrap: break-word; }
+:lang(de) h2, :lang(de) h3, :lang(de) .kicker, :lang(de) .std-stats span, :lang(de) .facts span, :lang(de) .std-logos-title { hyphens: auto; overflow-wrap: break-word; }
+.label, .kicker, .std-logos-title, .now-label { overflow-wrap: break-word; }
 
 .theme-toggle .i-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
@@ -654,13 +655,115 @@ main > .section:last-child + .footer, .footer { margin-top: 0; }
 .js .reveal {
   opacity: 0; transform: translateY(16px);
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--i, 0) * 80ms);
 }
 .js .reveal.in { opacity: 1; transform: none; }
 
+/* Hero builds in: copy rises line by line, portrait settles, stickers pop on */
+@keyframes rise { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes portrait-in { from { opacity: 0; scale: 0.92; rotate: 9deg; } to { opacity: 1; scale: 1; rotate: 2deg; } }
+@keyframes pop { 0% { opacity: 0; scale: 0.3; } 65% { opacity: 1; scale: 1.1; } 100% { opacity: 1; scale: 1; } }
+@keyframes fade-in { from { opacity: 0; } }
+.js .hero-copy > * { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.js .hero-copy > :nth-child(2) { animation-delay: 0.08s; }
+.js .hero-copy > :nth-child(3) { animation-delay: 0.16s; }
+.js .hero-copy > :nth-child(4) { animation-delay: 0.24s; }
+.js .hero-copy > :nth-child(5) { animation-delay: 0.32s; }
+.js .portrait { animation: portrait-in 1s 0.15s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.js .sticker { animation: pop 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both; }
+.js .sticker-phd { animation-delay: 0.7s; }
+.js .sticker-oss { animation-delay: 0.82s; }
+.js .sticker-std { animation-delay: 0.94s; }
+.js .sticker-geo { animation-delay: 1.06s; }
+
+/* Portrait follows the pointer (desktop only, set up in main.js) */
+.portrait.tilt img { transform: perspective(900px) rotateX(var(--ry, 0deg)) rotateY(var(--rx, 0deg)); transition: transform 0.25s ease-out; }
+.portrait.tilt .sticker { translate: var(--sx, 0) var(--sy, 0); transition: translate 0.25s ease-out; }
+
+/* Soft spotlight under the pointer on cards */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover, .feat:hover {
+    background-image: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%);
+  }
+  .do-card:hover, .std-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+}
+
+/* Reading progress */
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 70;
+  background: var(--accent); transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+}
+
+/* Timeline fills in as you scroll through it */
+.journey::after {
+  content: ""; position: absolute; left: 180px; top: 12px; bottom: 12px; width: 2px; z-index: 0;
+  background: var(--accent); transform-origin: top; transform: scaleY(var(--jp, 0));
+}
+.stop::before { z-index: 1; transition: border-color 0.3s, background-color 0.3s; }
+.stop.lit::before { border-color: var(--accent); }
+@media (max-width: 760px) { .journey::after { left: 6px; } }
+
+/* Publication list fades in after each filter */
+.pub { animation: fade-in 0.35s ease both; }
+
+/* Back to top */
+.to-top {
+  position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(20px, env(safe-area-inset-bottom)); z-index: 60;
+  display: grid; place-items: center; width: 46px; height: 46px; padding: 0;
+  border: 0; border-radius: 50%; background: var(--text); color: var(--bg); cursor: pointer; box-shadow: var(--shadow);
+  opacity: 0; visibility: hidden; translate: 0 12px;
+  transition: opacity 0.25s, translate 0.25s, visibility 0s 0.25s, background-color 0.15s;
+}
+.to-top.show { opacity: 1; visibility: visible; translate: 0 0; transition-delay: 0s; }
+.to-top:hover { background: var(--accent); color: var(--on-accent); }
+
+/* Photo viewer: zoom in, arrows, counter */
+.lightbox[open] { animation: lb-in 0.28s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.lightbox[open]::backdrop { animation: fade-in 0.28s ease; }
+@keyframes lb-in { from { opacity: 0; scale: 0.96; } to { opacity: 1; scale: 1; } }
+.lightbox img { animation: fade-in 0.25s ease; }
+.lightbox-caption { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.lightbox-count { flex: none; color: var(--faint); font-weight: 600; font-size: 14px; font-variant-numeric: tabular-nums; }
+.lightbox-nav {
+  position: absolute; top: calc(50% - 50px); display: grid; place-items: center; width: 44px; height: 44px;
+  border: 0; border-radius: 50%; cursor: pointer;
+  background: color-mix(in srgb, var(--surface) 88%, transparent); color: var(--text);
+}
+.lightbox-nav:hover { background: var(--surface); }
+.lightbox-prev { left: 10px; }
+.lightbox-next { right: 10px; }
+
+/* Smooth cross-fade between pages and languages */
+@view-transition { navigation: auto; }
+
+/* ---------- Accessibility ---------- */
+/* Photo tiles clip overflow, so draw the keyboard focus ring on the tile */
+.photo:has(a:focus-visible) { outline: 2.5px solid var(--accent); outline-offset: 3px; }
+.photo a:focus-visible { outline: none; }
+/* The contact card inverts the colours: keep its focus ring visible */
+.contact-card :focus-visible { outline-color: var(--bg); }
+.lang-menu a:focus-visible, .chip:focus-visible { outline-offset: 2px; }
+
+@media (prefers-contrast: more) {
+  :root { --muted: #3d3a35; --faint: #4f4b45; --line: #a89f92; }
+  :root[data-theme="dark"] { --muted: #ddd6cc; --faint: #c8c0b6; --line: #625b52; }
+  .photo figcaption { background: var(--surface); }
+}
+
+@media (forced-colors: active) {
+  .btn, .chip, .pill, .tag, .sticker, .icon-btn, .card, .feat, .to-top, .lightbox-nav { border: 1px solid CanvasText; }
+  .hl svg { stroke: Highlight; }
+  .progress, .journey::after { background: Highlight; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .js .reveal { opacity: 1; transform: none; transition: none; }
-  .js .wave { animation: none; }
-  .js .hl path { animation: none; stroke-dashoffset: 0; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; transition-delay: 0s !important;
+  }
+  @view-transition { navigation: none; }
+  .js .reveal { opacity: 1; transform: none; }
+  .js .hl path { stroke-dashoffset: 0; }
   .btn:hover, .feat:hover, .photo:hover img { transform: none; }
 }

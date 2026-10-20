@@ -17,7 +17,8 @@
       morePhotos: 'Show {n} more photos',
       newTab: '(opens in a new tab)', toTop: 'Back to top', prev: 'Previous photo', next: 'Next photo',
       pdf: 'PDF, 320 KB',
-      offer: 'This page is also available in English.', offerGo: 'Read in English', offerClose: 'Dismiss', offerLabel: 'Language suggestion'
+      offer: 'This page is also available in English.', offerGo: 'Read in English', offerClose: 'Dismiss', offerLabel: 'Language suggestion',
+      abstract: 'Abstract'
     },
     ca: {
       menuOpen: 'Obrir el menú', menuClose: 'Tancar el menú', sep: '.',
@@ -27,7 +28,8 @@
       morePhotos: 'Mostrar {n} fotos més',
       newTab: '(en una pestanya nova)', toTop: 'Tornar a dalt', prev: 'Foto anterior', next: 'Foto següent',
       pdf: 'PDF, 320 kB',
-      offer: 'Aquesta pàgina també està disponible en català.', offerGo: 'Llegir en català', offerClose: 'Tancar', offerLabel: 'Suggeriment d’idioma'
+      offer: 'Aquesta pàgina també està disponible en català.', offerGo: 'Llegir en català', offerClose: 'Tancar', offerLabel: 'Suggeriment d’idioma',
+      abstract: 'Resum'
     },
     es: {
       menuOpen: 'Abrir el menú', menuClose: 'Cerrar el menú', sep: '.',
@@ -37,7 +39,8 @@
       morePhotos: 'Ver {n} fotos más',
       newTab: '(se abre en una pestaña nueva)', toTop: 'Volver arriba', prev: 'Foto anterior', next: 'Foto siguiente',
       pdf: 'PDF, 310 kB',
-      offer: 'Esta página también está disponible en español.', offerGo: 'Leer en español', offerClose: 'Cerrar', offerLabel: 'Sugerencia de idioma'
+      offer: 'Esta página también está disponible en español.', offerGo: 'Leer en español', offerClose: 'Cerrar', offerLabel: 'Sugerencia de idioma',
+      abstract: 'Resumen'
     },
     de: {
       menuOpen: 'Menü öffnen', menuClose: 'Menü schließen', sep: '.',
@@ -47,7 +50,8 @@
       morePhotos: '{n} weitere Fotos anzeigen',
       newTab: '(öffnet in neuem Tab)', toTop: 'Nach oben', prev: 'Vorheriges Foto', next: 'Nächstes Foto',
       pdf: 'PDF, 320 KB',
-      offer: 'Diese Seite gibt es auch auf Deutsch.', offerGo: 'Auf Deutsch lesen', offerClose: 'Schließen', offerLabel: 'Sprachvorschlag'
+      offer: 'Diese Seite gibt es auch auf Deutsch.', offerGo: 'Auf Deutsch lesen', offerClose: 'Schließen', offerLabel: 'Sprachvorschlag',
+      abstract: 'Kurzfassung'
     },
     fr: {
       menuOpen: 'Ouvrir le menu', menuClose: 'Fermer le menu', sep: ' ',
@@ -57,7 +61,8 @@
       morePhotos: 'Afficher {n} photos de plus',
       newTab: '(s’ouvre dans un nouvel onglet)', toTop: 'Retour en haut', prev: 'Photo précédente', next: 'Photo suivante',
       pdf: 'PDF, 320 Ko',
-      offer: 'Cette page est aussi disponible en français.', offerGo: 'Lire en français', offerClose: 'Fermer', offerLabel: 'Suggestion de langue'
+      offer: 'Cette page est aussi disponible en français.', offerGo: 'Lire en français', offerClose: 'Fermer', offerLabel: 'Suggestion de langue',
+      abstract: 'Résumé'
     },
     zh: {
       menuOpen: '打开菜单', menuClose: '关闭菜单', sep: ',',
@@ -67,7 +72,8 @@
       morePhotos: '再显示 {n} 张照片',
       newTab: '（在新标签页中打开）', toTop: '返回顶部', prev: '上一张', next: '下一张',
       pdf: 'PDF，320 KB',
-      offer: '本页面也有中文版本。', offerGo: '阅读中文版', offerClose: '关闭', offerLabel: '语言建议'
+      offer: '本页面也有中文版本。', offerGo: '阅读中文版', offerClose: '关闭', offerLabel: '语言建议',
+      abstract: '摘要'
     }
   };
   var T = I18N[(root.lang || 'en').slice(0, 2).toLowerCase()] || I18N.en;
@@ -217,6 +223,12 @@
     return p.badge ? (T.badge[p.badge] || p.badge) : T.kind[p.type];
   }
 
+  // Published abstracts (abstracts.js, loaded on the publications pages only)
+  var ABSTRACTS = window.ABSTRACTS || {};
+  function abstractOf(p) {
+    return ABSTRACTS[p.doi] || ABSTRACTS['title:' + p.title] || '';
+  }
+
   function norm(s) { return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
@@ -281,6 +293,7 @@
           '<p class="pub-authors">' + esc(p.authors).replace(ME, '<b>$1</b>') + '</p>' +
           '<p class="pub-venue">' + esc(p.venue) +
             (p.award ? ' · <span class="pub-award">' + esc(p.award) + '</span>' : '') + '</p>' +
+          (abstractOf(p) ? '<details class="pub-abstract"><summary>' + esc(T.abstract) + '</summary><p lang="en">' + esc(abstractOf(p)) + '</p></details>' : '') +
           '</div><span class="pub-kind">' + esc(kindLabel(p)) + '</span></li>';
       });
       if (year !== null) html += '</ol>';

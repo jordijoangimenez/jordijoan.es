@@ -585,6 +585,19 @@ h2 {
   background: var(--tint); color: var(--link);
 }
 .pub-empty { color: var(--muted); margin: 32px 0 0; }
+.pub-abstract { margin-top: 8px; }
+.pub-abstract summary {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 28px; cursor: pointer; list-style: none;
+  color: var(--link); font-size: 14px; font-weight: 600;
+}
+.pub-abstract summary::-webkit-details-marker { display: none; }
+.pub-abstract summary::before {
+  content: ""; border-left: 6px solid currentColor; border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent;
+  transition: transform 0.2s;
+}
+.pub-abstract[open] summary::before { transform: rotate(90deg); }
+.pub-abstract summary:hover { text-decoration: underline; }
+.pub-abstract p { margin: 6px 0 4px; max-width: 75ch; color: var(--muted); font-size: 14.5px; line-height: 1.6; }
 
 @media (max-width: 560px) {
   .pub { grid-template-columns: minmax(0, 1fr); margin-inline: -10px; padding-inline: 10px; }

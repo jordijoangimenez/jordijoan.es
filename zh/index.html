@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="zh-Hans" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jordi-Joan Giménez</title>
+  <meta name="description" content="Jordi-Joan Giménez 博士：5G-MAG 项目办公室技术主管、EBU 高级项目经理。拥有 15 年以上媒体分发、3GPP 标准化和开源媒体技术经验。">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#141210">
+  <link rel="canonical" href="https://jordijoan.es/zh/">
+  <link rel="alternate" hreflang="en" href="https://jordijoan.es/">
+  <link rel="alternate" hreflang="ca" href="https://jordijoan.es/ca/">
+  <link rel="alternate" hreflang="es" href="https://jordijoan.es/es/">
+  <link rel="alternate" hreflang="de" href="https://jordijoan.es/de/">
+  <link rel="alternate" hreflang="fr" href="https://jordijoan.es/fr/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://jordijoan.es/zh/">
+  <link rel="alternate" hreflang="x-default" href="https://jordijoan.es/">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="profile">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:title" content="Jordi-Joan Giménez">
+  <meta property="og:description" content="5G-MAG 项目办公室技术主管、EBU 高级项目经理。媒体分发、3GPP 标准化与开源媒体技术。">
+  <meta property="og:url" content="https://jordijoan.es/zh/">
+  <meta property="og:image" content="https://jordijoan.es/img/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400..700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+  <script src="../publications.js" defer></script>
+  <script src="../main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到正文</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Jordi-Joan Giménez，首页">Jordi<span>.</span>Joan</a>
+      <nav id="site-menu" class="menu" aria-label="页面导航">
+        <a href="#now">我的工作</a>
+        <a href="#standards">标准</a>
+        <a href="#journey">经历</a>
+        <a href="#talks">演讲</a>
+        <a href="#writing">论文</a>
+        <a href="#academic">指导与博士</a>
+        <a href="#contact" class="menu-contact">联系</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-cta" href="#contact">联系</a>
+        <details class="lang">
+          <summary class="icon-btn lang-btn" aria-label="语言：中文"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg><span>中文</span></summary>
+          <ul class="lang-menu">
+            <li><a href="../" hreflang="en" lang="en">English</a></li>
+            <li><a href="../ca/" hreflang="ca" lang="ca">Català</a></li>
+            <li><a href="../es/" hreflang="es" lang="es">Español</a></li>
+            <li><a href="../de/" hreflang="de" lang="de">Deutsch</a></li>
+            <li><a href="../fr/" hreflang="fr" lang="fr">Français</a></li>
+            <li><a href="./" hreflang="zh-Hans" lang="zh-Hans" aria-current="page">中文</a></li>
+          </ul>
+        </details>
+        <button class="theme-toggle icon-btn" type="button" aria-label="深色模式" aria-pressed="false">
+          <svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button class="menu-toggle icon-btn" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-menu">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="pill">5G-MAG 项目办公室技术主管 · EBU 高级项目经理</p>
+          <h1>你好，我是 <span class="nowrap"><span class="hl">Jordi-Joan<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14c46-9 104-11 192-5"/></svg></span> <span class="wave" aria-hidden="true">👋</span></span></h1>
+          <p class="lede">我是一名电信工程师，研究视频、音频和沉浸式内容如何通过互联网触达用户。我曾参与标准化工作，目前与业界合作，将技术规范转化为开源软件。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="../Jordi-Joan-Gimenez-CV.pdf" download>下载简历（英文）</a>
+            <a class="btn" href="https://www.linkedin.com/in/jordijoangimenez" target="_blank" rel="noopener">在 LinkedIn 上联系</a>
+          </div>
+          <p class="meta">瑞士日内瓦 · 电信博士 · 加泰罗尼亚语、西班牙语、英语</p>
+        </div>
+        <figure class="portrait">
+          <img src="../img/jordi.jpg" alt="Jordi-Joan Giménez 面带微笑，身穿灰色西装外套和白衬衫" width="510" height="645" fetchpriority="high">
+          <span class="sticker sticker-phd" aria-hidden="true">博士 🎓</span>
+          <span class="sticker sticker-oss" aria-hidden="true">💻 软件</span>
+          <span class="sticker sticker-std" aria-hidden="true">📡 标准</span>
+          <span class="sticker sticker-geo" aria-hidden="true">📍 Alcoi</span>
+        </figure>
+      </div>
+    </section>
+
+    <!-- What I do -->
+    <section class="section" id="now">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="reveal">我的工作</h2>
+          <span class="now-label reveal">现在 · 2026 年 10 月</span>
+        </div>
+        <div class="do-grid">
+          <article class="card do-card do-primary reveal">
+            <p class="kicker">5G-MAG 项目办公室</p>
+            <h3>运营一个全球性行业协会</h3>
+            <p>我参与 <a href="https://www.5g-mag.com" target="_blank" rel="noopener">5G-MAG – The Media Connectivity Association</a> 的日常运营：会员项目与活动、研讨会和各类活动（如 IBC 上的 Future Media Townhall），以及与会员、媒体和国际组织的联络。</p>
+          </article>
+          <article class="card do-card reveal">
+            <p class="kicker">3GPP · DVB · ATSC</p>
+            <h3>编写技术规范</h3>
+            <p>自 2011 年以来提交了 30 多项技术文稿。最近代表 EBU 担任 3GPP RAN1 Rel-19 时频交织特性负责人（feature lead）。</p>
+            <a class="more-link" href="#standards">查看我的贡献 <span aria-hidden="true">↓</span></a>
+          </article>
+          <article class="card do-card reveal">
+            <p class="kicker">开源</p>
+            <h3>把规范变成可运行的代码</h3>
+            <p>5G-MAG Reference Tools 维护者：过去一年贡献 2,300 多次，提交 430 多个 Pull Request，完成 140 多次代码审查。</p>
+            <a class="more-link" href="https://github.com/jordijoangimenez" target="_blank" rel="noopener">我的 GitHub <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+        <ul class="facts reveal" aria-label="关键数据">
+          <li><strong data-count="15" data-suffix="+">15+</strong><span>年媒体分发经验</span></li>
+          <li><strong data-count="30" data-suffix="+">30+</strong><span>项标准文稿</span></li>
+          <li><strong data-count="60" data-suffix="+">60+</strong><span>篇论文</span></li>
+          <li><strong data-count="1000" data-suffix="+">1,000+</strong><span>次引用</span></li>
+          <li><strong data-count="3">3</strong><span>项美国授权专利</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Standards contributions -->
+    <section class="section std" id="standards">
+      <div class="wrap">
+        <h2 class="reveal">标准贡献</h2>
+        <p class="section-sub reveal">自 2011 年起，我参与制定数字电视和移动媒体分发的相关规范，从 DVB、ATSC 3.0 到 3GPP 5G。</p>
+
+        <ul class="std-stats reveal">
+          <li><strong>30+</strong><span>项技术文稿</span></li>
+          <li><strong>Rel-19</strong><span>3GPP RAN1 特性负责人</span></li>
+          <li><strong>8</strong><span>项与 EBU、BBC、IRT 联合提交的 RAN1 文稿</span></li>
+          <li><strong>20</strong><span>项 DVB 文稿</span></li>
+        </ul>
+
+        <div class="std-cards">
+          <article class="card std-card std-card-wide reveal">
+            <p class="kicker">2018 → 至今</p>
+            <h3>3GPP RAN1</h3>
+            <p>代表 EBU 担任 Rel-19 时频交织特性负责人，包括 RRC 参数的定义。此前与 EBU、BBC 和 IRT 一起担任 LTE-based 5G Terrestrial Broadcast（Rel-16）代表，负责需求、仿真假设、评估结果以及面向屋顶天线接收的新参数集（numerology）。</p>
+          </article>
+          <article class="card std-card reveal">
+            <p class="kicker">2020 → 至今</p>
+            <h3>通过 5G-MAG 参与媒体标准</h3>
+            <p>代表 5G-MAG 参与编解码器、传输协议、云/边缘架构和 XR 服务等领域的标准化论坛。</p>
+          </article>
+          <article class="card std-card reveal">
+            <p class="kicker">2011 → 2018</p>
+            <h3>DVB</h3>
+            <p>DVB-NGH（时频分片 Time Frequency Slicing；帧结构、信道探测与同步）、关于下一代地面电视的 TM-MIMO 研究任务，以及关于宽带广播（Wideband Broadcasting）的 TM-WIB 研究及其最终报告。</p>
+          </article>
+          <article class="card std-card reveal">
+            <p class="kicker">ATSC 3.0</p>
+            <h3>ATSC</h3>
+            <p>向 ATSC 3.0 波形 TG3/S32-3 特设小组提交关于时频分片和高级网络规划的提案。</p>
+          </article>
+          <article class="card std-card reveal">
+            <p class="kicker">2018 → 2020</p>
+            <h3>EBU</h3>
+            <p>在 IRT 任职期间：担任 EBU 5G-Deployments 行业工作组主席，并作为代表参加 EBU Mobile Technology Standards 工作组。</p>
+          </article>
+        </div>
+
+        <div class="std-docs">
+          <details class="reveal">
+            <summary>3GPP RAN1 文稿 <span>8</span></summary>
+            <ul>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_97/Docs/R1-1907093.zip">R1-1907093</a> Spectral Efficiency of New Numerologies for Rooftop Reception <em>RAN1#97，里诺，2019</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_97/Docs/R1-1906634.zip">R1-1906634</a> Network Simulations Incorporating Time Variation for the CAS <em>RAN1#97，里诺，2019</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_96b/Docs/R1-1905330.zip">R1-1905330</a> Network Simulations Regarding the Performance of the CAS <em>RAN1#96bis，西安，2019</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_96b/Docs/R1-1905331.zip">R1-1905331</a> Information for Time Variation Models <em>RAN1#96bis，西安，2019</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_96/Docs/R1-1903284.zip">R1-1903284</a> Evaluation Results for LTE-Based 5G Terrestrial Broadcasting <em>RAN1#96，雅典，2019</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_95/Docs/R1-1812430.zip">R1-1812430</a> Evaluation Results for LTE-Based 5G Terrestrial Broadcasting <em>RAN1#95，斯波坎，2018</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_94b/Docs/R1-1811588.zip">R1-1811588</a> Scenarios and Simulation Assumptions for the LTE-Based Terrestrial Broadcast Gap Analysis <em>RAN1#94bis，成都，2018</em></li>
+              <li><a href="https://www.3gpp.org/ftp/TSG_RAN/WG1_RL1/TSGR1_94b/Docs/R1-1810319.zip">R1-1810319</a> Public Service Broadcaster Requirements and Background Information Relevant to LTE-Based 5G Terrestrial Broadcast <em>RAN1#94bis，成都，2018</em></li>
+            </ul>
+            <p class="std-note">均由 EBU、BBC 和 IRT 联合提交。</p>
+          </details>
+          <details class="reveal">
+            <summary>DVB 文稿 <span>20</span></summary>
+            <ul>
+              <li><b>TM-WIB0131</b> TM-WIB Final Report <em>DVB TM-WIB，2018 年 5 月</em></li>
+              <li><b>TM-WIB0112</b> Rate Regions in SFN WiB <em>DVB TM-WIB，2018 年 2 月</em></li>
+              <li><b>TM-WIB0076</b> Network Simulations with SIC in MFN and SFN <em>DVB TM-WIB，2017 年 9 月</em></li>
+              <li><b>TM-WIB0074</b> Methodology Approach to SIC in Network Simulations <em>DVB TM-WIB，2017 年 9 月</em></li>
+              <li><b>TM-WIB0050</b> Implementation of 5G Wideband Broadcasting <em>DVB TM-WIB，2017 年 7 月</em></li>
+              <li><b>TM-WIB0049</b> Fundamentals of 5G Wideband Broadcasting <em>DVB TM-WIB，2017 年 7 月</em></li>
+              <li><b>TM-WIB0038</b> Zero Guard Interval OFDM <em>DVB TM-WIB，2017 年 6 月</em></li>
+              <li><b>TM-WIB0037</b> WiB Simulation Results and Open Questions <em>DVB TM-WIB，2017 年 6 月</em></li>
+              <li><b>TM-WIB0019</b> Hexagon-Based Network Simulations: Methodology and Results <em>DVB TM-WIB，2017 年 4 月</em></li>
+              <li><b>TM-MIMO0083</b> DVB Technical Module MIMO Study Mission Report <em>DVB TM-MIMO，2014 年 4 月</em></li>
+              <li><b>TM-MIMO0080</b> Exploiting the Robustness against Co-Channel Interference with TFS/ANP <em>DVB TM-MIMO，2013 年 7 月</em></li>
+              <li><b>TM-MIMO0079</b> New Capacity Simulation Results with MGM and TFS <em>DVB TM-MIMO，2013 年 7 月</em></li>
+              <li><b>TM-MIMO0060</b> Capacity of MGM and MGM + TFS Channel Models for Digital Terrestrial Broadcasting Systems <em>DVB TM-MIMO，2013 年 5 月</em></li>
+              <li><b>TM-MIMO0059</b> TFS Amendment to MGM Channel Model <em>DVB TM-MIMO，2013 年 5 月</em></li>
+              <li><b>TM-MIMO0047</b> TFS/ANP: Results with Uncorrelated and Correlated Interference <em>DVB TM-MIMO，2013 年 4 月</em></li>
+              <li><b>TM-MIMO0043</b> Simulation Setup: Proposal for the TFS Simulations <em>DVB TM-MIMO，2013 年 4 月</em></li>
+              <li><b>TM-MIMO0042</b> RF Frequency Imbalance <em>DVB TM-MIMO，2013 年 3 月</em></li>
+              <li><b>TM-MIMO0032</b> TFS and Advanced Network Planning: Further Results <em>DVB TM-MIMO，2013 年 2 月</em></li>
+              <li><b>TM-H1642</b> Evaluation of the TFS Gain as a Function of the Number of RF Channels and the Channel Spacing <em>DVB-NGH，2011 年 7 月</em></li>
+              <li><b>TM-H1565</b> Evaluation of the TFS Gain from an Information Theory Point of View Based on Field Measurements <em>DVB-NGH，2011 年 6 月</em></li>
+            </ul>
+          </details>
+          <details class="reveal">
+            <summary>ATSC 3.0 文稿 <span>2</span></summary>
+            <ul>
+              <li>TFS and Advanced Network Planning <em>与 E. Stare 合作 · TG3/S32-3 Ad-hoc Group on Waveform</em></li>
+              <li>Time Frequency Slicing <em>与 E. Stare 合作 · TG3/S32-3 Ad-hoc Group on Waveform</em></li>
+            </ul>
+          </details>
+          <details class="reveal">
+            <summary>为标准提供输入的研究项目报告 <span>8</span></summary>
+            <ul>
+              <li><b>5G-Xcast D2.1</b> Definition of Use Cases, Requirements and KPIs</li>
+              <li><b>5G-Xcast D2.2</b> Technology Delivery Against Use Cases</li>
+              <li><b>5G-Xcast D3.1</b> Performance of LTE Advanced Pro (Rel-14) eMBMS</li>
+              <li><b>5G-Xcast D3.2</b> Air Interface</li>
+              <li><b>5G-Xcast D3.3</b> RAN Architecture</li>
+              <li><b>5G-Xcast D6.2</b> Development of Showcase and Demonstrators</li>
+              <li><b>5G-Xcast D6.3</b> Test-Beds Integration and Deployment</li>
+              <li><b>Celtic ENGINES TR13.1</b> Time-Frequency Slicing (TFS): Analysis, Measurements and Simulations</li>
+            </ul>
+          </details>
+        </div>
+
+        <div class="std-logos">
+          <p class="std-logos-title">合作过的标准组织</p>
+          <ul class="standards-logos">
+            <li><img src="../img/standards/3gpp.png" alt="3GPP" width="374" height="136" loading="lazy"></li>
+            <li><img src="../img/standards/etsi.png" alt="ETSI" width="374" height="136" loading="lazy"></li>
+            <li><img src="../img/standards/itu.png" alt="ITU" width="374" height="136" loading="lazy"></li>
+            <li><img src="../img/standards/mpeg.png" alt="MPEG" width="374" height="136" loading="lazy"></li>
+            <li><img src="../img/standards/dvb.png" alt="DVB" width="374" height="136" loading="lazy"></li>
+            <li><img src="../img/standards/atsc.png" alt="ATSC" width="374" height="136" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="journey">
+      <div class="wrap">
+        <h2 class="reveal">经历</h2>
+        <ol class="journey">
+          <li class="stop current reveal">
+            <div class="stop-when"><span class="stop-years">2020 → 至今</span><span class="stop-place">日内瓦</span></div>
+            <div class="stop-body">
+              <h3>技术主管 · 5G-MAG 项目办公室<br><span>高级项目经理 · EBU</span></h3>
+              <p>负责 5G-MAG – The Media Connectivity Association 的日常管理：会员项目与活动、研讨会与活动、会员关系、与媒体及国际组织的沟通，以及协会网站、社交媒体和 GitHub。Reference Tools 项目负责人，EBU 驻 3GPP RAN1 代表。</p>
+            </div>
+          </li>
+          <li class="stop reveal">
+            <div class="stop-when"><span class="stop-years">2018 → 2020</span><span class="stop-place">慕尼黑</span></div>
+            <div class="stop-body">
+              <h3>项目负责人兼研究工程师 · IRT</h3>
+              <p>LTE-based 5G Terrestrial Broadcast（Rel-16）3GPP RAN1 代表、EBU 5G-Deployments 工作组主席，以及 5G-PPP 项目 5G-Xcast 和 5G-SOLUTIONS 的项目负责人。为 IBC 和 MWC 开发软件定义无线电演示系统。</p>
+            </div>
+          </li>
+          <li class="stop reveal">
+            <div class="stop-when"><span class="stop-years">2017</span><span class="stop-place">咨询</span></div>
+            <div class="stop-body">
+              <h3>技术专家 · 哥伦比亚数字电视</h3>
+              <p>欧盟资助的技术援助项目，支持哥伦比亚推广数字地面电视。</p>
+            </div>
+          </li>
+          <li class="stop reveal">
+            <div class="stop-when"><span class="stop-years">2011 → 2018</span><span class="stop-place">瓦伦西亚</span></div>
+            <div class="stop-body">
+              <h3>研究工程师 → 博士后研究员 · iTEAM，瓦伦西亚理工大学</h3>
+              <p>下一代电视系统（DVB-T2、DVB-NGH、ATSC 3.0）标准化、链路级仿真、覆盖规划、外场测试，以及 700/800 MHz 频段数字电视与 LTE 的共存研究。2016 年起获瓦伦西亚自治区政府 APOSTD 资助任博士后研究员。曾在斯德哥尔摩的 Teracom（2013–14）和 KTH（2014）以及慕尼黑的 IRT（2015、2017–18）开展访问研究。</p>
+            </div>
+          </li>
+          <li class="stop reveal">
+            <div class="stop-when"><span class="stop-years">2005 → 2015</span><span class="stop-place">教育</span></div>
+            <div class="stop-body">
+              <h3>电信博士 · UPV，2015</h3>
+              <p>以 Cum laude 成绩毕业，并获国际博士称号。论文：<a href="https://doi.org/10.4995/thesis/10251/52520" target="_blank" rel="noopener">Improved Spectrum Usage with Multi-RF Channel Aggregation Technologies for the Next-Generation Terrestrial Broadcasting</a>。电信工程硕士（2010）及电信技术、系统与网络硕士（2011），均毕业于 UPV。</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="skills">
+          <div class="card reveal">
+            <h3 class="label">领导力</h3>
+            <div class="tags">
+              <span class="tag">协会管理</span><span class="tag">项目群与项目管理</span><span class="tag">会员与利益相关方关系</span><span class="tag">活动与研讨会</span><span class="tag">传播与推广</span><span class="tag">标准化代表与共识构建</span><span class="tag">开源社区建设</span><span class="tag">欧盟项目申请（H2020、Horizon Europe）</span><span class="tag">主持与公开演讲</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <h3 class="label">技术</h3>
+            <div class="tags">
+              <span class="tag">3GPP RAN1</span><span class="tag">5G 组播/广播（MBS）</span><span class="tag">5G Media Streaming</span><span class="tag">网络 API（CAMARA）</span><span class="tag">NTN 非地面网络</span><span class="tag">MPEG-I、V3C 与 XR</span><span class="tag">支持 QoS 的流媒体与 QoE 指标</span><span class="tag">DVB 与 ATSC 3.0</span><span class="tag">网络规划与电波传播</span><span class="tag">物理层与信号处理</span><span class="tag">srsRAN · Open5GS · Amarisoft · MATLAB</span>
+            </div>
+          </div>
+          <div class="card reveal">
+            <h3 class="label">荣誉</h3>
+            <ul class="plain-list">
+              <li><b>IBC 最佳论文奖</b> · 2016</li>
+              <li><b>IEEE BMSB 最佳学生论文</b> · 2017</li>
+              <li><b>最佳硕士论文</b>（数字地面电视补点器），Vodafone/ONO 奖，COIT · 2012</li>
+              <li><b>客座编辑</b>，IEEE Transactions on Broadcasting · 2022、2024</li>
+              <li><b>主题演讲</b>，IEEE BMSB · 2022</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3 class="label">语言</h3>
+            <ul class="plain-list">
+              <li><b>加泰罗尼亚语、西班牙语</b> · 母语</li>
+              <li><b>英语</b> · 工作语言</li>
+              <li><b>德语、法语</b> · 基础</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="wrap">
+        <h2 class="reveal">项目与合同</h2>
+        <p class="section-sub reveal">7 个研发项目和 8 个产业合同，涵盖欧盟科研计划以及与广播机构、运营商和科技公司的合作。在 IRT 担任 5G-Xcast 和 5G-SOLUTIONS 的项目负责人，并在 IBC 和 MWC 进行现场演示。</p>
+        <div class="card reveal">
+          <ol class="proj-list">
+            <li><span class="proj-when">2019–20</span><div><b>5G-SOLUTIONS for European Citizens</b><span>H2020 · IRT · 联合体预算 1,430 万欧元</span></div></li>
+            <li><span class="proj-when">2017–19</span><div><b>5G-Xcast: Broadcast and Multicast Communication Enablers for 5G</b><span>H2020 · UPV · 联合体预算 800 万欧元</span></div></li>
+            <li><span class="proj-when">2017</span><div><b>哥伦比亚数字电视实施技术援助</b><span>EuropeAid · 合同金额 380 万欧元</span></div></li>
+            <li><span class="proj-when">2014–16</span><div><b>三项 ATSC 3.0 合同：LDM、非均匀星座和时频分片</b><span>韩国 ETRI</span></div></li>
+          </ol>
+          <a class="more-link" href="projects.html">查看全部项目与合同 <span aria-hidden="true">→</span></a>
+        </div>
+
+        <div class="proj-academic" id="academic">
+          <div class="card reveal">
+            <h3 class="label">博士论文答辩委员会</h3>
+            <ol class="proj-list">
+              <li><span class="proj-when">2021</span><div><b><a href="https://hdl.handle.net/10810/52825" target="_blank" rel="noopener">Power domain NOMA for 5G networks and beyond</a></b><span>Eneko Iradier 的博士论文 · UPV/EHU · 答辩委员会秘书</span></div></li>
+            </ol>
+          </div>
+          <div class="card reveal">
+            <h3 class="label">指导</h3>
+            <ol class="proj-list">
+              <li><span class="proj-when">2018</span><div><b>面向单频网的 5G New Radio 广播模式设计与性能评估</b><span>硕士论文 · UPV</span></div></li>
+              <li><span class="proj-when">2016</span><div><b>ATSC 3.0 覆盖估算：LDM、信道绑定与 MIMO</b><span>硕士论文 · UPV</span></div></li>
+              <li><span class="proj-when">2013</span><div><b>室内 LTE 毫微微小区覆盖的多墙传播模型</b><span>本科毕业设计 · UPV · 10/10 优秀</span></div></li>
+              <li><span class="proj-when">2012</span><div><b>利用微蜂窝优化瓦伦西亚 UMTS 网络能耗</b><span>本科毕业设计 · UPV · 9.5/10</span></div></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Talks -->
+    <section class="section" id="talks">
+      <div class="wrap">
+        <h2 class="reveal">演讲与主题报告</h2>
+        <ol class="talk-list">
+          <li class="reveal"><span class="talk-year">2026</span><div><b>Future Media Townhall</b><span>IBC 2026，阿姆斯特丹 · 主持论文与演示环节开场</span></div></li>
+          <li class="reveal"><span class="talk-year">2026</span><div><b>Powering Next-Gen Media Apps with Open Standards and Open-Source</b><span>第 13 届 Fraunhofer FOKUS Media Web Symposium</span></div></li>
+          <li class="reveal"><span class="talk-year">2025</span><div><b>Connected Media Experiences powered by Open Standards and Open-Source</b><span>第 12 届 Fraunhofer FOKUS Media Web Symposium，柏林</span></div></li>
+          <li class="reveal"><span class="talk-year">2024</span><div><b>5G-MAG Reference Tools: Bringing 5G Media to Life</b><span>FOSDEM，布鲁塞尔 · Open Media devroom</span></div></li>
+          <li class="reveal"><span class="talk-year">2023</span><div><b>Boosting Video Performance with 5G Technologies</b><span>UWA Summit 2023</span></div></li>
+          <li class="reveal"><span class="talk-year">2023</span><div><b>5G Media Action Group (5G-MAG) at IBC 2023</b><span>EBU @ IBC 2023，阿姆斯特丹</span></div></li>
+          <li class="reveal"><span class="talk-year">2022</span><div><b>Keynote: 5G Media Production – More than Replacing Some Modems</b><span>IEEE BMSB 2022</span></div></li>
+          <li class="reveal"><span class="talk-year">2022</span><div><b>5G-MAG: Shaping the Connected Media Future</b><span>第 9 届 Fraunhofer FOKUS Media Web Symposium</span></div></li>
+          <li class="reveal"><span class="talk-year">2019</span><div><b>5G-Xcast Tutorial</b><span>IEEE BMSB 2019</span></div></li>
+        </ol>
+        <p class="note reveal">此外还有一场关于 5G 技术与多媒体应用的特邀报告（2024），在 ETSI、SMPTE、ITU WSIS 和阿布扎比 TII 的演讲，在 IBC 和 MWC 的演示，以及多次 3GPP、DVB 和 EBU 会议。</p>
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section class="section" id="writing">
+      <div class="wrap">
+        <h2 class="reveal">论文与专利</h2>
+        <p class="section-sub reveal">关于媒体分发、5G 和开放媒体技术的论文、书籍章节和专利。最新亮点：</p>
+        <div id="pub-featured" class="featured"></div>
+        <a class="btn" href="publications.html">浏览全部 <span data-pub-count>70+</span> 项论文与专利 <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- Photos -->
+    <section class="section" id="photos">
+      <div class="wrap">
+        <h2 class="reveal">图片</h2>
+        <div class="gallery" id="gallery">
+          <figure class="photo photo-tall reveal"><a href="../img/irt-munich.jpg"><img src="../img/irt-munich.jpg" alt="Jordi-Joan 站在一台带有 IRT 标志的演播室摄像机旁" width="675" height="1200" loading="lazy"></a><figcaption>IRT，慕尼黑</figcaption></figure>
+          <figure class="photo reveal"><a href="../img/5g-xcast-meeting.jpg"><img src="../img/5g-xcast-meeting.jpg" alt="会议室屏幕上显示 5G-Xcast 项目概览" width="1200" height="901" loading="lazy"></a><figcaption>5G-Xcast 项目会议</figcaption></figure>
+          <figure class="photo photo-wide reveal"><a href="../img/demo-on-camera.jpg"><img src="../img/demo-on-camera.jpg" alt="摄制组在贴满项目海报的实验室里拍摄演示" width="1200" height="675" loading="lazy"></a><figcaption>拍摄 5G 演示</figcaption></figure>
+          <figure class="photo reveal"><a href="../img/demo-booth.jpg"><img src="../img/demo-booth.jpg" alt="两人站在会议演示展台的屏幕前" width="1200" height="898" loading="lazy"></a><figcaption>会议演示展台</figcaption></figure>
+          <figure class="photo photo-wide reveal"><a href="../img/lab-visit.jpg"><img src="../img/lab-visit.jpg" alt="一群研究人员和访客在实验室合影" width="1200" height="803" loading="lazy"></a><figcaption>与合作伙伴参观实验室</figcaption></figure>
+          <figure class="photo reveal"><a href="../img/lab-demo.jpg"><img src="../img/lab-demo.jpg" alt="四人在实验室的电视演示前" width="960" height="640" loading="lazy"></a><figcaption>实验室演示日</figcaption></figure>
+          <figure class="photo reveal"><a href="../img/phd-ceremony.jpg"><img src="../img/phd-ceremony.jpg" alt="两位身穿博士服、头戴博士帽的毕业生在典礼上" width="1200" height="675" loading="lazy"></a><figcaption>博士学位授予仪式，UPV</figcaption></figure>
+          <figure class="photo reveal"><a href="../img/ibc-2016-award.jpg"><img src="../img/ibc-2016-award.jpg" alt="三人手持 IBC 奖杯站在 IBC 背景板前" width="1152" height="768" loading="lazy"></a><figcaption>IBC 2016</figcaption></figure>
+          <figure class="photo reveal"><a href="../img/stockholm.jpg"><img src="../img/stockholm.jpg" alt="斯德哥尔摩大广场上色彩缤纷的老房子" width="1200" height="890" loading="lazy"></a><figcaption>斯德哥尔摩访问研究</figcaption></figure>
+          <figure class="photo photo-wide photo-more reveal"><a href="../img/msc-award-2012.jpg"><img src="../img/msc-award-2012.jpg" alt="在电信工程颁奖典礼上台领取证书" width="1193" height="794" loading="lazy"></a><figcaption>硕士论文奖，2012</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/ibc-2016-ceremony.jpg"><img src="../img/ibc-2016-ceremony.jpg" alt="IBC 2016 颁奖典礼上的获奖者，屏幕上显示 WiB 论文" width="1200" height="799" loading="lazy"></a><figcaption>IBC 2016 颁奖典礼</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/ibc-2016-wib-stage.jpg"><img src="../img/ibc-2016-wib-stage.jpg" alt="WiB 论文在 IBC 2016 会议舞台上展示" width="1200" height="674" loading="lazy"></a><figcaption>IBC 2016 上的 WiB</figcaption></figure>
+          <figure class="photo photo-wide photo-more reveal"><a href="../img/project-plenary.jpg"><img src="../img/project-plenary.jpg" alt="项目合作伙伴在建筑前的大合影" width="953" height="324" loading="lazy"></a><figcaption>项目全体会议</figcaption></figure>
+          <figure class="photo photo-wide photo-more reveal"><a href="../img/project-group.jpg"><img src="../img/project-group.jpg" alt="项目团队户外合影" width="1200" height="482" loading="lazy"></a><figcaption>项目会议</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/conference-networking.jpg"><img src="../img/conference-networking.jpg" alt="佩戴会议胸牌的人们交谈并举杯" width="1200" height="676" loading="lazy"></a><figcaption>会议交流</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/office-crew.jpg"><img src="../img/office-crew.jpg" alt="同事们在办公室合影" width="1000" height="750" loading="lazy"></a><figcaption>团队合影</figcaption></figure>
+          <figure class="photo photo-wide photo-more reveal"><a href="../img/graduation.jpg"><img src="../img/graduation.jpg" alt="毕业生在宏伟的台阶上大合影" width="1193" height="794" loading="lazy"></a><figcaption>毕业典礼</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/lunch-break.jpg"><img src="../img/lunch-break.jpg" alt="同事们在阳光明媚的露台上吃午饭" width="1200" height="900" loading="lazy"></a><figcaption>与同事在一起</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/team-run.jpg"><img src="../img/team-run.jpg" alt="一群身穿运动服、佩戴号码布的人在终点线" width="1200" height="900" loading="lazy"></a><figcaption>团队跑步</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/team-christmas.jpg"><img src="../img/team-christmas.jpg" alt="一群身穿圣诞毛衣的人合影" width="1200" height="900" loading="lazy"></a><figcaption>团队圣诞</figcaption></figure>
+          <figure class="photo photo-more reveal"><a href="../img/team-dinner.jpg"><img src="../img/team-dinner.jpg" alt="朋友们在酒吧围坐一桌微笑" width="1200" height="675" loading="lazy"></a><figcaption>团队聚餐</figcaption></figure>
+        </div>
+        <button id="gallery-more" class="btn more" type="button" hidden>显示更多照片</button>
+      </div>
+    </section>
+
+    <dialog class="lightbox" aria-label="照片查看器">
+      <button class="lightbox-close" type="button" aria-label="关闭">✕</button>
+      <img src="" alt="">
+      <p class="lightbox-caption"></p>
+    </dialog>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+      <div class="wrap">
+        <div class="contact-card reveal">
+          <img class="avatar" src="../img/jordi-casual.jpg" alt="Jordi-Joan 面带微笑，身穿浅色衬衫" width="212" height="264" loading="lazy">
+          <h2>保持联系</h2>
+          <p class="lede">如需合作、演讲邀请或洽谈媒体分发与 5G 相关项目，欢迎通过 LinkedIn 与我联系。</p>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://www.linkedin.com/in/jordijoangimenez" target="_blank" rel="noopener">在 LinkedIn 上联系</a>
+            <a class="btn btn-ghost" href="../Jordi-Joan-Gimenez-CV.pdf" download>下载简历（英文）</a>
+          </div>
+          <div class="links">
+            <a href="https://scholar.google.com/citations?user=BFQH_TcAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a>
+            <a href="https://orcid.org/0000-0001-5618-9090" target="_blank" rel="noopener">ORCID ↗</a>
+            <a href="https://www.researchgate.net/profile/Jordi-Gimenez-3" target="_blank" rel="noopener">ResearchGate ↗</a>
+            <a href="https://github.com/jordijoangimenez" target="_blank" rel="noopener">GitHub ↗</a>
+            <a href="https://patents.justia.com/inventor/jordi-joan-gimenez" target="_blank" rel="noopener">专利 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Jordi-Joan Giménez · 最后更新：2026 年 10 月</span>
+      <span class="motto">知识 + 专注 + 行动</span>
+    </div>
+  </footer>
+</body>
+</html>

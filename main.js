@@ -7,6 +7,56 @@
   var darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
   var hasIO = 'IntersectionObserver' in window;
 
+  /* ---------- Strings built by this script, per page language ---------- */
+  var I18N = {
+    en: {
+      menuOpen: 'Open menu', menuClose: 'Close menu', sep: ',',
+      kind: { journal: 'Journal', conference: 'Conference', chapter: 'Chapter', patent: 'Patent', other: 'Other' },
+      badge: {},
+      none: 'Nothing matches “{q}”. Try another word.', one: '{n} publication', many: '{n} publications',
+      morePhotos: 'Show {n} more photos'
+    },
+    ca: {
+      menuOpen: 'Obrir el menú', menuClose: 'Tancar el menú', sep: '.',
+      kind: { journal: 'Revista', conference: 'Congrés', chapter: 'Capítol', patent: 'Patent', other: 'Altres' },
+      badge: { 'Editorial': 'Editorial', 'Patent application': 'Sol·licitud de patent', 'Project report': 'Informe de projecte', 'White paper': 'Llibre blanc', 'PhD thesis': 'Tesi doctoral' },
+      none: 'Cap resultat per a «{q}». Prova una altra paraula.', one: '{n} publicació', many: '{n} publicacions',
+      morePhotos: 'Mostrar {n} fotos més'
+    },
+    es: {
+      menuOpen: 'Abrir el menú', menuClose: 'Cerrar el menú', sep: '.',
+      kind: { journal: 'Revista', conference: 'Congreso', chapter: 'Capítulo', patent: 'Patente', other: 'Otros' },
+      badge: { 'Editorial': 'Editorial', 'Patent application': 'Solicitud de patente', 'Project report': 'Informe de proyecto', 'White paper': 'Libro blanco', 'PhD thesis': 'Tesis doctoral' },
+      none: 'Ningún resultado para «{q}». Prueba con otra palabra.', one: '{n} publicación', many: '{n} publicaciones',
+      morePhotos: 'Ver {n} fotos más'
+    },
+    de: {
+      menuOpen: 'Menü öffnen', menuClose: 'Menü schließen', sep: '.',
+      kind: { journal: 'Zeitschrift', conference: 'Konferenz', chapter: 'Buchkapitel', patent: 'Patent', other: 'Sonstiges' },
+      badge: { 'Editorial': 'Editorial', 'Patent application': 'Patentanmeldung', 'Project report': 'Projektbericht', 'White paper': 'White Paper', 'PhD thesis': 'Dissertation' },
+      none: 'Keine Treffer für „{q}“. Versuchen Sie ein anderes Wort.', one: '{n} Publikation', many: '{n} Publikationen',
+      morePhotos: '{n} weitere Fotos anzeigen'
+    },
+    fr: {
+      menuOpen: 'Ouvrir le menu', menuClose: 'Fermer le menu', sep: ' ',
+      kind: { journal: 'Revue', conference: 'Conférence', chapter: 'Chapitre', patent: 'Brevet', other: 'Autre' },
+      badge: { 'Editorial': 'Éditorial', 'Patent application': 'Demande de brevet', 'Project report': 'Rapport de projet', 'White paper': 'Livre blanc', 'PhD thesis': 'Thèse de doctorat' },
+      none: 'Aucun résultat pour « {q} ». Essayez un autre mot.', one: '{n} publication', many: '{n} publications',
+      morePhotos: 'Afficher {n} photos de plus'
+    },
+    zh: {
+      menuOpen: '打开菜单', menuClose: '关闭菜单', sep: ',',
+      kind: { journal: '期刊', conference: '会议', chapter: '书籍章节', patent: '专利', other: '其他' },
+      badge: { 'Editorial': '社论', 'Patent application': '专利申请', 'Project report': '项目报告', 'White paper': '白皮书', 'PhD thesis': '博士论文' },
+      none: '没有与“{q}”匹配的结果，请换个关键词。', one: '{n} 项', many: '{n} 项',
+      morePhotos: '再显示 {n} 张照片'
+    }
+  };
+  var T = I18N[(root.lang || 'en').slice(0, 2).toLowerCase()] || I18N.en;
+  function say(s, vars) {
+    return s.replace(/\{(\w+)\}/g, function (m, k) { return vars[k]; });
+  }
+
   function onChange(mq, fn) {
     if (mq.addEventListener) mq.addEventListener('change', fn);
     else if (mq.addListener) mq.addListener(fn);
@@ -44,7 +94,7 @@
     var setMenu = function (open) {
       menu.classList.toggle('open', open);
       menuBtn.setAttribute('aria-expanded', String(open));
-      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      menuBtn.setAttribute('aria-label', open ? T.menuClose : T.menuOpen);
     };
     menuBtn.addEventListener('click', function () { setMenu(!menu.classList.contains('open')); });
     menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
@@ -89,7 +139,7 @@
   /* ---------- Key figures count up once when they come into view ---------- */
   var counters = document.querySelectorAll('[data-count]');
   if (hasIO && !reduceMotion.matches && counters.length) {
-    var fmt = function (n) { return Math.round(n).toLocaleString('en-US'); };
+    var fmt = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, T.sep); };
     var countIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
@@ -110,8 +160,11 @@
 
   /* ---------- Publications ---------- */
   var PUBS = (window.PUBLICATIONS || []).slice();
-  var KIND = { journal: 'Journal', conference: 'Conference', chapter: 'Chapter', patent: 'Patent', other: 'Other' };
   var ME = /(J\.\s?J\.\s?Gim[eé]nez(?:\s+Gand[ií]a)?)/g;
+
+  function kindLabel(p) {
+    return p.badge ? (T.badge[p.badge] || p.badge) : T.kind[p.type];
+  }
 
   function norm(s) { return String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function esc(s) {
@@ -136,7 +189,7 @@
   if (featured && PUBS.length) {
     featured.innerHTML = PUBS.filter(function (p) { return p.featured; }).slice(0, 3).map(function (p) {
       return '<a class="feat" href="' + esc(href(p)) + '" target="_blank" rel="noopener">' +
-        '<span class="feat-top"><span>' + esc(p.badge || KIND[p.type]) + '</span><span>' + p.year + '</span></span>' +
+        '<span class="feat-top"><span>' + esc(kindLabel(p)) + '</span><span>' + p.year + '</span></span>' +
         '<span class="feat-title">' + esc(p.title) + '</span>' +
         '<span class="feat-venue">' + esc(p.venue) + '</span></a>';
     }).join('');
@@ -175,11 +228,11 @@
           '<p class="pub-authors">' + esc(p.authors).replace(ME, '<b>$1</b>') + '</p>' +
           '<p class="pub-venue">' + esc(p.venue) +
             (p.award ? ' · <span class="pub-award">' + esc(p.award) + '</span>' : '') + '</p>' +
-          '</div><span class="pub-kind">' + esc(p.badge || KIND[p.type]) + '</span></li>';
+          '</div><span class="pub-kind">' + esc(kindLabel(p)) + '</span></li>';
       });
       if (year !== null) html += '</ol>';
-      list.innerHTML = html || '<p class="pub-empty">Nothing matches “' + esc(state.q.trim()) + '”. Try another word.</p>';
-      if (status) status.textContent = items.length + (items.length === 1 ? ' publication' : ' publications');
+      list.innerHTML = html || '<p class="pub-empty">' + say(esc(T.none), { q: esc(state.q.trim()) }) + '</p>';
+      if (status) status.textContent = say(items.length === 1 ? T.one : T.many, { n: items.length });
     };
 
     chips.forEach(function (c) {
@@ -201,7 +254,7 @@
     if (extra) {
       gallery.classList.add('collapsed');
       galleryMore.hidden = false;
-      galleryMore.textContent = 'Show ' + extra + ' more photos';
+      galleryMore.textContent = say(T.morePhotos, { n: extra });
       galleryMore.addEventListener('click', function () {
         gallery.classList.remove('collapsed');
         galleryMore.hidden = true;
@@ -225,6 +278,15 @@
     });
     box.querySelector('.lightbox-close').addEventListener('click', function () { box.close(); });
     box.addEventListener('click', function (e) { if (e.target === box) box.close(); });
+  }
+
+  /* ---------- Language menu closes on outside click or Escape ---------- */
+  var langMenu = document.querySelector('.lang');
+  if (langMenu) {
+    document.addEventListener('click', function (e) {
+      if (langMenu.open && !langMenu.contains(e.target)) langMenu.open = false;
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') langMenu.open = false; });
   }
 
   /* ---------- Footer year ---------- */

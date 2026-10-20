@@ -151,6 +151,39 @@ section[id], [id="academic"] { scroll-margin-top: 80px; }
   .menu .menu-contact { display: block; }
 }
 
+/* Language switcher */
+.lang { position: relative; }
+.lang summary { list-style: none; }
+.lang summary::-webkit-details-marker { display: none; }
+.lang-btn {
+  display: inline-flex; align-items: center; gap: 6px; width: auto; padding: 0 12px;
+  font: 600 13px/1 var(--font); letter-spacing: 0.04em;
+}
+.lang[open] .lang-btn { border-color: var(--text); }
+.lang-menu {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 60;
+  min-width: 168px; margin: 0; padding: 6px; list-style: none;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+}
+.lang-menu a {
+  display: block; padding: 9px 12px; border-radius: 10px;
+  color: var(--text); text-decoration: none; font-size: 15px; font-weight: 500;
+}
+.lang-menu a:hover { background: var(--surface-2); }
+.lang-menu a[aria-current] { color: var(--link); font-weight: 700; }
+@media (max-width: 420px) {
+  .lang-btn { padding: 0 11px; }
+  .lang-btn svg { display: none; }
+}
+
+/* Chinese: system CJK fonts, no negative tracking. German: hyphenate long compounds. */
+:root:lang(zh) {
+  --font: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --display: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+:lang(zh) h1, :lang(zh) h2, :lang(zh) h3 { letter-spacing: 0; }
+:lang(de) h2, :lang(de) h3, :lang(de) .kicker, :lang(de) .std-stats span, :lang(de) .facts span { hyphens: auto; overflow-wrap: break-word; }
+
 .theme-toggle .i-sun { display: none; }
 :root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
 :root[data-theme="dark"] .theme-toggle .i-moon { display: none; }

@@ -456,7 +456,7 @@ $('theme').onclick = () => {
 let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(renderTrend, 150); });
 
 (async () => {
-  const [D, map] = await Promise.all(['data/primometro.json', 'data/mapa-europa.json'].map(u => fetch(u).then(r => r.json())));
+  const [D, map] = await Promise.all(['data/primometro.json', 'data/mapa-europa.json'].map(u => fetch(u, { cache: 'no-cache' }).then(r => r.json())));
   state.D = D; state.map = map; prep(D);
   readHash(); buildControls(); renderAll(); writeHash();
   $('upd').textContent = `Datos actualizados el ${new Date(D.updated).toLocaleDateString('es-ES')}; último mes publicado por el BCE: ${mLong(lastMonth())}.`;

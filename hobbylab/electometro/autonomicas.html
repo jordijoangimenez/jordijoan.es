@@ -40,6 +40,11 @@
       <button id="scope-cycle" aria-pressed="true">Legislatura actual</button>
       <button id="scope-all" aria-pressed="false">Todo el histórico</button>
     </div>
+    <div class="seg" role="group" aria-label="Encuestas que entran en la media" title="Hoy: media ponderada de toda la legislatura. Semana / mes: solo las encuestas publicadas en ese periodo.">
+      <button data-win="hoy" aria-pressed="true">Hoy</button>
+      <button data-win="semana" aria-pressed="false">Esta semana</button>
+      <button data-win="mes" aria-pressed="false">Este mes</button>
+    </div>
     <span class="note" id="fnote"></span>
   </div>
 
@@ -64,6 +69,7 @@
       <h3>Una encuesta por casa</h3><p>Solo cuenta la última encuesta de cada empresa demoscópica, para que las que publican cada semana no pesen más que las demás.</p>
       <h3>Peso</h3><p>Cada encuesta pesa más cuanto más reciente (la mitad cada 30 días) y cuanto mayor es su muestra (raíz cuadrada, entre 300 y 3.000 entrevistas).</p>
       <h3>Escaños</h3><p>Media ponderada del punto medio de la horquilla de cada casa, repartida hasta el total de la cámara por restos mayores. No es una simulación por circunscripciones.</p>
+      <h3>Hoy, semana, mes</h3><p>«Hoy» es la media ponderada de toda la legislatura, con más peso para las encuestas recientes. «Esta semana» y «Este mes» usan solo las encuestas publicadas en los últimos 7 o 30 días, una por casa, ponderadas por tamaño de muestra.</p>
       <h3>Legislatura</h3><p>La media se reinicia tras cada elección. Se excluyen encuestas internas, sondeos a pie de urna y resultados.</p>
       <h3>Resultado oficial</h3><p>El resultado de la última elección es el que Electogrāfica cita en cada encuesta como referencia; no se ha descargado por separado de Interior. Contrástalo con la fuente oficial antes de citarlo.</p>
       <h3>Coaliciones</h3><p>Suma los escaños medios de los partidos elegidos. «Mayoría mínima» son combinaciones que llegan a la mayoría y en las que ningún partido sobra. «En X de N encuestas» cuenta las casas cuya última estimación de escaños da mayoría (punto medio de su horquilla). Son sumas aritméticas, no pactos previsibles.</p>

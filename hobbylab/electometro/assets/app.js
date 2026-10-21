@@ -21,7 +21,7 @@ function el(tag, attrs = {}, kids = []) {
 const S = (tag, attrs, kids) => el(tag, { ...attrs, svg: 1 }, kids);
 const clear = n => { while (n.firstChild) n.removeChild(n.firstChild); };
 
-const state = { index: null, doc: null, scope: 'cycle', hidden: new Set(), showAll: false, tab: 'all', q: '' };
+const state = { index: null, doc: null, scope: 'cycle', win: 'hoy', hidden: new Set(), showAll: false, tab: 'all', q: '' };
 const tip = $('tip');
 function showTip(e, build) {
   clear(tip); build(tip); tip.hidden = false;
@@ -196,7 +196,7 @@ function renderSeats(d) {
   });
   cur.seats = seats; cur.hemi = hemi;
   applyCoal();
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Parlamento' }), el('span', { class: 'hint', text: `media de ${sa.pollsters} casas · horquilla = mín.–máx. recientes` })]),
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Parlamento' }), el('span', { class: 'hint', text: `${sa.pollsters === 1 ? 'una sola casa' : 'media de ' + sa.pollsters + ' casas'} · horquilla = mín.–máx. recientes` })]),
     el('div', { class: 'seats-body' }, [hemi, list]));
 }
 
@@ -231,7 +231,7 @@ function renderVotes(d) {
   card.append(key);
   if (rest.length) card.append(el('p', { class: 'others', text: 'Otros: ' + rest.map(v => `${pname(d, v.k)} ${fmt(v.v)}`).join(' · ') }));
   const nu = d.now.used.filter(u => u.w >= 0.005).length;
-  card.append(el('p', { class: 'others', text: `${nu} casas · ${lastPoll(d)}${d.now.since ? ' · desde las elecciones del ' + fdate(d.now.since) : ''}.` }));
+  card.append(el('p', { class: 'others', text: `${nu === 1 ? '1 casa' : nu + ' casas'} · ${lastPoll(d)}${d.now.since ? ' · desde las elecciones del ' + fdate(d.now.since) : ''}.` }));
 }
 
 // ---------- coalitions ----------
@@ -553,20 +553,85 @@ function tableDetails(d, keys, T, i0) {
   return det;
 }
 
+// ---------- averages over a recent window (this week / this month) ----------
+// Same rules as the build step: latest poll per pollster, weight = sqrt(sample), parties under 5% of the
+// weight left out, seats = weighted mean of seat midpoints rounded to the chamber size by largest remainder.
+// Inside a short window every poll is recent, so there is no time decay.
+const WINDOWS = { hoy: null, semana: 7, mes: 30 };
+const pubOf = p => p.pub || p.d;
+function windowNow(d, days) {
+  const today = new Date().toISOString().slice(0, 10);
+  const from = new Date(Date.now() - (days - 1) * 864e5).toISOString().slice(0, 10);
+  const inWin = d.polls.filter(p => !p.fi && !p.fx && pubOf(p) >= from && pubOf(p) <= today).sort((a, b) => pubOf(a).localeCompare(pubOf(b)));
+  const latest = new Map(); for (const p of inWin) latest.set(p.po.toLowerCase().replace(/[^a-z0-9]/g, ''), p);
+  const used = [...latest.values()].map(p => ({ p, w: Math.sqrt(Math.min(Math.max(p.n || 800, 300), 3000) / 1000) }));
+  if (!used.length) return { empty: true, from, days };
+  const W = used.reduce((a, u) => a + u.w, 0);
+  const acc = new Map();
+  for (const { p, w } of used) for (const x of p.p) if (x[1] != null) {
+    const a = acc.get(x[0]) || { num: 0, den: 0, min: Infinity, max: -Infinity, n: 0 };
+    a.num += w * x[1]; a.den += w; a.n++; a.min = Math.min(a.min, x[1]); a.max = Math.max(a.max, x[1]); acc.set(x[0], a);
+  }
+  const votes = [...acc].filter(([, a]) => a.den / W >= 0.05).map(([k, a]) => ({ k, v: Math.round(a.num / a.den * 10) / 10, min: a.min, max: a.max, n: a.n })).sort((a, b) => b.v - a.v);
+  let seats = null;
+  const T = d.T || d.now?.seats?.total;
+  const ws = used.filter(u => u.p.p.some(x => x[2] != null));
+  if (ws.length && T) {
+    const keys = new Set(ws.flatMap(u => u.p.p.filter(x => x[2] != null).map(x => x[0])));
+    const sacc = new Map(); let wsum = 0;
+    for (const { p, w } of ws) {
+      wsum += w;
+      const lo = p.p.reduce((a, x) => a + (x[2] ?? 0), 0), hi = p.p.reduce((a, x) => a + (x[3] ?? x[2] ?? 0), 0);
+      const complete = lo <= T + 1 && hi >= T - 1;
+      for (const k of keys) {
+        const x = p.p.find(y => y[0] === k && y[2] != null);
+        if (!x && !complete) continue;
+        const a = sacc.get(k) || { num: 0, den: 0, min: Infinity, max: -Infinity };
+        const lo1 = x ? x[2] : 0, hi1 = x ? (x[3] ?? x[2]) : 0;
+        a.num += w * (lo1 + hi1) / 2; a.den += w; a.min = Math.min(a.min, lo1); a.max = Math.max(a.max, hi1); sacc.set(k, a);
+      }
+    }
+    const raw = [...sacc].filter(([, a]) => a.den / wsum >= 0.05).map(([k, a]) => ({ k, x: a.num / a.den, min: a.min, max: a.max })).filter(r => r.x > 0.05 || r.max > 0);
+    const sum = raw.reduce((a, r) => a + r.x, 0), scale = sum > T ? T / sum : 1, assignable = Math.min(T, Math.round(sum));
+    raw.forEach(r => { r.x *= scale; r.s = Math.floor(r.x); });
+    let left = assignable - raw.reduce((a, r) => a + r.s, 0);
+    [...raw].sort((a, b) => (b.x - b.s) - (a.x - a.s)).forEach(r => { if (left > 0) { r.s++; left--; } });
+    const list = raw.filter(r => r.s > 0 || r.max > 0).map(r => ({ k: r.k, s: r.s, x: r.x, min: r.min, max: r.max })).sort((a, b) => b.s - a.s || b.x - a.x);
+    seats = { seats: list, total: T, unassigned: Math.max(0, T - list.reduce((a, r) => a + r.s, 0)), pollsters: ws.length };
+  }
+  const lastD = used.reduce((m, u) => (u.p.d > m ? u.p.d : m), ''), lastPub = used.reduce((m, u) => (pubOf(u.p) > m ? pubOf(u.p) : m), '');
+  return { d: lastD, pub: lastPub, since: d.now?.since, nCycle: inWin.length, votes, seats, used: used.map(u => ({ id: u.p.id, po: u.p.po, d: u.p.d, w: u.w / W })), window: { days, from } };
+}
+// the document as the parliament, vote and coalition cards should see it for the chosen window
+function viewDoc(d) {
+  const days = WINDOWS[state.win];
+  if (!days || !d.now) return d;
+  return { ...d, now: windowNow(d, days) };
+}
+function emptyWindow(card, title, w) {
+  card.hidden = false; clear(card);
+  const b = el('button', { class: 'show-more', text: 'Volver a la media de hoy' });
+  b.onclick = () => setWindow('hoy');
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: title })]),
+    el('p', { class: 'empty-note', text: `No hay encuestas publicadas en ${w.days === 7 ? 'los últimos 7 días' : 'los últimos 30 días'} para esta elección.` }), b);
+}
+
 // ---------- polls table ----------
 function renderPolls(d) {
   const card = $('pollsCard'); clear(card);
   const used = new Map((d.now?.used || []).map(u => [u.id, u.w]));
-  const polls = [...d.polls].reverse();
+  const polls = [...d.polls].sort((a, b) => pubOf(b).localeCompare(pubOf(a)) || b.d.localeCompare(a.d));
   const keys = (d.now?.votes || []).slice(0, 7).map(v => v.k);
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Encuestas' }), el('span', { class: 'hint', text: `${d.polls.length} en total · en negrita las que entran hoy en la media` })]));
+  const where = { hoy: 'entran hoy en la media', semana: 'entran en la media de esta semana', mes: 'entran en la media de este mes' }[state.win];
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Encuestas' }), el('span', { class: 'hint', text: `${d.polls.length} en total · ordenadas por fecha de publicación · con peso, las que ${where}` })]));
   const n = state.pollsShown || 25;
-  const head = el('tr', {}, [el('th', { text: 'Fecha' }), el('th', { class: 'l', text: 'Empresa' }), ...keys.map(k => el('th', {}, [el('span', { class: 'dot', style: `background:${pcol(d, k)}` }), pname(d, k)])), el('th', { text: 'Peso' })]);
+  const head = el('tr', {}, [el('th', { text: 'Publicada' }), el('th', { class: 'l', text: 'Empresa' }), ...keys.map(k => el('th', {}, [el('span', { class: 'dot', style: `background:${pcol(d, k)}` }), pname(d, k)])), el('th', { text: 'Peso' })]);
   const body = el('tbody');
   for (const p of polls.slice(0, n)) {
     const w = used.get(p.id);
     const tr = el('tr', { class: w == null ? 'excluded' : '' });
-    tr.append(el('td', { text: fdate(p.d) }));
+    const field = p.d0 && p.d0 !== p.d ? `campo ${fdate(p.d0).slice(0, 5)}–${fdate(p.d).slice(0, 5)}` : `campo ${fdate(p.d).slice(0, 5)}`;
+    tr.append(el('td', {}, [fdate(pubOf(p)), el('small', { text: field })]));
     const who = el('td', { class: 'l who' }, [el('a', { href: p.u || '#', rel: 'noopener', target: '_blank', text: p.po })]);
     if (p.fi) who.append(el('span', { class: 'badge', text: 'interna' })); if (p.fx) who.append(el('span', { class: 'badge', text: 'urna' })); if (p.pa) who.append(el('span', { class: 'badge', text: 'parcial' }));
     if (p.cl || p.n) who.append(el('small', { text: [p.cl, p.n ? p.n.toLocaleString('es') + ' ent.' : null].filter(Boolean).join(' · ') }));
@@ -612,14 +677,29 @@ function render() {
   const hero = $('hero'); clear(hero);
   const nowD = d.now?.d;
   const stale = nowD && (Date.now() - Date.parse(nowD)) > 120 * 864e5;
-  hero.append(el('p', { class: 'eyebrow', text: KIND[d.kind] || d.kind }), el('h1', { text: d.name }),
-    el('p', { class: 'sub', text: d.now ? `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. ${lastPoll(d)}` : 'Esta elección solo tiene resultados, sin encuestas utilizables.' }));
+  const v = viewDoc(d);
+  let sub;
+  if (!d.now) sub = 'Esta elección solo tiene resultados, sin encuestas utilizables.';
+  else if (v.now.empty) sub = `Sin encuestas publicadas en ${v.now.days === 7 ? 'los últimos 7 días' : 'los últimos 30 días'}.`;
+  else if (v.now.window) sub = (v.now.used.length === 1 ? `Solo hay una encuesta publicada desde el ${fdate(v.now.window.from)}: ${v.now.used[0].po}. ` : `Media de las ${v.now.used.length} casas con encuesta publicada desde el ${fdate(v.now.window.from)} (${v.now.nCycle} encuestas). `) + lastPoll(v);
+  else sub = `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. ${lastPoll(d)}`;
+  hero.append(el('p', { class: 'eyebrow', text: KIND[d.kind] || d.kind }), el('h1', { text: d.name }), el('p', { class: 'sub', text: sub }));
   if (stale) hero.append(el('span', { class: 'stale', text: 'Datos antiguos: la última encuesta tiene más de cuatro meses.' }));
-  renderSeats(d); renderVotes(d); renderCoal(d); renderFit(d); renderMap(d); renderTrend(d); renderPolls(d);
+  if (v.now?.empty) { emptyWindow($('seatsCard'), 'Parlamento', v.now); $('grid').classList.add('no-seats'); $('votesCard').hidden = true; $('coalCard').hidden = true; }
+  else { $('votesCard').hidden = false; renderSeats(v); renderVotes(v); renderCoal(v); }
+  renderFit(d); renderMap(d); renderTrend(d); renderPolls(v.now?.empty ? d : v);
 }
+function setWindow(w) {
+  state.win = w;
+  document.querySelectorAll('[data-win]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.win === w)));
+  if (state.doc) render();
+}
+document.querySelectorAll('[data-win]').forEach(b => { b.onclick = () => setWindow(b.dataset.win); });
 function route() {
   const [id, qs] = location.hash.slice(1).split('?');
   const c = new URLSearchParams(qs || '').get('c');
+  const w = new URLSearchParams(qs || '').get('w');
+  if (w && w in WINDOWS) { state.win = w; document.querySelectorAll('[data-win]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.win === w))); }
   const known = state.index.elections.find(e => e.id === id && inSection(e));
   load(known ? id : defaultId(), c ? c.split(',') : []);
 }

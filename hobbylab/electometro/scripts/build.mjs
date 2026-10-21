@@ -249,7 +249,7 @@ async function main() {
       results: results.map(r => ({ id: r.id, u: r.u, d: r.d, p: r.p.map(x => [x.k, x.v ?? null, x.s ? x.s[0] : null]) })),
       polls: recs.filter(r => !r.fr).map(r => {
         const o = { id: r.id, u: r.u, d: r.d, po: r.po || '?', p: r.p.map(x => x.s ? [x.k, x.v ?? null, x.s[0], x.s[1]] : [x.k, x.v ?? null]) };
-        for (const k of ['d0', 'cl', 'n', 'm', 'fi', 'fx', 'pa']) if (r[k] != null) o[k] = r[k];
+        for (const k of ['d0', 'pub', 'cl', 'n', 'm', 'fi', 'fx', 'pa']) if (r[k] != null) o[k] = r[k];
         return o;
       }),
     };

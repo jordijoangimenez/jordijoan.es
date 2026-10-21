@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Primómetro</title>
-<meta name="description" content="La prima de riesgo de cada país de la zona euro y su evolución junto a los tipos de interés del BCE, con datos oficiales del Banco Central Europeo.">
+<meta name="description" content="La prima de riesgo y la inflación de cada país de la zona euro y su evolución junto a los tipos de interés del BCE, con datos oficiales del BCE y Eurostat.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/primometro/">
-<link rel="stylesheet" href="assets/style.css?v=c6598fa0a8">
+<link rel="stylesheet" href="assets/style.css?v=a844d71aa0">
 <script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
@@ -45,7 +45,7 @@
     <div class="card-head"><h2 id="trendTitle">Prima de riesgo</h2><span class="hint">puntos básicos (pb) = diferencia de rentabilidad del bono a 10 años × 100</span></div>
     <div class="legend" id="legend"></div>
     <div class="chart" id="spreadChart"></div>
-    <p class="chart-title">Tipos de interés oficiales del BCE (%)</p>
+    <p class="chart-title">Tipo de depósito del BCE e inflación (%)</p>
     <div class="chart" id="ratesChart"></div>
     <div class="key-row" id="ratesKey"></div>
     <details class="data" id="trendTable"><summary>Ver como tabla</summary></details>
@@ -58,6 +58,7 @@
     <div class="method">
       <h3>Prima de riesgo</h3><p>Diferencia entre la rentabilidad del bono a 10 años de un país y la del bono alemán (o la media de la zona euro), en puntos básicos: 1 punto porcentual = 100 pb. Una prima alta significa que el mercado pide más interés a ese país que a Alemania.</p>
       <h3>Datos mensuales</h3><p>El BCE publica para cada país la media mensual de la rentabilidad a 10 años (la serie del criterio de convergencia de Maastricht), con un mes de retraso aproximadamente. No es la prima diaria de los medios, que procede de proveedores de mercado de pago.</p>
+      <h3>Inflación</h3><p>Tasa anual del índice de precios de consumo armonizado (IPCA) de Eurostat, la medida que usa el BCE para su objetivo del 2 %. En el mapa, los colores cálidos indican inflación por encima del 2 % y los azules, por debajo. El tipo real es el tipo de depósito menos la inflación de la zona euro: si es negativo, el dinero en depósito pierde poder de compra.</p>
       <h3>Tipos del BCE</h3><p>Facilidad de depósito, operaciones principales de financiación y facilidad marginal de crédito, en la fecha en que entra en vigor cada cambio. Entre 2000 y 2008 las operaciones principales se hacían a tipo variable; se muestra el tipo mínimo de puja.</p>
       <h3>Antes del euro</h3><p>Hasta que un país adopta el euro, su diferencial con Alemania incluye el riesgo de tipo de cambio. Ese tramo se dibuja más claro.</p>
       <h3>Países pequeños</h3><p>En países con poca deuda a largo plazo (por ejemplo Estonia, Lituania o Luxemburgo) la serie se basa en pocos bonos o en aproximaciones, y no siempre es comparable con la de los demás.</p>
@@ -67,10 +68,10 @@
 </main>
 
 <footer><div class="wrap">
-  <p id="src">Fuente: Banco Central Europeo, <a href="https://data.ecb.europa.eu/" rel="noopener">ECB Data Portal</a>. Este sitio es independiente y no está afiliado al BCE.</p>
+  <p id="src">Fuentes: Banco Central Europeo, <a href="https://data.ecb.europa.eu/" rel="noopener">ECB Data Portal</a> (rentabilidad de la deuda y tipos de interés); <a href="https://ec.europa.eu/eurostat/" rel="noopener">Eurostat</a> (inflación, IPCA). Este sitio es independiente y no está afiliado al BCE ni a Eurostat.</p>
   <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. <span id="upd"></span></p>
 </div></footer>
 <div class="tip" id="tip" hidden></div>
-<script src="assets/app.js?v=0631b3c0fe" type="module"></script>
+<script src="assets/app.js?v=50ec9153e2" type="module"></script>
 </body>
 </html>

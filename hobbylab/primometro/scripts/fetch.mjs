@@ -40,6 +40,38 @@ async function csv(path) {
   }
 }
 
+// Eurostat HICP, annual rate of change, all items (ECOICOP ver. 2 dataset introduced in 2026, back-cast to 1997).
+// Eurostat writes Greece as EL and the euro area as EA (composition changing over time).
+async function inflation(codes) {
+  const geo = codes.map(c => (c === 'GR' ? 'EL' : c === 'U2' ? 'EA' : c));
+  const url = 'https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr?format=JSON&unit=RCH_A&coicop18=TOTAL&' + geo.map(g => 'geo=' + g).join('&');
+  for (let i = 1; ; i++) {
+    try {
+      const res = await fetch(url, { headers: { 'user-agent': 'primometro (+https://jordijoan.es/hobbylab/)' } });
+      if (!res.ok) throw new Error('Eurostat HTTP ' + res.status);
+      const j = await res.json();
+      // JSON-stat: one flat value array indexed by the product of the dimension positions
+      const stride = {}; let s = 1;
+      for (let k = j.id.length - 1; k >= 0; k--) { stride[j.id[k]] = s; s *= j.size[k]; }
+      const geoIx = j.dimension.geo.category.index, timeIx = j.dimension.time.category.index;
+      const out = {};
+      for (const [g, gi] of Object.entries(geoIx)) {
+        const code = g === 'EL' ? 'GR' : g === 'EA' ? 'U2' : g;
+        const rows = [];
+        for (const [t, ti] of Object.entries(timeIx)) {
+          const v = j.value[gi * stride.geo + ti * stride.time];
+          if (v != null) rows.push([t, v]);
+        }
+        out[code] = rows.sort((a, b) => a[0].localeCompare(b[0]));
+      }
+      return out;
+    } catch (e) {
+      if (i >= 4) throw e;
+      await new Promise(r => setTimeout(r, 3000 * i));
+    }
+  }
+}
+
 // daily series -> the days on which the value changed
 function changes(rows) {
   const out = [];
@@ -58,12 +90,15 @@ const mroByDay = new Map(mrrMbr.map(r => [r.t, r.v]));
 for (const r of mrrFr) mroByDay.set(r.t, r.v);
 const mro = [...mroByDay].map(([t, v]) => ({ t, v }));
 
+const infl = await inflation([...Object.keys(EURO), 'U2']);
+
 const doc = {
   updated: null,
-  source: 'Banco Central Europeo, ECB Data Portal: rendimiento de la deuda pública a 10 años (serie del criterio de convergencia, IRS) y tipos de interés oficiales del BCE (FM).',
+  source: 'Banco Central Europeo, ECB Data Portal: rendimiento de la deuda pública a 10 años (serie del criterio de convergencia, IRS) y tipos de interés oficiales del BCE (FM). Eurostat: inflación armonizada (IPCA), tasa anual (prc_hicp_minr).',
   sourceUrl: 'https://data.ecb.europa.eu/',
   countries: Object.fromEntries(Object.entries(EURO).map(([k, [n, euro]]) => [k, { n, euro }])),
   yields,
+  inflation: infl,
   rates: { dfr: changes(dfr), mro: changes(mro), mlf: changes(mlf) },
 };
 
@@ -75,6 +110,8 @@ for (const k of [...Object.keys(EURO), 'U2']) if (!yields[k]?.length) problems.p
 if ((yields.DE || []).length < 300) problems.push('German series too short');
 if (doc.rates.dfr.length < 30) problems.push('deposit rate history too short');
 if (old) for (const k in old.yields) if ((yields[k]?.length || 0) < old.yields[k].length) problems.push(`${k} lost months`);
+for (const k of [...Object.keys(EURO), 'U2']) if ((infl[k]?.length || 0) < 200) problems.push(`inflation series too short for ${k}`);
+if (old?.inflation) for (const k in old.inflation) if ((infl[k]?.length || 0) < old.inflation[k].length) problems.push(`${k} lost inflation months`);
 if (problems.length) { console.error('Not updating: ' + problems.join('; ')); process.exit(1); }
 
 const same = old && JSON.stringify({ ...old, updated: null }) === JSON.stringify(doc);
@@ -82,4 +119,4 @@ doc.updated = same ? old.updated : new Date().toISOString();
 await mkdir(join(ROOT, 'data'), { recursive: true });
 await writeFile(OUT, JSON.stringify(doc) + '\n');
 const last = yields.DE[yields.DE.length - 1][0];
-console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} series, last month ${last}, deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);
+console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} yield series, last month ${last}; ${Object.keys(infl).length} inflation series, last month ${infl.U2.at(-1)[0]}; deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);

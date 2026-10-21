@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autonómicas · Electómetro</title>
+<meta name="description" content="Media y evolución de las encuestas de los parlamentos autonómicos, a partir de Electogrāfica.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-section="aut">
+<header class="top"><div class="wrap">
+  <a class="brand" href="./" aria-label="Electómetro">
+    <svg viewBox="0 0 28 16" aria-hidden="true"><path d="M2 14A12 12 0 0 1 26 14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+    Electómetro
+  </a>
+  <nav>
+    <a href="./">España</a>
+    <a href="autonomicas.html" aria-current="page">Autonómicas</a>
+    <a href="internacional.html">Internacional</a>
+    <a href="#explorar" class="hide-sm">Explorar</a>
+    <a href="../" class="hide-sm">Hobby Lab</a>
+    <a href="#metodo" class="hide-sm">Método</a>
+    <button class="icon-btn" id="theme" aria-label="Cambiar tema">◐</button>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <div class="filters">
+    <div class="picker">
+      <button class="picker-btn" id="pbtn" aria-haspopup="listbox" aria-expanded="false">
+        <span><span class="lbl">Elección</span><span class="val" id="pval">…</span></span>
+        <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <div class="picker-panel" id="ppanel" hidden>
+        <input id="psearch" type="search" placeholder="Buscar elección o lugar…" aria-label="Buscar">
+        <ul class="picker-list" id="plist" role="listbox"></ul>
+      </div>
+    </div>
+    <div class="seg" role="group" aria-label="Alcance">
+      <button id="scope-cycle" aria-pressed="true">Legislatura actual</button>
+      <button id="scope-all" aria-pressed="false">Todo el histórico</button>
+    </div>
+    <span class="note" id="fnote"></span>
+  </div>
+
+  <section class="hero" id="hero"></section>
+  <div class="grid" id="grid">
+    <section class="card" id="seatsCard"></section>
+    <section class="card" id="votesCard"></section>
+  </div>
+  <section class="card" id="coalCard"></section>
+  <section class="card" id="fitCard"></section>
+  <section class="card" id="trendCard"></section>
+  <section class="card" id="pollsCard"></section>
+  <section class="card" id="explorar">
+    <div class="explore-head"><h2 id="eheading">Explorar elecciones</h2>
+      <input id="esearch" type="search" placeholder="Filtrar…" aria-label="Filtrar elecciones">
+      <div class="tabs" id="etabs" role="tablist"></div></div>
+    <div class="cards" id="ecards"></div>
+  </section>
+  <section class="card" id="metodo">
+    <div class="card-head"><h2>Cómo se calcula</h2></div>
+    <div class="method">
+      <h3>Una encuesta por casa</h3><p>Solo cuenta la última encuesta de cada empresa demoscópica, para que las que publican cada semana no pesen más que las demás.</p>
+      <h3>Peso</h3><p>Cada encuesta pesa más cuanto más reciente (la mitad cada 30 días) y cuanto mayor es su muestra (raíz cuadrada, entre 300 y 3.000 entrevistas).</p>
+      <h3>Escaños</h3><p>Media ponderada del punto medio de la horquilla de cada casa, repartida hasta el total de la cámara por restos mayores. No es una simulación por circunscripciones.</p>
+      <h3>Legislatura</h3><p>La media se reinicia tras cada elección. Se excluyen encuestas internas, sondeos a pie de urna y resultados.</p>
+      <h3>Resultado oficial</h3><p>El resultado de la última elección es el que Electogrāfica cita en cada encuesta como referencia; no se ha descargado por separado de Interior. Contrástalo con la fuente oficial antes de citarlo.</p>
+      <h3>Coaliciones</h3><p>Suma los escaños medios de los partidos elegidos. «Mayoría mínima» son combinaciones que llegan a la mayoría y en las que ningún partido sobra. «En X de N encuestas» cuenta las casas cuya última estimación de escaños da mayoría (punto medio de su horquilla). Son sumas aritméticas, no pactos previsibles.</p>
+      <h3>Límites</h3><p>Los datos se extraen automáticamente de los textos de Electogrāfica y pueden contener errores de lectura. Contrasta cada cifra con el enlace a la encuesta original.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>Datos: <a href="https://www.electografica.com" rel="noopener">Electogrāfica</a>. Cada encuesta enlaza con su ficha original. Este sitio es independiente y no está afiliado a Electogrāfica.</p>
+  <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>.</p>
+  <p id="upd"></p>
+</div></footer>
+<div class="tip" id="tip" hidden></div>
+<script src="assets/app.js" type="module"></script>
+</body>
+</html>

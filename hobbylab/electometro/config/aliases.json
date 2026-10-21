@@ -1,0 +1,37 @@
+{
+    "_comment":  "Party keys to merge per election before averaging. Keys are upper-case, accent-free, as the parser normalises names (\"Compromís-FV\" -\u003e \"COMPROMIS FV\"). Values that land on the same key in one poll are added up. \"names\" overrides the label shown for a key.",
+    "es-congreso":  {
+                        "merge":  {
+                                      "FA":  "SUMAR",
+                                      "FA FV":  "SUMAR",
+                                      "COMPROMIS FV":  "SUMAR"
+                                  },
+                        "names":  {
+                                      "SUMAR":  "SUMAR / FA"
+                                  }
+                    },
+    "es-autonomicas-cataluna":  {
+                                    "merge":  {
+                                                  "JUNTS+":  "JUNTS",
+                                                  "CAT JUNTS+":  "JUNTS",
+                                                  "JUNTSXCAT":  "JUNTS",
+                                                  "JXCAT":  "JUNTS",
+                                                  "COMUNS SUMAR":  "COMUNS",
+                                                  "CAT EN COMU":  "COMUNS",
+                                                  "ALIANCA CAT":  "AC",
+                                                  "CIUTADANS PARTIT DE LA CIUTADANIA":  "CS",
+                                                  "SE ACABO LA FIESTA":  "SALF"
+                                              },
+                                    "names":  {
+                                                  "JUNTS":  "Junts",
+                                                  "COMUNS":  "Comuns",
+                                                  "AC":  "Aliança Catalana",
+                                                  "SALF":  "SALF"
+                                              }
+                                },
+    "es-municipales-murcia":  {
+                                  "merge":  {
+                                                "PODEMOS IUV AV":  "PODEMOS IU"
+                                            }
+                              }
+}

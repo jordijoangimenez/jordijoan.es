@@ -200,6 +200,12 @@ function renderSeats(d) {
     el('div', { class: 'seats-body' }, [hemi, list]));
 }
 
+// "Última encuesta publicada: 19/10/2026 (trabajo de campo hasta el 14/10/2026)."
+function lastPoll(d) {
+  const f = fdate(d.now.d);
+  return d.now.pub && d.now.pub !== d.now.d ? `Última encuesta publicada el ${fdate(d.now.pub)} (trabajo de campo hasta el ${f}).` : `Última encuesta: ${f}.`;
+}
+
 // ---------- votes ----------
 function renderVotes(d) {
   const card = $('votesCard'); clear(card);
@@ -225,7 +231,7 @@ function renderVotes(d) {
   card.append(key);
   if (rest.length) card.append(el('p', { class: 'others', text: 'Otros: ' + rest.map(v => `${pname(d, v.k)} ${fmt(v.v)}`).join(' · ') }));
   const nu = d.now.used.filter(u => u.w >= 0.005).length;
-  card.append(el('p', { class: 'others', text: `${nu} casas, última encuesta ${fdate(d.now.d)}${d.now.since ? ' · desde las elecciones del ' + fdate(d.now.since) : ''}.` }));
+  card.append(el('p', { class: 'others', text: `${nu} casas · ${lastPoll(d)}${d.now.since ? ' · desde las elecciones del ' + fdate(d.now.since) : ''}.` }));
 }
 
 // ---------- coalitions ----------
@@ -607,7 +613,7 @@ function render() {
   const nowD = d.now?.d;
   const stale = nowD && (Date.now() - Date.parse(nowD)) > 120 * 864e5;
   hero.append(el('p', { class: 'eyebrow', text: KIND[d.kind] || d.kind }), el('h1', { text: d.name }),
-    el('p', { class: 'sub', text: d.now ? `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. Última encuesta: ${fdate(d.now.d)}.` : 'Esta elección solo tiene resultados, sin encuestas utilizables.' }));
+    el('p', { class: 'sub', text: d.now ? `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. ${lastPoll(d)}` : 'Esta elección solo tiene resultados, sin encuestas utilizables.' }));
   if (stale) hero.append(el('span', { class: 'stale', text: 'Datos antiguos: la última encuesta tiene más de cuatro meses.' }));
   renderSeats(d); renderVotes(d); renderCoal(d); renderFit(d); renderMap(d); renderTrend(d); renderPolls(d);
 }

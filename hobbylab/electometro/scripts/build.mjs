@@ -178,7 +178,7 @@ async function main() {
       if (sa) sa.seats.sort((a, b) => b.s - a.s || b.x - a.x);
       const wsum = va.used.reduce((a, u) => a + u.w, 0);
       now = {
-        d: dayStr(tNow), since: Number.isFinite(cs) ? dayStr(cs) : null, nCycle: cyc.length,
+        d: dayStr(tNow), pub: recs.reduce((m, r) => (!r.fr && r.pub > m ? r.pub : m), ''), since: Number.isFinite(cs) ? dayStr(cs) : null, nCycle: cyc.length,
         votes, seats: sa,
         used: va.used.sort((a, b) => b.w - a.w).map(u => ({ id: u.p.id, po: u.p.po, d: u.p.d, w: +(u.w / wsum).toFixed(3) })),
       };

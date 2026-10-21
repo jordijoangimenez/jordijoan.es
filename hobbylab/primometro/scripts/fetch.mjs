@@ -40,11 +40,11 @@ async function csv(path) {
   }
 }
 
-// Eurostat HICP, annual rate of change, all items (ECOICOP ver. 2 dataset introduced in 2026, back-cast to 1997).
-// Eurostat writes Greece as EL and the euro area as EA (composition changing over time).
-async function inflation(codes) {
-  const geo = codes.map(c => (c === 'GR' ? 'EL' : c === 'U2' ? 'EA' : c));
-  const url = 'https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_minr?format=JSON&unit=RCH_A&coicop18=TOTAL&' + geo.map(g => 'geo=' + g).join('&');
+// Eurostat dataset -> { area: [[period, value], ...] }. Eurostat writes Greece as EL; the euro area code
+// differs by dataset (EA = changing composition where it exists), passed in as `ea`.
+async function eurostat(dataset, params, codes, ea = 'EA') {
+  const geo = codes.map(c => (c === 'GR' ? 'EL' : c === 'U2' ? ea : c));
+  const url = `https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/${dataset}?format=JSON&${params}&` + geo.map(g => 'geo=' + g).join('&');
   for (let i = 1; ; i++) {
     try {
       const res = await fetch(url, { headers: { 'user-agent': 'primometro (+https://jordijoan.es/hobbylab/)' } });
@@ -56,7 +56,7 @@ async function inflation(codes) {
       const geoIx = j.dimension.geo.category.index, timeIx = j.dimension.time.category.index;
       const out = {};
       for (const [g, gi] of Object.entries(geoIx)) {
-        const code = g === 'EL' ? 'GR' : g === 'EA' ? 'U2' : g;
+        const code = g === 'EL' ? 'GR' : g === ea ? 'U2' : g;
         const rows = [];
         for (const [t, ti] of Object.entries(timeIx)) {
           const v = j.value[gi * stride.geo + ti * stride.time];
@@ -90,7 +90,15 @@ const mroByDay = new Map(mrrMbr.map(r => [r.t, r.v]));
 for (const r of mrrFr) mroByDay.set(r.t, r.v);
 const mro = [...mroByDay].map(([t, v]) => ({ t, v }));
 
-const infl = await inflation([...Object.keys(EURO), 'U2']);
+const AREAS = [...Object.keys(EURO), 'U2'];
+// HICP, annual rate of change, all items (ECOICOP ver. 2 dataset introduced in 2026, back-cast to 1997)
+const infl = await eurostat('prc_hicp_minr', 'unit=RCH_A&coicop18=TOTAL', AREAS);
+// the price index itself (2025 = 100), for inflation accumulated between two months
+const hicp = await eurostat('prc_hicp_minr', 'unit=I25&coicop18=TOTAL', AREAS);
+// general government net lending (+) / borrowing (−), % of GDP, annual, from the EDP notifications;
+// the euro area aggregate here is the fixed EA20 composition
+const deficitRows = await eurostat('gov_10dd_edpt1', 'na_item=B9&sector=S13&unit=PC_GDP', AREAS, 'EA20');
+const deficit = Object.fromEntries(Object.entries(deficitRows).map(([k, rows]) => [k, rows.map(([y, v]) => [y, Math.round(v * 10) / 10])]));
 
 const doc = {
   updated: null,
@@ -99,6 +107,8 @@ const doc = {
   countries: Object.fromEntries(Object.entries(EURO).map(([k, [n, euro]]) => [k, { n, euro }])),
   yields,
   inflation: infl,
+  hicp,
+  deficit,
   rates: { dfr: changes(dfr), mro: changes(mro), mlf: changes(mlf) },
 };
 
@@ -112,6 +122,9 @@ if (doc.rates.dfr.length < 30) problems.push('deposit rate history too short');
 if (old) for (const k in old.yields) if ((yields[k]?.length || 0) < old.yields[k].length) problems.push(`${k} lost months`);
 for (const k of [...Object.keys(EURO), 'U2']) if ((infl[k]?.length || 0) < 200) problems.push(`inflation series too short for ${k}`);
 if (old?.inflation) for (const k in old.inflation) if ((infl[k]?.length || 0) < old.inflation[k].length) problems.push(`${k} lost inflation months`);
+for (const k of AREAS) if ((deficit[k]?.length || 0) < 10) problems.push(`deficit series too short for ${k}`);
+for (const k of AREAS) if ((hicp[k]?.length || 0) < 200) problems.push(`price index too short for ${k}`);
+if (old?.deficit) for (const k in old.deficit) if ((deficit[k]?.length || 0) < old.deficit[k].length) problems.push(`${k} lost deficit years`);
 if (problems.length) { console.error('Not updating: ' + problems.join('; ')); process.exit(1); }
 
 const same = old && JSON.stringify({ ...old, updated: null }) === JSON.stringify(doc);
@@ -119,4 +132,4 @@ doc.updated = same ? old.updated : new Date().toISOString();
 await mkdir(join(ROOT, 'data'), { recursive: true });
 await writeFile(OUT, JSON.stringify(doc) + '\n');
 const last = yields.DE[yields.DE.length - 1][0];
-console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} yield series, last month ${last}; ${Object.keys(infl).length} inflation series, last month ${infl.U2.at(-1)[0]}; deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);
+console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} yield series, last month ${last}; ${Object.keys(infl).length} inflation series, last month ${infl.U2.at(-1)[0]}; ${Object.keys(deficit).length} deficit series, last year ${deficit.U2.at(-1)[0]}; deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);

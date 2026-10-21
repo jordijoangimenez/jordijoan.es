@@ -45,20 +45,30 @@ const colorOf = k => css(state.slot[k] || '--s1');
 // ---------- data helpers ----------
 let byMonth = {}; // area -> Map(month -> yield)
 let inflBy = {};  // area -> Map(month -> annual HICP inflation)
+let hicpBy = {};  // area -> Map(month -> HICP index, 2025 = 100)
+let defBy = {};   // area -> Map(year -> government balance, % of GDP; negative = deficit)
 function prep(D) {
-  byMonth = {}; inflBy = {};
+  byMonth = {}; inflBy = {}; hicpBy = {}; defBy = {};
   for (const [k, rows] of Object.entries(D.yields)) byMonth[k] = new Map(rows);
   for (const [k, rows] of Object.entries(D.inflation || {})) inflBy[k] = new Map(rows);
+  for (const [k, rows] of Object.entries(D.hicp || {})) hicpBy[k] = new Map(rows);
+  for (const [k, rows] of Object.entries(D.deficit || {})) defBy[k] = new Map(rows);
 }
 const lastMonth = () => state.D.yields.DE.at(-1)[0];
 const infl = (k, m) => inflBy[k]?.get(m) ?? null;
 const lastInfl = () => state.D.inflation.U2.at(-1)[0];
+const lastDefYear = () => state.D.deficit.U2.at(-1)[0];
+// a month's deficit is its calendar year's, or the latest year published
+const defYear = m => { const y = m.slice(0, 4); return y > lastDefYear() ? lastDefYear() : y; };
+const def = (k, m) => defBy[k]?.get(defYear(m)) ?? null;
 const nf1 = new Intl.NumberFormat('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const pct1 = v => v == null ? '–' : nf1.format(v) + ' %';
-// what the map and the ranking show
+const balTxt = v => v == null ? '–' : v < 0 ? `déficit del ${nf1.format(-v)} %` : v > 0 ? `superávit del ${nf1.format(v)} %` : 'equilibrio';
+// what the map and the ranking show; dir = +1 when higher is worse, −1 when lower is worse
 const METRIC = {
-  prima: { center: 0, val: (k, m) => (k === state.vs ? 0 : prem(k, m)), fmt: v => String(Math.round(v)), full: v => bp(v), last: () => lastMonth() },
-  infl: { center: 2, val: (k, m) => infl(k, m), fmt: v => nf1.format(v), full: v => pct1(v), last: () => lastInfl() },
+  prima: { center: 0, dir: 1, val: (k, m) => (k === state.vs ? 0 : prem(k, m)), fmt: v => String(Math.round(v)), full: v => bp(v), last: () => lastMonth() },
+  infl: { center: 2, dir: 1, val: (k, m) => infl(k, m), fmt: v => nf1.format(v), full: v => pct1(v), last: () => lastInfl() },
+  def: { center: -3, dir: -1, val: (k, m) => def(k, m), fmt: v => nf1.format(v), full: v => balTxt(v), last: () => lastMonth() },
 };
 function prem(k, m) {
   const a = byMonth[k]?.get(m), b = byMonth[state.vs]?.get(m);
@@ -109,24 +119,31 @@ function oklch(L, C, h) {
 const heat = t => { const d = isDark(); return oklch(d ? 0.91 - 0.39 * t : 0.95 - 0.57 * t, 0.08 + 0.10 * t, 100 - 72 * t); };
 const cold = t => { const d = isDark(); return oklch(d ? 0.86 - 0.30 * t : 0.90 - 0.40 * t, 0.05 + 0.09 * t, 255); };
 // warm above the centre (0 pb for the premium, the ECB's 2 % target for inflation), blue below it
-const FIXED = { prima: { max: FIXED_MAX, neg: FIXED_NEG, ticks: [0, 50, 100, 200, 400, 600] }, infl: { max: 10, neg: 3, ticks: [2, 3, 4, 6, 8, 10] } };
+// distances from the centre covered by the comparable scale ("up" = the worse side)
+const FIXED = {
+  prima: { up: FIXED_MAX, down: FIXED_NEG, ticks: [0, 50, 100, 200, 400, 600] },
+  infl: { up: 8, down: 3, ticks: [2, 3, 4, 6, 8, 10] },
+  def: { up: 9, down: 6, ticks: [-3, -4, -6, -8, -10, -12] },
+};
 const niceUp = (v, metric) => {
-  const s = metric === 'infl' ? (v <= 2 ? 0.5 : 1) : v <= 50 ? 10 : v <= 150 ? 25 : v <= 400 ? 50 : 100;
+  const s = metric === 'prima' ? (v <= 50 ? 10 : v <= 150 ? 25 : v <= 400 ? 50 : 100) : v <= 2 ? 0.5 : 1;
   return Math.max(s, Math.ceil(v / s) * s);
 };
 function makeScale(values, metric = 'prima') {
-  const c = METRIC[metric].center, fija = state.scale === 'fija', floor = metric === 'infl' ? 0.5 : 10;
-  const max = fija ? FIXED[metric].max - c : niceUp(Math.max(floor, ...values.map(v => v - c)), metric);
-  const neg = fija ? FIXED[metric].neg : niceUp(Math.max(floor, ...values.map(v => c - v)), metric);
+  const { center: c, dir } = METRIC[metric], fija = state.scale === 'fija', floor = metric === 'prima' ? 10 : 0.5;
+  const dist = v => dir * (v - c); // > 0 on the worse side of the centre
+  const max = fija ? FIXED[metric].up : niceUp(Math.max(floor, ...values.map(dist)), metric);
+  const neg = fija ? FIXED[metric].down : niceUp(Math.max(floor, ...values.map(v => -dist(v))), metric);
   const tPos = d => { const x = Math.min(Math.max(d, 0), max) / max; return fija ? Math.sqrt(x) : x; };
   const tNeg = d => { const x = Math.min(Math.max(d, 0), neg) / neg; return fija ? Math.sqrt(x) : x; };
-  return { kind: fija ? 'fija' : 'mes', metric, center: c, max, neg,
-    fill: v => (v >= c ? heat(tPos(v - c)) : cold(tNeg(c - v))),
-    pos: v => tPos(v - c),
-    // inflation ticks on whole (or half) percentages; the premium in quarters of its range
-    ticks: fija ? FIXED[metric].ticks : metric === 'infl'
-      ? Array.from({ length: Math.round(max / (max <= 2 ? 0.5 : 1)) + 1 }, (_, i) => c + i * (max <= 2 ? 0.5 : 1))
-      : [0, 0.25, 0.5, 0.75, 1].map(f => c + f * max) };
+  const step = max <= 2 ? 0.5 : 1;
+  return { kind: fija ? 'fija' : 'mes', metric, center: c, dir, max, neg,
+    fill: v => (dist(v) >= 0 ? heat(tPos(dist(v))) : cold(tNeg(-dist(v)))),
+    pos: v => tPos(dist(v)),
+    // percentages on whole (or half) points; the premium in quarters of its range
+    ticks: fija ? FIXED[metric].ticks : metric === 'prima'
+      ? [0, 0.25, 0.5, 0.75, 1].map(f => c + f * max)
+      : Array.from({ length: Math.round(max / step) + 1 }, (_, i) => c + dir * i * step) };
 }
 let scale = null;
 const fillOf = v => scale.fill(v);
@@ -182,6 +199,7 @@ function renderHero() {
     tile('Máximo desde el euro', max ? bp(max.v) : '–', max ? mShort(max.m) : ''),
     tile('Tipo de depósito BCE', pct(dfr[1]), `desde el ${dLong(dfr[0])}`),
     tile(`Inflación ${k === 'U2' ? 'zona euro' : cname(k)}`, pct1(infl(k, lastInfl())), `${k === 'U2' ? '' : 'zona euro ' + pct1(infl('U2', lastInfl())) + ' · '}${mShort(lastInfl())}`),
+    tile(`Saldo público ${lastDefYear()}`, pct1(defBy[k]?.get(lastDefYear())), `% del PIB${k === 'U2' ? '' : ' · zona euro ' + pct1(defBy.U2.get(lastDefYear()))}`),
   ]);
   h.append(left, tiles);
 }
@@ -332,13 +350,103 @@ function renderTrend() {
   key.append(el('span', {}, [el('i', { style: `background:${css('--muted')};height:1px;opacity:.6` }), 'Objetivo de inflación del BCE (2 %)']));
   key.append(el('span', { text: 'Tramo más claro en la prima: antes de que el país adoptara el euro.' }));
 
-  // shared crosshair
-  const guides = [svg, rsvg].map(s => { const g = S('line', { class: 'guide', visibility: 'hidden' }); s.append(g); return g; });
+  const yAxis = (s, lo, hi, step, ysf, Hh, fmtTick) => {
+    for (let v = lo; v <= hi + 1e-9; v += step) {
+      s.append(S('line', { x1: m.l, x2: W - m.r, y1: ysf(v), y2: ysf(v), class: Math.abs(v) < 1e-9 ? 'zero-line' : 'grid-line' }));
+      s.append(S('text', { x: m.l - 6, y: ysf(v) + 4, 'text-anchor': 'end', class: 'tick', text: fmtTick(v) }));
+    }
+    axisYears(s, t0, t1, xs, Hh, m);
+  };
+  // end labels, the selected country first, others only where they do not touch a placed label
+  const endLabels = (s, ends, valFmt) => {
+    if (narrow) return;
+    const placed = [];
+    for (const e of [...ends].sort((a, b) => (b.first ? 1 : 0) - (a.first ? 1 : 0))) {
+      if (placed.some(y => Math.abs(y - e.y) < 14)) continue;
+      placed.push(e.y);
+      s.append(S('text', { x: W - m.r + 10, y: e.y + 4, class: 'end-lbl' }, [e.name + ' ', S('tspan', { text: valFmt(e.v) })]));
+    }
+  };
+
+  // inflation accumulated since the start of the period, and what a deposit at the ECB rate earned meanwhile
+  const ch = $('cumChart'); clear(ch);
+  const base = months.find(mm => hicpBy.U2?.has(mm)) || state.D.hicp.U2[0][0];
+  $('cumTitle').textContent = `Inflación acumulada desde ${mShort(base)} (%)`;
+  const cMonths = monthsIn(base, lastInfl() > to ? lastInfl() : to);
+  const cum = (k, mm) => { const a = hicpBy[k]?.get(base), b = hicpBy[k]?.get(mm); return a && b ? (b / a - 1) * 100 : null; };
+  const depAcc = new Map(); { let f = 1; for (const mm of cMonths) { depAcc.set(mm, (f - 1) * 100); f *= 1 + (rateAt(state.D.rates.dfr, mm + '-15') || 0) / 100 / 12; } }
+  const cumLines = [...state.active.map(k => ({ k, name: cname(k), color: colorOf(k), w: 2 })), { k: 'U2', name: 'Zona euro', color: css('--muted'), w: 2 }];
+  const CH = narrow ? 200 : 230;
+  const cv = [...cumLines.flatMap(l => cMonths.map(mm => cum(l.k, mm)).filter(v => v != null)), ...depAcc.values()];
+  let clo = Math.min(0, ...cv), chi = Math.max(5, ...cv);
+  const cstep = niceStep(chi - clo, 4); clo = Math.floor(clo / cstep) * cstep; chi = Math.ceil(chi / cstep) * cstep;
+  const cys = v => m.t + (chi - v) / (chi - clo) * (CH - m.t - m.b);
+  const csvg = S('svg', { viewBox: `0 0 ${W} ${CH}`, height: CH, role: 'img', 'aria-label': `Inflación acumulada desde ${mShort(base)}` });
+  yAxis(csvg, clo, chi, cstep, cys, CH, v => String(Math.round(v)));
+  const cEnds = [];
+  const drawLine = (s, ysf, valOf, color, width, mlist) => {
+    let d = '', pen = false, last = null;
+    for (const mm of mlist) { const v = valOf(mm); if (v == null) { pen = false; continue; } d += `${pen ? 'L' : 'M'}${xs(tMonth(mm)).toFixed(1)},${ysf(v).toFixed(1)}`; pen = true; last = v; }
+    if (d) s.append(S('path', { d, fill: 'none', stroke: color, 'stroke-width': width, 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }));
+    return last;
+  };
+  for (const l of cumLines) { const last = drawLine(csvg, cys, mm => cum(l.k, mm), l.color, l.w, cMonths); if (last != null) cEnds.push({ name: l.name, v: last, y: cys(last), first: l.k === k0 }); }
+  const lastDep = drawLine(csvg, cys, mm => depAcc.get(mm), css('--ink'), 2.5, cMonths);
+  cEnds.push({ name: 'Depósito BCE', v: lastDep, y: cys(lastDep) });
+  endLabels(csvg, cEnds, v => `${v >= 0 ? '+' : ''}${Math.round(v)} %`);
+  ch.append(csvg);
+  const ckey = $('cumKey'); clear(ckey);
+  for (const l of cumLines) ckey.append(el('span', {}, [el('i', { style: `background:${l.color}` }), `Precios ${l.name === 'Zona euro' ? 'zona euro' : l.name}`]));
+  ckey.append(el('span', {}, [el('i', { style: `background:${css('--ink')};height:2.5px` }), 'Rendimiento acumulado al tipo de depósito del BCE']));
+
+  // government balance, % of GDP, one bar per year for the selected country, the euro area as a line
+  const dh = $('defChart'); clear(dh);
+  const yFirst = Math.max(+months[0].slice(0, 4), +state.D.deficit.U2[0][0]), yLast = +lastDefYear();
+  const years = []; for (let y = yFirst; y <= yLast; y++) years.push(String(y));
+  const bal = (k, y) => defBy[k]?.get(y) ?? null;
+  const DH = narrow ? 190 : 220;
+  const dv = [...years.map(y => bal(k0, y)), ...years.map(y => bal('U2', y))].filter(v => v != null);
+  let dlo = Math.min(-4, ...dv), dhi = Math.max(1, ...dv);
+  const dstep = niceStep(dhi - dlo, 4); dlo = Math.floor(dlo / dstep) * dstep; dhi = Math.ceil(dhi / dstep) * dstep;
+  const dys = v => m.t + (dhi - v) / (dhi - dlo) * (DH - m.t - m.b);
+  const dsvg = S('svg', { viewBox: `0 0 ${W} ${DH}`, height: DH, role: 'img', 'aria-label': `Saldo público de ${cname(k0)} y de la zona euro, % del PIB` });
+  yAxis(dsvg, dlo, dhi, dstep, dys, DH, v => String(Math.round(v)));
+  if (-3 >= dlo) dsvg.append(S('line', { x1: m.l, x2: W - m.r, y1: dys(-3), y2: dys(-3), class: 'target-line' }));
+  const yearX = y => xs(Date.UTC(+y, 6, 1));
+  const barW = Math.max(3, Math.min(24, (xs(Date.UTC(2001, 0, 1)) - xs(Date.UTC(2000, 0, 1))) * 0.6));
+  const r = Math.min(4, barW / 2);
+  for (const y of years) {
+    const v = bal(k0, y); if (v == null || Math.abs(v) < 0.05) continue;
+    const x = yearX(y) - barW / 2, y0 = dys(0), y1 = dys(v), h = Math.abs(y1 - y0), rr = Math.min(r, h);
+    // square at the zero line, rounded at the data end
+    const d = v < 0
+      ? `M${x},${y0}V${y1 - rr}Q${x},${y1} ${x + rr},${y1}H${x + barW - rr}Q${x + barW},${y1} ${x + barW},${y1 - rr}V${y0}Z`
+      : `M${x},${y0}V${y1 + rr}Q${x},${y1} ${x + rr},${y1}H${x + barW - rr}Q${x + barW},${y1} ${x + barW},${y1 + rr}V${y0}Z`;
+    dsvg.append(S('path', { d, fill: colorOf(k0) }));
+  }
+  let eaPath = '', eaLast = null;
+  for (const y of years) { const v = bal('U2', y); if (v == null) continue; eaPath += `${eaPath ? 'L' : 'M'}${yearX(y).toFixed(1)},${dys(v).toFixed(1)}`; eaLast = [y, v]; }
+  if (k0 !== 'U2') {
+    dsvg.append(S('path', { d: eaPath, fill: 'none', stroke: css('--muted'), 'stroke-width': 2, 'stroke-linejoin': 'round' }));
+    for (const y of years) { const v = bal('U2', y); if (v != null) dsvg.append(S('circle', { cx: yearX(y), cy: dys(v), r: 3, fill: css('--muted'), stroke: css('--surface'), 'stroke-width': 1.5 })); }
+  }
+  const dEnds = [{ name: cname(k0), v: bal(k0, String(yLast)), first: true }, ...(k0 !== 'U2' && eaLast ? [{ name: 'Zona euro', v: eaLast[1] }] : [])].filter(e => e.v != null).map(e => ({ ...e, y: dys(e.v) }));
+  endLabels(dsvg, dEnds, v => `${nf1.format(v)} %`);
+  dh.append(dsvg);
+  const dkey = $('defKey'); clear(dkey);
+  dkey.append(el('span', {}, [el('i', { style: `background:${colorOf(k0)};height:10px;width:10px;border-radius:2px` }), `${cname(k0)} (barras; negativo = déficit)`]));
+  if (k0 !== 'U2') dkey.append(el('span', {}, [el('i', { style: `background:${css('--muted')}` }), 'Zona euro (EA20)']));
+  dkey.append(el('span', {}, [el('i', { style: `background:${css('--muted')};height:1px;opacity:.6` }), 'Límite de la UE: déficit del 3 %']));
+  dkey.append(el('span', { text: `Datos anuales hasta ${yLast}.` }));
+
+  // shared crosshair across the four charts
+  const charts = [[svg, H], [rsvg, RH], [csvg, CH], [dsvg, DH]];
+  const guides = charts.map(([s]) => { const g = S('line', { class: 'guide', visibility: 'hidden' }); s.append(g); return g; });
   let cur = months.length - 1;
   const at = (i, ev) => {
     cur = Math.max(0, Math.min(months.length - 1, i));
     const mm = months[cur], x = xs(tMonth(mm));
-    guides.forEach((g, j) => { g.setAttribute('x1', x); g.setAttribute('x2', x); g.setAttribute('y1', m.t); g.setAttribute('y2', (j ? RH : H) - m.b); g.setAttribute('visibility', 'visible'); });
+    guides.forEach((g, j) => { g.setAttribute('x1', x); g.setAttribute('x2', x); g.setAttribute('y1', m.t); g.setAttribute('y2', charts[j][1] - m.b); g.setAttribute('visibility', 'visible'); });
     const r = svg.getBoundingClientRect();
     const e = ev || { clientX: r.left + x * r.width / W, clientY: r.top + 30 };
     showTip(e, t => {
@@ -351,10 +459,21 @@ function renderTrend() {
       t.append(tipRow(css('--muted'), 'Inflación zona euro', pct1(ea)));
       if (k0 !== 'U2') t.append(tipRow(colorOf(k0), `Inflación ${cname(k0)}`, pct1(ci)));
       if (dep != null && ea != null) t.append(tipRow('transparent', 'Tipo real (depósito − inflación zona euro)', pct1(dep - ea)));
+      t.append(el('div', { class: 'sep' }));
+      const sign = v => v == null ? '–' : `${v >= 0 ? '+' : ''}${nf1.format(v)} %`;
+      t.append(el('div', { class: 'h', text: `Desde ${mShort(base)}` }));
+      t.append(tipRow(colorOf(k0), `Precios ${cname(k0)}`, sign(cum(k0, mm))));
+      if (k0 !== 'U2') t.append(tipRow(css('--muted'), 'Precios zona euro', sign(cum('U2', mm))));
+      t.append(tipRow(css('--ink'), 'Depósito al tipo del BCE', sign(depAcc.get(mm))));
+      t.append(el('div', { class: 'sep' }));
+      const yy = mm.slice(0, 4);
+      t.append(el('div', { class: 'h', text: `Saldo público ${yy > lastDefYear() ? lastDefYear() + ' (último publicado)' : yy}` }));
+      t.append(tipRow(colorOf(k0), cname(k0), `${def(k0, mm) == null ? '–' : nf1.format(def(k0, mm)) + ' % del PIB'}`));
+      if (k0 !== 'U2') t.append(tipRow(css('--muted'), 'Zona euro', `${def('U2', mm) == null ? '–' : nf1.format(def('U2', mm)) + ' %'}`));
     });
   };
   const near = (ev, s, w) => { const r = s.getBoundingClientRect(); const px = (ev.clientX - r.left) * w / r.width; let b = 0, bd = 1e12; months.forEach((mm, i) => { const d = Math.abs(xs(tMonth(mm)) - px); if (d < bd) { bd = d; b = i; } }); return b; };
-  for (const [s, h] of [[svg, H], [rsvg, RH]]) {
+  for (const [s, h] of charts) {
     const hit = S('rect', { x: m.l, y: m.t, width: W - m.l - m.r, height: h - m.t - m.b, class: 'hit', tabindex: 0, 'aria-label': 'Valores por mes; usa las flechas izquierda y derecha' });
     hit.onpointermove = ev => at(near(ev, s, W), ev);
     hit.onpointerleave = () => { hideTip(); guides.forEach(g => g.setAttribute('visibility', 'hidden')); };
@@ -367,8 +486,9 @@ function renderTrend() {
   const det = $('trendTable'); [...det.children].slice(1).forEach(c => c.remove());
   const rows = months.slice(-24).reverse();
   const tbl = el('table', { class: 't' }, [
-    el('thead', {}, [el('tr', {}, [el('th', { text: 'Mes' }), ...state.active.map(k => el('th', { text: `${cname(k)} (pb)` })), el('th', { text: 'Depósito BCE' }), el('th', { text: `Inflación ${cname(k0)}` }), el('th', { text: 'Inflación zona euro' })])]),
-    el('tbody', {}, rows.map(mm => el('tr', {}, [el('td', { text: mShort(mm) }), ...state.active.map(k => el('td', { text: bp(prem(k, mm)) })), el('td', { text: pct(rateAt(state.D.rates.dfr, mm + '-15')) }), el('td', { text: pct1(infl(k0, mm)) }), el('td', { text: pct1(infl('U2', mm)) })]))),
+    el('thead', {}, [el('tr', {}, [el('th', { text: 'Mes' }), ...state.active.map(k => el('th', { text: `${cname(k)} (pb)` })), el('th', { text: 'Depósito BCE' }), el('th', { text: `Inflación ${cname(k0)}` }), el('th', { text: 'Inflación zona euro' }), el('th', { text: `Precios desde ${mShort(base)}` }), el('th', { text: 'Saldo público (año)' })])]),
+    el('tbody', {}, rows.map(mm => el('tr', {}, [el('td', { text: mShort(mm) }), ...state.active.map(k => el('td', { text: bp(prem(k, mm)) })), el('td', { text: pct(rateAt(state.D.rates.dfr, mm + '-15')) }), el('td', { text: pct1(infl(k0, mm)) }), el('td', { text: pct1(infl('U2', mm)) }),
+      el('td', { text: cum(k0, mm) == null ? '–' : `+${nf1.format(cum(k0, mm))} %` }), el('td', { text: def(k0, mm) == null ? '–' : `${nf1.format(def(k0, mm))} % (${defYear(mm)})` })]))),
   ]);
   det.append(el('div', { class: 'table-wrap' }, [tbl]));
 }
@@ -376,16 +496,18 @@ function renderTrend() {
 // ---------- map + ranking (same month) ----------
 const mapLast = () => METRIC[state.metric].last();
 const mapMonthNow = () => { const L = mapLast(); return state.mapMonth && state.mapMonth <= L ? state.mapMonth : L; };
-const metricHint = () => state.metric === 'infl' ? 'inflación anual (IPCA) · objetivo del BCE: 2 %' : `prima frente a ${refName()}`;
+const metricHint = () => state.metric === 'infl' ? 'inflación anual (IPCA) · objetivo del BCE: 2 %'
+  : state.metric === 'def' ? 'saldo público, % del PIB · límite de la UE: déficit del 3 %' : `prima frente a ${refName()}`;
+const mapTitle = mm => state.metric === 'def' ? `año ${defYear(mm)}` : mLong(mm);
 
 function renderMap() {
   const card = $('mapCard'); clear(card);
   const isPrima = state.metric === 'prima', MT = METRIC[state.metric];
   const M = state.map, all = monthsIn('1999-01', mapLast());
   const mm = mapMonthNow();
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: `Mapa · ${mLong(mm)}` }), el('span', { class: 'hint', text: metricHint() })]));
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: `Mapa · ${mapTitle(mm)}` }), el('span', { class: 'hint', text: metricHint() })]));
   const mseg = el('div', { class: 'seg scale-seg', role: 'group', 'aria-label': 'Qué muestra el mapa' });
-  for (const [k, n] of [['prima', 'Prima de riesgo'], ['infl', 'Inflación']]) {
+  for (const [k, n] of [['prima', 'Prima de riesgo'], ['infl', 'Inflación'], ['def', 'Déficit público']]) {
     const b = el('button', { 'aria-pressed': String(state.metric === k), text: n });
     b.onclick = () => { state.metric = k; writeHash(); renderMap(); renderRank(); };
     mseg.append(b);
@@ -441,11 +563,17 @@ function renderMap() {
         t.append(tipRow(css('--axis'), 'Bono a 10 años', pct(byMonth[code].get(mm))));
         t.append(tipRow(css('--axis'), 'Inflación', pct1(infl(code, mm))));
         if (!inEuro(code, mm)) t.append(el('div', { class: 'h', text: 'Aún no usaba el euro' }));
-      } else {
+      } else if (state.metric === 'infl') {
         t.append(tipRow(fillOf(v), 'Inflación anual', pct1(v)));
         t.append(tipRow(css('--axis'), 'Zona euro', pct1(infl('U2', mm))));
         const pr = prem(code, mm);
         if (pr != null && code !== state.vs) t.append(tipRow(css('--axis'), 'Prima de riesgo', bp(pr)));
+      } else {
+        t.append(el('div', { class: 'h', text: `Año ${defYear(mm)}` }));
+        t.append(tipRow(fillOf(v), 'Saldo público', `${nf1.format(v)} % del PIB`));
+        t.append(tipRow(css('--axis'), 'Zona euro', `${nf1.format(def('U2', mm))} %`));
+        const pr = prem(code, mm);
+        if (pr != null && code !== state.vs) t.append(tipRow(css('--axis'), `Prima de riesgo (${mShort(mm)})`, bp(pr)));
       }
     });
     p.onpointermove = tipF; p.onpointerleave = hideTip;
@@ -467,12 +595,14 @@ function renderMap() {
   const stops = Array.from({ length: 13 }, (_, i) => `${heat(i / 12)} ${(i / 12 * 100).toFixed(1)}%`).join(', ');
   const tickTxt = t => (isPrima ? String(Math.round(t)) : nf1.format(t).replace(/,0$/, ''));
   const ticks = el('div', { class: 'ramp-ticks' }, scale.ticks.map((t, i) => el('span', { style: `left:${(scale.pos(t) * 100).toFixed(1)}%`, class: i === 0 ? 'first' : i === scale.ticks.length - 1 ? 'last' : '', text: `${tickTxt(t)}${i === scale.ticks.length - 1 && scale.kind === 'fija' ? '+' : ''}` })));
-  const what = isPrima ? 'Prima en pb' : 'Inflación anual en %, desde el objetivo del 2 %';
+  const what = isPrima ? 'Prima en pb' : state.metric === 'infl' ? 'Inflación anual en %, desde el objetivo del 2 %' : 'Saldo público en % del PIB, desde el límite del −3 %';
   const ramp = el('div', { class: 'ramp-box' }, [el('div', { class: 'ramp-title', text: `${what}${scale.kind === 'mes' ? ' · escala ajustada a este mes' : ' · misma escala todos los meses'}` }),
     el('div', { class: 'ramp', style: `background:linear-gradient(90deg, ${stops})` }), ticks]);
   card.append(ramp);
   const lg = el('div', { class: 'map-legend' });
-  const below = isPrima ? `Por debajo de la referencia (hasta −${scale.neg} pb)` : `Por debajo del 2 % (hasta ${nf1.format(2 - scale.neg)} %)`;
+  const below = isPrima ? `Por debajo de la referencia (hasta −${scale.neg} pb)`
+    : state.metric === 'infl' ? `Por debajo del 2 % (hasta ${nf1.format(2 - scale.neg)} %)`
+    : `Déficit menor del 3 % o superávit (hasta ${nf1.format(-3 + scale.neg)} %)`;
   lg.append(el('span', {}, [el('i', { style: `background:linear-gradient(90deg, ${cold(0.15)}, ${cold(1)})` }), below]));
   if (isPrima) lg.append(el('span', {}, [el('i', { class: 'ref-key' }), state.vs === 'DE' ? 'Alemania (referencia)' : 'Referencia: media zona euro']));
   lg.append(el('span', {}, [el('i', { class: 'ctx-key' }), 'Fuera del euro o sin datos']));
@@ -485,8 +615,10 @@ function renderRank() {
   const card = $('rankCard'); clear(card);
   const isPrima = state.metric === 'prima', MT = METRIC[state.metric];
   const mm = mapMonthNow();
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Clasificación' }), el('span', { class: 'hint', text: `${mLong(mm)} · ${isPrima ? 'pb frente a ' + refName() : 'inflación anual, %'}` })]));
-  const rows = Object.keys(state.D.countries).filter(k => !isPrima || k !== state.vs).map(k => [k, MT.val(k, mm)]).filter(r => r[1] != null).sort((a, b) => b[1] - a[1]);
+  const what = isPrima ? 'pb frente a ' + refName() : state.metric === 'infl' ? 'inflación anual, %' : 'saldo público, % del PIB (negativo = déficit)';
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Clasificación' }), el('span', { class: 'hint', text: `${mapTitle(mm)} · ${what}` })]));
+  // worst first: highest premium or inflation, largest deficit
+  const rows = Object.keys(state.D.countries).filter(k => !isPrima || k !== state.vs).map(k => [k, MT.val(k, mm)]).filter(r => r[1] != null).sort((a, b) => MT.dir * (b[1] - a[1]));
   if (!rows.length) { card.append(el('p', { class: 'note', text: 'Sin datos para ese mes.' })); return; }
   const mx = Math.max(...rows.map(r => r[1]), 1), mn = Math.min(0, ...rows.map(r => r[1]));
   const span = mx - mn, zero = -mn / span * 100;
@@ -500,7 +632,8 @@ function renderRank() {
     box.append(b);
   }
   card.append(box);
-  if (!isPrima) card.append(el('p', { class: 'note', text: `Zona euro: ${pct1(infl('U2', mm))}. Fuente: Eurostat.` }));
+  if (state.metric === 'infl') card.append(el('p', { class: 'note', text: `Zona euro: ${pct1(infl('U2', mm))}. Fuente: Eurostat.` }));
+  if (state.metric === 'def') card.append(el('p', { class: 'note', text: `Zona euro: ${nf1.format(def('U2', mm))} %. El límite de la UE es un déficit del 3 % del PIB. Fuente: Eurostat (notificación de déficit excesivo).` }));
   if (mm !== mapLast()) card.append(el('p', { class: 'note', text: 'Mes elegido en el mapa. Mueve el control al final para ver el último dato.' }));
 }
 
@@ -540,7 +673,7 @@ function renderDecisions() {
 
 // ---------- routing, theme ----------
 function writeHash() {
-  const h = `#${state.country}?vs=${state.vs}&r=${state.range}&c=${state.active.join(',')}${state.metric === 'infl' ? '&v=infl' : ''}`;
+  const h = `#${state.country}?vs=${state.vs}&r=${state.range}&c=${state.active.join(',')}${state.metric !== 'prima' ? '&v=' + state.metric : ''}`;
   if (location.hash !== h) history.replaceState(null, '', h);
 }
 function readHash() {
@@ -551,7 +684,7 @@ function readHash() {
   if (k && state.D.countries[k] && k !== state.vs) state.country = k;
   if (/^\d{4}-\d{2}$/.test(p.get('m') || '') && p.get('m') >= '1999-01' && p.get('m') <= lastMonth()) state.mapMonth = p.get('m');
   if (p.get('s') === 'fija' || p.get('s') === 'mes') state.scale = p.get('s');
-  if (p.get('v') === 'infl' || p.get('v') === 'prima') state.metric = p.get('v');
+  if (['infl', 'prima', 'def'].includes(p.get('v'))) state.metric = p.get('v');
   const c = (p.get('c') || '').split(',').filter(x => state.D.countries[x] && x !== state.vs);
   if (c.length) state.active = c.slice(0, 8);
   if (!state.active.includes(state.country)) state.active.unshift(state.country);

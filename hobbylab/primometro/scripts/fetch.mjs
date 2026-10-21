@@ -99,6 +99,11 @@ const hicp = await eurostat('prc_hicp_minr', 'unit=I25&coicop18=TOTAL', AREAS);
 // the euro area aggregate here is the fixed EA20 composition
 const deficitRows = await eurostat('gov_10dd_edpt1', 'na_item=B9&sector=S13&unit=PC_GDP', AREAS, 'EA20');
 const deficit = Object.fromEntries(Object.entries(deficitRows).map(([k, rows]) => [k, rows.map(([y, v]) => [y, Math.round(v * 10) / 10])]));
+// real GDP: growth on the previous year (%), chain-linked volume (million euro, 2020 prices) for the accumulated
+// growth, and the latest quarters' growth on the same quarter a year earlier (seasonally and calendar adjusted)
+const gdpGrowth = await eurostat('nama_10_gdp', 'na_item=B1GQ&unit=CLV_PCH_PRE', AREAS, 'EA20');
+const gdpVolume = await eurostat('nama_10_gdp', 'na_item=B1GQ&unit=CLV20_MEUR', AREAS, 'EA20');
+const gdpQuarter = await eurostat('namq_10_gdp', 'na_item=B1GQ&unit=CLV_PCH_SM&s_adj=SCA&sinceTimePeriod=2015-Q1', AREAS, 'EA20');
 
 const doc = {
   updated: null,
@@ -109,6 +114,7 @@ const doc = {
   inflation: infl,
   hicp,
   deficit,
+  gdp: { growth: gdpGrowth, volume: gdpVolume, quarter: gdpQuarter },
   rates: { dfr: changes(dfr), mro: changes(mro), mlf: changes(mlf) },
 };
 
@@ -124,6 +130,8 @@ for (const k of [...Object.keys(EURO), 'U2']) if ((infl[k]?.length || 0) < 200) 
 if (old?.inflation) for (const k in old.inflation) if ((infl[k]?.length || 0) < old.inflation[k].length) problems.push(`${k} lost inflation months`);
 for (const k of AREAS) if ((deficit[k]?.length || 0) < 10) problems.push(`deficit series too short for ${k}`);
 for (const k of AREAS) if ((hicp[k]?.length || 0) < 200) problems.push(`price index too short for ${k}`);
+for (const k of AREAS) if ((gdpGrowth[k]?.length || 0) < 10 || (gdpVolume[k]?.length || 0) < 10) problems.push(`GDP series too short for ${k}`);
+if (old?.gdp) for (const k in old.gdp.growth) if ((gdpGrowth[k]?.length || 0) < old.gdp.growth[k].length) problems.push(`${k} lost GDP years`);
 if (old?.deficit) for (const k in old.deficit) if ((deficit[k]?.length || 0) < old.deficit[k].length) problems.push(`${k} lost deficit years`);
 if (problems.length) { console.error('Not updating: ' + problems.join('; ')); process.exit(1); }
 
@@ -132,4 +140,4 @@ doc.updated = same ? old.updated : new Date().toISOString();
 await mkdir(join(ROOT, 'data'), { recursive: true });
 await writeFile(OUT, JSON.stringify(doc) + '\n');
 const last = yields.DE[yields.DE.length - 1][0];
-console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} yield series, last month ${last}; ${Object.keys(infl).length} inflation series, last month ${infl.U2.at(-1)[0]}; ${Object.keys(deficit).length} deficit series, last year ${deficit.U2.at(-1)[0]}; deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);
+console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} yield series, last month ${last}; ${Object.keys(infl).length} inflation series, last month ${infl.U2.at(-1)[0]}; ${Object.keys(deficit).length} deficit series, last year ${deficit.U2.at(-1)[0]}; ${Object.keys(gdpGrowth).length} GDP series, last year ${gdpGrowth.U2.at(-1)[0]}, last quarter ${gdpQuarter.U2?.at(-1)?.[0]}; deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);

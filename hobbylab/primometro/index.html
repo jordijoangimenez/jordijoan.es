@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Primómetro</title>
-<meta name="description" content="La prima de riesgo, la inflación y el déficit público de cada país de la zona euro y su evolución junto a los tipos de interés del BCE, con datos oficiales del BCE y Eurostat.">
+<meta name="description" content="La prima de riesgo, la inflación, el déficit público y el PIB de cada país de la zona euro y su evolución junto a los tipos de interés del BCE, con datos oficiales del BCE y Eurostat.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/primometro/">
-<link rel="stylesheet" href="assets/style.css?v=bf66093d35">
+<link rel="stylesheet" href="assets/style.css?v=4be62263a1">
 <script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
 </head>
 <body>
@@ -51,6 +51,12 @@
     <p class="chart-title" id="cumTitle">Inflación acumulada (%)</p>
     <div class="chart" id="cumChart"></div>
     <div class="key-row" id="cumKey"></div>
+    <p class="chart-title">Crecimiento del PIB real (% anual)</p>
+    <div class="chart" id="gdpChart"></div>
+    <div class="key-row" id="gdpKey"></div>
+    <p class="chart-title" id="gdpCumTitle">PIB real acumulado (%)</p>
+    <div class="chart" id="gdpCumChart"></div>
+    <div class="key-row" id="gdpCumKey"></div>
     <p class="chart-title">Saldo público (% del PIB, anual)</p>
     <div class="chart" id="defChart"></div>
     <div class="key-row" id="defKey"></div>
@@ -67,6 +73,7 @@
       <h3>Inflación</h3><p>Tasa anual del índice de precios de consumo armonizado (IPCA) de Eurostat, la medida que usa el BCE para su objetivo del 2 %. En el mapa, los colores cálidos indican inflación por encima del 2 % y los azules, por debajo. El tipo real es el tipo de depósito menos la inflación de la zona euro: si es negativo, el dinero en depósito pierde poder de compra.</p>
       <h3>Inflación acumulada</h3><p>Cuánto han subido los precios desde el primer mes del periodo elegido, a partir del índice del IPCA de Eurostat (no sumando tasas anuales). La línea del depósito muestra cuánto habría crecido un depósito remunerado cada mes al tipo de depósito del BCE: si queda por debajo de los precios, ese ahorro perdió poder de compra.</p>
       <h3>Déficit público</h3><p>Saldo de las administraciones públicas en % del PIB (capacidad o necesidad de financiación) según las notificaciones de déficit excesivo que publica Eurostat cada abril y octubre. Negativo es déficit; el límite de la UE es un déficit del 3 %. Son datos anuales: para los meses de 2026 se muestra el último año publicado.</p>
+      <h3>PIB</h3><p>Crecimiento anual del producto interior bruto en volumen (descontada la inflación) y crecimiento acumulado desde el primer año del periodo, a partir de la serie encadenada de Eurostat. El último trimestre muestra el crecimiento frente al mismo trimestre del año anterior, corregido de estacionalidad. En Irlanda y Malta el PIB se ve muy afectado por la contabilidad de grandes multinacionales.</p>
       <h3>Tipos del BCE</h3><p>Facilidad de depósito, operaciones principales de financiación y facilidad marginal de crédito, en la fecha en que entra en vigor cada cambio. Entre 2000 y 2008 las operaciones principales se hacían a tipo variable; se muestra el tipo mínimo de puja.</p>
       <h3>Antes del euro</h3><p>Hasta que un país adopta el euro, su diferencial con Alemania incluye el riesgo de tipo de cambio. Ese tramo se dibuja más claro.</p>
       <h3>Países pequeños</h3><p>En países con poca deuda a largo plazo (por ejemplo Estonia, Lituania o Luxemburgo) la serie se basa en pocos bonos o en aproximaciones, y no siempre es comparable con la de los demás.</p>
@@ -76,10 +83,10 @@
 </main>
 
 <footer><div class="wrap">
-  <p id="src">Fuentes: Banco Central Europeo, <a href="https://data.ecb.europa.eu/" rel="noopener">ECB Data Portal</a> (rentabilidad de la deuda y tipos de interés); <a href="https://ec.europa.eu/eurostat/" rel="noopener">Eurostat</a> (inflación, IPCA; déficit público). Este sitio es independiente y no está afiliado al BCE ni a Eurostat.</p>
+  <p id="src">Fuentes: Banco Central Europeo, <a href="https://data.ecb.europa.eu/" rel="noopener">ECB Data Portal</a> (rentabilidad de la deuda y tipos de interés); <a href="https://ec.europa.eu/eurostat/" rel="noopener">Eurostat</a> (inflación, IPCA; déficit público; PIB). Este sitio es independiente y no está afiliado al BCE ni a Eurostat.</p>
   <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. <span id="upd"></span></p>
 </div></footer>
 <div class="tip" id="tip" hidden></div>
-<script src="assets/app.js?v=ec03d8fdd7" type="module"></script>
+<script src="assets/app.js?v=dad33f95ea" type="module"></script>
 </body>
 </html>

@@ -266,9 +266,13 @@ function renderTrend() {
     }
   }
   if (!narrow) {
-    ends.sort((a, b) => a.y - b.y);
-    let py = -99;
-    for (const e of ends) if (e.y - py >= 14) { py = e.y; svg.append(S('text', { x: W - m.r + 10, y: e.y + 4, class: 'end-lbl' }, [cname(e.k) + ' ', S('tspan', { text: String(Math.round(e.v)) })])); }
+    // the selected country is labelled first; others only where they do not touch a placed label
+    const placed = [];
+    for (const e of [...ends].sort((a, b) => (b.k === state.country) - (a.k === state.country))) {
+      if (placed.some(y => Math.abs(y - e.y) < 14)) continue;
+      placed.push(e.y);
+      svg.append(S('text', { x: W - m.r + 10, y: e.y + 4, class: 'end-lbl' }, [cname(e.k) + ' ', S('tspan', { text: String(Math.round(e.v)) })]));
+    }
   }
   holder.append(svg);
 

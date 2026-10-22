@@ -1,19 +1,19 @@
 {
   "jordi_joan_gim_nez_phd_head_of_technolog": {
-    "en": "Jordi-Joan Giménez, PhD: Head of Technology in the 5G-MAG Project Office and Senior Project Manager at the EBU. 15+ years in media delivery, 3GPP standards and open-source media technology.",
-    "ca": "Jordi-Joan Giménez, doctor en Telecomunicació: responsable de Tecnologia a l'Oficina de Projectes de 5G-MAG i gestor sènior de projectes a l'EBU. Més de 15 anys en distribució de continguts, estàndards 3GPP i tecnologia de codi obert.",
-    "es": "Jordi-Joan Giménez, doctor en Telecomunicación: responsable de Tecnología en la Oficina de Proyectos de 5G-MAG y jefe de proyectos sénior en la EBU. Más de 15 años en distribución de contenidos, estándares 3GPP y tecnología de código abierto.",
-    "de": "Dr. Jordi-Joan Giménez: Head of Technology im 5G-MAG Project Office und Senior Project Manager bei der EBU. Über 15 Jahre in Mediendistribution, 3GPP-Standardisierung und Open-Source-Medientechnologie.",
-    "fr": "Jordi-Joan Giménez, docteur en télécommunications : Head of Technology au bureau de projets de 5G-MAG et Senior Project Manager à l'UER. Plus de 15 ans dans la distribution de contenus, la normalisation 3GPP et les technologies open source.",
-    "zh": "Jordi-Joan Giménez 博士：5G-MAG 项目办公室技术主管、EBU 高级项目经理。拥有 15 年以上媒体分发、3GPP 标准化和开源媒体技术经验。"
+    "en": "Jordi-Joan Giménez, PhD: Head of Technology in the 5G-MAG Project Office. 15+ years in media delivery, 3GPP standards and open-source media technology.",
+    "ca": "Jordi-Joan Giménez, doctor en Telecomunicació: responsable de Tecnologia a l'Oficina de Projectes de 5G-MAG. Més de 15 anys en distribució de continguts, estàndards 3GPP i tecnologia de codi obert.",
+    "es": "Jordi-Joan Giménez, doctor en Telecomunicación: responsable de Tecnología en la Oficina de Proyectos de 5G-MAG. Más de 15 años en distribución de contenidos, estándares 3GPP y tecnología de código abierto.",
+    "de": "Dr. Jordi-Joan Giménez: Head of Technology im 5G-MAG Project Office. Über 15 Jahre in Mediendistribution, 3GPP-Standardisierung und Open-Source-Medientechnologie.",
+    "fr": "Jordi-Joan Giménez, docteur en télécommunications : Head of Technology au bureau de projets de 5G-MAG. Plus de 15 ans dans la distribution de contenus, la normalisation 3GPP et les technologies open source.",
+    "zh": "Jordi-Joan Giménez 博士：5G-MAG 项目办公室技术主管。拥有 15 年以上媒体分发、3GPP 标准化和开源媒体技术经验。"
   },
   "head_of_technology_in_the_5g_mag_project": {
-    "en": "Head of Technology in the 5G-MAG Project Office and Senior Project Manager at the EBU. Media delivery, 3GPP standards and open-source media technology.",
-    "ca": "Responsable de Tecnologia a l'Oficina de Projectes de 5G-MAG i gestor sènior de projectes a l'EBU. Distribució de continguts, estàndards 3GPP i tecnologia de codi obert.",
-    "es": "Responsable de Tecnología en la Oficina de Proyectos de 5G-MAG y jefe de proyectos sénior en la EBU. Distribución de contenidos, estándares 3GPP y tecnología de código abierto.",
-    "de": "Head of Technology im 5G-MAG Project Office und Senior Project Manager bei der EBU. Mediendistribution, 3GPP-Standardisierung und Open-Source-Medientechnologie.",
-    "fr": "Head of Technology au bureau de projets de 5G-MAG et Senior Project Manager à l'UER. Distribution de contenus, normalisation 3GPP et technologies open source.",
-    "zh": "5G-MAG 项目办公室技术主管、EBU 高级项目经理。媒体分发、3GPP 标准化与开源媒体技术。"
+    "en": "Head of Technology in the 5G-MAG Project Office. Media delivery, 3GPP standards and open-source media technology.",
+    "ca": "Responsable de Tecnologia a l'Oficina de Projectes de 5G-MAG. Distribució de continguts, estàndards 3GPP i tecnologia de codi obert.",
+    "es": "Responsable de Tecnología en la Oficina de Proyectos de 5G-MAG. Distribución de contenidos, estándares 3GPP y tecnología de código abierto.",
+    "de": "Head of Technology im 5G-MAG Project Office. Mediendistribution, 3GPP-Standardisierung und Open-Source-Medientechnologie.",
+    "fr": "Head of Technology au bureau de projets de 5G-MAG. Distribution de contenus, normalisation 3GPP et technologies open source.",
+    "zh": "5G-MAG 项目办公室技术主管。媒体分发、3GPP 标准化与开源媒体技术。"
   },
   "skip_to_content": {
     "en": "Skip to content",
@@ -120,12 +120,12 @@
     "zh": "<p class=\"pill\">"
   },
   "head_of_technology_5g_mag_project_office": {
-    "en": "Head of Technology, 5G-MAG Project Office · Senior Project Manager, EBU",
-    "ca": "Responsable de Tecnologia, Oficina de Projectes de 5G-MAG · Gestor sènior de projectes, EBU",
-    "es": "Responsable de Tecnología, Oficina de Proyectos de 5G-MAG · Jefe de proyectos sénior, EBU",
-    "de": "Head of Technology, 5G-MAG Project Office · Senior Project Manager, EBU",
-    "fr": "Head of Technology, 5G-MAG Project Office · Senior Project Manager, UER",
-    "zh": "5G-MAG 项目办公室技术主管 · EBU 高级项目经理"
+    "en": "Head of Technology, 5G-MAG Project Office",
+    "ca": "Responsable de Tecnologia, Oficina de Projectes de 5G-MAG",
+    "es": "Responsable de Tecnología, Oficina de Proyectos de 5G-MAG",
+    "de": "Head of Technology, 5G-MAG Project Office",
+    "fr": "Head of Technology, 5G-MAG Project Office",
+    "zh": "5G-MAG 项目办公室技术主管"
   },
   "hi_i_m": {
     "en": "Hi, I'm ",
@@ -264,12 +264,12 @@
     "zh": "编写技术规范"
   },
   "30_technical_contributions_since_2011_mo": {
-    "en": "30+ technical contributions since 2011. Most recently, feature lead for time-frequency interleaving in 3GPP RAN1 Rel-19 for the EBU.",
-    "ca": "Més de 30 contribucions tècniques des de 2011. Més recentment, responsable (feature lead) de l'entrellaçat temps-freqüència a 3GPP RAN1 Rel-19 per a l'EBU.",
-    "es": "Más de 30 contribuciones técnicas desde 2011. Recientemente, responsable (feature lead) del entrelazado tiempo-frecuencia en 3GPP RAN1 Rel-19 para la EBU.",
-    "de": "Mehr als 30 technische Beiträge seit 2011. Zuletzt Feature Lead für Time-Frequency-Interleaving in 3GPP RAN1 Rel-19 für die EBU.",
-    "fr": "Plus de 30 contributions techniques depuis 2011. Dernièrement, responsable (feature lead) de l'entrelacement temps-fréquence au 3GPP RAN1 Rel-19 pour l'UER.",
-    "zh": "自 2011 年以来提交了 30 多项技术文稿。最近代表 EBU 担任 3GPP RAN1 Rel-19 时频交织特性负责人（feature lead）。"
+    "en": "30+ technical contributions since 2011. Most recently, feature lead for time-frequency interleaving in 3GPP RAN1 Rel-19.",
+    "ca": "Més de 30 contribucions tècniques des de 2011. Més recentment, responsable (feature lead) de l'entrellaçat temps-freqüència a 3GPP RAN1 Rel-19.",
+    "es": "Más de 30 contribuciones técnicas desde 2011. Recientemente, responsable (feature lead) del entrelazado tiempo-frecuencia en 3GPP RAN1 Rel-19.",
+    "de": "Mehr als 30 technische Beiträge seit 2011. Zuletzt Feature Lead für Time-Frequency-Interleaving in 3GPP RAN1 Rel-19.",
+    "fr": "Plus de 30 contributions techniques depuis 2011. Dernièrement, responsable (feature lead) de l'entrelacement temps-fréquence au 3GPP RAN1 Rel-19.",
+    "zh": "自 2011 年以来提交了 30 多项技术文稿。最近担任 3GPP RAN1 Rel-19 时频交织特性负责人（feature lead）。"
   },
   "see_my_contributions": {
     "en": "See my contributions ",
@@ -424,12 +424,12 @@
     "zh": "2018 → 至今"
   },
   "feature_lead_for_time_frequency_interlea": {
-    "en": "Feature lead for time-frequency interleaving in Rel-19 for the EBU, including the definition of RRC parameters. Earlier, delegate for LTE-based 5G Terrestrial Broadcast (Rel-16) with the EBU, BBC and IRT: requirements, simulation assumptions, evaluation results and new numerologies for rooftop reception.",
-    "ca": "Responsable de l'entrellaçat temps-freqüència a la Rel-19 per a l'EBU, inclosa la definició dels paràmetres RRC. Abans, delegat per a LTE-based 5G Terrestrial Broadcast (Rel-16) amb l'EBU, la BBC i l'IRT: requisits, hipòtesis de simulació, resultats d'avaluació i noves numerologies per a la recepció amb antena de terrat.",
-    "es": "Responsable del entrelazado tiempo-frecuencia en la Rel-19 para la EBU, incluida la definición de los parámetros RRC. Anteriormente, delegado para LTE-based 5G Terrestrial Broadcast (Rel-16) con la EBU, la BBC y el IRT: requisitos, hipótesis de simulación, resultados de evaluación y nuevas numerologías para recepción con antena en tejado.",
-    "de": "Feature Lead für Time-Frequency-Interleaving in Rel-19 für die EBU, einschließlich der Definition der RRC-Parameter. Zuvor Delegierter für LTE-based 5G Terrestrial Broadcast (Rel-16) mit EBU, BBC und IRT: Anforderungen, Simulationsannahmen, Evaluierungsergebnisse und neue Numerologien für den Empfang über Dachantenne.",
-    "fr": "Responsable de l'entrelacement temps-fréquence dans la Rel-19 pour l'UER, y compris la définition des paramètres RRC. Auparavant, délégué pour LTE-based 5G Terrestrial Broadcast (Rel-16) avec l'UER, la BBC et l'IRT&nbsp;: exigences, hypothèses de simulation, résultats d'évaluation et nouvelles numérologies pour la réception sur antenne de toit.",
-    "zh": "代表 EBU 担任 Rel-19 时频交织特性负责人，包括 RRC 参数的定义。此前与 EBU、BBC 和 IRT 一起担任 LTE-based 5G Terrestrial Broadcast（Rel-16）代表，负责需求、仿真假设、评估结果以及面向屋顶天线接收的新参数集（numerology）。"
+    "en": "Feature lead for time-frequency interleaving in Rel-19, including the definition of RRC parameters. Earlier, delegate for LTE-based 5G Terrestrial Broadcast (Rel-16) with the EBU, BBC and IRT: requirements, simulation assumptions, evaluation results and new numerologies for rooftop reception.",
+    "ca": "Responsable de l'entrellaçat temps-freqüència a la Rel-19, inclosa la definició dels paràmetres RRC. Abans, delegat per a LTE-based 5G Terrestrial Broadcast (Rel-16) amb l'EBU, la BBC i l'IRT: requisits, hipòtesis de simulació, resultats d'avaluació i noves numerologies per a la recepció amb antena de terrat.",
+    "es": "Responsable del entrelazado tiempo-frecuencia en la Rel-19, incluida la definición de los parámetros RRC. Anteriormente, delegado para LTE-based 5G Terrestrial Broadcast (Rel-16) con la EBU, la BBC y el IRT: requisitos, hipótesis de simulación, resultados de evaluación y nuevas numerologías para recepción con antena en tejado.",
+    "de": "Feature Lead für Time-Frequency-Interleaving in Rel-19, einschließlich der Definition der RRC-Parameter. Zuvor Delegierter für LTE-based 5G Terrestrial Broadcast (Rel-16) mit EBU, BBC und IRT: Anforderungen, Simulationsannahmen, Evaluierungsergebnisse und neue Numerologien für den Empfang über Dachantenne.",
+    "fr": "Responsable de l'entrelacement temps-fréquence dans la Rel-19, y compris la définition des paramètres RRC. Auparavant, délégué pour LTE-based 5G Terrestrial Broadcast (Rel-16) avec l'UER, la BBC et l'IRT&nbsp;: exigences, hypothèses de simulation, résultats d'évaluation et nouvelles numérologies pour la réception sur antenne de toit.",
+    "zh": "担任 Rel-19 时频交织特性负责人，包括 RRC 参数的定义。此前与 EBU、BBC 和 IRT 一起担任 LTE-based 5G Terrestrial Broadcast（Rel-16）代表，负责需求、仿真假设、评估结果以及面向屋顶天线接收的新参数集（numerology）。"
   },
   "2020_now": {
     "en": "2020 → now",
@@ -719,21 +719,13 @@
     "fr": "Head of Technology · 5G-MAG Project Office",
     "zh": "技术主管 · 5G-MAG 项目办公室"
   },
-  "senior_project_manager_ebu": {
-    "en": "Senior Project Manager · EBU",
-    "ca": "Gestor sènior de projectes · EBU",
-    "es": "Jefe de proyectos sénior · EBU",
-    "de": "Senior Project Manager · EBU",
-    "fr": "Senior Project Manager · UER",
-    "zh": "高级项目经理 · EBU"
-  },
   "day_to_day_management_of_5g_mag_the_medi": {
-    "en": "Day-to-day management of 5G-MAG – The Media Connectivity Association: member projects and activities, workshops and events, member relations, communication with the media and international fora, and the association's website, social media and GitHub. Lead of the Reference Tools programme and EBU delegate in 3GPP RAN1.",
-    "ca": "Gestió diària de 5G-MAG – The Media Connectivity Association: projectes i activitats dels membres, tallers i esdeveniments, relacions amb els membres, comunicació amb els mitjans i els fòrums internacionals, i el web, les xarxes socials i el GitHub de l'associació. Responsable del programa Reference Tools i delegat de l'EBU a 3GPP RAN1.",
-    "es": "Gestión diaria de 5G-MAG – The Media Connectivity Association: proyectos y actividades de los miembros, talleres y eventos, relaciones con los miembros, comunicación con los medios y los foros internacionales, y la web, las redes sociales y el GitHub de la asociación. Responsable del programa Reference Tools y delegado de la EBU en 3GPP RAN1.",
-    "de": "Tagesgeschäft von 5G-MAG – The Media Connectivity Association: Projekte und Aktivitäten der Mitglieder, Workshops und Veranstaltungen, Mitgliederbeziehungen, Kommunikation mit Medien und internationalen Gremien sowie Website, Social Media und GitHub des Verbands. Leiter des Reference-Tools-Programms und EBU-Delegierter in 3GPP RAN1.",
-    "fr": "Gestion quotidienne de 5G-MAG – The Media Connectivity Association&nbsp;: projets et activités des membres, ateliers et événements, relations avec les membres, communication avec les médias et les instances internationales, ainsi que le site web, les réseaux sociaux et le GitHub de l'association. Responsable du programme Reference Tools et délégué de l'UER au 3GPP RAN1.",
-    "zh": "负责 5G-MAG – The Media Connectivity Association 的日常管理：会员项目与活动、研讨会与活动、会员关系、与媒体及国际组织的沟通，以及协会网站、社交媒体和 GitHub。Reference Tools 项目负责人，EBU 驻 3GPP RAN1 代表。"
+    "en": "Day-to-day management of 5G-MAG – The Media Connectivity Association: member projects and activities, workshops and events, member relations, communication with the media and international fora, and the association's website, social media and GitHub. Lead of the Reference Tools programme.",
+    "ca": "Gestió diària de 5G-MAG – The Media Connectivity Association: projectes i activitats dels membres, tallers i esdeveniments, relacions amb els membres, comunicació amb els mitjans i els fòrums internacionals, i el web, les xarxes socials i el GitHub de l'associació. Responsable del programa Reference Tools.",
+    "es": "Gestión diaria de 5G-MAG – The Media Connectivity Association: proyectos y actividades de los miembros, talleres y eventos, relaciones con los miembros, comunicación con los medios y los foros internacionales, y la web, las redes sociales y el GitHub de la asociación. Responsable del programa Reference Tools.",
+    "de": "Tagesgeschäft von 5G-MAG – The Media Connectivity Association: Projekte und Aktivitäten der Mitglieder, Workshops und Veranstaltungen, Mitgliederbeziehungen, Kommunikation mit Medien und internationalen Gremien sowie Website, Social Media und GitHub des Verbands. Leiter des Reference-Tools-Programms.",
+    "fr": "Gestion quotidienne de 5G-MAG – The Media Connectivity Association&nbsp;: projets et activités des membres, ateliers et événements, relations avec les membres, communication avec les médias et les instances internationales, ainsi que le site web, les réseaux sociaux et le GitHub de l'association. Responsable du programme Reference Tools.",
+    "zh": "负责 5G-MAG – The Media Connectivity Association 的日常管理：会员项目与活动、研讨会与活动、会员关系、与媒体及国际组织的沟通，以及协会网站、社交媒体和 GitHub。Reference Tools 项目负责人。"
   },
   "munich": {
     "en": "Munich",
@@ -1312,12 +1304,12 @@
     "zh": "FOSDEM，布鲁塞尔 · Open Media devroom"
   },
   "ebu_ibc_2023_amsterdam": {
-    "en": "EBU @ IBC 2023, Amsterdam",
-    "ca": "EBU @ IBC 2023, Amsterdam",
-    "es": "EBU @ IBC 2023, Ámsterdam",
-    "de": "EBU @ IBC 2023, Amsterdam",
-    "fr": "EBU @ IBC 2023, Amsterdam",
-    "zh": "EBU @ IBC 2023，阿姆斯特丹"
+    "en": "IBC 2023, Amsterdam",
+    "ca": "IBC 2023, Amsterdam",
+    "es": "IBC 2023, Ámsterdam",
+    "de": "IBC 2023, Amsterdam",
+    "fr": "IBC 2023, Amsterdam",
+    "zh": "IBC 2023，阿姆斯特丹"
   },
   "9th_fraunhofer_fokus_media_web_symposium": {
     "en": "9th Fraunhofer FOKUS Media Web Symposium",
@@ -1328,12 +1320,12 @@
     "zh": "第 9 届 Fraunhofer FOKUS Media Web Symposium"
   },
   "also_an_invited_talk_on_5g_technology_an": {
-    "en": "Also an invited talk on 5G technology and multimedia applications (2024), talks at ETSI, SMPTE, ITU WSIS and TII Abu Dhabi, demonstrations at IBC and MWC, and many 3GPP, DVB and EBU meetings.",
-    "ca": "També una conferència convidada sobre tecnologia 5G i aplicacions multimèdia (2024), xerrades a l'ETSI, SMPTE, ITU WSIS i TII Abu Dhabi, demostracions a l'IBC i al MWC, i nombroses reunions de 3GPP, DVB i l'EBU.",
-    "es": "Además, una conferencia invitada sobre tecnología 5G y aplicaciones multimedia (2024), charlas en ETSI, SMPTE, ITU WSIS y TII Abu Dabi, demostraciones en IBC y MWC, y numerosas reuniones de 3GPP, DVB y la EBU.",
-    "de": "Außerdem ein eingeladener Vortrag zu 5G-Technologie und Multimedia-Anwendungen (2024), Vorträge bei ETSI, SMPTE, ITU WSIS und TII Abu Dhabi, Demonstrationen auf der IBC und dem MWC sowie zahlreiche 3GPP-, DVB- und EBU-Sitzungen.",
-    "fr": "Également une conférence invitée sur la technologie 5G et les applications multimédias (2024), des interventions à l'ETSI, à la SMPTE, à l'ITU WSIS et au TII d'Abou Dhabi, des démonstrations à l'IBC et au MWC, et de nombreuses réunions du 3GPP, du DVB et de l'UER.",
-    "zh": "此外还有一场关于 5G 技术与多媒体应用的特邀报告（2024），在 ETSI、SMPTE、ITU WSIS 和阿布扎比 TII 的演讲，在 IBC 和 MWC 的演示，以及多次 3GPP、DVB 和 EBU 会议。"
+    "en": "Also an invited talk on 5G technology and multimedia applications (2024), talks at ETSI, SMPTE, ITU WSIS and TII Abu Dhabi, demonstrations at IBC and MWC, and many 3GPP and DVB meetings.",
+    "ca": "També una conferència convidada sobre tecnologia 5G i aplicacions multimèdia (2024), xerrades a l'ETSI, SMPTE, ITU WSIS i TII Abu Dhabi, demostracions a l'IBC i al MWC, i nombroses reunions de 3GPP i DVB.",
+    "es": "Además, una conferencia invitada sobre tecnología 5G y aplicaciones multimedia (2024), charlas en ETSI, SMPTE, ITU WSIS y TII Abu Dabi, demostraciones en IBC y MWC, y numerosas reuniones de 3GPP y DVB.",
+    "de": "Außerdem ein eingeladener Vortrag zu 5G-Technologie und Multimedia-Anwendungen (2024), Vorträge bei ETSI, SMPTE, ITU WSIS und TII Abu Dhabi, Demonstrationen auf der IBC und dem MWC sowie zahlreiche 3GPP- und DVB-Sitzungen.",
+    "fr": "Également une conférence invitée sur la technologie 5G et les applications multimédias (2024), des interventions à l'ETSI, à la SMPTE, à l'ITU WSIS et au TII d'Abou Dhabi, des démonstrations à l'IBC et au MWC, et de nombreuses réunions du 3GPP et du DVB.",
+    "zh": "此外还有一场关于 5G 技术与多媒体应用的特邀报告（2024），在 ETSI、SMPTE、ITU WSIS 和阿布扎比 TII 的演讲，在 IBC 和 MWC 的演示，以及多次 3GPP 和 DVB 会议。"
   },
   "publications_patents": {
     "en": "Publications &amp; patents",

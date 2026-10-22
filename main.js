@@ -27,7 +27,7 @@
       none: 'Cap resultat per a «{q}». Prova una altra paraula.', one: '{n} publicació', many: '{n} publicacions',
       morePhotos: 'Mostrar {n} fotos més',
       newTab: '(en una pestanya nova)', toTop: 'Tornar a dalt', prev: 'Foto anterior', next: 'Foto següent',
-      pdf: 'PDF, 320 kB',
+      pdf: 'PDF, 310 kB',
       offer: 'Aquesta pàgina també està disponible en català.', offerGo: 'Llegir en català', offerClose: 'Tancar', offerLabel: 'Suggeriment d’idioma',
       abstract: 'Resum'
     },

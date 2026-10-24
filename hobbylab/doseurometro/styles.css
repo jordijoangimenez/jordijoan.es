@@ -121,6 +121,17 @@ button { font: inherit; color: inherit; }
 .seg button { border: 0; background: none; padding: 7px 12px; border-radius: 7px; cursor: pointer; color: var(--ink-2); font-size: 14px; }
 .seg button:hover { color: var(--ink); }
 .seg button[aria-pressed="true"] { background: var(--accent-wash); color: var(--ink); font-weight: 600; }
+.topics { display: flex; flex-wrap: wrap; gap: 6px; margin: -4px 0 20px; }
+.topics[hidden] { display: none; }
+.chip {
+  display: inline-flex; align-items: baseline; gap: 6px; min-height: 32px; padding: 5px 12px; cursor: pointer;
+  border: 1px solid var(--border); border-radius: 999px; background: var(--surface-2); color: var(--ink-2); font-size: 13px;
+}
+.chip small { color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.chip:hover { color: var(--ink); border-color: color-mix(in srgb, var(--accent) 45%, var(--border)); }
+.chip[aria-pressed="true"] { background: var(--accent-wash); color: var(--ink); border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); font-weight: 600; }
+.chip[aria-pressed="true"] small { color: var(--ink-2); }
+.dlg-topics { font-size: 14px; }
 .error { background: var(--badge-bg); color: var(--badge-text); border-radius: var(--radius); padding: 12px 16px; }
 
 /* ---------- coins ---------- */

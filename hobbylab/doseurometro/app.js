@@ -2,12 +2,14 @@
   'use strict';
 
   var PAGE = 48;
-  var DEFAULTS = { q: '', country: '', from: '', to: '', sort: 'year-asc', view: 'year', kind: '' };
-  var VIEWS = ['all', 'year', 'country', 'common'];
+  var DEFAULTS = { q: '', country: '', from: '', to: '', sort: 'year-desc', view: 'year', kind: '', topic: '' };
+  var VIEWS = ['all', 'year', 'country', 'topic', 'common'];
   var KINDS = ['national', 'common', 'joint'];
   var KIND_LABEL = { national: 'National issue', common: 'Common issue', joint: 'Joint issue' };
   var coins = [];
   var byId = {};
+  var TOPICS = []; // [{ id, label, count }] from data/topics.json; a coin can have several
+  var topicLabel = {};
   var filtered = [];
   var shown = 0;
   var state = Object.assign({}, DEFAULTS);
@@ -42,6 +44,7 @@
     if (['year-asc', 'year-desc', 'country'].indexOf(s.sort) < 0) s.sort = DEFAULTS.sort;
     if (VIEWS.indexOf(s.view) < 0) s.view = DEFAULTS.view;
     if (s.kind && KINDS.indexOf(s.kind) < 0) s.kind = '';
+    if (s.topic && !topicLabel[s.topic]) s.topic = '';
     return { state: s, coin: p.get('coin') || '' };
   }
 
@@ -69,6 +72,7 @@
       if (state.country && c.countryCode !== state.country) return false;
       if (c.year < from || c.year > to) return false;
       if (state.kind && c.kind !== state.kind) return false;
+      if (state.topic && c.topics.indexOf(state.topic) < 0) return false;
       if (state.view === 'common' && c.kind !== 'common') return false;
       if (q && c._search.indexOf(q) < 0) return false;
       return true;
@@ -95,7 +99,14 @@
     box.textContent = '';
     var groups = [];
     var last = null;
-    filtered.forEach(function (c) {
+    if (state.view === 'topic') {
+      // a coin with several topics appears under each of them
+      TOPICS.forEach(function (t) {
+        if (state.topic && t.id !== state.topic) return;
+        var list = filtered.filter(function (c) { return c.topics.indexOf(t.id) >= 0; });
+        if (list.length) groups.push({ key: t.id, title: t.label, coins: list });
+      });
+    } else filtered.forEach(function (c) {
       var g = groupOf(c);
       if (!last || last.key !== g.key) { last = { key: g.key, title: g.title, note: g.note, coins: [] }; groups.push(last); }
       last.coins.push(c);
@@ -106,7 +117,7 @@
       g.coins.forEach(function (c) { countries[c.countryCode] = 1; });
       var sub = g.coins.length + (g.coins.length === 1 ? ' coin' : ' coins');
       if (state.view === 'common') sub = Object.keys(countries).length + ' countries · ' + g.note;
-      else if (state.view === 'year') sub += ' · ' + Object.keys(countries).length + (Object.keys(countries).length === 1 ? ' country' : ' countries');
+      else if (state.view === 'year' || state.view === 'topic') sub += ' · ' + Object.keys(countries).length + (Object.keys(countries).length === 1 ? ' country' : ' countries');
       else sub += ' · ' + g.coins[0].year + ' to ' + g.coins[g.coins.length - 1].year;
       var ul = el('ul', { class: 'grid', 'aria-label': g.title });
       g.coins.forEach(function (c) { ul.appendChild(cardNode(c)); });
@@ -172,6 +183,9 @@
     Array.prototype.forEach.call(document.querySelectorAll('#views button'), function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === state.view));
     });
+    Array.prototype.forEach.call(document.querySelectorAll('#topics button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-topic') === state.topic));
+    });
     // the country view is always ordered by country, then year
     $('f-sort').disabled = state.view === 'country';
   }
@@ -206,6 +220,15 @@
       var same = coins.filter(function (o) { return o.kind === c.kind && (o.commonGroup || o.subject) === (c.commonGroup || c.subject) && o.year === c.year; }).length;
       info.appendChild(el('p', {}, [el('span', { class: 'tag', text: KIND_LABEL[c.kind] }),
         document.createTextNode(' ' + (c.kind === 'common' ? 'Same design issued by ' + same + ' euro-area countries.' : 'Subject shared with another country; designs may differ.'))]));
+    }
+
+    if (c.topics.length) {
+      var tp = el('p', { class: 'dlg-topics' }, [document.createTextNode('Topics: ')]);
+      c.topics.forEach(function (id, i) {
+        if (i) tp.appendChild(document.createTextNode(' · '));
+        tp.appendChild(el('a', { href: buildHash(Object.assign({}, DEFAULTS, { topic: id }), ''), text: topicLabel[id] }));
+      });
+      info.appendChild(tp);
     }
 
     info.appendChild(el('h3', { text: 'Design description' }));
@@ -344,6 +367,14 @@
       syncControls();
       update();
     });
+    $('topics').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-topic]');
+      if (!b) return;
+      var t = b.getAttribute('data-topic');
+      state.topic = state.topic === t ? '' : t;
+      syncControls();
+      update();
+    });
     $('more').addEventListener('click', renderMore);
     ['grid', 'groups'].forEach(function (id) {
       $(id).addEventListener('click', function (e) {
@@ -361,6 +392,24 @@
     $('count').textContent = '';
   }
 
+  // topic chips: "All topics" plus one per topic with its number of coins
+  function fillTopics() {
+    var box = $('topics');
+    box.textContent = '';
+    if (!TOPICS.length) return;
+    box.appendChild(el('button', { type: 'button', class: 'chip', 'data-topic': '', 'aria-pressed': 'true', text: 'All topics' }));
+    TOPICS.forEach(function (t) {
+      box.appendChild(el('button', { type: 'button', class: 'chip', 'data-topic': t.id, 'aria-pressed': 'false' },
+        [document.createTextNode(t.label), el('small', { text: String(t.count) })]));
+    });
+    box.hidden = false;
+  }
+
+  // topics are optional: without data/topics.json the catalogue works as before
+  var topicsReq = fetch('data/topics.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .catch(function () { return null; });
+
   fetch('data/coins.json', { cache: 'no-cache' })
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -372,14 +421,21 @@
           $('generated').setAttribute('datetime', d.toISOString());
         }
       }
-      return r.json();
+      return Promise.all([r.json(), topicsReq]);
     })
-    .then(function (data) {
-      coins = data;
+    .then(function (res) {
+      coins = res[0];
+      var tp = res[1] || { topics: [], coins: {} };
+      TOPICS = tp.topics || [];
+      TOPICS.forEach(function (t) { topicLabel[t.id] = t.label; });
+      if (!TOPICS.length) { var tb = document.querySelector('#views [data-view="topic"]'); if (tb) tb.hidden = true; }
       coins.forEach(function (c) {
         byId[c.id] = c;
-        c._search = [c.subject, c.design, c.country, c.commonGroup || ''].join(' ').toLowerCase();
+        c.topics = (tp.coins && tp.coins[c.id]) || [];
+        c._search = [c.subject, c.design, c.country, c.commonGroup || '']
+          .concat(c.topics.map(function (id) { return topicLabel[id]; })).join(' ').toLowerCase();
       });
+      fillTopics();
       fillSelects();
       bind();
       var h = readHash();

@@ -7,7 +7,7 @@
 <meta name="description" content="Every 2-euro commemorative coin with the design description from the European Commission notice in the Official Journal of the EU.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/doseurometro/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=0a55802b13">
+<link rel="stylesheet" href="styles.css?v=0bb279eafe">
 <link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 </head>
@@ -42,8 +42,8 @@
       </select></div>
     <div class="field"><label for="f-sort">Sort</label>
       <select id="f-sort">
-        <option value="year-asc">Oldest first</option>
         <option value="year-desc">Newest first</option>
+        <option value="year-asc">Oldest first</option>
         <option value="country">Country, A to Z</option>
       </select></div>
     <button type="button" id="f-reset" class="btn">Reset</button>
@@ -65,10 +65,12 @@
       <div id="views" class="seg" role="group" aria-label="Group coins">
         <button type="button" data-view="year" aria-pressed="true">By year</button>
         <button type="button" data-view="country" aria-pressed="false">By country</button>
+        <button type="button" data-view="topic" aria-pressed="false">By topic</button>
         <button type="button" data-view="common" aria-pressed="false">Common issues</button>
         <button type="button" data-view="all" aria-pressed="false">All coins</button>
       </div>
     </div>
+    <div class="topics" id="topics" role="group" aria-label="Filter by topic" hidden></div>
     <p id="error" class="error" role="alert" hidden></p>
     <div id="groups" class="groups" hidden></div>
     <ul id="grid" class="grid" aria-label="Coins" hidden></ul>
@@ -86,6 +88,7 @@
       <h3>Countries</h3><p>Coins from 20 euro area countries and from the four states that issue euro coins under a monetary agreement with the EU: Andorra, Monaco, San Marino and Vatican City.</p>
       <h3>Common issues</h3><p>Coins with the same design issued by every euro area country: the Treaty of Rome (2007), economic and monetary union (2009), ten years of euro cash (2012), the EU flag (2015) and Erasmus (2022). Each country's version has its own name and inscription.</p>
       <h3>Joint issues</h3><p>A subject shared by two or three countries, each with its own coin. The designs may differ.</p>
+      <h3>Topics</h3><p>Each coin is sorted into one or more topics (monuments, nature, arts, famous people and so on) from the words in its official subject. This is an automatic, unofficial classification, so a few coins may sit in a surprising place.</p>
       <h3>New coins</h3><p>A coin appears once its notice is in the Official Journal, which is often months after the coin is issued. The catalogue is updated by hand.</p>
     </div>
   </section>
@@ -119,6 +122,6 @@
   })();
 </script>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="app.js?v=dbf503192c"></script>
+<script src="app.js?v=44dd01e58e"></script>
 </body>
 </html>

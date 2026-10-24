@@ -86,15 +86,28 @@
     reveal('card-primometro');
   }).catch(function () {});
 
-  // ---- Politicómetro: the topics it will compare, and the days left ----
-  getJson('politicometro/config/topics.json').then(function (t) {
-    document.getElementById('stat-topics').textContent = String(t.topics.length);
+  // ---- Politicómetro: the comparison grid it will fill, topics by parties ----
+  // A cell lights up in the party's colour once its programme is in; until then a slow wave runs over the empty grid.
+  Promise.all([getJson('politicometro/config/topics.json'), getJson('politicometro/config/parties.json')]).then(function (res) {
+    var topics = res[0].topics, parties = res[1].parties;
+    document.getElementById('stat-topics').textContent = String(topics.length);
+    var shown = topics.slice(0, 8);
+    var grid = el('div', { class: 'matrix', style: 'grid-template-columns: 88px repeat(' + parties.length + ', minmax(0, 1fr))' });
+    grid.append(el('span'));
+    parties.forEach(function (p) { grid.append(el('i', { class: 'mx-party', title: p.short, style: 'background:' + p.color })); });
+    shown.forEach(function (t, r) {
+      grid.append(el('span', { class: 'mx-topic', lang: 'es', title: t.name, text: t.name.split(/,| y /)[0] }));
+      parties.forEach(function (p, c) {
+        var has = p.docs && p.docs.some(function (d) { return d.kind === 'programa'; });
+        grid.append(el('i', { class: 'mx-cell' + (has ? ' on' : ''), style: '--pc:' + p.color + ';--r:' + r + ';--c:' + c }));
+      });
+    });
+    var published = parties.filter(function (p) { return p.docs && p.docs.some(function (d) { return d.kind === 'programa'; }); }).length;
+    var days = Math.max(0, Math.ceil((Date.parse('2026-11-29T20:00:00+01:00') - Date.now()) / 864e5));
+    var cap = el('p', { class: 'cap' }, ['Programmes published: ', el('b', { text: published + ' of ' + parties.length }), ' · vote in ', el('b', { text: days + ' days' })]);
     var pv = document.getElementById('pv-politicometro');
-    var chips = el('div', { class: 'topics' });
-    t.topics.slice(0, 12).forEach(function (x) { chips.append(el('span', { class: 'chip', lang: 'es', text: x.name })); });
-    var cd = el('div', { class: 'cd', role: 'timer' });
-    pv.append(chips, el('div', { style: 'margin-top:12px' }, [cd]));
-    if (window.HLMotion) window.HLMotion.countdown(cd, '2026-11-29T20:00:00+01:00', { one: 'day to the 29 November vote', many: 'days to the 29 November vote', done: 'Election day' });
+    pv.textContent = '';
+    pv.append(grid, cap);
     reveal('card-politicometro');
   }).catch(function () {});
 })();

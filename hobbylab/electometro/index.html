@@ -1,13 +1,14 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Electómetro</title>
-<meta name="description" content="Media y evolución de todas las encuestas electorales publicadas por Electogrāfica, en un único gráfico del parlamento.">
+<meta name="description" content="Average and trend of every election poll published by Electogrāfica, in a single parliament chart.">
 <link rel="stylesheet" href="assets/style.css?v=e4bbbdb0aa">
-<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+<script src="../shared/lang.js?v=90a9ab947f"></script>
 </head>
 <body data-section="es">
 <header class="top"><div class="wrap">
@@ -16,13 +17,13 @@
     Electómetro
   </a>
   <nav>
-    <a href="./" aria-current="page">España</a>
-    <a href="autonomicas.html">Autonómicas</a>
-    <a href="internacional.html">Internacional</a>
-    <a href="#explorar" class="hide-sm">Explorar</a>
+    <a href="./" aria-current="page" data-i18n="nav_es">Spain</a>
+    <a href="autonomicas.html" data-i18n="nav_aut">Regions</a>
+    <a href="internacional.html" data-i18n="nav_intl">International</a>
+    <a href="#explorar" class="hide-sm" data-i18n="nav_explore">Explore</a>
     <a href="../" class="hide-sm">Hobby Lab</a>
-    <a href="#metodo" class="hide-sm">Método</a>
-    <button class="icon-btn" id="theme" aria-label="Cambiar tema">◐</button>
+    <a href="#metodo" class="hide-sm" data-i18n="nav_method">Method</a>
+    <button class="icon-btn" id="theme" aria-label="Switch theme" data-i18n-attr="aria-label:theme">◐</button>
   </nav>
 </div></header>
 
@@ -30,22 +31,22 @@
   <div class="filters">
     <div class="picker">
       <button class="picker-btn" id="pbtn" aria-haspopup="listbox" aria-expanded="false">
-        <span><span class="lbl">Elección</span><span class="val" id="pval">…</span></span>
+        <span><span class="lbl" data-i18n="election">Election</span><span class="val" id="pval">…</span></span>
         <svg viewBox="0 0 16 16"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
       </button>
       <div class="picker-panel" id="ppanel" hidden>
-        <input id="psearch" type="search" placeholder="Buscar elección o lugar…" aria-label="Buscar">
+        <input id="psearch" type="search" placeholder="Search election or place…" aria-label="Search" data-i18n-attr="placeholder:psearch;aria-label:search">
         <ul class="picker-list" id="plist" role="listbox"></ul>
       </div>
     </div>
-    <div class="seg" role="group" aria-label="Alcance">
-      <button id="scope-cycle" aria-pressed="true">Legislatura actual</button>
-      <button id="scope-all" aria-pressed="false">Todo el histórico</button>
+    <div class="seg" role="group" aria-label="Scope" data-i18n-attr="aria-label:scope">
+      <button id="scope-cycle" aria-pressed="true" data-i18n="cycle">Current term</button>
+      <button id="scope-all" aria-pressed="false" data-i18n="all">All history</button>
     </div>
-    <div class="seg" role="group" aria-label="Encuestas que entran en la media" title="Hoy: media ponderada de toda la legislatura. Semana / mes: solo las encuestas publicadas en ese periodo.">
-      <button data-win="hoy" aria-pressed="true">Hoy</button>
-      <button data-win="semana" aria-pressed="false">Esta semana</button>
-      <button data-win="mes" aria-pressed="false">Este mes</button>
+    <div class="seg" role="group" aria-label="Polls in the average" title="Today: weighted average of the whole term. Week / month: only the polls published in that period." data-i18n-attr="aria-label:win;title:win_t">
+      <button data-win="hoy" aria-pressed="true" data-i18n="today">Today</button>
+      <button data-win="semana" aria-pressed="false" data-i18n="week">This week</button>
+      <button data-win="mes" aria-pressed="false" data-i18n="month">This month</button>
     </div>
     <span class="note" id="fnote"></span>
   </div>
@@ -61,33 +62,33 @@
   <section class="card" id="trendCard"></section>
   <section class="card" id="pollsCard"></section>
   <section class="card" id="explorar">
-    <div class="explore-head"><h2 id="eheading">Explorar elecciones</h2>
-      <input id="esearch" type="search" placeholder="Filtrar…" aria-label="Filtrar elecciones">
+    <div class="explore-head"><h2 id="eheading">Explore elections</h2>
+      <input id="esearch" type="search" placeholder="Filter…" aria-label="Filter elections" data-i18n-attr="placeholder:filter;aria-label:filter_l">
       <div class="tabs" id="etabs" role="tablist"></div></div>
     <div class="cards" id="ecards"></div>
   </section>
   <section class="card" id="metodo">
-    <div class="card-head"><h2>Cómo se calcula</h2></div>
-    <div class="method">
-      <h3>Una encuesta por casa</h3><p>Solo cuenta la última encuesta de cada empresa demoscópica, para que las que publican cada semana no pesen más que las demás.</p>
-      <h3>Peso</h3><p>Cada encuesta pesa más cuanto más reciente (la mitad cada 30 días) y cuanto mayor es su muestra (raíz cuadrada, entre 300 y 3.000 entrevistas).</p>
-      <h3>Escaños</h3><p>Media ponderada del punto medio de la horquilla de cada casa, repartida hasta el total de la cámara por restos mayores. No es una simulación por circunscripciones.</p>
-      <h3>Hoy, semana, mes</h3><p>«Hoy» es la media ponderada de toda la legislatura, con más peso para las encuestas recientes. «Esta semana» y «Este mes» usan solo las encuestas publicadas en los últimos 7 o 30 días, una por casa, ponderadas por tamaño de muestra.</p>
-      <h3>Legislatura</h3><p>La media se reinicia tras cada elección. Se excluyen encuestas internas, sondeos a pie de urna y resultados.</p>
-      <h3>Resultado oficial</h3><p>El resultado de la última elección es el que Electogrāfica cita en cada encuesta como referencia; no se ha descargado por separado de Interior. Contrástalo con la fuente oficial antes de citarlo.</p>
-      <h3>Coaliciones</h3><p>Suma los escaños medios de los partidos elegidos. «Mayoría mínima» son combinaciones que llegan a la mayoría y en las que ningún partido sobra. «En X de N encuestas» cuenta las casas cuya última estimación de escaños da mayoría (punto medio de su horquilla). Son sumas aritméticas, no pactos previsibles.</p>
-      <h3>Límites</h3><p>Los datos se extraen automáticamente de los textos de Electogrāfica y pueden contener errores de lectura. Contrasta cada cifra con el enlace a la encuesta original.</p>
+    <div class="card-head"><h2 data-i18n="method">How it is calculated</h2></div>
+    <div class="method" data-i18n="method_body">
+      <h3>One poll per pollster</h3><p>Only the latest poll of each polling company counts, so those that publish every week do not weigh more than the rest.</p>
+      <h3>Weight</h3><p>A poll weighs more the more recent it is (half every 30 days) and the larger its sample (square root, between 300 and 3,000 interviews).</p>
+      <h3>Seats</h3><p>Weighted average of the midpoint of each pollster's range, allocated up to the size of the chamber by largest remainders. It is not a constituency-by-constituency simulation.</p>
+      <h3>Today, week, month</h3><p>"Today" is the weighted average of the whole term, with more weight for recent polls. "This week" and "This month" use only the polls published in the last 7 or 30 days, one per pollster, weighted by sample size.</p>
+      <h3>Term</h3><p>The average starts again after each election. Internal polls, exit polls and results are left out.</p>
+      <h3>Official result</h3><p>The result of the last election is the one Electogrāfica quotes in each poll as a reference; it has not been downloaded separately from the Interior Ministry. Check it against the official source before quoting it.</p>
+      <h3>Coalitions</h3><p>Adds up the average seats of the chosen parties. "Minimal majorities" are combinations that reach a majority with no party to spare. "In X of N polls" counts the pollsters whose latest seat estimate gives a majority (midpoint of their range). These are arithmetic sums, not likely pacts.</p>
+      <h3>Limits</h3><p>The data is extracted automatically from Electogrāfica's texts and may contain reading errors. Check each figure against the link to the original poll.</p>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap">
-  <p>Datos: <a href="https://www.electografica.com" rel="noopener">Electogrāfica</a>. Cada encuesta enlaza con su ficha original. Este sitio es independiente y no está afiliado a Electogrāfica.</p>
-  <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>.</p>
+  <p data-i18n="foot1">Data: <a href="https://www.electografica.com" rel="noopener">Electogrāfica</a>. Each poll links to its original page. This site is independent and not affiliated with Electogrāfica.</p>
+  <p><span data-i18n="foot2">A</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">project at</span> <a href="https://jordijoan.es/">jordijoan.es</a>.</p>
   <p id="upd"></p>
 </div></footer>
 <div class="tip" id="tip" hidden></div>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="assets/app.js?v=17289d9b6e" type="module"></script>
+<script src="assets/app.js?v=93db2d6cb4" type="module"></script>
 </body>
 </html>

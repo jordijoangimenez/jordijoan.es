@@ -1,11 +1,49 @@
+// Electómetro, in English or Spanish (../shared/lang.js): tr('Spanish', 'English') picks the page's language.
 const $ = id => document.getElementById(id);
 const NS = 'http://www.w3.org/2000/svg';
-const KIND = {
+const ES = (window.HLLang && window.HLLang.lang) === 'es';
+const LOC = ES ? 'es' : 'en-GB';
+const tr = (es, en) => ES ? es : en;
+const KIND = ES ? {
   congreso: 'Congreso', 'congreso-ccaa': 'Congreso (circunscripción)', autonomicas: 'Autonómicas', municipales: 'Municipales',
   forales: 'Forales', cabildo: 'Cabildos', consell: 'Consells', europeas: 'Europeas', legislativas: 'Elecciones nacionales',
   presidenciales: 'Presidenciales', regionales: 'Regionales',
+} : {
+  congreso: 'Congress', 'congreso-ccaa': 'Congress (constituency)', autonomicas: 'Regional parliament', municipales: 'Local',
+  forales: 'Foral', cabildo: 'Island council', consell: 'Island council', europeas: 'European Parliament', legislativas: 'National election',
+  presidenciales: 'Presidential', regionales: 'Regional',
 };
-const fmt = (v, d = 1) => v == null ? '–' : v.toFixed(d).replace('.', ',');
+const fmt = (v, d = 1) => v == null ? '–' : ES ? v.toFixed(d).replace('.', ',') : v.toFixed(d);
+// election names come in Spanish; in English, a country's name becomes its English name (regions and cities keep theirs)
+const REGION = (() => { try { return [new Intl.DisplayNames(['es'], { type: 'region' }), new Intl.DisplayNames(['en-GB'], { type: 'region' })]; } catch { return null; } })();
+const ename = e => {
+  if (ES || !REGION || !e.country) return e.name;
+  try { const cc = e.country.toUpperCase(); if (REGION[0].of(cc) === e.name) return REGION[1].of(cc); } catch {}
+  return e.name;
+};
+window.HLLang?.apply({ es: {
+  nav_es: 'España', nav_aut: 'Autonómicas', nav_intl: 'Internacional', nav_explore: 'Explorar', nav_method: 'Método', theme: 'Cambiar tema',
+  election: 'Elección', psearch: 'Buscar elección o lugar…', search: 'Buscar', scope: 'Alcance', cycle: 'Legislatura actual', all: 'Todo el histórico',
+  win: 'Encuestas que entran en la media', win_t: 'Hoy: media ponderada de toda la legislatura. Semana / mes: solo las encuestas publicadas en ese periodo.',
+  today: 'Hoy', week: 'Esta semana', month: 'Este mes', filter: 'Filtrar…', filter_l: 'Filtrar elecciones', method: 'Cómo se calcula',
+  method_body: '<h3>Una encuesta por casa</h3><p>Solo cuenta la última encuesta de cada empresa demoscópica, para que las que publican cada semana no pesen más que las demás.</p>' +
+    '<h3>Peso</h3><p>Cada encuesta pesa más cuanto más reciente (la mitad cada 30 días) y cuanto mayor es su muestra (raíz cuadrada, entre 300 y 3.000 entrevistas).</p>' +
+    '<h3>Escaños</h3><p>Media ponderada del punto medio de la horquilla de cada casa, repartida hasta el total de la cámara por restos mayores. No es una simulación por circunscripciones.</p>' +
+    '<h3>Hoy, semana, mes</h3><p>«Hoy» es la media ponderada de toda la legislatura, con más peso para las encuestas recientes. «Esta semana» y «Este mes» usan solo las encuestas publicadas en los últimos 7 o 30 días, una por casa, ponderadas por tamaño de muestra.</p>' +
+    '<h3>Legislatura</h3><p>La media se reinicia tras cada elección. Se excluyen encuestas internas, sondeos a pie de urna y resultados.</p>' +
+    '<h3>Resultado oficial</h3><p>El resultado de la última elección es el que Electogrāfica cita en cada encuesta como referencia; no se ha descargado por separado de Interior. Contrástalo con la fuente oficial antes de citarlo.</p>' +
+    '<h3>Coaliciones</h3><p>Suma los escaños medios de los partidos elegidos. «Mayoría mínima» son combinaciones que llegan a la mayoría y en las que ningún partido sobra. «En X de N encuestas» cuenta las casas cuya última estimación de escaños da mayoría (punto medio de su horquilla). Son sumas aritméticas, no pactos previsibles.</p>' +
+    '<h3>Límites</h3><p>Los datos se extraen automáticamente de los textos de Electogrāfica y pueden contener errores de lectura. Contrasta cada cifra con el enlace a la encuesta original.</p>',
+  foot1: 'Datos: <a href="https://www.electografica.com" rel="noopener">Electogrāfica</a>. Cada encuesta enlaza con su ficha original. Este sitio es independiente y no está afiliado a Electogrāfica.',
+  foot2: 'Un proyecto de', foot3: 'en'
+} });
+{
+  const sec = document.body.dataset.section || 'es';
+  const T = ES ? { es: ['Electómetro', 'Media y evolución de todas las encuestas electorales publicadas por Electogrāfica, en un único gráfico del parlamento.'],
+    aut: ['Autonómicas · Electómetro', 'Media y evolución de las encuestas de los parlamentos autonómicos, a partir de Electogrāfica.'],
+    intl: ['Internacional · Electómetro', 'Media y evolución de las encuestas de otros países, a partir de Electogrāfica.'] }[sec] : null;
+  if (T) { document.title = T[0]; document.querySelector('meta[name="description"]')?.setAttribute('content', T[1]); }
+}
 const fdate = s => { const [y, m, d] = s.split('-'); return `${d}/${m}/${y}`; };
 const FALLBACK = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#6250d6', '#e34948', '#008300'];
 
@@ -57,23 +95,23 @@ async function load(id, coal = []) {
     replay(['hero', 'seatsCard', 'votesCard', 'trendCard', 'mapCard']);
     $('pval').textContent = label(state.index.elections.find(e => e.id === id) || state.doc);
   } catch (err) {
-    $('hero').textContent = 'No se pudo cargar esta elección.';
+    console.error(err);
+    $('hero').textContent = tr('No se pudo cargar esta elección.', 'This election could not be loaded.');
   }
   document.body.classList.remove('loading');
 }
-const label = e => (e.kind === 'congreso' || e.kind === 'legislativas' || e.kind === 'europeas' || e.kind === 'presidenciales' || e.kind === 'congreso-ccaa' || e.kind === 'autonomicas' || e.kind === 'regionales')
-  ? `${e.name} · ${KIND[e.kind] || e.kind}` : `${e.name} · ${KIND[e.kind] || e.kind}`;
+const label = e => `${ename(e)} · ${KIND[e.kind] || e.kind}`;
 
 // ---------- picker ----------
 // Three pages share this script: España (index.html), Autonómicas and Internacional
 const SECTION = document.body.dataset.section || 'es';
 const inSection = e => SECTION === 'es' ? e.country === 'es' && e.kind !== 'autonomicas' : SECTION === 'aut' ? e.kind === 'autonomicas' : e.country !== 'es';
 const GROUPS = {
-  es: [['Congreso de los Diputados', e => e.id === 'es-congreso'], ['Municipales', e => e.kind === 'municipales'],
-    ['Forales, cabildos y consells', e => ['forales', 'cabildo', 'consell'].includes(e.kind)],
-    ['Congreso por circunscripción', e => e.kind === 'congreso-ccaa'], ['Parlamento Europeo', e => e.kind === 'europeas']],
-  aut: [['Parlamentos autonómicos', () => true]],
-  intl: [['Elecciones nacionales', e => e.kind === 'legislativas' || e.kind === 'presidenciales'], ['Parlamento Europeo', e => e.kind === 'europeas'], ['Regionales y locales', e => e.kind === 'regionales' || e.kind === 'municipales']],
+  es: [[tr('Congreso de los Diputados', 'Congress of Deputies'), e => e.id === 'es-congreso'], [tr('Municipales', 'Local elections'), e => e.kind === 'municipales'],
+    [tr('Forales, cabildos y consells', 'Foral and island councils'), e => ['forales', 'cabildo', 'consell'].includes(e.kind)],
+    [tr('Congreso por circunscripción', 'Congress by constituency'), e => e.kind === 'congreso-ccaa'], [tr('Parlamento Europeo', 'European Parliament'), e => e.kind === 'europeas']],
+  aut: [[tr('Parlamentos autonómicos', 'Regional parliaments'), () => true]],
+  intl: [[tr('Elecciones nacionales', 'National elections'), e => e.kind === 'legislativas' || e.kind === 'presidenciales'], [tr('Parlamento Europeo', 'European Parliament'), e => e.kind === 'europeas'], [tr('Regionales y locales', 'Regional and local'), e => e.kind === 'regionales' || e.kind === 'municipales']],
 }[SECTION];
 const defaultId = () => SECTION === 'es' ? 'es-congreso' : [...state.index.elections.filter(inSection)].sort((a, b) => b.total - a.total)[0].id;
 function buildPicker() {
@@ -88,12 +126,12 @@ function buildPicker() {
     list.append(el('li', { class: 'grp', role: 'presentation', text: name }));
     for (const e of items) {
       const li = el('li', { role: 'option', 'aria-selected': String(e.id === state.doc?.id), class: e.id === state.doc?.id ? 'current' : '' },
-        [el('span', { text: label(e) }), el('span', { class: 'meta', text: `${e.total} enc.` })]);
+        [el('span', { text: label(e) }), el('span', { class: 'meta', text: tr(`${e.total} enc.`, `${e.total} polls`) })]);
       li.onclick = () => { location.hash = e.id; closePicker(); };
       list.append(li);
     }
   }
-  if (!any) list.append(el('li', { class: 'empty', text: 'Sin resultados' }));
+  if (!any) list.append(el('li', { class: 'empty', text: tr('Sin resultados', 'No results') }));
 }
 function closePicker() { $('ppanel').hidden = true; $('pbtn').setAttribute('aria-expanded', 'false'); }
 $('pbtn').onclick = () => {
@@ -157,7 +195,7 @@ function renderSeats(d) {
   const { pts, rowGap } = layout(N);
   const R = 300, pad = 14, rad = Math.min(11, Math.max(2.4, rowGap * R * 0.42));
   const W = 2 * R + 2 * pad, H = R + 2 * pad + 20;
-  const svg = S('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `Hemiciclo de ${N} escaños` });
+  const svg = S('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': tr(`Hemiciclo de ${N} escaños`, `Chamber of ${N} seats`) });
   const seats = []; let idx = 0;
   const cols = {};
   order.forEach((s, i) => { cols[s.k] = pcol(d, s.k, i); });
@@ -171,7 +209,7 @@ function renderSeats(d) {
   svg.append(g);
   const cx = pad + R, cy = pad + R;
   svg.append(S('text', { x: cx, y: cy - 22, 'text-anchor': 'middle', class: 'center-num', text: String(N) }));
-  svg.append(S('text', { x: cx, y: cy - 4, 'text-anchor': 'middle', class: 'center-lbl', text: `escaños · mayoría ${d.M || Math.floor(N / 2) + 1}` }));
+  svg.append(S('text', { x: cx, y: cy - 4, 'text-anchor': 'middle', class: 'center-lbl', text: tr(`escaños · mayoría ${d.M || Math.floor(N / 2) + 1}`, `seats · majority ${d.M || Math.floor(N / 2) + 1}`) }));
   const hemi = el('div', { class: 'hemi' }, [svg]);
 
   const list = el('ul', { class: 'seat-list' });
@@ -187,23 +225,24 @@ function renderSeats(d) {
     const on = () => { hemi.classList.add('focus'); seats.forEach(c => c.classList.toggle('on', c.dataset.k === s.k)); li.classList.add('on'); };
     const off = () => { li.classList.remove('on'); applyCoal(); };
     li.onpointerenter = on; li.onpointerleave = off; li.onfocus = on; li.onblur = off;
-    if (dl != null && dl !== 0) li.title = `${dl > 0 ? '+' : ''}${dl} frente a la última elección`;
+    if (dl != null && dl !== 0) li.title = `${dl > 0 ? '+' : ''}${dl} ` + tr('frente a la última elección', 'on the last election');
     list.append(li);
   });
-  if (sa.unassigned) list.append(el('li', { class: 'total' }, [el('span'), el('span', { class: 'nm', text: 'Sin asignar' }), el('span', { class: 'num', text: String(sa.unassigned) }), el('span')]));
+  if (sa.unassigned) list.append(el('li', { class: 'total' }, [el('span'), el('span', { class: 'nm', text: tr('Sin asignar', 'Unassigned') }), el('span', { class: 'num', text: String(sa.unassigned) }), el('span')]));
   seats.forEach(c => {
     c.onpointermove = e => showTip(e, t => { t.append(el('div', { class: 'h', text: pname(d, c.dataset.k) })); t.append(el('div', { class: 'big', text: String(sa.seats.find(s => s.k === c.dataset.k).s) })); });
     c.onpointerleave = hideTip;
   });
   cur.seats = seats; cur.hemi = hemi;
   applyCoal();
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Parlamento' }), el('span', { class: 'hint', text: `${sa.pollsters === 1 ? 'una sola casa' : 'media de ' + sa.pollsters + ' casas'} · horquilla = mín.–máx. recientes` })]),
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Parlamento', 'Parliament') }), el('span', { class: 'hint', text: ES ? `${sa.pollsters === 1 ? 'una sola casa' : 'media de ' + sa.pollsters + ' casas'} · horquilla = mín.–máx. recientes` : `${sa.pollsters === 1 ? 'one pollster only' : 'average of ' + sa.pollsters + ' pollsters'} · range = recent min–max` })]),
     el('div', { class: 'seats-body' }, [hemi, list]));
 }
 
 // "Última encuesta publicada: 19/10/2026 (trabajo de campo hasta el 14/10/2026)."
 function lastPoll(d) {
   const f = fdate(d.now.d);
+  if (!ES) return d.now.pub && d.now.pub !== d.now.d ? `Latest poll published on ${fdate(d.now.pub)} (fieldwork until ${f}).` : `Latest poll: ${f}.`;
   return d.now.pub && d.now.pub !== d.now.d ? `Última encuesta publicada el ${fdate(d.now.pub)} (trabajo de campo hasta el ${f}).` : `Última encuesta: ${f}.`;
 }
 
@@ -211,8 +250,8 @@ function lastPoll(d) {
 function renderVotes(d) {
   const card = $('votesCard'); clear(card);
   const votes = d.now?.votes || [];
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Estimación de voto' }), el('span', { class: 'hint', text: '%' })]));
-  if (!votes.length) { card.append(el('p', { class: 'empty-note', text: 'Sin datos de voto.' })); return; }
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Estimación de voto', 'Vote estimate') }), el('span', { class: 'hint', text: '%' })]));
+  if (!votes.length) { card.append(el('p', { class: 'empty-note', text: tr('Sin datos de voto.', 'No vote data.') })); return; }
   const shown = votes.slice(0, 12), rest = votes.slice(12);
   const max = Math.max(...shown.map(v => Math.max(v.v, v.max ?? 0, d.prev?.v?.[v.k] ?? 0))) * 1.05;
   const bars = el('div', { class: 'bars' });
@@ -227,18 +266,18 @@ function renderVotes(d) {
     bars.append(row);
   });
   card.append(bars);
-  const key = el('div', { class: 'bars-key' }, [el('span', {}, [el('i', { class: 'k-range' }), 'mín.–máx. de las últimas encuestas'])]);
-  if (d.prev?.v && Object.keys(d.prev.v).length) key.append(el('span', {}, [el('i', { class: 'k-prev' }), `última elección${d.prev.d ? ' (' + fdate(d.prev.d) + ')' : ''}`]));
+  const key = el('div', { class: 'bars-key' }, [el('span', {}, [el('i', { class: 'k-range' }), tr('mín.–máx. de las últimas encuestas', 'min–max of the latest polls')])]);
+  if (d.prev?.v && Object.keys(d.prev.v).length) key.append(el('span', {}, [el('i', { class: 'k-prev' }), tr('última elección', 'last election') + (d.prev.d ? ' (' + fdate(d.prev.d) + ')' : '')]));
   card.append(key);
-  if (rest.length) card.append(el('p', { class: 'others', text: 'Otros: ' + rest.map(v => `${pname(d, v.k)} ${fmt(v.v)}`).join(' · ') }));
+  if (rest.length) card.append(el('p', { class: 'others', text: tr('Otros: ', 'Others: ') + rest.map(v => `${pname(d, v.k)} ${fmt(v.v)}`).join(' · ') }));
   const nu = d.now.used.filter(u => u.w >= 0.005).length;
-  card.append(el('p', { class: 'others', text: `${nu === 1 ? '1 casa' : nu + ' casas'} · ${lastPoll(d)}${d.now.since ? ' · desde las elecciones del ' + fdate(d.now.since) : ''}.` }));
+  card.append(el('p', { class: 'others', text: ES ? `${nu === 1 ? '1 casa' : nu + ' casas'} · ${lastPoll(d)}${d.now.since ? ' · desde las elecciones del ' + fdate(d.now.since) : ''}.` : `${nu === 1 ? '1 pollster' : nu + ' pollsters'} · ${lastPoll(d)}${d.now.since ? ' · since the election of ' + fdate(d.now.since) : ''}.` }));
 }
 
 // ---------- coalitions ----------
 const PRESETS = {
   'es-congreso': [['PP + VOX', ['PP', 'VOX']], ['PP + VOX + UPN + CCa', ['PP', 'VOX', 'UPN', 'CCA']],
-    ['Bloque de la investidura de 2023', ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'EH BILDU', 'EAJ PNV', 'BNG', 'CCA']]],
+    [tr('Bloque de la investidura de 2023', 'The 2023 investiture bloc'), ['PSOE', 'SUMAR', 'PODEMOS', 'ERC', 'JUNTS', 'EH BILDU', 'EAJ PNV', 'BNG', 'CCA']]],
 };
 // the latest seat estimate of each pollster currently in the average
 function pollsterSeats(d) {
@@ -284,12 +323,12 @@ function renderCoal(d) {
   const freq = keys => { if (!polls.length) return null; const n = polls.filter(m => keys.reduce((a, k) => a + (m[k] || 0), 0) >= M).length; return [n, polls.length]; };
   const rerender = () => { renderCoal(d); applyCoal(); };
 
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Coaliciones y mayorías' }), el('span', { class: 'hint', text: `mayoría absoluta: ${M} de ${sa.total} escaños · elige partidos para sumarlos` })]));
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Coaliciones y mayorías', 'Coalitions and majorities') }), el('span', { class: 'hint', text: tr(`mayoría absoluta: ${M} de ${sa.total} escaños · elige partidos para sumarlos`, `absolute majority: ${M} of ${sa.total} seats · pick parties to add them up`) })]));
   const pre = (PRESETS[d.id] || []).map(([name, ks]) => [name, ks.filter(k => bySeat[k])]).filter(x => x[1].length);
-  const pbox = el('div', { class: 'presets' }, [pre.length ? 'Atajos:' : null]);
+  const pbox = el('div', { class: 'presets' }, [pre.length ? tr('Atajos:', 'Shortcuts:') : null]);
   pre.forEach(([name, ks]) => { const b = el('button', { text: name }); b.onclick = () => { state.coal = new Set(ks); rerender(); }; pbox.append(b); });
-  const clr = el('button', { text: 'Limpiar' }); clr.onclick = () => { state.coal = new Set(); rerender(); }; pbox.append(clr);
-  const chips = el('div', { class: 'chips', role: 'group', 'aria-label': 'Partidos' });
+  const clr = el('button', { text: tr('Limpiar', 'Clear') }); clr.onclick = () => { state.coal = new Set(); rerender(); }; pbox.append(clr);
+  const chips = el('div', { class: 'chips', role: 'group', 'aria-label': tr('Partidos', 'Parties') });
   parties.forEach((p, i) => {
     const b = el('button', { class: 'chip', 'aria-pressed': String(coal.has(p.k)) },
       [el('i', { class: 'dot', style: `background:${pcol(d, p.k, i)}` }), pname(d, p.k), el('span', { class: 'n', text: String(p.s) })]);
@@ -301,32 +340,32 @@ function renderCoal(d) {
   const maj = total >= M;
   const f = coal.size ? freq([...coal]) : null;
   const res = el('div', { class: 'coal-result' + (maj ? ' maj' : '') });
-  if (!coal.size) res.append(el('div', { class: 'verdict', text: 'Elige partidos para sumar sus escaños.' }));
+  if (!coal.size) res.append(el('div', { class: 'verdict', text: tr('Elige partidos para sumar sus escaños.', 'Pick parties to add up their seats.') }));
   else {
     res.append(el('div', { class: 'big', text: String(total) }),
-      el('div', {}, [el('div', { class: 'verdict', text: maj ? `${maj && total - M ? 'Mayoría absoluta (+' + (total - M) + ')' : 'Mayoría absoluta justa'}` : `Faltan ${M - total} escaños para la mayoría` })]));
+      el('div', {}, [el('div', { class: 'verdict', text: maj ? (total - M ? tr('Mayoría absoluta (+', 'Absolute majority (+') + (total - M) + ')' : tr('Mayoría absoluta justa', 'Bare absolute majority')) : tr(`Faltan ${M - total} escaños para la mayoría`, `${M - total} seats short of a majority`) })]));
     const more = [];
-    if (lo !== hi) more.push(`horquilla entre encuestas recientes: ${lo}–${hi}`);
-    if (f) more.push(`alcanza la mayoría en ${f[0]} de ${f[1]} encuestas`);
-    more.push(`${fmt([...coal].reduce((a, k) => a + (d.now.votes.find(v => v.k === k)?.v || 0), 0))}% de voto`);
+    if (lo !== hi) more.push(tr(`horquilla entre encuestas recientes: ${lo}–${hi}`, `range across recent polls: ${lo}–${hi}`));
+    if (f) more.push(tr(`alcanza la mayoría en ${f[0]} de ${f[1]} encuestas`, `reaches a majority in ${f[0]} of ${f[1]} polls`));
+    more.push(`${fmt([...coal].reduce((a, k) => a + (d.now.votes.find(v => v.k === k)?.v || 0), 0))}% ` + tr('de voto', 'of the vote'));
     res.append(el('div', { class: 'more', text: more.join(' · ') }));
-    const meter = el('div', { class: 'meter', role: 'img', 'aria-label': `${total} de ${M} escaños necesarios` }, [el('i', { style: `width:${Math.min(100, total / sa.total * 100)}%` }), el('b', { style: `left:${M / sa.total * 100}%` })]);
+    const meter = el('div', { class: 'meter', role: 'img', 'aria-label': tr(`${total} de ${M} escaños necesarios`, `${total} of the ${M} seats needed`) }, [el('i', { style: `width:${Math.min(100, total / sa.total * 100)}%` }), el('b', { style: `left:${M / sa.total * 100}%` })]);
     res.append(meter);
   }
   card.append(res);
 
-  card.append(el('h3', { class: 'sub-h', text: mins.length ? `Mayorías mínimas posibles (${mins.length})` : 'Ninguna combinación de los 14 mayores partidos llega a la mayoría' }));
+  card.append(el('h3', { class: 'sub-h', text: mins.length ? tr(`Mayorías mínimas posibles (${mins.length})`, `Possible minimal majorities (${mins.length})`) : tr('Ninguna combinación de los 14 mayores partidos llega a la mayoría', 'No combination of the 14 largest parties reaches a majority') }));
   if (mins.length) {
     const ul = el('ul', { class: 'minimal' });
     const shown = state.allMins ? mins : mins.slice(0, 12);
     shown.forEach(c => {
-      const b = el('button', { 'aria-pressed': String(c.keys.length === coal.size && c.keys.every(k => coal.has(k))) }, [el('span', { class: 'names', text: c.keys.map(k => pname(d, k)).join(' + ') }), el('span', { class: 'sum', text: String(c.sum) }), polls.length ? el('span', { class: 'freq', text: `${c.f}/${polls.length} enc.` }) : null]);
+      const b = el('button', { 'aria-pressed': String(c.keys.length === coal.size && c.keys.every(k => coal.has(k))) }, [el('span', { class: 'names', text: c.keys.map(k => pname(d, k)).join(' + ') }), el('span', { class: 'sum', text: String(c.sum) }), polls.length ? el('span', { class: 'freq', text: `${c.f}/${polls.length} ` + tr('enc.', 'polls') }) : null]);
       b.onclick = () => { state.coal = new Set(c.keys); rerender(); };
       ul.append(el('li', {}, [b]));
     });
     card.append(ul);
-    if (mins.length > 12) { const mb = el('button', { class: 'show-more', text: state.allMins ? 'Mostrar menos' : `Mostrar las ${mins.length}` }); mb.onclick = () => { state.allMins = !state.allMins; rerender(); }; card.append(mb); }
-    card.append(el('p', { class: 'others', text: 'Ordenadas por número de partidos y, a igualdad, por cuántas encuestas les dan mayoría. «Mínima» significa que ningún partido sobra. Son sumas aritméticas, no pactos previsibles; la lista no juzga si un pacto es plausible.' }));
+    if (mins.length > 12) { const mb = el('button', { class: 'show-more', text: state.allMins ? tr('Mostrar menos', 'Show fewer') : tr(`Mostrar las ${mins.length}`, `Show all ${mins.length}`) }); mb.onclick = () => { state.allMins = !state.allMins; rerender(); }; card.append(mb); }
+    card.append(el('p', { class: 'others', text: tr('Ordenadas por número de partidos y, a igualdad, por cuántas encuestas les dan mayoría. «Mínima» significa que ningún partido sobra. Son sumas aritméticas, no pactos previsibles; la lista no juzga si un pacto es plausible.', 'Sorted by number of parties and, when equal, by how many polls give them a majority. "Minimal" means no party is to spare. These are arithmetic sums, not likely pacts; the list does not judge whether a pact is plausible.') }));
   }
 }
 
@@ -336,7 +375,7 @@ function renderFit(d) {
   const prev = d.prev;
   if (!prev || !d.now || !(Object.keys(prev.v).length || Object.keys(prev.s).length)) { card.hidden = true; return; }
   card.hidden = false;
-  const when = prev.d ? fdate(prev.d) : 'última elección';
+  const when = prev.d ? fdate(prev.d) : tr('última elección', 'last election');
   const nowV = Object.fromEntries(d.now.votes.map(v => [v.k, v.v]));
   const nowS = Object.fromEntries((d.now.seats?.seats || []).map(s => [s.k, s.s]));
   const back = d.fit?.back;
@@ -347,31 +386,31 @@ function renderFit(d) {
   const moved = d.now.seats ? keys.reduce((a, k) => a + Math.abs((nowS[k] ?? 0) - (prev.s[k] ?? 0)), 0) / 2 : null;
   let mae = null;
   if (back) { const ks = Object.keys(prev.v).filter(k => prev.v[k] >= 1); if (ks.length) mae = ks.reduce((a, k) => a + Math.abs((back.v[k] ?? 0) - prev.v[k]), 0) / ks.length; }
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Resultado oficial frente a las encuestas' }), el('span', { class: 'hint', text: `elecciones del ${when} · cifras citadas por Electogrāfica` })]));
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Resultado oficial frente a las encuestas', 'Official result against the polls') }), el('span', { class: 'hint', text: tr(`elecciones del ${when} · cifras citadas por Electogrāfica`, `election of ${when} · figures quoted by Electogrāfica`) })]));
   const sum = el('div', { class: 'fit-sum' }, [
-    el('div', {}, [el('b', { text: fmt(pedersen) + ' pts' }), el('span', { text: 'voto que ha cambiado de partido desde entonces (media actual)' })]),
+    el('div', {}, [el('b', { text: fmt(pedersen) + ' pts' }), el('span', { text: tr('voto que ha cambiado de partido desde entonces (media actual)', 'of the vote has changed party since then (current average)') })]),
   ]);
-  if (moved != null) sum.append(el('div', {}, [el('b', { text: String(Math.round(moved)) }), el('span', { text: 'escaños que cambiarían de manos' })]));
-  if (mae != null) sum.append(el('div', {}, [el('b', { text: fmt(mae) + ' pts' }), el('span', { text: `error medio de la media de las encuestas la víspera (${back.n} encuestas, partidos ≥1%)` })]));
+  if (moved != null) sum.append(el('div', {}, [el('b', { text: String(Math.round(moved)) }), el('span', { text: tr('escaños que cambiarían de manos', 'seats would change hands') })]));
+  if (mae != null) sum.append(el('div', {}, [el('b', { text: fmt(mae) + ' pts' }), el('span', { text: tr(`error medio de la media de las encuestas la víspera (${back.n} encuestas, partidos ≥1%)`, `average error of the poll average on the eve of the election (${back.n} polls, parties ≥1%)`) })]));
   card.append(sum);
   const dcell = (v, dec = 1, unit = '') => el('td', { class: v == null ? '' : v > 0.05 ? 'pos' : v < -0.05 ? 'neg' : '', text: v == null ? '–' : (v > 0 ? '+' : v < 0 ? '−' : '') + fmt(Math.abs(v), dec) + unit });
   const hasBack = !!back;
-  const head = ['Partido', 'Resultado %', 'Media hoy %', 'Dif.', 'σ casas', 'Esc. resultado', 'Esc. media hoy', 'Dif.'];
-  if (hasBack) head.push('Media víspera %', 'Error víspera');
+  const head = ES ? ['Partido', 'Resultado %', 'Media hoy %', 'Dif.', 'σ casas', 'Esc. resultado', 'Esc. media hoy', 'Dif.'] : ['Party', 'Result %', 'Average today %', 'Diff.', 'σ pollsters', 'Seats, result', 'Seats, today', 'Diff.'];
+  if (hasBack) head.push(...(ES ? ['Media víspera %', 'Error víspera'] : ['Eve average %', 'Eve error']));
   const tbody = el('tbody');
   keys.forEach((k, i) => {
     const rv = prev.v[k], nv = nowV[k], rs = prev.s[k], ns = nowS[k], sd = d.fit?.sd?.[k];
-    const tr = el('tr', {}, [el('td', { class: 'l who' }, [el('span', { class: 'dot', style: `display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${pcol(d, k, i)}` }), pname(d, k)]),
+    const row = el('tr', {}, [el('td', { class: 'l who' }, [el('span', { class: 'dot', style: `display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:${pcol(d, k, i)}` }), pname(d, k)]),
       el('td', { text: fmt(rv) }), el('td', { text: fmt(nv) }), dcell(nv != null && rv != null ? nv - rv : null),
       el('td', { text: sd != null ? '±' + fmt(sd) : '–' }),
       el('td', { text: rs != null ? String(rs) : '–' }), el('td', { text: ns != null ? String(ns) : '–' }), dcell(ns != null && rs != null ? ns - rs : null, 0)]);
-    if (hasBack) tr.append(el('td', { text: fmt(back.v[k]) }), dcell(back.v[k] != null && rv != null ? back.v[k] - rv : null));
-    tbody.append(tr);
+    if (hasBack) row.append(el('td', { text: fmt(back.v[k]) }), dcell(back.v[k] != null && rv != null ? back.v[k] - rv : null));
+    tbody.append(row);
   });
   card.append(el('div', { class: 'table-wrap' }, [el('table', { class: 't' }, [el('thead', {}, [el('tr', {}, head.map((h, i) => el('th', { class: i === 0 ? 'l' : '', text: h })))]), tbody])]));
   const orphans = keys.filter(k => prev.v[k] == null && (nowV[k] ?? 0) >= 1).map(k => pname(d, k));
-  if (orphans.length) card.append(el('p', { class: 'others', text: `Sin resultado propio (${orphans.join(', ')}): no concurrieron por separado en esa elección, por ejemplo dentro de una coalición, así que sus diferencias y la de su coalición de entonces no son comparables, y los totales de arriba las cuentan como cero.` }));
-  card.append(el('p', { class: 'others', text: 'Dif. = media hoy menos resultado. «σ casas» es la dispersión entre las casas que entran en la media: si la diferencia con el resultado es menor que σ, las encuestas actuales son compatibles con repetir el resultado. Error víspera = media de las encuestas el día antes de las elecciones menos el resultado (negativo: las encuestas se quedaron cortas).' }));
+  if (orphans.length) card.append(el('p', { class: 'others', text: ES ? `Sin resultado propio (${orphans.join(', ')}): no concurrieron por separado en esa elección, por ejemplo dentro de una coalición, así que sus diferencias y la de su coalición de entonces no son comparables, y los totales de arriba las cuentan como cero.` : `No result of their own (${orphans.join(', ')}): they did not run separately in that election, for example inside a coalition, so their differences and that of their coalition then are not comparable, and the totals above count them as zero.` }));
+  card.append(el('p', { class: 'others', text: tr('Dif. = media hoy menos resultado. «σ casas» es la dispersión entre las casas que entran en la media: si la diferencia con el resultado es menor que σ, las encuestas actuales son compatibles con repetir el resultado. Error víspera = media de las encuestas el día antes de las elecciones menos el resultado (negativo: las encuestas se quedaron cortas).', 'Diff. = average today minus result. "σ pollsters" is the spread between the pollsters in the average: if the difference from the result is smaller than σ, the current polls are compatible with a repeat of the result. Eve error = poll average the day before the election minus the result (negative: the polls fell short).') }));
 }
 
 // ---------- province map (official results, Congreso) ----------
@@ -408,11 +447,11 @@ async function renderMap(d) {
   const [dy, dm, dd] = prov.election.split('-');
 
   clear(card);
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Resultado oficial por provincia' }), el('span', { class: 'hint', text: `elecciones generales del ${dd}/${dm}/${dy}` })]));
-  const sel = el('select', { id: 'mapMode', 'aria-label': 'Qué mostrar en el mapa' }, [el('option', { value: 'winner', text: 'Candidatura más votada' }), ...choices.map(k => el('option', { value: k, text: `% de voto: ${k}` }))]);
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Resultado oficial por provincia', 'Official result by province') }), el('span', { class: 'hint', text: tr(`elecciones generales del ${dd}/${dm}/${dy}`, `general election of ${dd}/${dm}/${dy}`) })]));
+  const sel = el('select', { id: 'mapMode', 'aria-label': tr('Qué mostrar en el mapa', 'What the map shows') }, [el('option', { value: 'winner', text: tr('Candidatura más votada', 'Most voted party') }), ...choices.map(k => el('option', { value: k, text: tr('% de voto: ', '% of the vote: ') + k }))]);
   sel.value = mapData.mode;
-  card.append(el('div', { class: 'map-ctl' }, [el('label', {}, ['Mostrar ', sel])]));
-  const svg = S('svg', { viewBox: `0 0 ${shapes.w} ${shapes.h}`, class: 'map-svg', role: 'group', 'aria-label': 'Mapa de España por provincias' });
+  card.append(el('div', { class: 'map-ctl' }, [el('label', {}, [tr('Mostrar ', 'Show '), sel])]));
+  const svg = S('svg', { viewBox: `0 0 ${shapes.w} ${shapes.h}`, class: 'map-svg', role: 'group', 'aria-label': tr('Mapa de España por provincias', 'Map of Spain by province') });
   const panel = el('div', { class: 'map-panel', 'aria-live': 'polite' });
   const legend = el('div', { class: 'map-legend' });
   const maxPct = party => Math.max(...[...rowsBy.values()].map(({ rows }) => rows.find(r => r.n === party)?.p || 0));
@@ -425,10 +464,10 @@ async function renderMap(d) {
   const show = code => {
     const { p, rows } = rowsBy.get(code);
     clear(panel);
-    panel.append(el('h3', { text: p.name }), el('div', { class: 'sub', text: `${p.seats} diputados · participación ${fmt(p.turnout)}% · ${p.electors.toLocaleString('es')} electores` }));
-    const t = el('table', {}, rows.slice(0, 8).map(r => el('tr', {}, [el('td', {}, [el('i', { class: 'dot', style: `background:${r.c}` }), r.n]), el('td', { text: fmt(r.p, 2) + '%' }), el('td', { text: r.s ? r.s + ' esc.' : '' })])));
+    panel.append(el('h3', { text: p.name }), el('div', { class: 'sub', text: ES ? `${p.seats} diputados · participación ${fmt(p.turnout)}% · ${p.electors.toLocaleString(LOC)} electores` : `${p.seats} seats · turnout ${fmt(p.turnout)}% · ${p.electors.toLocaleString(LOC)} voters` }));
+    const t = el('table', {}, rows.slice(0, 8).map(r => el('tr', {}, [el('td', {}, [el('i', { class: 'dot', style: `background:${r.c}` }), r.n]), el('td', { text: fmt(r.p, 2) + '%' }), el('td', { text: r.s ? r.s + tr(' esc.', ' seats') : '' })])));
     panel.append(t);
-    if (p.rows.some(r => GROUPED[r.n])) panel.append(el('p', { class: 'others', text: 'PSOE incluye PSC, PSdeG-PSOE y PSE-EE.' }));
+    if (p.rows.some(r => GROUPED[r.n])) panel.append(el('p', { class: 'others', text: tr('PSOE incluye PSC, PSdeG-PSOE y PSE-EE.', 'PSOE includes PSC, PSdeG-PSOE and PSE-EE.') }));
   };
   const paths = {};
   for (const code of Object.keys(shapes.prov)) {
@@ -444,20 +483,20 @@ async function renderMap(d) {
     paths[code] = path; svg.append(path);
   }
   if (mapData.mode === 'winner') {
-    Object.entries(wins).sort((a, b) => b[1] - a[1]).forEach(([n, c]) => legend.append(el('span', {}, [el('i', { style: `background:${color.get(n)}` }), `${n} · ${c} ${c === 1 ? 'provincia' : 'provincias'}`])));
+    Object.entries(wins).sort((a, b) => b[1] - a[1]).forEach(([n, c]) => legend.append(el('span', {}, [el('i', { style: `background:${color.get(n)}` }), `${n} · ${c} ${c === 1 ? tr('provincia', 'province') : tr('provincias', 'provinces')}`])));
   } else {
     legend.append(el('span', {}, ['0%', el('i', { class: 'ramp', style: `background:linear-gradient(90deg, color-mix(in srgb, ${color.get(mapData.mode)} 12%, transparent), ${color.get(mapData.mode)})` }), `${fmt(maxPct(mapData.mode))}%`]));
   }
   card.append(el('div', { class: 'map-body' }, [svg, panel]), legend);
-  if (mapData.sel) show(mapData.sel); else panel.append(el('p', { class: 'others', text: 'Pasa el ratón, toca o enfoca una provincia para ver su resultado.' }));
+  if (mapData.sel) show(mapData.sel); else panel.append(el('p', { class: 'others', text: tr('Pasa el ratón, toca o enfoca una provincia para ver su resultado.', 'Hover, tap or focus a province to see its result.') }));
   sel.onchange = () => { mapData.mode = sel.value; renderMap(d); };
 
-  const det = el('details', { class: 'data' }, [el('summary', { text: 'Ver como tabla' })]);
-  const head = el('tr', {}, ['Provincia', 'Diputados', 'Más votada', '%', 'Reparto de escaños'].map((h, i) => el('th', { class: i === 0 || i === 4 ? 'l' : '', text: h })));
+  const det = el('details', { class: 'data' }, [el('summary', { text: tr('Ver como tabla', 'Show as a table') })]);
+  const head = el('tr', {}, (ES ? ['Provincia', 'Diputados', 'Más votada', '%', 'Reparto de escaños'] : ['Province', 'Seats', 'Most voted', '%', 'Seat split']).map((h, i) => el('th', { class: i === 0 || i === 4 ? 'l' : '', text: h })));
   const body = el('tbody', {}, prov.provinces.slice().sort((a, b) => a.name.localeCompare(b.name, 'es')).map(p => { const rows = rowsBy.get(p.code).rows; return el('tr', {}, [el('td', { class: 'l', text: p.name }), el('td', { text: String(p.seats) }), el('td', { text: rows[0].n }), el('td', { text: fmt(rows[0].p, 2) }), el('td', { class: 'l', text: rows.filter(r => r.s).map(r => `${r.n} ${r.s}`).join(', ') })]); }));
   det.append(el('div', { class: 'table-wrap' }, [el('table', { class: 't' }, [el('thead', {}, [head]), body])]));
   card.append(det);
-  card.append(el('p', { class: 'others', text: prov.source }), el('p', { class: 'others' }, ['Datos recopilados a través de ', el('a', { href: prov.via, rel: 'noopener', target: '_blank', text: 'votomunicipal.es' }), ` (${fdate(prov.fetched)}). Los límites están simplificados y no sirven para fines cartográficos ni jurídicos.`]));
+  card.append(el('p', { class: 'others', text: prov.source }), el('p', { class: 'others' }, [tr('Datos recopilados a través de ', 'Data gathered via '), el('a', { href: prov.via, rel: 'noopener', target: '_blank', text: 'votomunicipal.es' }), ` (${fdate(prov.fetched)}). ` + tr('Los límites están simplificados y no sirven para fines cartográficos ni jurídicos.', 'Boundaries are simplified and not fit for mapping or legal purposes.')]));
 }
 
 // ---------- trend ----------
@@ -467,8 +506,8 @@ function renderTrend(d) {
   const T = d.series.t.slice(i0);
   const keys = Object.keys(d.series.lines).filter(k => d.series.lines[k].slice(i0).some(v => v != null && v >= 1))
     .sort((a, b) => (d.series.lines[b][d.series.lines[b].length - 1] ?? 0) - (d.series.lines[a][d.series.lines[a].length - 1] ?? 0));
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Evolución de la media' }), el('span', { class: 'hint', text: '% de voto; cada punto es la media tras una nueva encuesta' })]));
-  if (T.length < 2 || !keys.length) { card.append(el('p', { class: 'empty-note', text: 'No hay suficientes encuestas para dibujar la evolución.' })); return; }
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Evolución de la media', 'Trend of the average') }), el('span', { class: 'hint', text: tr('% de voto; cada punto es la media tras una nueva encuesta', '% of the vote; each point is the average after a new poll') })]));
+  if (T.length < 2 || !keys.length) { card.append(el('p', { class: 'empty-note', text: tr('No hay suficientes encuestas para dibujar la evolución.', 'Not enough polls to draw the trend.') })); return; }
   const top = keys.slice(0, 8), extra = keys.slice(8, 30);
   const legend = el('div', { class: 'legend' });
   const lastVal = k => { const a = d.series.lines[k]; for (let i = a.length - 1; i >= 0; i--) if (a[i] != null) return a[i]; return null; };
@@ -480,7 +519,7 @@ function renderTrend(d) {
   };
   const visible = state.showAll ? keys.slice(0, 30) : top;
   visible.forEach((k, i) => legend.append(mk(k, i)));
-  if (extra.length && !state.showAll) { const m = el('button', { class: 'more', text: `+${extra.length} partidos` }); m.onclick = () => { state.showAll = true; renderTrend(d); }; legend.append(m); }
+  if (extra.length && !state.showAll) { const m = el('button', { class: 'more', text: `+${extra.length} ` + tr('partidos', 'parties') }); m.onclick = () => { state.showAll = true; renderTrend(d); }; legend.append(m); }
   card.append(legend);
   const holder = el('div', { class: 'trend' }); card.append(holder);
 
@@ -495,7 +534,7 @@ function renderTrend(d) {
     const step = vmax > 40 ? 10 : vmax > 20 ? 5 : 2;
     const ymax = Math.ceil(vmax / step) * step;
     const ys = v => H - m.b - v / ymax * (H - m.t - m.b);
-    const svg = S('svg', { viewBox: `0 0 ${W} ${H}`, height: H, role: 'img', 'aria-label': 'Evolución de la media de encuestas' });
+    const svg = S('svg', { viewBox: `0 0 ${W} ${H}`, height: H, role: 'img', 'aria-label': tr('Evolución de la media de encuestas', 'Trend of the poll average') });
     for (let v = 0; v <= ymax; v += step) {
       svg.append(S('line', { x1: m.l, x2: W - m.r, y1: ys(v), y2: ys(v), class: v === 0 ? 'axis-line' : 'grid-line' }));
       svg.append(S('text', { x: m.l - 6, y: ys(v) + 4, 'text-anchor': 'end', class: 'tick', text: String(v) }));
@@ -507,7 +546,7 @@ function renderTrend(d) {
     } else for (let y = y0 + 1; y <= y1; y += every) { const x = xs(`${y}-01-01`); svg.append(S('text', { x, y: H - 8, 'text-anchor': 'middle', class: 'tick', text: String(y) })); }
     for (const e of d.elections) if (e >= T[0] && e <= T[T.length - 1]) {
       svg.append(S('line', { x1: xs(e), x2: xs(e), y1: m.t, y2: H - m.b, class: 'el-line', 'stroke-dasharray': '0' }));
-      svg.append(S('text', { x: xs(e) + 4, y: m.t + 8, class: 'el-lbl', text: 'elecciones' }));
+      svg.append(S('text', { x: xs(e) + 4, y: m.t + 8, class: 'el-lbl', text: tr('elecciones', 'election') }));
     }
     const ends = [];
     act.forEach(k => {
@@ -524,7 +563,7 @@ function renderTrend(d) {
     }
     const guide = S('line', { y1: m.t, y2: H - m.b, class: 'guide', visibility: 'hidden' });
     svg.append(guide);
-    const hit = S('rect', { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, class: 'hit', tabindex: 0, 'aria-label': 'Valores por fecha; usa las flechas' });
+    const hit = S('rect', { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, class: 'hit', tabindex: 0, 'aria-label': tr('Valores por fecha; usa las flechas', 'Values by date; use the arrow keys') });
     let cur = T.length - 1;
     const at = (i, ev) => {
       cur = Math.max(0, Math.min(T.length - 1, i)); const x = xs(T[cur]);
@@ -546,9 +585,9 @@ function renderTrend(d) {
   card.append(tableDetails(d, keys.slice(0, 10), T, i0));
 }
 function tableDetails(d, keys, T, i0) {
-  const det = el('details', { class: 'data' }, [el('summary', { text: 'Ver como tabla (últimas 15 fechas)' })]);
+  const det = el('details', { class: 'data' }, [el('summary', { text: tr('Ver como tabla (últimas 15 fechas)', 'Show as a table (last 15 dates)') })]);
   const rows = T.slice(-15).map((t, j) => [t, ...keys.map(k => d.series.lines[k][i0 + T.length - 15 + j < i0 ? i0 : i0 + Math.max(0, T.length - 15) + j])]);
-  const tbl = el('table', { class: 't' }, [el('thead', {}, [el('tr', {}, [el('th', { text: 'Fecha' }), ...keys.map(k => el('th', { text: pname(d, k) }))])]),
+  const tbl = el('table', { class: 't' }, [el('thead', {}, [el('tr', {}, [el('th', { text: tr('Fecha', 'Date') }), ...keys.map(k => el('th', { text: pname(d, k) }))])]),
     el('tbody', {}, rows.reverse().map(r => el('tr', {}, [el('td', { text: fdate(r[0]) }), ...r.slice(1).map(v => el('td', { text: fmt(v) }))])))]);
   det.append(el('div', { class: 'table-wrap' }, [tbl]));
   return det;
@@ -611,10 +650,10 @@ function viewDoc(d) {
 }
 function emptyWindow(card, title, w) {
   card.hidden = false; clear(card);
-  const b = el('button', { class: 'show-more', text: 'Volver a la media de hoy' });
+  const b = el('button', { class: 'show-more', text: tr('Volver a la media de hoy', "Back to today's average") });
   b.onclick = () => setWindow('hoy');
   card.append(el('div', { class: 'card-head' }, [el('h2', { text: title })]),
-    el('p', { class: 'empty-note', text: `No hay encuestas publicadas en ${w.days === 7 ? 'los últimos 7 días' : 'los últimos 30 días'} para esta elección.` }), b);
+    el('p', { class: 'empty-note', text: tr(`No hay encuestas publicadas en los últimos ${w.days} días para esta elección.`, `No polls published in the last ${w.days} days for this election.`) }), b);
 }
 
 // ---------- polls table ----------
@@ -623,32 +662,34 @@ function renderPolls(d) {
   const used = new Map((d.now?.used || []).map(u => [u.id, u.w]));
   const polls = [...d.polls].sort((a, b) => pubOf(b).localeCompare(pubOf(a)) || b.d.localeCompare(a.d));
   const keys = (d.now?.votes || []).slice(0, 7).map(v => v.k);
-  const where = { hoy: 'entran hoy en la media', semana: 'entran en la media de esta semana', mes: 'entran en la media de este mes' }[state.win];
-  card.append(el('div', { class: 'card-head' }, [el('h2', { text: 'Encuestas' }), el('span', { class: 'hint', text: `${d.polls.length} en total · ordenadas por fecha de publicación · con peso, las que ${where}` })]));
+  const where = (ES ? { hoy: 'entran hoy en la media', semana: 'entran en la media de esta semana', mes: 'entran en la media de este mes' } : { hoy: "are in today's average", semana: "are in this week's average", mes: "are in this month's average" })[state.win];
+  card.append(el('div', { class: 'card-head' }, [el('h2', { text: tr('Encuestas', 'Polls') }), el('span', { class: 'hint', text: tr(`${d.polls.length} en total · ordenadas por fecha de publicación · con peso, las que ${where}`, `${d.polls.length} in total · by publication date · with a weight, those that ${where}`) })]));
   const n = state.pollsShown || 25;
-  const head = el('tr', {}, [el('th', { text: 'Publicada' }), el('th', { class: 'l', text: 'Empresa' }), ...keys.map(k => el('th', {}, [el('span', { class: 'dot', style: `background:${pcol(d, k)}` }), pname(d, k)])), el('th', { text: 'Peso' })]);
+  const head = el('tr', {}, [el('th', { text: tr('Publicada', 'Published') }), el('th', { class: 'l', text: tr('Empresa', 'Pollster') }), ...keys.map(k => el('th', {}, [el('span', { class: 'dot', style: `background:${pcol(d, k)}` }), pname(d, k)])), el('th', { text: tr('Peso', 'Weight') })]);
   const body = el('tbody');
   for (const p of polls.slice(0, n)) {
     const w = used.get(p.id);
-    const tr = el('tr', { class: w == null ? 'excluded' : '' });
-    const field = p.d0 && p.d0 !== p.d ? `campo ${fdate(p.d0).slice(0, 5)}–${fdate(p.d).slice(0, 5)}` : `campo ${fdate(p.d).slice(0, 5)}`;
-    tr.append(el('td', {}, [fdate(pubOf(p)), el('small', { text: field })]));
+    const row = el('tr', { class: w == null ? 'excluded' : '' });
+    const field = tr('campo ', 'fieldwork ') + (p.d0 && p.d0 !== p.d ? `${fdate(p.d0).slice(0, 5)}–${fdate(p.d).slice(0, 5)}` : fdate(p.d).slice(0, 5));
+    row.append(el('td', {}, [fdate(pubOf(p)), el('small', { text: field })]));
     const who = el('td', { class: 'l who' }, [el('a', { href: p.u || '#', rel: 'noopener', target: '_blank', text: p.po })]);
-    if (p.fi) who.append(el('span', { class: 'badge', text: 'interna' })); if (p.fx) who.append(el('span', { class: 'badge', text: 'urna' })); if (p.pa) who.append(el('span', { class: 'badge', text: 'parcial' }));
-    if (p.cl || p.n) who.append(el('small', { text: [p.cl, p.n ? p.n.toLocaleString('es') + ' ent.' : null].filter(Boolean).join(' · ') }));
-    tr.append(who);
-    for (const k of keys) { const x = p.p.find(y => y[0] === k); tr.append(el('td', {}, [x && x[1] != null ? fmt(x[1]) : '–', x && x[2] != null ? el('small', { text: x[3] != null && x[3] !== x[2] ? `${x[2]}–${x[3]}` : String(x[2]) }) : null])); }
-    tr.append(el('td', { class: 'weight', text: w != null ? Math.round(w * 100) + '%' : '' }));
-    body.append(tr);
+    if (p.fi) who.append(el('span', { class: 'badge', text: tr('interna', 'internal') })); if (p.fx) who.append(el('span', { class: 'badge', text: tr('urna', 'exit poll') })); if (p.pa) who.append(el('span', { class: 'badge', text: tr('parcial', 'partial') }));
+    if (p.cl || p.n) who.append(el('small', { text: [p.cl, p.n ? p.n.toLocaleString(LOC) + tr(' ent.', ' interviews') : null].filter(Boolean).join(' · ') }));
+    row.append(who);
+    for (const k of keys) { const x = p.p.find(y => y[0] === k); row.append(el('td', {}, [x && x[1] != null ? fmt(x[1]) : '–', x && x[2] != null ? el('small', { text: x[3] != null && x[3] !== x[2] ? `${x[2]}–${x[3]}` : String(x[2]) }) : null])); }
+    row.append(el('td', { class: 'weight', text: w != null ? Math.round(w * 100) + '%' : '' }));
+    body.append(row);
   }
   card.append(el('div', { class: 'table-wrap' }, [el('table', { class: 't' }, [el('thead', {}, [head]), body])]));
-  if (polls.length > n) { const b = el('button', { class: 'show-more', text: 'Mostrar más' }); b.onclick = () => { state.pollsShown = n + 50; renderPolls(d); }; card.append(b); }
+  if (polls.length > n) { const b = el('button', { class: 'show-more', text: tr('Mostrar más', 'Show more') }); b.onclick = () => { state.pollsShown = n + 50; renderPolls(d); }; card.append(b); }
 }
 
 // ---------- explore ----------
 function renderExplore() {
-  const tabs = { es: [['all', 'Todas'], ['congreso', 'Congreso'], ['municipales', 'Municipales'], ['forales', 'Forales'], ['congreso-ccaa', 'Circunscripciones']],
-    aut: [], intl: [['all', 'Todas'], ['legislativas', 'Nacionales'], ['europeas', 'Europeas'], ['regionales', 'Regionales']] }[SECTION];
+  const tabs = (ES ? { es: [['all', 'Todas'], ['congreso', 'Congreso'], ['municipales', 'Municipales'], ['forales', 'Forales'], ['congreso-ccaa', 'Circunscripciones']],
+    aut: [], intl: [['all', 'Todas'], ['legislativas', 'Nacionales'], ['europeas', 'Europeas'], ['regionales', 'Regionales']] }
+    : { es: [['all', 'All'], ['congreso', 'Congress'], ['municipales', 'Local'], ['forales', 'Foral'], ['congreso-ccaa', 'Constituencies']],
+    aut: [], intl: [['all', 'All'], ['legislativas', 'National'], ['europeas', 'European'], ['regionales', 'Regional']] })[SECTION];
   const match = (e, t) => inSection(e) && (t === 'all' || e.kind === t);
   const q = state.q.toLowerCase();
   const tb = $('etabs'); clear(tb);
@@ -662,43 +703,45 @@ function renderExplore() {
   for (const e of items) {
     const old = e.last < new Date(Date.now() - 400 * 864e5).toISOString().slice(0, 10);
     const a = el('a', { class: 'mini' + (old ? ' old' : ''), href: '#' + e.id });
-    a.append(el('div', { class: 't1', text: e.name }), el('div', { class: 't2', text: `${KIND[e.kind] || e.kind} · ${e.total} encuestas · ${fdate(e.last)}` }));
+    a.append(el('div', { class: 't1', text: ename(e) }), el('div', { class: 't2', text: `${KIND[e.kind] || e.kind} · ${e.total} ${tr('encuestas', 'polls')} · ${fdate(e.last)}` }));
     if (e.sb) { const T = e.sb.reduce((s, x) => s + x[1], 0); a.append(el('div', { class: 'sb' }, e.sb.map(([n, s, c]) => el('i', { title: `${n} ${s}`, style: `flex:${s};background:${c || 'var(--axis)'}` })))); void T; }
     if (e.top[0]) a.append(el('div', { class: 'lead' }, [el('b', { text: e.top[0][1] }), ` ${fmt(e.top[0][2])}%` + (e.top[1] ? ` · ${e.top[1][1]} ${fmt(e.top[1][2])}%` : '')]));
     box.append(a);
   }
-  if (!items.length) box.append(el('p', { class: 'empty-note', text: 'Sin resultados' }));
+  if (!items.length) box.append(el('p', { class: 'empty-note', text: tr('Sin resultados', 'No results') }));
 }
 $('esearch').oninput = e => { state.q = e.target.value; renderExplore(); };
 
 // ---------- main ----------
 function render() {
   const d = state.doc;
-  document.title = `${d.name} · Electómetro`;
+  document.title = `${ename(d)} · Electómetro`;
   const hero = $('hero'); clear(hero);
   const nowD = d.now?.d;
   const stale = nowD && (Date.now() - Date.parse(nowD)) > 120 * 864e5;
   const v = viewDoc(d);
   let sub;
-  if (!d.now) sub = 'Esta elección solo tiene resultados, sin encuestas utilizables.';
-  else if (v.now.empty) sub = `Sin encuestas publicadas en ${v.now.days === 7 ? 'los últimos 7 días' : 'los últimos 30 días'}.`;
-  else if (v.now.window) sub = (v.now.used.length === 1 ? `Solo hay una encuesta publicada desde el ${fdate(v.now.window.from)}: ${v.now.used[0].po}. ` : `Media de las ${v.now.used.length} casas con encuesta publicada desde el ${fdate(v.now.window.from)} (${v.now.nCycle} encuestas). `) + lastPoll(v);
-  else sub = `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. ${lastPoll(d)}`;
+  if (!d.now) sub = tr('Esta elección solo tiene resultados, sin encuestas utilizables.', 'This election only has results, no usable polls.');
+  else if (v.now.empty) sub = tr(`Sin encuestas publicadas en los últimos ${v.now.days} días.`, `No polls published in the last ${v.now.days} days.`);
+  else if (v.now.window) sub = (v.now.used.length === 1
+    ? tr(`Solo hay una encuesta publicada desde el ${fdate(v.now.window.from)}: ${v.now.used[0].po}. `, `Only one poll published since ${fdate(v.now.window.from)}: ${v.now.used[0].po}. `)
+    : tr(`Media de las ${v.now.used.length} casas con encuesta publicada desde el ${fdate(v.now.window.from)} (${v.now.nCycle} encuestas). `, `Average of the ${v.now.used.length} pollsters with a poll published since ${fdate(v.now.window.from)} (${v.now.nCycle} polls). `)) + lastPoll(v);
+  else sub = ES ? `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. ${lastPoll(d)}` : `Average of ${d.now.nCycle} polls${d.now.since ? ' since the election of ' + fdate(d.now.since) : ''}. ${lastPoll(d)}`;
   // key facts as pills, and a countdown when this is the 29 November general election
   const general = d.country === 'es' && (d.kind === 'congreso' || d.kind === 'congreso-ccaa');
   const T = d.now?.seats?.total || d.T, M = d.M || (T ? Math.floor(T / 2) + 1 : null);
-  const pills = [general ? 'Elecciones generales' : (KIND[d.kind] || d.kind), general ? '29.11.2026' : null, T ? `${T} escaños` : null, M ? `Mayoría ${M}` : null,
-    d.now ? `Última encuesta ${fdate(d.now.pub || d.now.d).slice(0, 5)}` : null].filter(Boolean);
-  const copy = el('div', { class: 'hero-copy' }, [el('ul', { class: 'hl-pills', 'aria-label': 'Datos clave' }, pills.map(t => el('li', { text: t }))),
-    el('h1', { text: d.name }), el('p', { class: 'sub', text: sub })]);
-  if (stale) copy.append(el('span', { class: 'stale', text: 'Datos antiguos: la última encuesta tiene más de cuatro meses.' }));
+  const pills = [general ? tr('Elecciones generales', 'General election') : (KIND[d.kind] || d.kind), general ? '29.11.2026' : null, T ? `${T} ${tr('escaños', 'seats')}` : null, M ? `${tr('Mayoría', 'Majority')} ${M}` : null,
+    d.now ? `${tr('Última encuesta', 'Latest poll')} ${fdate(d.now.pub || d.now.d).slice(0, 5)}` : null].filter(Boolean);
+  const copy = el('div', { class: 'hero-copy' }, [el('ul', { class: 'hl-pills', 'aria-label': tr('Datos clave', 'Key facts') }, pills.map(t => el('li', { text: t }))),
+    el('h1', { text: ename(d) }), el('p', { class: 'sub', text: sub })]);
+  if (stale) copy.append(el('span', { class: 'stale', text: tr('Datos antiguos: la última encuesta tiene más de cuatro meses.', 'Old data: the latest poll is more than four months old.') }));
   hero.append(copy);
   if (general && window.HLMotion) {
     const cd = el('div', { class: 'hero-count', role: 'timer' });
     hero.append(cd);
-    window.HLMotion.countdown(cd, '2026-11-29T20:00:00+01:00', { one: 'día para votar', many: 'días para votar', done: 'Hoy se vota' });
+    window.HLMotion.countdown(cd, '2026-11-29T20:00:00+01:00', ES ? { one: 'día para votar', many: 'días para votar', done: 'Hoy se vota' } : { one: 'day to vote', many: 'days to vote', done: 'Election day' });
   }
-  if (v.now?.empty) { emptyWindow($('seatsCard'), 'Parlamento', v.now); $('grid').classList.add('no-seats'); $('votesCard').hidden = true; $('coalCard').hidden = true; }
+  if (v.now?.empty) { emptyWindow($('seatsCard'), tr('Parlamento', 'Parliament'), v.now); $('grid').classList.add('no-seats'); $('votesCard').hidden = true; $('coalCard').hidden = true; }
   else { $('votesCard').hidden = false; renderSeats(v); renderVotes(v); renderCoal(v); }
   renderFit(d); renderMap(d); renderTrend(d); renderPolls(v.now?.empty ? d : v);
 }
@@ -724,8 +767,8 @@ addEventListener('hashchange', () => { if (location.hash === '#explorar' || loca
 
 (async () => {
   state.index = await getJson('data/elections.json');
-  $('upd').textContent = 'Última actualización de los datos: ' + new Date(state.index.updated).toLocaleString('es');
-  $('eheading').textContent = { es: 'Explorar elecciones en España', aut: 'Explorar parlamentos autonómicos', intl: 'Explorar elecciones internacionales' }[SECTION];
+  $('upd').textContent = tr('Última actualización de los datos: ', 'Data last updated: ') + new Date(state.index.updated).toLocaleString(LOC);
+  $('eheading').textContent = (ES ? { es: 'Explorar elecciones en España', aut: 'Explorar parlamentos autonómicos', intl: 'Explorar elecciones internacionales' } : { es: 'Explore elections in Spain', aut: 'Explore regional parliaments', intl: 'Explore international elections' })[SECTION];
   renderExplore();
   $('etabs').hidden = !$('etabs').children.length;
   route();

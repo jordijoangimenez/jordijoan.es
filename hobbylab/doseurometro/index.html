@@ -8,11 +8,12 @@
 <link rel="canonical" href="https://jordijoan.es/hobbylab/doseurometro/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css?v=0bb279eafe">
-<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+<script src="../shared/lang.js?v=90a9ab947f"></script>
 </head>
 <body>
-<a class="skip" href="#browse">Skip to the coins</a>
+<a class="skip" href="#browse" data-i18n="skip">Skip to the coins</a>
 
 <header class="top"><div class="wrap">
   <a class="brand" href="./" aria-label="Doseurómetro">
@@ -20,68 +21,68 @@
     Doseurómetro
   </a>
   <nav>
-    <a href="#browse" class="hide-sm">Coins</a>
-    <a href="#method" class="hide-sm">Method</a>
+    <a href="#browse" class="hide-sm" data-i18n="nav_coins">Coins</a>
+    <a href="#method" class="hide-sm" data-i18n="nav_method">Method</a>
     <a href="../">Hobby Lab</a>
-    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme">◐</button>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme" data-i18n-attr="aria-label:theme">◐</button>
   </nav>
 </div></header>
 
 <main class="wrap" id="main">
-  <form id="filters" class="filters" role="search" aria-label="Filter coins" autocomplete="off">
-    <div class="field field-search"><label for="f-q">Search</label><input id="f-q" type="search" placeholder="Subject, design or country"></div>
-    <div class="field"><label for="f-country">Country</label><select id="f-country"><option value="">All countries</option></select></div>
-    <div class="field field-year"><label for="f-from">From</label><select id="f-from"><option value="">Any year</option></select></div>
-    <div class="field field-year"><label for="f-to">To</label><select id="f-to"><option value="">Any year</option></select></div>
-    <div class="field"><label for="f-kind">Type</label>
+  <form id="filters" class="filters" role="search" aria-label="Filter coins" data-i18n-attr="aria-label:filters" autocomplete="off">
+    <div class="field field-search"><label for="f-q" data-i18n="f_q">Search</label><input id="f-q" type="search" placeholder="Subject, design or country" data-i18n-attr="placeholder:f_q_ph"></div>
+    <div class="field"><label for="f-country" data-i18n="f_country">Country</label><select id="f-country"><option value="" data-i18n="all_countries">All countries</option></select></div>
+    <div class="field field-year"><label for="f-from" data-i18n="f_from">From</label><select id="f-from"><option value="" data-i18n="any_year">Any year</option></select></div>
+    <div class="field field-year"><label for="f-to" data-i18n="f_to">To</label><select id="f-to"><option value="" data-i18n="any_year">Any year</option></select></div>
+    <div class="field"><label for="f-kind" data-i18n="f_kind">Type</label>
       <select id="f-kind">
-        <option value="">All types</option>
-        <option value="national">National issues</option>
-        <option value="common">Common issues</option>
-        <option value="joint">Joint issues</option>
+        <option value="" data-i18n="all_types">All types</option>
+        <option value="national" data-i18n="k_national">National issues</option>
+        <option value="common" data-i18n="k_common">Common issues</option>
+        <option value="joint" data-i18n="k_joint">Joint issues</option>
       </select></div>
-    <div class="field"><label for="f-sort">Sort</label>
+    <div class="field"><label for="f-sort" data-i18n="f_sort">Sort</label>
       <select id="f-sort">
-        <option value="year-desc">Newest first</option>
-        <option value="year-asc">Oldest first</option>
-        <option value="country">Country, A to Z</option>
+        <option value="year-desc" data-i18n="s_new">Newest first</option>
+        <option value="year-asc" data-i18n="s_old">Oldest first</option>
+        <option value="country" data-i18n="s_country">Country, A to Z</option>
       </select></div>
-    <button type="button" id="f-reset" class="btn">Reset</button>
+    <button type="button" id="f-reset" class="btn" data-i18n="reset">Reset</button>
   </form>
 
   <section class="hero hl-rise" id="hero" aria-labelledby="hero-h">
     <div class="hero-copy">
-      <ul class="hl-pills" id="pills" aria-label="About this catalogue"><li>2-euro commemoratives</li></ul>
+      <ul class="hl-pills" id="pills" aria-label="About this catalogue" data-i18n-attr="aria-label:about"><li>2-euro commemoratives</li></ul>
       <h1 id="hero-h">Doseurómetro</h1>
-      <p class="sub">Every 2-euro commemorative coin, with the design description, mintage and issue date copied from the European Commission notice in the Official Journal of the European Union. An unofficial catalogue.</p>
+      <p class="sub" data-i18n="sub">Every 2-euro commemorative coin, with the design description, mintage and issue date copied from the European Commission notice in the Official Journal of the European Union. An unofficial catalogue.</p>
     </div>
     <div class="hl-count" id="hero-count" hidden></div>
   </section>
 
   <section class="card" id="browse" aria-labelledby="browse-h">
     <div class="card-head">
-      <h2 id="browse-h">Coins</h2>
-      <span class="hint" id="count" role="status" aria-live="polite">Loading coins…</span>
-      <div id="views" class="seg" role="group" aria-label="Group coins">
-        <button type="button" data-view="year" aria-pressed="true">By year</button>
-        <button type="button" data-view="country" aria-pressed="false">By country</button>
-        <button type="button" data-view="topic" aria-pressed="false">By topic</button>
-        <button type="button" data-view="common" aria-pressed="false">Common issues</button>
-        <button type="button" data-view="all" aria-pressed="false">All coins</button>
+      <h2 id="browse-h" data-i18n="coins">Coins</h2>
+      <span class="hint" id="count" role="status" aria-live="polite" data-i18n="loading">Loading coins…</span>
+      <div id="views" class="seg" role="group" aria-label="Group coins" data-i18n-attr="aria-label:views">
+        <button type="button" data-view="year" aria-pressed="true" data-i18n="v_year">By year</button>
+        <button type="button" data-view="country" aria-pressed="false" data-i18n="v_country">By country</button>
+        <button type="button" data-view="topic" aria-pressed="false" data-i18n="v_topic">By topic</button>
+        <button type="button" data-view="common" aria-pressed="false" data-i18n="v_common">Common issues</button>
+        <button type="button" data-view="all" aria-pressed="false" data-i18n="v_all">All coins</button>
       </div>
     </div>
-    <div class="topics" id="topics" role="group" aria-label="Filter by topic" hidden></div>
+    <div class="topics" id="topics" role="group" aria-label="Filter by topic" data-i18n-attr="aria-label:by_topic" hidden></div>
     <p id="error" class="error" role="alert" hidden></p>
     <div id="groups" class="groups" hidden></div>
-    <ul id="grid" class="grid" aria-label="Coins" hidden></ul>
+    <ul id="grid" class="grid" aria-label="Coins" data-i18n-attr="aria-label:coins" hidden></ul>
     <div class="more">
       <button type="button" id="more" class="btn btn-primary" hidden>Load more</button>
     </div>
   </section>
 
   <section class="card" id="method" aria-labelledby="method-h">
-    <div class="card-head"><h2 id="method-h">How it works</h2></div>
-    <div class="method">
+    <div class="card-head"><h2 id="method-h" data-i18n="method">How it works</h2></div>
+    <div class="method" data-i18n="method_body">
       <h3>Source</h3><p>Each coin comes from a European Commission notice titled <q>New national side of euro coins intended for circulation</q>, published in the C series of the Official Journal of the European Union since 2004. Every coin links to its notice on EUR-Lex.</p>
       <h3>Copied, not rewritten</h3><p>The subject, design description, mintage and issue date are copied from the English version of the notice. Where the Commission later published a corrigendum, the coin notes it.</p>
       <h3>Images and rights</h3><p>This is an informative, non-commercial catalogue about commemorative coins. The pictures are the ones printed in the notices, shown at low resolution and with their source, only to identify and describe each coin. The design of each national side belongs to the country that issued it, not to this site. If you hold the rights to a design and want its picture removed, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">open an issue on GitHub</a> and it will be taken down.</p>
@@ -95,17 +96,17 @@
 </main>
 
 <footer><div class="wrap">
-  <p>Texts: European Commission notices in the Official Journal of the European Union (<a href="https://eur-lex.europa.eu/" rel="noopener">EUR-Lex</a>), &copy; European Union, reuse authorised with acknowledgement of the source. Coin designs: &copy; the issuing countries; the pictures come from the same notices and are shown only to identify each coin (<a href="#method">rights</a>). This catalogue is unofficial: always check the notice for the authoritative text.</p>
-  <p>A <a href="../">Hobby Lab</a> project at <a href="https://jordijoan.es/">jordijoan.es</a>. Data updated: <time id="generated">date not available</time>.</p>
+  <p data-i18n="foot1">Texts: European Commission notices in the Official Journal of the European Union (<a href="https://eur-lex.europa.eu/" rel="noopener">EUR-Lex</a>), &copy; European Union, reuse authorised with acknowledgement of the source. Coin designs: &copy; the issuing countries; the pictures come from the same notices and are shown only to identify each coin (<a href="#method">rights</a>). This catalogue is unofficial: always check the notice for the authoritative text.</p>
+  <p><span data-i18n="foot2">A</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">project at</span> <a href="https://jordijoan.es/">jordijoan.es</a>. <span data-i18n="updated">Data updated:</span> <time id="generated">–</time>.</p>
 </div></footer>
 
 <dialog id="dlg" aria-labelledby="dlg-title">
   <article class="dlg-body">
     <div class="dlg-bar">
-      <button type="button" id="dlg-prev" class="btn">&larr; Previous</button>
+      <button type="button" id="dlg-prev" class="btn" data-i18n="prev">&larr; Previous</button>
       <span id="dlg-pos" class="dlg-pos" aria-live="polite"></span>
-      <button type="button" id="dlg-next" class="btn">Next &rarr;</button>
-      <button type="button" id="dlg-close" class="btn btn-close" aria-label="Close">Close</button>
+      <button type="button" id="dlg-next" class="btn" data-i18n="next">Next &rarr;</button>
+      <button type="button" id="dlg-close" class="btn btn-close" data-i18n="close">Close</button>
     </div>
     <div class="dlg-content" id="dlg-content"></div>
   </article>
@@ -122,6 +123,6 @@
   })();
 </script>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="app.js?v=44dd01e58e"></script>
+<script src="app.js?v=f1d195dea1"></script>
 </body>
 </html>

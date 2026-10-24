@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Primómetro</title>
-<meta name="description" content="La prima de riesgo, la inflación, el déficit público y el PIB de cada país de la zona euro y su evolución junto a los tipos de interés del BCE, con datos oficiales del BCE y Eurostat.">
+<meta name="description" content="The risk premium, inflation, public deficit and GDP of every euro area country and how they evolve next to the ECB's interest rates, with official data from the ECB and Eurostat.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/primometro/">
 <link rel="stylesheet" href="assets/style.css?v=942f16089c">
-<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+<script src="../shared/lang.js?v=90a9ab947f"></script>
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -17,22 +18,22 @@
     Primómetro
   </a>
   <nav>
-    <a href="#metodo" class="hide-sm">Método</a>
+    <a href="#metodo" class="hide-sm" data-i18n="nav_method">Method</a>
     <a href="../">Hobby Lab</a>
-    <button class="icon-btn" id="theme" aria-label="Cambiar tema">◐</button>
+    <button class="icon-btn" id="theme" aria-label="Switch theme" data-i18n-attr="aria-label:theme">◐</button>
   </nav>
 </div></header>
 
 <main class="wrap">
   <div class="filters">
-    <label class="field"><span>País</span><select id="country"></select></label>
-    <div class="field"><span>Comparado con</span>
-      <div class="seg" role="group" aria-label="Referencia">
-        <button data-vs="DE" aria-pressed="true">Alemania</button>
-        <button data-vs="U2" aria-pressed="false">Media de la zona euro</button>
+    <label class="field"><span data-i18n="country">Country</span><select id="country"></select></label>
+    <div class="field"><span data-i18n="vs">Compared with</span>
+      <div class="seg" role="group" aria-label="Reference" data-i18n-attr="aria-label:ref">
+        <button data-vs="DE" aria-pressed="true" data-i18n="germany">Germany</button>
+        <button data-vs="U2" aria-pressed="false" data-i18n="ea_avg">Euro area average</button>
       </div></div>
-    <div class="field"><span>Periodo</span>
-      <div class="seg" role="group" aria-label="Periodo" id="ranges"></div></div>
+    <div class="field"><span data-i18n="period">Period</span>
+      <div class="seg" role="group" aria-label="Period" data-i18n-attr="aria-label:period" id="ranges"></div></div>
   </div>
 
   <section class="hero hl-rise" id="hero" aria-live="polite"></section>
@@ -43,52 +44,52 @@
   </div>
 
   <section class="card" id="trend">
-    <div class="card-head"><h2 id="trendTitle">Prima de riesgo</h2><span class="hint">puntos básicos (pb) = diferencia de rentabilidad del bono a 10 años × 100</span></div>
+    <div class="card-head"><h2 id="trendTitle">Risk premium</h2><span class="hint" data-i18n="bp_hint">basis points (bp) = difference in 10-year bond yield × 100</span></div>
     <div class="legend" id="legend"></div>
     <div class="chart" id="spreadChart"></div>
-    <p class="chart-title">Tipo de depósito del BCE e inflación (%)</p>
+    <p class="chart-title" data-i18n="t_rates">ECB deposit rate and inflation (%)</p>
     <div class="chart" id="ratesChart"></div>
     <div class="key-row" id="ratesKey"></div>
-    <p class="chart-title" id="cumTitle">Inflación acumulada (%)</p>
+    <p class="chart-title" id="cumTitle">Accumulated inflation (%)</p>
     <div class="chart" id="cumChart"></div>
     <div class="key-row" id="cumKey"></div>
-    <p class="chart-title">Crecimiento del PIB real (% anual)</p>
+    <p class="chart-title" data-i18n="t_gdp">Real GDP growth (% a year)</p>
     <div class="chart" id="gdpChart"></div>
     <div class="key-row" id="gdpKey"></div>
-    <p class="chart-title" id="gdpCumTitle">PIB real acumulado (%)</p>
+    <p class="chart-title" id="gdpCumTitle">Accumulated real GDP (%)</p>
     <div class="chart" id="gdpCumChart"></div>
     <div class="key-row" id="gdpCumKey"></div>
-    <p class="chart-title">Saldo público (% del PIB, anual)</p>
+    <p class="chart-title" data-i18n="t_def">Government balance (% of GDP, yearly)</p>
     <div class="chart" id="defChart"></div>
     <div class="key-row" id="defKey"></div>
-    <details class="data" id="trendTable"><summary>Ver como tabla</summary></details>
+    <details class="data" id="trendTable"><summary data-i18n="table">Show as a table</summary></details>
   </section>
 
   <section class="card" id="decCard"></section>
 
   <section class="card" id="metodo">
-    <div class="card-head"><h2>Cómo se calcula</h2></div>
-    <div class="method">
-      <h3>Prima de riesgo</h3><p>Diferencia entre la rentabilidad del bono a 10 años de un país y la del bono alemán (o la media de la zona euro), en puntos básicos: 1 punto porcentual = 100 pb. Una prima alta significa que el mercado pide más interés a ese país que a Alemania.</p>
-      <h3>Datos mensuales</h3><p>El BCE publica para cada país la media mensual de la rentabilidad a 10 años (la serie del criterio de convergencia de Maastricht), con un mes de retraso aproximadamente. No es la prima diaria de los medios, que procede de proveedores de mercado de pago.</p>
-      <h3>Inflación</h3><p>Tasa anual del índice de precios de consumo armonizado (IPCA) de Eurostat, la medida que usa el BCE para su objetivo del 2 %. En el mapa, los colores cálidos indican inflación por encima del 2 % y los azules, por debajo. El tipo real es el tipo de depósito menos la inflación de la zona euro: si es negativo, el dinero en depósito pierde poder de compra.</p>
-      <h3>Inflación acumulada</h3><p>Cuánto han subido los precios desde el primer mes del periodo elegido, a partir del índice del IPCA de Eurostat (no sumando tasas anuales). La línea del depósito muestra cuánto habría crecido un depósito remunerado cada mes al tipo de depósito del BCE: si queda por debajo de los precios, ese ahorro perdió poder de compra.</p>
-      <h3>Déficit público</h3><p>Saldo de las administraciones públicas en % del PIB (capacidad o necesidad de financiación) según las notificaciones de déficit excesivo que publica Eurostat cada abril y octubre. Negativo es déficit; el límite de la UE es un déficit del 3 %. Son datos anuales: para los meses de 2026 se muestra el último año publicado.</p>
-      <h3>PIB</h3><p>Crecimiento anual del producto interior bruto en volumen (descontada la inflación) y crecimiento acumulado desde el primer año del periodo, a partir de la serie encadenada de Eurostat. El último trimestre muestra el crecimiento frente al mismo trimestre del año anterior, corregido de estacionalidad. En Irlanda y Malta el PIB se ve muy afectado por la contabilidad de grandes multinacionales.</p>
-      <h3>Tipos del BCE</h3><p>Facilidad de depósito, operaciones principales de financiación y facilidad marginal de crédito, en la fecha en que entra en vigor cada cambio. Entre 2000 y 2008 las operaciones principales se hacían a tipo variable; se muestra el tipo mínimo de puja.</p>
-      <h3>Antes del euro</h3><p>Hasta que un país adopta el euro, su diferencial con Alemania incluye el riesgo de tipo de cambio. Ese tramo se dibuja más claro.</p>
-      <h3>Países pequeños</h3><p>En países con poca deuda a largo plazo (por ejemplo Estonia, Lituania o Luxemburgo) la serie se basa en pocos bonos o en aproximaciones, y no siempre es comparable con la de los demás.</p>
-      <h3>Decisiones y prima</h3><p>La tabla de decisiones compara la prima del mes anterior a cada cambio de tipos con la de tres meses después. Muestra lo que pasó, no por qué: en esos meses influyen muchos otros factores.</p>
+    <div class="card-head"><h2 data-i18n="method">How it is calculated</h2></div>
+    <div class="method" data-i18n="method_body">
+      <h3>Risk premium</h3><p>The difference between a country's 10-year bond yield and Germany's (or the euro area average), in basis points: 1 percentage point = 100 bp. A high premium means the market asks that country for more interest than Germany.</p>
+      <h3>Monthly data</h3><p>For each country the ECB publishes the monthly average of the 10-year yield (the series for the Maastricht convergence criterion), about a month late. It is not the daily premium quoted in the media, which comes from paid market data providers.</p>
+      <h3>Inflation</h3><p>Annual rate of Eurostat's harmonised index of consumer prices (HICP), the measure the ECB uses for its 2% target. On the map, warm colours mean inflation above 2% and blue ones below it. The real rate is the deposit rate minus euro area inflation: when it is negative, money on deposit loses purchasing power.</p>
+      <h3>Accumulated inflation</h3><p>How much prices have risen since the first month of the chosen period, from Eurostat's HICP index (not by adding up annual rates). The deposit line shows how much a deposit paid the ECB deposit rate each month would have grown: when it stays below prices, those savings lost purchasing power.</p>
+      <h3>Public deficit</h3><p>General government balance as % of GDP (net lending or borrowing), from the excessive deficit notifications Eurostat publishes every April and October. Negative is a deficit; the EU limit is a 3% deficit. The data is yearly: for the months of 2026 the latest published year is shown.</p>
+      <h3>GDP</h3><p>Annual growth of gross domestic product in volume (after inflation) and accumulated growth since the first year of the period, from Eurostat's chain-linked series. The latest quarter shows growth on the same quarter a year earlier, seasonally adjusted. In Ireland and Malta, GDP is strongly affected by the accounts of large multinationals.</p>
+      <h3>ECB rates</h3><p>Deposit facility, main refinancing operations and marginal lending facility, on the date each change takes effect. Between 2000 and 2008 the main operations used variable rates; the minimum bid rate is shown.</p>
+      <h3>Before the euro</h3><p>Until a country adopts the euro, its spread with Germany includes exchange rate risk. That stretch is drawn lighter.</p>
+      <h3>Small countries</h3><p>In countries with little long-term debt (for example Estonia, Lithuania or Luxembourg) the series relies on few bonds or on approximations, and is not always comparable with the others.</p>
+      <h3>Decisions and premium</h3><p>The decisions table compares the premium in the month before each rate change with the premium three months later. It shows what happened, not why: many other factors weigh in those months.</p>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap">
-  <p id="src">Fuentes: Banco Central Europeo, <a href="https://data.ecb.europa.eu/" rel="noopener">ECB Data Portal</a> (rentabilidad de la deuda y tipos de interés); <a href="https://ec.europa.eu/eurostat/" rel="noopener">Eurostat</a> (inflación, IPCA; déficit público; PIB). Este sitio es independiente y no está afiliado al BCE ni a Eurostat.</p>
-  <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. <span id="upd"></span></p>
+  <p id="src" data-i18n="foot1">Sources: European Central Bank, <a href="https://data.ecb.europa.eu/" rel="noopener">ECB Data Portal</a> (bond yields and interest rates); <a href="https://ec.europa.eu/eurostat/" rel="noopener">Eurostat</a> (HICP inflation; public deficit; GDP). This site is independent and not affiliated with the ECB or Eurostat.</p>
+  <p><span data-i18n="foot2">A</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">project at</span> <a href="https://jordijoan.es/">jordijoan.es</a>. <span id="upd"></span></p>
 </div></footer>
 <div class="tip" id="tip" hidden></div>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="assets/app.js?v=ce1137af3f" type="module"></script>
+<script src="assets/app.js?v=1830940438" type="module"></script>
 </body>
 </html>

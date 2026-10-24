@@ -118,4 +118,23 @@
     pv.append(grid, cap);
     reveal('card-politicometro');
   }).catch(function () {});
+
+  // ---- Sellómetro: the six newest issues as perforated paper stamps, laid down one after another ----
+  getJson('sellometro/data/summary.json').then(function (s) {
+    function face(f) {
+      var m = (f || '').match(/(\d+(?:[.,]\d+)?)\s*(euros?|€|pesetas|pta)/i), t = (f || '').match(/tarifas?\s*[«"]?([A-C]2?)\b/i);
+      return m ? m[1] + (/^p/i.test(m[2]) ? ' pta' : ' €') : t ? t[1].toUpperCase() : '';
+    }
+    var row = el('div', { class: 'stamps' });
+    s.latest.forEach(function (c, i) {
+      var name = c.series.replace(/\s*\.?\s*[–-]\s*\d{4}.*$/, '').replace(/\.$/, '');
+      row.append(el('span', { class: 'pstamp', style: '--i:' + i }, [el('span', { class: 'pstamp-in ink-' + c.ink }, [
+        el('b', { text: face(c.face) }), el('span', { lang: 'es', text: name })
+      ])]));
+    });
+    var cap = el('p', { class: 'cap' }, [el('b', { class: 'hl-num', text: String(s.items) }), ' stamp issues from the BOE, ' + s.from + ' to ' + s.to + ', ', el('b', { text: s.withText + ' with full text' }), '. Above, the newest six.']);
+    var pv = document.getElementById('pv-sellometro');
+    pv.append(row, cap);
+    reveal('card-sellometro');
+  }).catch(function () {});
 })();

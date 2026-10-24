@@ -1,0 +1,570 @@
+(function () {
+  'use strict';
+
+  var PAGE = 60;
+  var DEFAULTS = { q: '', era: '', from: '', to: '', kind: '', terr: '', sort: 'date-desc', view: 'year', topic: '' };
+  var VIEWS = ['all', 'year', 'era', 'topic'];
+  var SORTS = ['date-desc', 'date-asc', 'series'];
+  var FESOFI = 'https://catalogodesellos.fesofi.es/product-category/';
+  // eras as Spanish philately groups its stamps; the BOE open data starts in 1960, so the first eight link to FESOFI
+  var ERAS = [
+    { id: 'isabel-ii', label: 'Isabel II', range: '1850–1870' },
+    { id: 'duque-de-la-torre', label: 'Regencia del Duque de la Torre', range: '1870–1872' },
+    { id: 'amadeo-i', label: 'Amadeo I', range: '1872–1873' },
+    { id: 'primera-republica', label: 'I República', range: '1873–1875' },
+    { id: 'carlos-vii', label: 'Carlos VII', range: '1873–1875' },
+    { id: 'alfonso-xii', label: 'Alfonso XII', range: '1875–1885' },
+    { id: 'alfonso-xiii', label: 'Alfonso XIII', range: '1886–1931' },
+    { id: 'segunda-republica', label: 'II República', range: '1931–1939' },
+    { id: 'francisco-franco', label: 'Francisco Franco', range: '1936–1975', note: 'En el BOE abierto desde 1960' },
+    { id: 'juan-carlos-i', label: 'Juan Carlos I', range: '1975–2014' },
+    { id: 'felipe-vi', label: 'Felipe VI', range: 'desde 2014' }
+  ];
+  var eraLabel = {};
+  ERAS.forEach(function (e) { eraLabel[e.id] = e.label; });
+  var KIND_LABEL = { sellos: 'Sellos', tarjeta: 'Tarjeta prefranqueada', sobre: 'Sobre o entero postal', aerograma: 'Aerograma', etiqueta: 'Etiquetas' };
+  var TERR_LABEL = { espana: 'España', andorra: 'Andorra (correo español)', africa: 'Territorios de África' };
+  var MONTHS = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+
+  var items = [];
+  var byId = {};
+  var TOPICS = []; // [{ id, label, count }] from data/topics.json; an issue can have several
+  var topicLabel = {};
+  var topicIndex = {};
+  var filtered = [];
+  var shown = 0;
+  var state = Object.assign({}, DEFAULTS);
+  var currentId = '';
+  var lastFocus = null;
+  var firstRender = true; // only the first list rises into view (Hobby Lab motion); later filter changes show at once
+
+  var $ = function (id) { return document.getElementById(id); };
+  var dlg = $('dlg');
+
+  function el(tag, props, children) {
+    var n = document.createElement(tag);
+    if (props) Object.keys(props).forEach(function (k) {
+      if (k === 'text') n.textContent = props[k];
+      else if (k === 'class') n.className = props[k];
+      else n.setAttribute(k, props[k]);
+    });
+    (children || []).forEach(function (c) { if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return n;
+  }
+
+  /* ---------- formatting ---------- */
+
+  function longDate(iso) {
+    if (!iso) return '';
+    var p = iso.split('-');
+    return (+p[2]) + ' de ' + MONTHS[+p[1] - 1] + ' de ' + p[0];
+  }
+  function shortDate(iso) {
+    if (!iso) return '';
+    var p = iso.split('-');
+    return (+p[2]) + ' ' + MONTHS[+p[1] - 1].slice(0, 3) + ' ' + p[0];
+  }
+  // 'Europa.–2011' -> 'Europa – 2011'
+  function niceSeries(s) {
+    return (s || '').replace(/\s*\.?\s*[–-]\s*/g, ' – ').replace(/\s+/g, ' ').trim() || 'Emisión sin nombre en el título';
+  }
+  // first face value, short: '0,65 euros' -> '0,65 €', 'Tarifa «A»' -> 'A'
+  function faces(face) {
+    if (!face) return [];
+    var out = [];
+    face.split(/\s·\s|;|\s+y\s+(?=\d)/).forEach(function (v) {
+      var m = v.match(/(\d+(?:[.,]\d+)?)\s*(euros?|€|pesetas|ptas?\.?|pta|céntimos|cts)/i);
+      var t = v.match(/tarifas?\s*[«"]?([A-C]2?)\b/i);
+      var s = m ? m[1] + ' ' + (/^(e|€)/i.test(m[2]) ? '€' : /^c/i.test(m[2]) ? 'cts' : 'pta') : t ? t[1].toUpperCase() : '';
+      if (s && out.indexOf(s) < 0) out.push(s);
+    });
+    return out;
+  }
+  function placeName(c) {
+    if (c.terr === 'espana') return 'ESPAÑA';
+    if (c.terr === 'andorra') return 'ANDORRA';
+    var m = (c.boe.title || '').match(/Sahara|Ifni|Fernando Poo|R[ií]o Muni|Guinea/i);
+    return m ? m[0].toUpperCase() : 'ÁFRICA';
+  }
+  function ink(c) {
+    var t = c.topics[0];
+    if (t && topicIndex[t] != null) return 'ink-' + (topicIndex[t] % 10);
+    var h = 0;
+    for (var i = 0; i < c.series.length; i++) h = (h * 31 + c.series.charCodeAt(i)) % 997;
+    return 'ink-' + (h % 10);
+  }
+  function stampNode(c) {
+    var f = faces(c.face);
+    var face = el('span', { class: 'st-face' }, [f[0] || String(c.year)]);
+    if (f.length > 1) face.appendChild(el('small', { text: '+' + (f.length - 1) }));
+    return el('span', { class: 'stamp', 'aria-hidden': 'true' }, [
+      el('span', { class: 'stamp-in ' + ink(c) }, [
+        el('span', { class: 'st-country', text: placeName(c) }),
+        face,
+        el('span', { class: 'st-title', text: niceSeries(c.series) }),
+        el('span', { class: 'st-year', text: String(c.year) })
+      ])
+    ]);
+  }
+  function dateOf(c) { return c.date || c.boe.date; }
+
+  /* ---------- URL hash state ---------- */
+
+  function readHash() {
+    var p = new URLSearchParams(location.hash.replace(/^#\/?/, ''));
+    var s = Object.assign({}, DEFAULTS);
+    Object.keys(DEFAULTS).forEach(function (k) { if (p.has(k)) s[k] = p.get(k); });
+    if (SORTS.indexOf(s.sort) < 0) s.sort = DEFAULTS.sort;
+    if (VIEWS.indexOf(s.view) < 0) s.view = DEFAULTS.view;
+    if (s.kind && !KIND_LABEL[s.kind]) s.kind = '';
+    if (s.terr && !TERR_LABEL[s.terr]) s.terr = '';
+    if (s.era && !eraLabel[s.era]) s.era = '';
+    if (s.topic && !topicLabel[s.topic]) s.topic = '';
+    return { state: s, item: p.get('e') || '' };
+  }
+
+  function buildHash(s, item) {
+    var p = new URLSearchParams();
+    Object.keys(DEFAULTS).forEach(function (k) { if (s[k] && s[k] !== DEFAULTS[k]) p.set(k, s[k]); });
+    if (item) p.set('e', item);
+    var str = p.toString();
+    return str ? '#' + str : '';
+  }
+
+  // Filter changes replace the history entry so Back does not step through every keystroke.
+  function saveFilters() {
+    history.replaceState(null, '', location.pathname + location.search + buildHash(state, currentId));
+  }
+
+  /* ---------- filtering and rendering ---------- */
+
+  function applyFilters() {
+    var words = state.q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    var from = parseInt(state.from, 10) || 0;
+    var to = parseInt(state.to, 10) || 9999;
+    filtered = items.filter(function (c) {
+      if (state.era && c.era !== state.era) return false;
+      if (c.year < from || c.year > to) return false;
+      if (state.kind && c.kind !== state.kind) return false;
+      if (state.terr && c.terr !== state.terr) return false;
+      if (state.topic && c.topics.indexOf(state.topic) < 0) return false;
+      for (var i = 0; i < words.length; i++) if (c._search.indexOf(words[i]) < 0) return false;
+      return true;
+    });
+    var asc = function (a, b) { return dateOf(a) < dateOf(b) ? -1 : dateOf(a) > dateOf(b) ? 1 : a.id < b.id ? -1 : 1; };
+    var cmp = state.sort === 'date-asc' ? asc
+      : state.sort === 'series' ? function (a, b) { return niceSeries(a.series).localeCompare(niceSeries(b.series), 'es') || asc(a, b); }
+      : function (a, b) { return -asc(a, b); };
+    if (state.view === 'year' || state.view === 'era') {
+      // grouped by time: the groups follow the date order even when sorting by series inside them
+      var dir = state.sort === 'date-asc' ? 1 : -1;
+      var inner = state.sort === 'series' ? cmp : function (a, b) { return dir * asc(a, b); };
+      var eraPos = {};
+      ERAS.forEach(function (e, i) { eraPos[e.id] = i; });
+      filtered.sort(function (a, b) {
+        var ga = state.view === 'year' ? a.year : eraPos[a.era], gb = state.view === 'year' ? b.year : eraPos[b.era];
+        return ga !== gb ? (state.sort === 'date-asc' ? ga - gb : gb - ga) : inner(a, b);
+      });
+    } else filtered.sort(cmp);
+  }
+
+  function groupOf(c) {
+    if (state.view === 'year') return { key: String(c.year), title: String(c.year) };
+    return { key: c.era, title: eraLabel[c.era] };
+  }
+
+  function renderGroups() {
+    var box = $('groups');
+    box.textContent = '';
+    var groups = [];
+    var last = null;
+    if (state.view === 'topic') {
+      // an issue with several topics appears under each of them
+      TOPICS.forEach(function (t) {
+        if (state.topic && t.id !== state.topic) return;
+        var list = filtered.filter(function (c) { return c.topics.indexOf(t.id) >= 0; });
+        if (list.length) groups.push({ key: t.id, title: t.label, items: list });
+      });
+      var none = filtered.filter(function (c) { return !c.topics.length; });
+      if (none.length && !state.topic) groups.push({ key: '_', title: 'Sin tema', items: none });
+    } else filtered.forEach(function (c) {
+      var g = groupOf(c);
+      if (!last || last.key !== g.key) { last = { key: g.key, title: g.title, items: [] }; groups.push(last); }
+      last.items.push(c);
+    });
+    var frag = document.createDocumentFragment();
+    groups.forEach(function (g, i) {
+      var stamps = 0;
+      g.items.forEach(function (c) { stamps += c.count || 0; });
+      var sub = g.items.length + (g.items.length === 1 ? ' emisión' : ' emisiones');
+      if (stamps) sub += ' · al menos ' + stamps + (stamps === 1 ? ' sello' : ' sellos');
+      if (state.view !== 'year') {
+        var ys = g.items.map(function (c) { return c.year; });
+        sub += ' · ' + Math.min.apply(null, ys) + '–' + Math.max.apply(null, ys);
+      }
+      var ul = el('ul', { class: 'grid', 'aria-label': g.title });
+      g.items.forEach(function (c) { ul.appendChild(cardNode(c)); });
+      frag.appendChild(el('section', { class: 'group', 'aria-labelledby': 'g-' + i }, [
+        el('h3', { id: 'g-' + i, class: 'group-h' }, [g.title, el('span', { class: 'group-sub', text: sub })]),
+        ul
+      ]));
+    });
+    box.appendChild(frag);
+  }
+
+  function cardNode(c) {
+    var meta = c.date ? shortDate(c.date) : 'BOE ' + shortDate(c.boe.date);
+    if (c.count) meta += ' · ' + c.count + (c.count === 1 ? ' sello' : ' sellos');
+    var btn = el('button', { type: 'button', class: 'card-btn', 'data-id': c.id }, [
+      el('span', { class: 'sr-only', text: niceSeries(c.series) + ', ' + (faces(c.face)[0] || '') + '. ' }),
+      stampNode(c),
+      el('span', { class: 'card-meta', text: meta }),
+      c.motifs.length ? el('span', { class: 'card-subject', text: c.motifs.join(' · ') }) : null,
+      c.kind !== 'sellos' ? el('span', { class: 'tag', text: KIND_LABEL[c.kind] }) : null,
+      c.terr !== 'espana' ? el('span', { class: 'tag', text: c.terr === 'andorra' ? 'Andorra' : placeName(c).charAt(0) + placeName(c).slice(1).toLowerCase() }) : null
+    ]);
+    return el('li', { class: firstRender ? 'item hl-rise' : 'item' }, [btn]);
+  }
+
+  function renderMore() {
+    var grid = $('grid');
+    var frag = document.createDocumentFragment();
+    var end = Math.min(shown + PAGE, filtered.length);
+    for (var i = shown; i < end; i++) frag.appendChild(cardNode(filtered[i]));
+    grid.appendChild(frag);
+    shown = end;
+    $('more').hidden = shown >= filtered.length;
+    $('more').textContent = 'Ver más (quedan ' + (filtered.length - shown) + ')';
+  }
+
+  function render() {
+    applyFilters();
+    var grouped = state.view !== 'all';
+    $('grid').hidden = grouped;
+    $('groups').hidden = !grouped;
+    $('grid').textContent = '';
+    shown = 0;
+    if (grouped) { renderGroups(); $('more').hidden = true; }
+    else renderMore();
+    var n = filtered.length;
+    $('count').textContent = n === 0 ? 'Ninguna emisión coincide con estos filtros.'
+      : n === items.length ? 'Las ' + n + ' emisiones · abre una para ver su texto oficial'
+      : n + (n === 1 ? ' emisión coincide' : ' emisiones coinciden');
+    renderEras();
+    firstRender = false;
+  }
+
+  function syncControls() {
+    $('f-q').value = state.q;
+    $('f-era').value = state.era;
+    $('f-from').value = state.from;
+    $('f-to').value = state.to;
+    $('f-kind').value = state.kind;
+    $('f-terr').value = state.terr;
+    $('f-sort').value = state.sort;
+    Array.prototype.forEach.call(document.querySelectorAll('#views button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === state.view));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#topics button'), function (b) {
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-topic') === state.topic));
+    });
+  }
+
+  /* ---------- eras panel ---------- */
+
+  function renderEras() {
+    var box = $('era-list');
+    box.textContent = '';
+    var counts = {};
+    items.forEach(function (c) { counts[c.era] = (counts[c.era] || 0) + 1; });
+    ERAS.forEach(function (e) {
+      var n = counts[e.id] || 0;
+      var kids = [el('span', { class: 'era-name', text: e.label }), el('span', { class: 'era-range', text: e.range })];
+      var node;
+      if (n) {
+        kids.push(el('span', { class: 'era-count' }, [el('b', { text: String(n) }), n === 1 ? 'emisión' : 'emisiones']));
+        if (e.note) kids.push(el('span', { class: 'era-range', text: e.note }));
+        node = el('button', { type: 'button', class: 'era-btn', 'data-era': e.id, 'aria-pressed': String(state.era === e.id) }, kids);
+      } else {
+        kids.push(el('span', { class: 'era-count', text: 'Antes del BOE abierto · ver en FESOFI ↗' }));
+        node = el('a', { class: 'era-btn is-ext', href: FESOFI + e.id + '/', rel: 'noopener' }, kids);
+      }
+      box.appendChild(el('li', {}, [node]));
+    });
+  }
+
+  /* ---------- detail dialog ---------- */
+
+  function fact(dl, label, value) {
+    if (!value) return;
+    dl.appendChild(el('dt', { text: label }));
+    dl.appendChild(el('dd', { text: value }));
+  }
+  function linkBtn(href, text, primary) {
+    return el('li', {}, [el('a', { class: 'btn btn-link' + (primary ? ' btn-primary' : ''), href: href, target: '_blank', rel: 'noopener', text: text })]);
+  }
+
+  function showItem(id) {
+    var c = byId[id];
+    if (!c) return;
+    currentId = id;
+    var box = $('dlg-content');
+    box.textContent = '';
+
+    var info = el('div');
+    info.appendChild(el('h2', { id: 'dlg-title', text: niceSeries(c.series) }));
+    info.appendChild(el('p', { text: c.date ? 'Puesta en circulación: ' + longDate(c.date) : 'Publicada en el BOE el ' + longDate(c.boe.date) + ' (fecha de emisión no disponible)' }));
+    var tags = el('p', { class: 'dlg-tags' }, [el('span', { class: 'tag', text: KIND_LABEL[c.kind] }), el('span', { class: 'tag', text: eraLabel[c.era] })]);
+    if (c.terr !== 'espana') tags.appendChild(el('span', { class: 'tag', text: TERR_LABEL[c.terr] }));
+    info.appendChild(tags);
+
+    if (c.topics.length) {
+      var tp = el('p', { class: 'dlg-topics' }, ['Temas: ']);
+      c.topics.forEach(function (tid, i) {
+        if (i) tp.appendChild(document.createTextNode(' · '));
+        tp.appendChild(el('a', { href: buildHash(Object.assign({}, DEFAULTS, { topic: tid }), ''), text: topicLabel[tid] }));
+      });
+      info.appendChild(tp);
+    }
+
+    if (c.text) {
+      info.appendChild(el('h3', { text: 'Texto oficial' }));
+      info.appendChild(el('p', { class: 'official', text: c.text }));
+    } else {
+      info.appendChild(el('h3', { text: 'Título de la disposición' }));
+      info.appendChild(el('p', { text: c.boe.title }));
+      if (!c.boe.text) info.appendChild(el('p', { text: 'El BOE solo ofrece esta disposición como PDF escaneado, así que la ficha técnica no está disponible aquí.' }));
+    }
+
+    if (c.facts.length) {
+      info.appendChild(el('h3', { text: 'Características técnicas' }));
+      var dl = el('dl', { class: 'facts' });
+      c.facts.forEach(function (f) { fact(dl, f[0], f[1]); });
+      info.appendChild(dl);
+    }
+
+    info.appendChild(el('h3', { text: 'Fuente' }));
+    var src = el('dl', { class: 'facts' });
+    fact(src, 'Disposición', c.boe.title);
+    fact(src, 'Publicada', longDate(c.boe.date) + ' · ' + c.boe.id);
+    info.appendChild(src);
+    if (c.corr.length) {
+      info.appendChild(el('p', { text: c.corr.length === 1 ? 'Corregida después por:' : 'Corregida después por:' }));
+      info.appendChild(el('ul', { class: 'corr' }, c.corr.map(function (r) {
+        return el('li', {}, [el('a', { href: 'https://www.boe.es/diario_boe/txt.php?id=' + r.id, target: '_blank', rel: 'noopener', text: r.title }), ' (' + longDate(r.date) + ')']);
+      })));
+    }
+    var see = el('ul', { class: 'see' }, [
+      linkBtn('https://www.boe.es/diario_boe/txt.php?id=' + c.boe.id, 'Abrir en el BOE', true),
+      c.boe.pdf ? linkBtn(c.boe.pdf, 'PDF del BOE') : null
+    ]);
+    if (c.terr === 'espana') see.appendChild(linkBtn(FESOFI + c.era + '/?filter_ano-de-emision=' + c.year, 'Imágenes de ' + c.year + ' en FESOFI'));
+    info.appendChild(see);
+
+    box.appendChild(el('div', { class: 'dlg-img' }, [stampNode(c)]));
+    box.appendChild(info);
+    dlg.scrollTop = 0;
+
+    var i = filtered.indexOf(c);
+    $('dlg-pos').textContent = i >= 0 ? (i + 1) + ' de ' + filtered.length : '';
+    $('dlg-prev').disabled = i <= 0;
+    $('dlg-next').disabled = i < 0 || i >= filtered.length - 1;
+
+    if (!dlg.open) {
+      lastFocus = document.activeElement;
+      dlg.showModal();
+    }
+  }
+
+  function go(delta) {
+    var i = filtered.indexOf(byId[currentId]) + delta;
+    if (i >= 0 && i < filtered.length) location.hash = buildHash(state, filtered[i].id);
+  }
+
+  function closeDialog() { if (dlg.open) dlg.close(); }
+
+  dlg.addEventListener('close', function () {
+    // Esc or Close button: drop the issue from the hash.
+    var wasOpen = currentId;
+    currentId = '';
+    if (wasOpen && readHash().item) location.hash = buildHash(state, '');
+    if (lastFocus && document.contains(lastFocus)) lastFocus.focus();
+    else {
+      var b = document.querySelector('.card-btn[data-id="' + wasOpen + '"]');
+      if (b) b.focus();
+    }
+  });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) closeDialog(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft' && !e.altKey) { if (!$('dlg-prev').disabled) go(-1); }
+    else if (e.key === 'ArrowRight' && !e.altKey) { if (!$('dlg-next').disabled) go(1); }
+  });
+  $('dlg-close').addEventListener('click', closeDialog);
+  $('dlg-prev').addEventListener('click', function () { go(-1); });
+  $('dlg-next').addEventListener('click', function () { go(1); });
+
+  /* ---------- hash sync ---------- */
+
+  function onHash() {
+    var h = readHash();
+    if (JSON.stringify(h.state) !== JSON.stringify(state)) {
+      state = h.state;
+      syncControls();
+      render();
+    }
+    if (h.item && byId[h.item]) showItem(h.item);
+    else if (dlg.open) { currentId = ''; dlg.close(); }
+  }
+
+  /* ---------- setup ---------- */
+
+  function fillSelects() {
+    var years = {};
+    items.forEach(function (c) { years[c.year] = 1; });
+    ERAS.forEach(function (e) { $('f-era').appendChild(el('option', { value: e.id, text: e.label + ' (' + e.range + ')' })); });
+    var ys = Object.keys(years).map(Number).sort(function (a, b) { return a - b; });
+    ['f-from', 'f-to'].forEach(function (id) {
+      ys.forEach(function (y) { $(id).appendChild(el('option', { value: y, text: y })); });
+    });
+    hero(ys);
+  }
+
+  // pills and the count box at the top, in the format of the other Hobby Lab pages
+  function hero(ys) {
+    var stamps = 0, withText = 0, latest = items[0];
+    items.forEach(function (c) {
+      stamps += c.count || 0;
+      if (c.text) withText++;
+      if (c.boe.date > latest.boe.date) latest = c;
+    });
+    var pills = $('pills');
+    pills.textContent = '';
+    ['Sellos de España', ys[0] + '–' + ys[ys.length - 1], 'Boletín Oficial del Estado', 'Último BOE: ' + shortDate(latest.boe.date)]
+      .forEach(function (t) { pills.appendChild(el('li', { text: t })); });
+    var box = $('hero-count');
+    box.textContent = '';
+    box.appendChild(el('b', { class: 'hl-num', text: String(items.length) }));
+    box.appendChild(el('span', { text: 'emisiones, cada una con su disposición del BOE' }));
+    box.appendChild(el('small', { text: withText + ' con texto y ficha técnica · ' + TOPICS.length + ' temas' }));
+    box.hidden = false;
+    var h = $('hero');
+    if (window.HLMotion && h.classList.contains('hl-seen')) window.HLMotion.replay(h);
+  }
+
+  function bind() {
+    var timer;
+    function update() { saveFilters(); render(); }
+    $('f-q').addEventListener('input', function (e) {
+      state.q = e.target.value;
+      clearTimeout(timer);
+      timer = setTimeout(update, 200);
+    });
+    [['f-era', 'era'], ['f-from', 'from'], ['f-to', 'to'], ['f-kind', 'kind'], ['f-terr', 'terr'], ['f-sort', 'sort']].forEach(function (p) {
+      $(p[0]).addEventListener('change', function (e) { state[p[1]] = e.target.value; update(); });
+    });
+    $('views').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-view]');
+      if (!b) return;
+      state.view = b.getAttribute('data-view');
+      syncControls();
+      update();
+    });
+    $('era-list').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-era]');
+      if (!b) return;
+      var era = b.getAttribute('data-era');
+      state.era = state.era === era ? '' : era;
+      syncControls();
+      update();
+      $('browse').scrollIntoView({ block: 'start' });
+    });
+    $('filters').addEventListener('submit', function (e) { e.preventDefault(); });
+    $('f-reset').addEventListener('click', function () {
+      state = Object.assign({}, DEFAULTS);
+      syncControls();
+      update();
+    });
+    $('topics').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-topic]');
+      if (!b) return;
+      var t = b.getAttribute('data-topic');
+      state.topic = state.topic === t ? '' : t;
+      syncControls();
+      update();
+    });
+    $('more').addEventListener('click', renderMore);
+    ['grid', 'groups'].forEach(function (id) {
+      $(id).addEventListener('click', function (e) {
+        var b = e.target.closest('.card-btn');
+        if (b) location.hash = buildHash(state, b.getAttribute('data-id'));
+      });
+    });
+    window.addEventListener('hashchange', onHash);
+  }
+
+  function fail(msg) {
+    var e = $('error');
+    e.textContent = msg;
+    e.hidden = false;
+    $('count').textContent = '';
+  }
+
+  // topic chips: "Todos los temas" plus one per topic with its number of issues
+  function fillTopics() {
+    var box = $('topics');
+    box.textContent = '';
+    if (!TOPICS.length) return;
+    box.appendChild(el('button', { type: 'button', class: 'chip', 'data-topic': '', 'aria-pressed': 'true', text: 'Todos los temas' }));
+    TOPICS.forEach(function (t) {
+      box.appendChild(el('button', { type: 'button', class: 'chip', 'data-topic': t.id, 'aria-pressed': 'false' }, [t.label, el('small', { text: String(t.count) })]));
+    });
+    box.hidden = false;
+  }
+
+  // topics are optional: without data/topics.json the catalogue works without them
+  var topicsReq = fetch('data/topics.json', { cache: 'no-cache' })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .catch(function () { return null; });
+
+  fetch('data/emisiones.json', { cache: 'no-cache' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      var lm = r.headers.get('Last-Modified');
+      if (lm) {
+        var d = new Date(lm);
+        if (!isNaN(d)) {
+          $('generated').textContent = d.toISOString().slice(0, 10);
+          $('generated').setAttribute('datetime', d.toISOString());
+        }
+      }
+      return Promise.all([r.json(), topicsReq]);
+    })
+    .then(function (res) {
+      items = res[0];
+      var tp = res[1] || { topics: [], items: {} };
+      TOPICS = (tp.topics || []).filter(function (t) { return t.count > 0; });
+      TOPICS.forEach(function (t, i) { topicLabel[t.id] = t.label; topicIndex[t.id] = i; });
+      if (!TOPICS.length) { var tb = document.querySelector('#views [data-view="topic"]'); if (tb) tb.hidden = true; }
+      items.forEach(function (c) {
+        byId[c.id] = c;
+        c.topics = (tp.items && tp.items[c.id]) || [];
+        c.motifs = c.motifs || [];
+        c.facts = c.facts || [];
+        c.corr = c.corr || [];
+        c._search = [c.series, c.motifs.join(' '), c.text || '', c.boe.title, c.face || '', String(c.year)]
+          .concat(c.topics.map(function (id) { return topicLabel[id]; })).join(' ').toLowerCase();
+      });
+      fillTopics();
+      fillSelects();
+      bind();
+      var h = readHash();
+      state = h.state;
+      syncControls();
+      render();
+      if (h.item && byId[h.item]) showItem(h.item);
+    })
+    .catch(function (err) {
+      fail('No se han podido cargar los datos (' + err.message + '). ' +
+        'Si has abierto la página como archivo local, sírvela por http, por ejemplo con un servidor web estático.');
+    });
+})();

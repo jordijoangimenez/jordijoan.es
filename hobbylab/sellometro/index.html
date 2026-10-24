@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sellómetro</title>
+<meta name="description" content="Todas las emisiones de sellos de correo de España publicadas en el BOE desde 1960, por año, época y tema, con su texto oficial y sus características técnicas.">
+<link rel="canonical" href="https://jordijoan.es/hobbylab/sellometro/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=2af75b9528">
+<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+</head>
+<body>
+<a class="skip" href="#browse">Saltar a las emisiones</a>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="./" aria-label="Sellómetro">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 1.6"/><rect x="8" y="6.5" width="8" height="8" rx="1" fill="currentColor"/><path d="M8 17.5h8" stroke="currentColor" stroke-width="1.6"/></svg>
+    Sellómetro
+  </a>
+  <nav aria-label="Secciones">
+    <a href="#eras" class="hide-sm">Épocas</a>
+    <a href="#browse" class="hide-sm">Emisiones</a>
+    <a href="atm.html">ATM</a>
+    <a href="#method" class="hide-sm">Método</a>
+    <a href="../">Hobby Lab</a>
+    <button class="icon-btn" id="theme" type="button" aria-label="Cambiar tema">◐</button>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <form id="filters" class="filters" role="search" aria-label="Filtrar emisiones" autocomplete="off">
+    <div class="field field-search"><label for="f-q">Buscar</label><input id="f-q" type="search" placeholder="Serie, motivo, personaje, lugar…"></div>
+    <div class="field"><label for="f-era">Época</label><select id="f-era"><option value="">Todas las épocas</option></select></div>
+    <div class="field field-year"><label for="f-from">Desde</label><select id="f-from"><option value="">Cualquier año</option></select></div>
+    <div class="field field-year"><label for="f-to">Hasta</label><select id="f-to"><option value="">Cualquier año</option></select></div>
+    <div class="field"><label for="f-kind">Tipo</label>
+      <select id="f-kind">
+        <option value="">Todos los tipos</option>
+        <option value="sellos">Sellos y hojas bloque</option>
+        <option value="tarjeta">Tarjetas prefranqueadas</option>
+        <option value="sobre">Sobres y enteros postales</option>
+        <option value="aerograma">Aerogramas</option>
+        <option value="etiqueta">Etiquetas</option>
+      </select></div>
+    <div class="field"><label for="f-terr">Territorio</label>
+      <select id="f-terr">
+        <option value="">España, Andorra y África</option>
+        <option value="espana">España</option>
+        <option value="andorra">Andorra (correo español)</option>
+        <option value="africa">Territorios de África</option>
+      </select></div>
+    <div class="field"><label for="f-sort">Orden</label>
+      <select id="f-sort">
+        <option value="date-desc">Más recientes primero</option>
+        <option value="date-asc">Más antiguas primero</option>
+        <option value="series">Serie, de la A a la Z</option>
+      </select></div>
+    <button type="button" id="f-reset" class="btn">Limpiar</button>
+  </form>
+
+  <section class="hero hl-rise" id="hero" aria-labelledby="hero-h">
+    <div class="hero-copy">
+      <ul class="hl-pills" id="pills" aria-label="Sobre este catálogo"><li>Sellos de España</li></ul>
+      <h1 id="hero-h">Sellómetro</h1>
+      <p class="sub">Todas las emisiones de sellos de correo de España publicadas en el Boletín Oficial del Estado desde 1960, ordenadas por año, época y tema. Cada emisión muestra el texto oficial que la presenta, sus características técnicas y el enlace a la disposición del BOE. Un catálogo no oficial.</p>
+    </div>
+    <div class="hl-count" id="hero-count" hidden></div>
+  </section>
+
+  <section class="card" id="eras" aria-labelledby="eras-h">
+    <div class="card-head">
+      <h2 id="eras-h">Sellos por época</h2>
+      <span class="hint">Pulsa una época para ver sus emisiones</span>
+    </div>
+    <ul class="eras" id="era-list"></ul>
+  </section>
+
+  <section class="card" id="browse" aria-labelledby="browse-h">
+    <div class="card-head">
+      <h2 id="browse-h">Emisiones</h2>
+      <span class="hint" id="count" role="status" aria-live="polite">Cargando emisiones…</span>
+      <div id="views" class="seg" role="group" aria-label="Agrupar emisiones">
+        <button type="button" data-view="year" aria-pressed="true">Por año</button>
+        <button type="button" data-view="era" aria-pressed="false">Por época</button>
+        <button type="button" data-view="topic" aria-pressed="false">Por tema</button>
+        <button type="button" data-view="all" aria-pressed="false">Todas</button>
+      </div>
+    </div>
+    <div class="topics" id="topics" role="group" aria-label="Filtrar por tema" hidden></div>
+    <p id="error" class="error" role="alert" hidden></p>
+    <div id="groups" class="groups" hidden></div>
+    <ul id="grid" class="grid" aria-label="Emisiones" hidden></ul>
+    <div class="more">
+      <button type="button" id="more" class="btn btn-primary" hidden>Ver más</button>
+    </div>
+  </section>
+
+  <section class="card" id="method" aria-labelledby="method-h">
+    <div class="card-head"><h2 id="method-h">Cómo funciona</h2></div>
+    <div class="method">
+      <h3>Fuente</h3><p>Cada emisión de sellos de correo se aprueba con una disposición publicada en el Boletín Oficial del Estado: una orden ministerial hasta los años noventa y, después, una resolución conjunta de las subsecretarías competentes. El catálogo recorre los sumarios diarios del BOE desde 1960 con su <a href="https://www.boe.es/datosabiertos/" rel="noopener">API de datos abiertos</a> y recoge todas las disposiciones sobre emisión de sellos, tarjetas y sobres.</p>
+      <h3>Copiado, no reescrito</h3><p>El nombre de la serie, el texto que presenta cada emisión, la fecha de puesta en circulación y las características técnicas (impresión, papel, dentado, formato, valor, tirada) se copian del texto del BOE. Si el BOE publicó después una corrección de errores, la emisión la enlaza.</p>
+      <h3>Antes de 1995</h3><p>El BOE solo ofrece el texto de casi todas las disposiciones anteriores a 1995 como imagen escaneada en PDF. Para esas emisiones el catálogo muestra el título oficial, la fecha de publicación y el enlace al PDF, sin características técnicas.</p>
+      <h3>Antes de 1960</h3><p>Los datos abiertos del BOE empiezan en 1960, así que las épocas anteriores (de Isabel II a la Guerra Civil) aún no tienen emisiones aquí. Cada una enlaza al <a href="https://catalogodesellos.fesofi.es/" rel="noopener">catálogo de FESOFI</a>, que sí las recoge.</p>
+      <h3>Sin imágenes</h3><p>El diseño de cada sello tiene autor y sus derechos no son de este sitio, y las fotos y descripciones de otros catálogos tampoco. Por eso cada emisión se dibuja como un sello de texto, con su valor y su año, y enlaza a FESOFI y a Correos para ver las imágenes.</p>
+      <h3>Temas</h3><p>Cada emisión se clasifica en uno o varios temas (arte, naturaleza, personajes, deporte…) a partir de las palabras de su texto oficial. Es una clasificación automática y no oficial, así que alguna emisión puede caer en un tema inesperado.</p>
+      <h3>Territorios</h3><p>Además de España, el BOE recoge las emisiones del correo español en Andorra y, hasta los años setenta, las de los territorios de África (Sahara, Ifni, Guinea). Se pueden filtrar aparte.</p>
+      <h3>Etiquetas ATM</h3><p>Las etiquetas de franqueo de valor variable no se publican en el BOE. Tienen su propia página, con su historia, cómo leerlas y dónde consultar las emisiones: <a href="atm.html">etiquetas ATM</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p>Fuente de los datos: <a href="https://www.boe.es/" rel="noopener">Agencia Estatal Boletín Oficial del Estado</a>. Los temas y la agrupación por épocas son una elaboración propia basada en esos datos. El BOE no participa en este catálogo ni lo respalda; para el texto auténtico consulta siempre la disposición original. Los diseños de los sellos pertenecen a sus autores y a Correos.</p>
+  <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. Datos actualizados: <time id="generated">fecha no disponible</time>.</p>
+</div></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <article class="dlg-body">
+    <div class="dlg-bar">
+      <button type="button" id="dlg-prev" class="btn">&larr; Anterior</button>
+      <span id="dlg-pos" class="dlg-pos" aria-live="polite"></span>
+      <button type="button" id="dlg-next" class="btn">Siguiente &rarr;</button>
+      <button type="button" id="dlg-close" class="btn btn-close" aria-label="Cerrar">Cerrar</button>
+    </div>
+    <div class="dlg-content" id="dlg-content"></div>
+  </article>
+</dialog>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    document.getElementById('theme').addEventListener('click', function () {
+      var next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+<script src="../shared/motion.js?v=e89679c128" defer></script>
+<script src="app.js?v=380a71991c"></script>
+</body>
+</html>

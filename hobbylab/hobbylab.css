@@ -94,6 +94,22 @@ a { color: var(--accent-ink); text-underline-offset: 3px; }
 .hl-motion .card.hl-on:not(.hl-done) .coin { transition: opacity 0.4s ease calc(var(--i) * 70ms + 200ms), transform 0.9s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--i) * 70ms + 200ms); }
 @keyframes coin-turn { 0% { transform: perspective(400px) rotateY(0deg); } 8%, 100% { transform: perspective(400px) rotateY(360deg); } }
 @media (prefers-reduced-motion: reduce) { .coin img { animation: none; } }
+/* Sellómetro preview: paper stamps with a perforated edge, laid down one after another */
+.stamps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
+.pstamp {
+  --r: 3px; display: block; aspect-ratio: 4 / 5; padding: calc(2.2 * var(--r)); background: #f4efe2;
+  -webkit-mask: radial-gradient(var(--r), #0000 97%, #000) round calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)), linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r));
+  mask: radial-gradient(var(--r), #0000 97%, #000) round calc(-1.5 * var(--r)) calc(-1.5 * var(--r)) / calc(3 * var(--r)) calc(3 * var(--r)), linear-gradient(#000 0 0) no-repeat 50% / calc(100% - 3 * var(--r)) calc(100% - 3 * var(--r));
+  transform: rotate(calc((var(--i) - 2.5) * 1.2deg));
+}
+.pstamp-in { display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding: 6px; color: #fff; background: var(--ink-c, #8a2f2a); background-image: linear-gradient(160deg, rgba(255, 255, 255, .14), rgba(0, 0, 0, .12)); }
+.pstamp-in b { font-size: 13px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.pstamp-in span { font-size: 9.5px; line-height: 1.2; font-weight: 600; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; }
+.ink-0 { --ink-c: #8a2f2a; } .ink-1 { --ink-c: #1f4f7a; } .ink-2 { --ink-c: #2f6236; } .ink-3 { --ink-c: #6a3a7a; } .ink-4 { --ink-c: #7a5114; }
+.ink-5 { --ink-c: #1e5e5e; } .ink-6 { --ink-c: #5a4636; } .ink-7 { --ink-c: #8a2f5a; } .ink-8 { --ink-c: #3a4a8a; } .ink-9 { --ink-c: #4a5a1e; }
+.hl-motion:not(.hl-reduce) .card:not(.hl-on) .pstamp { opacity: 0; transform: translateY(-14px) rotate(-8deg); }
+.hl-motion .card.hl-on:not(.hl-done) .pstamp { transition: opacity 0.35s ease calc(var(--i) * 90ms + 200ms), transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--i) * 90ms + 200ms); }
+@media (max-width: 520px) { .stamps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 footer { border-top: 1px solid var(--border); padding: 26px 0 44px; color: var(--ink-2); font-size: 14px; }
 footer p { margin: 0 0 6px; }
 @media (prefers-reduced-motion: reduce) { .soon::before { animation: none; } }

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hobby Lab · Jordi-Joan Giménez</title>
-  <meta name="description" content="Small data projects built in spare time: an average of all Spanish polls, the euro area risk premium next to ECB rates, every 2-euro commemorative coin, and party programmes compared topic by topic.">
+  <meta name="description" content="Small data projects built in spare time: an average of all Spanish polls, the euro area risk premium next to ECB rates, every 2-euro commemorative coin, party programmes compared topic by topic, and every Spanish stamp issue in the official gazette.">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#070b14">
   <link rel="canonical" href="https://jordijoan.es/hobbylab/">
@@ -17,7 +17,7 @@
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="shared/motion.css?v=71f2ca6394">
-  <link rel="stylesheet" href="hobbylab.css?v=501439708a">
+  <link rel="stylesheet" href="hobbylab.css?v=97496d1bef">
   <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 </head>
 <body>
@@ -31,6 +31,7 @@
         <a href="primometro/" class="hide-sm" lang="es">Primómetro</a>
         <a href="doseurometro/" class="hide-sm" lang="es">Doseurómetro</a>
         <a href="politicometro/" class="hide-sm" lang="es">Politicómetro</a>
+        <a href="sellometro/" class="hide-sm" lang="es">Sellómetro</a>
         <a href="../">jordijoan.es</a>
         <button class="icon-btn" id="theme" type="button" aria-label="Dark mode" aria-pressed="true">◐</button>
       </nav>
@@ -90,17 +91,27 @@
           <span class="go" aria-hidden="true">Open Politicómetro →</span>
         </article>
       </li>
+      <li>
+        <article class="card" id="card-sellometro" style="--c:#d98b5f">
+          <p class="kicker">Stamps · Spain</p>
+          <h2><a href="sellometro/" lang="es">Sellómetro</a></h2>
+          <p class="desc">Every Spanish postage stamp issue approved in the Boletín Oficial del Estado since 1960, by year, era and topic, with its official text and technical details. Plus a guide to ATM labels.</p>
+          <div class="preview" id="pv-sellometro" aria-hidden="true"></div>
+          <ul class="tags" aria-label="Topics"><li>Philately</li><li>Official gazette</li><li>Catalogue</li></ul>
+          <span class="go" aria-hidden="true">Open Sellómetro →</span>
+        </article>
+      </li>
     </ul>
   </main>
 
   <footer>
     <div class="wrap">
       <p>© Jordi-Joan Giménez · <a href="../">jordijoan.es</a></p>
-      <p>Data: Electogrāfica, European Central Bank, Eurostat, Official Journal of the European Union. Each project cites its sources.</p>
+      <p>Data: Electogrāfica, European Central Bank, Eurostat, Official Journal of the European Union, Boletín Oficial del Estado. Each project cites its sources.</p>
     </div>
   </footer>
 
   <script src="shared/motion.js?v=e89679c128" defer></script>
-  <script src="hobbylab.js?v=95223dd4b5" defer></script>
+  <script src="hobbylab.js?v=f87fcbae7f" defer></script>
 </body>
 </html>

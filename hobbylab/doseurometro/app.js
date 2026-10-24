@@ -2,7 +2,7 @@
   'use strict';
 
   var PAGE = 48;
-  var DEFAULTS = { q: '', country: '', from: '', to: '', notice: '', sort: 'year-asc', view: 'year', kind: '' };
+  var DEFAULTS = { q: '', country: '', from: '', to: '', sort: 'year-asc', view: 'year', kind: '' };
   var VIEWS = ['all', 'year', 'country', 'common'];
   var KINDS = ['national', 'common', 'joint'];
   var KIND_LABEL = { national: 'National issue', common: 'Common issue', joint: 'Joint issue' };
@@ -13,6 +13,7 @@
   var state = Object.assign({}, DEFAULTS);
   var currentId = '';
   var lastFocus = null;
+  var firstRender = true; // only the first list rises into view (Hobby Lab motion); later filter changes show at once
 
   var $ = function (id) { return document.getElementById(id); };
   var dlg = $('dlg');
@@ -67,7 +68,6 @@
     filtered = coins.filter(function (c) {
       if (state.country && c.countryCode !== state.country) return false;
       if (c.year < from || c.year > to) return false;
-      if (state.notice && !c.hasNotice) return false;
       if (state.kind && c.kind !== state.kind) return false;
       if (state.view === 'common' && c.kind !== 'common') return false;
       if (q && c._search.indexOf(q) < 0) return false;
@@ -132,7 +132,7 @@
       c.kind && c.kind !== 'national' ? el('span', { class: 'tag', text: KIND_LABEL[c.kind] }) : null,
       c.hasNotice ? null : el('span', { class: 'badge', text: 'No Commission notice published' })
     ]);
-    return el('li', { class: 'card' }, [btn]);
+    return el('li', { class: firstRender ? 'coin hl-rise' : 'coin' }, [btn]);
   }
 
   function renderMore() {
@@ -157,7 +157,9 @@
     else renderMore();
     var n = filtered.length;
     $('count').textContent = n === 0 ? 'No coins match these filters.'
-      : n + (n === 1 ? ' coin' : ' coins') + ' found';
+      : n === coins.length ? 'All ' + n + ' coins · open one for its official description'
+      : n + (n === 1 ? ' coin' : ' coins') + ' match';
+    firstRender = false;
   }
 
   function syncControls() {
@@ -166,7 +168,6 @@
     $('f-from').value = state.from;
     $('f-to').value = state.to;
     $('f-sort').value = state.sort;
-    $('f-notice').checked = !!state.notice;
     $('f-kind').value = state.kind;
     Array.prototype.forEach.call(document.querySelectorAll('#views button'), function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-view') === state.view));
@@ -297,10 +298,26 @@
     ['f-from', 'f-to'].forEach(function (id) {
       ys.forEach(function (y) { $(id).appendChild(el('option', { value: y, text: y })); });
     });
-    $('stat-coins').textContent = coins.length;
-    $('stat-countries').textContent = Object.keys(countries).length;
-    $('stat-years').textContent = ys.length;
-    $('stats').hidden = false;
+    hero(Object.keys(countries).length, ys);
+  }
+
+  // pills and the count box at the top, in the format of the other Hobby Lab pages
+  function hero(nCountries, ys) {
+    var kinds = { national: 0, common: 0, joint: 0 };
+    var latest = coins[0];
+    coins.forEach(function (c) { kinds[c.kind] = (kinds[c.kind] || 0) + 1; if ((c.docDate || '') > (latest.docDate || '')) latest = c; });
+    var pills = $('pills');
+    pills.textContent = '';
+    ['2-euro commemoratives', ys[0] + '–' + ys[ys.length - 1], nCountries + ' countries', 'Latest notice ' + latest.published]
+      .forEach(function (t) { pills.appendChild(el('li', { text: t })); });
+    var box = $('hero-count');
+    box.textContent = '';
+    box.appendChild(el('b', { class: 'hl-num', text: String(coins.length) }));
+    box.appendChild(el('span', { text: 'coins, each with its official notice' }));
+    box.appendChild(el('small', { text: kinds.national + ' national · ' + kinds.common + ' common · ' + kinds.joint + ' joint' }));
+    box.hidden = false;
+    var h = $('hero');
+    if (window.HLMotion && h.classList.contains('hl-seen')) window.HLMotion.replay(h);
   }
 
   function bind() {
@@ -321,7 +338,6 @@
       syncControls();
       update();
     });
-    $('f-notice').addEventListener('change', function (e) { state.notice = e.target.checked ? '1' : ''; update(); });
     $('filters').addEventListener('submit', function (e) { e.preventDefault(); });
     $('f-reset').addEventListener('click', function () {
       state = Object.assign({}, DEFAULTS);

@@ -39,7 +39,7 @@
         "sourceUrl":  null,
         "kind":  "national",
         "commonGroup":  null,
-        "image":  null
+        "image":  "img/oj2/gr-2004.jpg"
     },
     {
         "id":  "669ecece-054e-4d0a-8676-6094c1ede68c",
@@ -81,7 +81,7 @@
         "sourceUrl":  null,
         "kind":  "national",
         "commonGroup":  null,
-        "image":  null
+        "image":  "img/oj2/lu-2004.png"
     },
     {
         "id":  "496e77ed-cc14-45cc-9f41-bbeed714ce23",
@@ -459,7 +459,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/at-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-be",
@@ -480,7 +480,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/be-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-fi",
@@ -501,7 +501,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/fi-treaty-rome-2007.jpg"
     },
     {
         "id":  "c7f0c65c-17a4-45c0-ab8d-8c0b244ce689",
@@ -543,7 +543,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/fr-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-de",
@@ -564,7 +564,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/de-treaty-rome-2007.jpg"
     },
     {
         "id":  "22b915ed-282c-4617-b518-4a427a88c38a",
@@ -606,7 +606,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/gr-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-ie",
@@ -627,7 +627,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/ie-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-it",
@@ -648,7 +648,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/it-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-lu",
@@ -669,7 +669,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/lu-treaty-rome-2007.jpg"
     },
     {
         "id":  "36e89bc4-4269-428a-b0c7-125e914a9dd8",
@@ -732,7 +732,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/nl-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-pt",
@@ -753,7 +753,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/pt-treaty-rome-2007.jpg"
     },
     {
         "id":  "c2f779dc-b8c2-4b68-abd9-483bfd035eff",
@@ -816,7 +816,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/si-treaty-rome-2007.jpg"
     },
     {
         "id":  "a8b98305-023e-4b92-a2cd-4ca9c688a022-es",
@@ -837,7 +837,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "50th anniversary of the signing of the Treaty of Rome",
-        "image":  null
+        "image":  "img/oj2/es-treaty-rome-2007.jpg"
     },
     {
         "id":  "cdba1a3d-2d56-4c3e-83fc-bcfd0f81466e",
@@ -1089,7 +1089,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/at-emu-2009.jpg"
     },
     {
         "id":  "fe88e52b-1ec7-4650-a293-14389e47d4a8",
@@ -1131,7 +1131,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/be-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-cy",
@@ -1152,7 +1152,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/cy-emu-2009.jpg"
     },
     {
         "id":  "870b7f57-94bc-4985-aeb3-bfe53ab1b79d",
@@ -1194,7 +1194,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/fi-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-fr",
@@ -1215,7 +1215,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/fr-emu-2009.jpg"
     },
     {
         "id":  "e7b67b98-b05f-4342-9408-8a4e6554ae95",
@@ -1257,7 +1257,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/de-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-gr",
@@ -1278,7 +1278,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/gr-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-ie",
@@ -1299,7 +1299,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/ie-emu-2009.jpg"
     },
     {
         "id":  "5dfc682a-4b95-4b5b-962a-fc005ab2a0fb",
@@ -1341,7 +1341,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/it-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-lu",
@@ -1362,7 +1362,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/lu-emu-2009.jpg"
     },
     {
         "id":  "68a33b29-1b75-4210-896b-475beeb287d3",
@@ -1404,7 +1404,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/mt-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-nl",
@@ -1425,7 +1425,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/nl-emu-2009.jpg"
     },
     {
         "id":  "88829e1e-3716-4e3a-b34a-e66ab43e10ce",
@@ -1467,7 +1467,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/pt-emu-2009.jpg"
     },
     {
         "id":  "71293f5d-8a97-44a1-af31-28a491d4ef6b",
@@ -1530,7 +1530,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/sk-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-si",
@@ -1551,7 +1551,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/si-emu-2009.jpg"
     },
     {
         "id":  "ed361ae7-a9f3-4f31-b12e-bb3e84331552-es",
@@ -1572,7 +1572,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of economic and monetary union (EMU) and the birth of the euro",
-        "image":  null
+        "image":  "img/oj2/es-emu-2009.jpg"
     },
     {
         "id":  "a35b600b-9a38-4622-8259-e9b2371f8969",
@@ -2202,7 +2202,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/at-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-be",
@@ -2223,7 +2223,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/be-euro-10y-2012.jpg"
     },
     {
         "id":  "dc386f2d-dc91-11e1-905c-01aa75ed71a1",
@@ -2265,7 +2265,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/cy-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-ee",
@@ -2286,7 +2286,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/ee-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-fi",
@@ -2307,7 +2307,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/fi-euro-10y-2012.jpg"
     },
     {
         "id":  "9c56acab-dc91-11e1-905c-01aa75ed71a1",
@@ -2349,7 +2349,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/fr-euro-10y-2012.jpg"
     },
     {
         "id":  "44d6a698-8b01-4504-997e-96035ce3e3b0",
@@ -2412,7 +2412,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/de-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-gr",
@@ -2433,7 +2433,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/gr-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-ie",
@@ -2454,7 +2454,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/ie-euro-10y-2012.jpg"
     },
     {
         "id":  "f3726abc-a100-11e2-ab01-01aa75ed71a1",
@@ -2496,7 +2496,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/it-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-lu",
@@ -2517,7 +2517,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/lu-euro-10y-2012.jpg"
     },
     {
         "id":  "bfad0915-a677-432e-aabb-786e21e9bb7a",
@@ -2601,7 +2601,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/mt-euro-10y-2012.jpg"
     },
     {
         "id":  "ff25996c-d7d7-11e1-905c-01aa75ed71a1",
@@ -2643,7 +2643,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/nl-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-pt",
@@ -2664,7 +2664,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/pt-euro-10y-2012.jpg"
     },
     {
         "id":  "d07e15fe-b53a-11e1-b84a-01aa75ed71a1",
@@ -2727,7 +2727,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/sk-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-si",
@@ -2748,7 +2748,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/si-euro-10y-2012.jpg"
     },
     {
         "id":  "eb98523a-2e82-45e2-9659-d2543e889ea9-es",
@@ -2769,7 +2769,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "Ten years of the Euro",
-        "image":  null
+        "image":  "img/oj2/es-euro-10y-2012.jpg"
     },
     {
         "id":  "3473d40f-d294-465a-934e-02127fd28166",
@@ -9048,7 +9048,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/at-erasmus-2022.jpg"
     },
     {
         "id":  "f37c1bd0-7280-11ec-9136-01aa75ed71a1-be",
@@ -9069,7 +9069,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/be-erasmus-2022.jpg"
     },
     {
         "id":  "ad694226-800d-11ed-9887-01aa75ed71a1",
@@ -9111,7 +9111,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/cy-erasmus-2022.jpg"
     },
     {
         "id":  "f37c1bd0-7280-11ec-9136-01aa75ed71a1-ee",
@@ -9132,7 +9132,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/ee-erasmus-2022.jpg"
     },
     {
         "id":  "9771ac4b-800e-11ed-9887-01aa75ed71a1",
@@ -9216,7 +9216,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/fi-erasmus-2022.jpg"
     },
     {
         "id":  "c293cb4f-8009-11ed-9887-01aa75ed71a1",
@@ -9258,7 +9258,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/fr-erasmus-2022.jpg"
     },
     {
         "id":  "40211a2e-9540-11ed-b508-01aa75ed71a1",
@@ -9321,7 +9321,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/de-erasmus-2022.jpg"
     },
     {
         "id":  "2433d323-b157-11ec-83e1-01aa75ed71a1",
@@ -9384,7 +9384,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/gr-erasmus-2022.jpg"
     },
     {
         "id":  "f37c1bd0-7280-11ec-9136-01aa75ed71a1-ie",
@@ -9405,7 +9405,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/ie-erasmus-2022.jpg"
     },
     {
         "id":  "cb62f781-b155-11ec-83e1-01aa75ed71a1",
@@ -9447,7 +9447,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/it-erasmus-2022.jpg"
     },
     {
         "id":  "207e30f8-b155-11ec-83e1-01aa75ed71a1",
@@ -9489,7 +9489,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/lv-erasmus-2022.jpg"
     },
     {
         "id":  "da68302d-800b-11ed-9887-01aa75ed71a1",
@@ -9552,7 +9552,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/lt-erasmus-2022.jpg"
     },
     {
         "id":  "7041a87b-800b-11ed-9887-01aa75ed71a1",
@@ -9594,7 +9594,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/lu-erasmus-2022.jpg"
     },
     {
         "id":  "24f1fbf3-800a-11ed-9887-01aa75ed71a1",
@@ -9657,7 +9657,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/mt-erasmus-2022.jpg"
     },
     {
         "id":  "c98de077-800a-11ed-9887-01aa75ed71a1",
@@ -9741,7 +9741,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/nl-erasmus-2022.jpg"
     },
     {
         "id":  "f37c1bd0-7280-11ec-9136-01aa75ed71a1-pt",
@@ -9762,7 +9762,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/pt-erasmus-2022.jpg"
     },
     {
         "id":  "d386d66c-800e-11ed-9887-01aa75ed71a1",
@@ -9846,7 +9846,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/sk-erasmus-2022.jpg"
     },
     {
         "id":  "815af9b3-8008-11ed-9887-01aa75ed71a1",
@@ -9888,7 +9888,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/si-erasmus-2022.jpg"
     },
     {
         "id":  "ce32eb00-b156-11ec-83e1-01aa75ed71a1",
@@ -9930,7 +9930,7 @@
         "sourceUrl":  null,
         "kind":  "common",
         "commonGroup":  "35 years of the Erasmus programme",
-        "image":  null
+        "image":  "img/oj2/es-erasmus-2022.jpg"
     },
     {
         "id":  "22c9ef19-800e-11ed-9887-01aa75ed71a1",

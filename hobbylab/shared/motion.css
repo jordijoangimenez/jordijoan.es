@@ -1,4 +1,4 @@
-/* Hobby Lab motion layer, shared by the Electómetro, the Primómetro and Politiqueo.
+/* Hobby Lab motion layer, shared by the Electómetro, the Primómetro, the Politicómetro and the Doseurómetro.
    Everything here only applies while motion.js has put .hl-motion on <html>, so pages without JavaScript
    show their content as is. .hl-reduce (prefers-reduced-motion) switches every effect off. */
 

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Doseurómetro</title>
+<meta name="description" content="Every 2-euro commemorative coin with the design description from the European Commission notice in the Official Journal of the EU.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=e4302a79c1">
+<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+</head>
+<body>
+<a class="skip" href="#browse">Skip to the coin list</a>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="./" aria-label="Doseurómetro">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2.4"/><text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor" font-family="system-ui,Arial,sans-serif">2</text></svg>
+    Doseurómetro
+  </a>
+  <nav>
+    <a href="#browse">Coins</a>
+    <a href="../">Hobby Lab</a>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme">◐</button>
+  </nav>
+</div></header>
+
+<header class="site-header">
+  <div class="wrap hl-rise">
+    <ul class="hl-pills" aria-label="About">
+      <li>Hobby Lab</li>
+      <li>Official Journal of the EU</li>
+      <li>2004 onwards</li>
+    </ul>
+    <h1>Doseurómetro</h1>
+    <p class="lead">Every 2-euro commemorative coin, with the official design description from the European Commission. Unofficial catalogue.</p>
+    <p>Every coin links to the European Commission notice
+      <q>New national side of euro (circulation) coins</q>
+      published in the Official Journal of the European Union (2004 onwards). Descriptions, mintage and issue dates
+      are copied from that notice, including any later corrigendum noted on the coin.</p>
+    <dl class="stats" id="stats" aria-label="Catalogue totals" hidden>
+      <div><dt>Coins</dt><dd id="stat-coins">0</dd></div>
+      <div><dt>Countries</dt><dd id="stat-countries">0</dd></div>
+      <div><dt>Years</dt><dd id="stat-years">0</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main id="main">
+  <section class="wrap" id="browse" aria-labelledby="browse-h">
+    <h2 id="browse-h">Browse coins</h2>
+
+    <div id="views" class="seg" role="group" aria-label="Classify coins">
+      <button type="button" data-view="year" aria-pressed="true">By year</button>
+      <button type="button" data-view="country" aria-pressed="false">By country</button>
+      <button type="button" data-view="common" aria-pressed="false">Common issues</button>
+      <button type="button" data-view="all" aria-pressed="false">All coins</button>
+    </div>
+
+    <form id="filters" class="filters" role="search" aria-label="Filter coins" autocomplete="off">
+      <div class="field field-wide">
+        <label for="f-q">Search</label>
+        <input id="f-q" type="search" placeholder="Subject, design or country">
+      </div>
+      <div class="field">
+        <label for="f-country">Country</label>
+        <select id="f-country"><option value="">All countries</option></select>
+      </div>
+      <div class="field">
+        <label for="f-from">Year from</label>
+        <select id="f-from"><option value="">Any</option></select>
+      </div>
+      <div class="field">
+        <label for="f-to">Year to</label>
+        <select id="f-to"><option value="">Any</option></select>
+      </div>
+      <div class="field">
+        <label for="f-sort">Sort by</label>
+        <select id="f-sort">
+          <option value="year-asc">Year, oldest first</option>
+          <option value="year-desc">Year, newest first</option>
+          <option value="country">Country, A to Z</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="f-kind">Type</label>
+        <select id="f-kind">
+          <option value="">All types</option>
+          <option value="national">National issues</option>
+          <option value="common">Common issues (same design in many countries)</option>
+          <option value="joint">Joint issues (subject shared by 2 or 3 countries)</option>
+        </select>
+      </div>
+      <div class="field field-check">
+        <input id="f-notice" type="checkbox">
+        <label for="f-notice">With official notice only</label>
+      </div>
+      <div class="field field-actions">
+        <button type="button" id="f-reset" class="btn">Reset filters</button>
+      </div>
+    </form>
+
+    <p id="count" class="count" role="status" aria-live="polite">Loading coins...</p>
+    <p id="error" class="error" role="alert" hidden></p>
+
+    <div id="groups" class="groups" hidden></div>
+    <ul id="grid" class="grid" aria-label="Coins" hidden></ul>
+    <div class="more">
+      <button type="button" id="more" class="btn btn-primary" hidden>Load more</button>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p><strong>Data source.</strong> Notices and images come from the Publications Office of the European Union
+      (<a href="https://eur-lex.europa.eu/" target="_blank" rel="noopener">EUR-Lex</a>, Official Journal of the European Union).
+      &copy; European Union, reuse authorised.</p>
+    <p><strong>Disclaimer.</strong> This is an unofficial catalogue. Always check the official notice for the authoritative content.</p>
+    <p>Data generated: <time id="generated">date not available</time></p>
+    <p>A <a href="../">Hobby Lab</a> project at <a href="https://jordijoan.es/">jordijoan.es</a>.</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <article class="dlg-body">
+    <div class="dlg-bar">
+      <button type="button" id="dlg-prev" class="btn">&larr; Previous</button>
+      <span id="dlg-pos" class="dlg-pos" aria-live="polite"></span>
+      <button type="button" id="dlg-next" class="btn">Next &rarr;</button>
+      <button type="button" id="dlg-close" class="btn btn-close" aria-label="Close">Close</button>
+    </div>
+    <div class="dlg-content" id="dlg-content"></div>
+  </article>
+</dialog>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    document.getElementById('theme').addEventListener('click', function () {
+      var next = root.dataset.theme === 'light' ? 'dark' : 'light';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+<script src="../shared/motion.js?v=e89679c128" defer></script>
+<script src="app.js?v=e440410457"></script>
+</body>
+</html>

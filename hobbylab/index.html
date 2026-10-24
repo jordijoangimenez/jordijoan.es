@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hobby Lab · Jordi-Joan Giménez</title>
-  <meta name="description" content="Small data projects built in spare time: an average of all Spanish polls, the euro area risk premium next to ECB rates, and party programmes compared topic by topic.">
+  <meta name="description" content="Small data projects built in spare time: an average of all Spanish polls, the euro area risk premium next to ECB rates, every 2-euro commemorative coin, and party programmes compared topic by topic.">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#070b14">
   <link rel="canonical" href="https://jordijoan.es/hobbylab/">
@@ -16,8 +16,8 @@
   <meta property="og:image" content="https://jordijoan.es/img/og-card.png">
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="shared/motion.css?v=427458aac1">
-  <link rel="stylesheet" href="hobbylab.css?v=7d7a6cd43f">
+  <link rel="stylesheet" href="shared/motion.css?v=71f2ca6394">
+  <link rel="stylesheet" href="hobbylab.css?v=501439708a">
   <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 </head>
 <body>
@@ -29,6 +29,7 @@
       <nav aria-label="Projects">
         <a href="electometro/" class="hide-sm" lang="es">Electómetro</a>
         <a href="primometro/" class="hide-sm" lang="es">Primómetro</a>
+        <a href="doseurometro/" class="hide-sm" lang="es">Doseurómetro</a>
         <a href="../">jordijoan.es</a>
         <button class="icon-btn" id="theme" type="button" aria-label="Dark mode" aria-pressed="true">◐</button>
       </nav>
@@ -43,12 +44,7 @@
         <li>Updated every day</li>
       </ul>
       <h1 id="hero-h"><span>Hobby Lab</span></h1>
-      <p class="lead">Small data projects I build in my own time, out of curiosity. They are personal experiments, independent of my employers and of any organisation. The projects themselves are in Spanish.</p>
-      <ul class="stats" aria-label="In numbers">
-        <li><b class="hl-num" id="stat-polls">8,075</b>polls averaged</li>
-        <li><b class="hl-num">21</b>euro countries tracked</li>
-        <li><b class="hl-num" id="stat-topics">18</b>topics to compare programmes</li>
-      </ul>
+      <p class="lead">Small data projects I build in my own time, out of curiosity. They are personal experiments, independent of my employers and of any organisation. Most of them are in Spanish.</p>
     </section>
 
     <h2 class="sr-only">Projects</h2>
@@ -74,6 +70,16 @@
         </article>
       </li>
       <li>
+        <article class="card" id="card-doseurometro" style="--c:#39c5a8">
+          <p class="kicker">Coins · Euro area</p>
+          <h2><a href="doseurometro/" lang="es">Doseurómetro</a></h2>
+          <p class="desc">Every 2-euro commemorative coin since 2004, by year, country or common issue, with the design description, mintage and issue date from the European Commission notice in the Official Journal.</p>
+          <div class="preview" id="pv-doseurometro" aria-hidden="true"></div>
+          <ul class="tags" aria-label="Topics"><li>Numismatics</li><li>Official Journal</li><li>Catalogue</li></ul>
+          <span class="go" aria-hidden="true">Open Doseurómetro →</span>
+        </article>
+      </li>
+      <li>
         <article class="card is-soon" id="card-politicometro" style="--c:#7c9cff">
           <p class="kicker">Elections · Programmes · coming soon</p>
           <h2 lang="es">Politicómetro</h2>
@@ -88,11 +94,11 @@
   <footer>
     <div class="wrap">
       <p>© Jordi-Joan Giménez · <a href="../">jordijoan.es</a></p>
-      <p>Data: Electogrāfica, European Central Bank, Eurostat. Each project cites its sources.</p>
+      <p>Data: Electogrāfica, European Central Bank, Eurostat, Official Journal of the European Union. Each project cites its sources.</p>
     </div>
   </footer>
 
   <script src="shared/motion.js?v=e89679c128" defer></script>
-  <script src="hobbylab.js?v=69d05a0e4d" defer></script>
+  <script src="hobbylab.js?v=45e8ffa476" defer></script>
 </body>
 </html>

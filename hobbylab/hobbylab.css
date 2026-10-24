@@ -46,12 +46,9 @@ a { color: var(--accent-ink); text-underline-offset: 3px; }
 .hero h1 { margin: 6px 0 16px; font: 750 clamp(56px, 11vw, 132px)/0.9 var(--hl-display); letter-spacing: -0.045em; }
 .hero h1 span { background: linear-gradient(100deg, var(--ink) 30%, var(--accent) 70%, #e8607a); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .lead { margin: 0; max-width: 60ch; color: var(--ink-2); font-size: clamp(17px, 2vw, 20px); }
-.stats { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 26px 0 0; padding: 0; list-style: none; }
-.stats li { color: var(--ink-2); font-size: 14px; }
-.stats b { display: block; font: 650 30px/1.1 var(--hl-display); color: var(--ink); letter-spacing: -0.02em; }
 
 /* projects */
-.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 18px; padding: 0 0 clamp(48px, 8vw, 96px); margin: 0; list-style: none; }
+.projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 18px; padding: 0 0 clamp(48px, 8vw, 96px); margin: 0; list-style: none; }
 .card { position: relative; display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
 .card::before { content: ""; position: absolute; inset: -1px; border-radius: inherit; padding: 1px; background: linear-gradient(140deg, color-mix(in srgb, var(--c, var(--accent)) 70%, transparent), transparent 45%); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; }
 .card:hover { border-color: color-mix(in srgb, var(--c, var(--accent)) 50%, var(--border)); }
@@ -88,6 +85,15 @@ a { color: var(--accent-ink); text-underline-offset: 3px; }
 .mx-cell.on { background: var(--pc); animation: none; }
 @keyframes mx-wave { 0%, 60%, 100% { background: color-mix(in srgb, var(--pc) 14%, var(--surface)); } 30% { background: color-mix(in srgb, var(--pc) 62%, var(--surface)); } }
 @media (prefers-reduced-motion: reduce) { .mx-cell { animation: none; } }
+
+/* Doseurómetro preview: coins flip in when the card arrives, then turn over one after another */
+.coins { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px 12px; }
+.coin { display: block; transform: perspective(400px) rotateY(0deg) scale(1); }
+.coin img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; clip-path: circle(48%); animation: coin-turn 14s ease-in-out infinite; animation-delay: calc(var(--i) * 1.4s + 2.5s); }
+.hl-motion:not(.hl-reduce) .card:not(.hl-on) .coin { opacity: 0; transform: perspective(400px) rotateY(-90deg) scale(0.7); }
+.hl-motion .card.hl-on:not(.hl-done) .coin { transition: opacity 0.4s ease calc(var(--i) * 70ms + 200ms), transform 0.9s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--i) * 70ms + 200ms); }
+@keyframes coin-turn { 0% { transform: perspective(400px) rotateY(0deg); } 8%, 100% { transform: perspective(400px) rotateY(360deg); } }
+@media (prefers-reduced-motion: reduce) { .coin img { animation: none; } }
 footer { border-top: 1px solid var(--border); padding: 26px 0 44px; color: var(--ink-2); font-size: 14px; }
 footer p { margin: 0 0 6px; }
 @media (prefers-reduced-motion: reduce) { .soon::before { animation: none; } }

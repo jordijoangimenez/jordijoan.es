@@ -19,7 +19,6 @@
     (kids || []).forEach(function (c) { if (c != null) e.append(c); });
     return e;
   }
-  var fmt = new Intl.NumberFormat('en-GB');
   function getJson(url) { return fetch(url, { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(url); return r.json(); }); }
   // play the card's entrance again once its preview has arrived (if the card was already on screen)
   function reveal(id) { var c = document.getElementById(id); if (window.HLMotion && c && c.classList.contains('hl-seen')) window.HLMotion.replay(c); }
@@ -49,9 +48,7 @@
     return { svg: svg, maj: maj };
   }
   getJson('electometro/data/elections.json').then(function (idx) {
-    var total = idx.elections.reduce(function (a, e) { return a + (e.total || 0); }, 0);
-    document.getElementById('stat-polls').textContent = fmt.format(total);
-    var e = idx.elections.find(function (x) { return x.id === 'es-congreso'; });
+    var e =idx.elections.find(function (x) { return x.id === 'es-congreso'; });
     if (!e || !e.sb) return;
     var T = e.sb.reduce(function (a, g) { return a + g[1]; }, 0), N = e.T || T;
     var h = hemicycle(N, e.sb);
@@ -80,17 +77,28 @@
         el('span', { class: 'v hl-num', text: String(r[2]) })]));
     });
     var MES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    var cap = el('p', { class: 'cap' }, ['Prima de riesgo frente a Alemania, ' + MES[+s.month.slice(5) - 1] + ' de ' + s.month.slice(0, 4) + ' (pb). Depósito BCE: ', el('b', { text: String(s.deposit[1]).replace('.', ',') + ' %' })]);
+    var cap = el('p', { class: 'cap' }, ['Prima de riesgo frente a Alemania, ' + MES[+s.month.slice(5) - 1] + ' de ' + s.month.slice(0, 4) + ' (pb). Depósito BCE: ', el('b', { text: String(s.deposit[1]).replace('.', ',') + ' %' })]);
     var pv = document.getElementById('pv-primometro');
     pv.append(bars, cap);
     reveal('card-primometro');
+  }).catch(function () {});
+
+  // ---- Doseurómetro: one coin per country from the latest year; they flip in, then turn over one after another ----
+  getJson('doseurometro/data/summary.json').then(function (s) {
+    var row = el('div', { class: 'coins' });
+    s.pick.forEach(function (c, i) {
+      row.append(el('span', { class: 'coin', style: '--i:' + i }, [el('img', { src: 'doseurometro/' + c.image, alt: '', loading: 'lazy', decoding: 'async', width: 96, height: 96 })]));
+    });
+    var cap = el('p', { class: 'cap' }, [el('b', { class: 'hl-num', text: String(s.coins) }), ' coins from ', el('b', { text: s.countries + ' countries' }), ', ' + s.from + ' to ' + s.to + '. Above, one per country from ' + s.to + '.']);
+    var pv = document.getElementById('pv-doseurometro');
+    pv.append(row, cap);
+    reveal('card-doseurometro');
   }).catch(function () {});
 
   // ---- Politicómetro: the comparison grid it will fill, topics by parties ----
   // A cell lights up in the party's colour once its programme is in; until then a slow wave runs over the empty grid.
   Promise.all([getJson('politicometro/config/topics.json'), getJson('politicometro/config/parties.json')]).then(function (res) {
     var topics = res[0].topics, parties = res[1].parties;
-    document.getElementById('stat-topics').textContent = String(topics.length);
     var shown = topics.slice(0, 8);
     var grid = el('div', { class: 'matrix', style: 'grid-template-columns: 88px repeat(' + parties.length + ', minmax(0, 1fr))' });
     grid.append(el('span'));

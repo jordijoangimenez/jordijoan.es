@@ -683,15 +683,6 @@ h2 {
 .page-title { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1; letter-spacing: -0.045em; font-weight: 800; margin-bottom: 28px; }
 .page-head .section-sub { margin-top: 0; }
 
-/* Language suggestion strip (added by main.js; sits in the page flow, never over content) */
-.lang-offer {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px;
-  padding: 12px var(--gutter); background: var(--tint); color: var(--text);
-}
-.lang-offer p { margin: 0; font-weight: 600; }
-.lang-offer .btn { min-height: 40px; padding: 0 18px; font-size: 15px; }
-.lang-offer-close { width: 36px; height: 36px; }
-
 /* Page not found */
 .notfound-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
 .notfound-list a {

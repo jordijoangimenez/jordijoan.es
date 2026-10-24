@@ -6,8 +6,9 @@
 <title>Primómetro</title>
 <meta name="description" content="La prima de riesgo, la inflación, el déficit público y el PIB de cada país de la zona euro y su evolución junto a los tipos de interés del BCE, con datos oficiales del BCE y Eurostat.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/primometro/">
-<link rel="stylesheet" href="assets/style.css?v=4be62263a1">
-<script>try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}</script>
+<link rel="stylesheet" href="assets/style.css?v=942f16089c">
+<link rel="stylesheet" href="../shared/motion.css?v=427458aac1">
+<script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 </head>
 <body>
 <header class="top"><div class="wrap">
@@ -34,7 +35,7 @@
       <div class="seg" role="group" aria-label="Periodo" id="ranges"></div></div>
   </div>
 
-  <section class="hero" id="hero" aria-live="polite"></section>
+  <section class="hero hl-rise" id="hero" aria-live="polite"></section>
 
   <div class="grid2">
     <section class="card" id="mapCard"></section>
@@ -87,6 +88,7 @@
   <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. <span id="upd"></span></p>
 </div></footer>
 <div class="tip" id="tip" hidden></div>
-<script src="assets/app.js?v=dad33f95ea" type="module"></script>
+<script src="../shared/motion.js?v=fd6cc41f61" defer></script>
+<script src="assets/app.js?v=ce1137af3f" type="module"></script>
 </body>
 </html>

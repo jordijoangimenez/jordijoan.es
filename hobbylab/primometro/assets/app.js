@@ -174,7 +174,7 @@ function buildControls() {
   const rg = $('ranges'); clear(rg);
   for (const [k, n] of RANGES) {
     const b = el('button', { 'aria-pressed': String(state.range === k), text: n });
-    b.onclick = () => { state.range = k; rg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); writeHash(); renderTrend(); renderDecisions(); };
+    b.onclick = () => { state.range = k; rg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b))); writeHash(); renderTrend(); renderDecisions(); replay(['trend']); };
     rg.append(b);
   }
   document.querySelectorAll('[data-vs]').forEach(b => {
@@ -193,6 +193,12 @@ function setCountry(k) {
   if (!state.active.includes(k)) { state.active = [k, ...state.active].slice(0, 8); }
   $('country').value = k;
   writeHash(); renderAll();
+  replay(['hero', 'trend']);
+}
+// play the entrance again on cards already on screen (new country, period or map metric)
+function replay(ids) {
+  if (!window.HLMotion) return;
+  for (const id of ids) { const c = $(id); if (c && c.classList.contains('hl-seen')) window.HLMotion.replay(c); }
 }
 
 // ---------- hero ----------
@@ -203,7 +209,9 @@ function renderHero() {
   let max = null;
   for (const m of monthsIn(inEuro(k, '2099-01') ? state.D.countries[k].euro : '1999-01', L)) { const v = prem(k, m); if (v != null && (!max || v > max.v)) max = { v, m }; }
   const dfr = state.D.rates.dfr.at(-1);
+  const pills = ['Zona euro', `${Object.keys(state.D.countries).length} países`, 'BCE · Eurostat', `Datos hasta ${mShort(L)}`];
   const left = el('div', {}, [
+    el('ul', { class: 'hl-pills', 'aria-label': 'Datos clave' }, pills.map(t => el('li', { text: t }))),
     el('p', { class: 'eyebrow', text: `Prima de riesgo de ${cname(k)} frente a ${refName()} · ${mLong(L)}` }),
     el('p', { class: 'hero-num' }, [now == null ? '–' : String(Math.round(now)), el('small', { text: 'pb' })]),
     el('p', { class: 'sub', text: `Bono a 10 años: ${pct(byMonth[k]?.get(L))} · ${state.vs === 'DE' ? 'Alemania' : 'Zona euro'}: ${pct(byMonth[state.vs]?.get(L))} · media mensual del BCE` }),
@@ -568,7 +576,7 @@ function renderMap() {
   const mseg = el('div', { class: 'seg scale-seg', role: 'group', 'aria-label': 'Qué muestra el mapa' });
   for (const [k, n] of [['prima', 'Prima de riesgo'], ['infl', 'Inflación'], ['def', 'Déficit público'], ['pib', 'PIB']]) {
     const b = el('button', { 'aria-pressed': String(state.metric === k), text: n });
-    b.onclick = () => { state.metric = k; writeHash(); renderMap(); renderRank(); };
+    b.onclick = () => { state.metric = k; writeHash(); renderMap(); renderRank(); replay(['mapCard', 'rankCard']); };
     mseg.append(b);
   }
   card.append(mseg);

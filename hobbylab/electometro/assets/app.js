@@ -54,6 +54,7 @@ async function load(id, coal = []) {
     state.showAll = false;
     state.coal = new Set(coal.filter(k => state.doc.parties[k])); state.allMins = false;
     render();
+    replay(['hero', 'seatsCard', 'votesCard', 'trendCard', 'mapCard']);
     $('pval').textContent = label(state.index.elections.find(e => e.id === id) || state.doc);
   } catch (err) {
     $('hero').textContent = 'No se pudo cargar esta elección.';
@@ -683,16 +684,30 @@ function render() {
   else if (v.now.empty) sub = `Sin encuestas publicadas en ${v.now.days === 7 ? 'los últimos 7 días' : 'los últimos 30 días'}.`;
   else if (v.now.window) sub = (v.now.used.length === 1 ? `Solo hay una encuesta publicada desde el ${fdate(v.now.window.from)}: ${v.now.used[0].po}. ` : `Media de las ${v.now.used.length} casas con encuesta publicada desde el ${fdate(v.now.window.from)} (${v.now.nCycle} encuestas). `) + lastPoll(v);
   else sub = `Media de ${d.now.nCycle} encuestas${d.now.since ? ' desde las elecciones del ' + fdate(d.now.since) : ''}. ${lastPoll(d)}`;
-  hero.append(el('p', { class: 'eyebrow', text: KIND[d.kind] || d.kind }), el('h1', { text: d.name }), el('p', { class: 'sub', text: sub }));
-  if (stale) hero.append(el('span', { class: 'stale', text: 'Datos antiguos: la última encuesta tiene más de cuatro meses.' }));
+  // key facts as pills, and a countdown when this is the 29 November general election
+  const general = d.country === 'es' && (d.kind === 'congreso' || d.kind === 'congreso-ccaa');
+  const T = d.now?.seats?.total || d.T, M = d.M || (T ? Math.floor(T / 2) + 1 : null);
+  const pills = [general ? 'Elecciones generales' : (KIND[d.kind] || d.kind), general ? '29.11.2026' : null, T ? `${T} escaños` : null, M ? `Mayoría ${M}` : null,
+    d.now ? `Última encuesta ${fdate(d.now.pub || d.now.d).slice(0, 5)}` : null].filter(Boolean);
+  const copy = el('div', { class: 'hero-copy' }, [el('ul', { class: 'hl-pills', 'aria-label': 'Datos clave' }, pills.map(t => el('li', { text: t }))),
+    el('h1', { text: d.name }), el('p', { class: 'sub', text: sub })]);
+  if (stale) copy.append(el('span', { class: 'stale', text: 'Datos antiguos: la última encuesta tiene más de cuatro meses.' }));
+  hero.append(copy);
+  if (general && window.HLMotion) {
+    const cd = el('div', { class: 'hero-count', role: 'timer' });
+    hero.append(cd);
+    window.HLMotion.countdown(cd, '2026-11-29T20:00:00+01:00', { one: 'día para votar', many: 'días para votar', done: 'Hoy se vota' });
+  }
   if (v.now?.empty) { emptyWindow($('seatsCard'), 'Parlamento', v.now); $('grid').classList.add('no-seats'); $('votesCard').hidden = true; $('coalCard').hidden = true; }
   else { $('votesCard').hidden = false; renderSeats(v); renderVotes(v); renderCoal(v); }
   renderFit(d); renderMap(d); renderTrend(d); renderPolls(v.now?.empty ? d : v);
 }
+// play the entrance again on cards that are already on screen (new election or new period)
+const replay = ids => { if (window.HLMotion) ids.forEach(id => { const c = $(id); if (c && c.classList.contains('hl-seen') && !c.hidden) window.HLMotion.replay(c); }); };
 function setWindow(w) {
   state.win = w;
   document.querySelectorAll('[data-win]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.win === w)));
-  if (state.doc) render();
+  if (state.doc) { render(); replay(['seatsCard', 'votesCard', 'hero']); }
 }
 document.querySelectorAll('[data-win]').forEach(b => { b.onclick = () => setWindow(b.dataset.win); });
 function route() {

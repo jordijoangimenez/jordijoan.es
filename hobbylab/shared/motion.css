@@ -1,0 +1,69 @@
+/* Hobby Lab motion layer, shared by the Electómetro, the Primómetro and Politiqueo.
+   Everything here only applies while motion.js has put .hl-motion on <html>, so pages without JavaScript
+   show their content as is. .hl-reduce (prefers-reduced-motion) switches every effect off. */
+
+@font-face {
+  font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 500 800; font-display: swap;
+  src: url("/fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Bricolage Grotesque"; font-style: normal; font-weight: 500 800; font-display: swap;
+  src: url("/fonts/bricolage-grotesque-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+:root { --hl-display: "Bricolage Grotesque", system-ui, sans-serif; --hl-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace; }
+h1, h2, .brand { font-family: var(--hl-display); }
+
+/* the night sky behind the page */
+.hl-sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+body { position: relative; isolation: isolate; }
+
+/* hero pieces */
+.hl-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; padding: 0; list-style: none; }
+.hl-pills li { font: 500 12px/1 var(--hl-mono); letter-spacing: 0.02em; padding: 7px 11px; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 70%, transparent); color: var(--ink-2); white-space: nowrap; }
+.hl-pills li:first-child { color: var(--ink); }
+.hl-pills li:first-child::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); margin-right: 7px; vertical-align: 1px; box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent); }
+.hl-count { display: inline-grid; grid-template-columns: auto auto; align-items: center; gap: 2px 12px; padding: 14px 18px; border-radius: 16px; border: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 80%, transparent); backdrop-filter: blur(8px); }
+.hl-count b { font: 650 46px/1 var(--hl-display); letter-spacing: -0.03em; color: var(--accent-ink); grid-row: span 2; font-variant-numeric: tabular-nums; }
+.hl-count span { font-size: 13px; color: var(--ink-2); line-height: 1.25; }
+.hl-count small { font: 500 13px/1 var(--hl-mono); color: var(--ink); font-variant-numeric: tabular-nums; }
+.hl-count small i { font-style: normal; color: var(--muted); margin: 0 6px 0 1px; }
+
+/* ---- reveal: cards rise the first time they enter the view; their items follow one after another ---- */
+.hl-motion:not(.hl-reduce) .card:not(.hl-seen),
+.hl-motion:not(.hl-reduce) .hl-rise:not(.hl-seen) { opacity: 0; transform: translateY(22px) scale(0.99); }
+.hl-motion .card, .hl-motion .hl-rise { transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.75, 0.2, 1); }
+
+.hl-motion:not(.hl-reduce) :is(.card, .hl-rise):not(.hl-on) .hl-item { opacity: 0; transform: translateY(12px); }
+.hl-motion :is(.card, .hl-rise).hl-on:not(.hl-done) .hl-item {
+  transition: opacity 0.5s ease calc(var(--hl-i, 0) * 38ms + 140ms), transform 0.65s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--hl-i, 0) * 38ms + 140ms);
+}
+
+/* bars grow from their baseline */
+.hl-motion:not(.hl-reduce) :is(.card, .hl-rise):not(.hl-on) .hl-grow { transform: scaleX(0); }
+.hl-motion :is(.card, .hl-rise).hl-on:not(.hl-done) .hl-grow { transition: transform 1s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--hl-i, 0) * 38ms + 260ms); }
+.hl-grow { transform-origin: left center; }
+.hl-grow.hl-from-right { transform-origin: right center; }
+
+/* hemicycle seats fly in from scattered positions */
+.hemi .seat { transform-box: fill-box; transform-origin: center; }
+.hl-motion:not(.hl-reduce) :is(.card, .hl-rise):not(.hl-on) .hemi .seat { opacity: 0; transform: translate(var(--fx, 0), var(--fy, 0)) scale(0.25); }
+.hl-motion :is(.card, .hl-rise).hl-on:not(.hl-done) .hemi .seat {
+  transition: transform 1.25s cubic-bezier(0.16, 0.8, 0.25, 1) var(--fd, 0ms), opacity 0.45s ease var(--fd, 0ms);
+}
+
+/* map shapes appear west to east */
+.hl-motion:not(.hl-reduce) :is(.card, .hl-rise):not(.hl-on) .hl-map-shape { opacity: 0; }
+.hl-motion :is(.card, .hl-rise).hl-on:not(.hl-done) .hl-map-shape { transition: opacity 0.6s ease var(--fd, 0ms); }
+
+/* small cards lean towards the pointer */
+.hl-tilt { transition: transform 0.25s ease; will-change: transform; }
+
+.hl-reduce .hl-sky { display: none; }
+
+/* printing shows everything, including sections never scrolled into view */
+@media print {
+  .hl-sky { display: none; }
+  .hl-motion :is(.card, .hl-rise, .hl-item, .hl-grow, .hl-map-shape, .hemi .seat) { opacity: 1 !important; transform: none !important; }
+}

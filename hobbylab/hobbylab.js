@@ -112,7 +112,7 @@
     });
     var published = parties.filter(function (p) { return p.docs && p.docs.some(function (d) { return d.kind === 'programa'; }); }).length;
     var days = Math.max(0, Math.ceil((Date.parse('2026-11-29T20:00:00+01:00') - Date.now()) / 864e5));
-    var cap = el('p', { class: 'cap' }, ['Programmes published: ', el('b', { text: published + ' of ' + parties.length }), ' · vote in ', el('b', { text: days + ' days' })]);
+    var cap = el('p', { class: 'cap' }, ['Programmes added: ', el('b', { text: published + ' of ' + parties.length }), ' · vote in ', el('b', { text: days + ' days' })]);
     var pv = document.getElementById('pv-politicometro');
     pv.textContent = '';
     pv.append(grid, cap);

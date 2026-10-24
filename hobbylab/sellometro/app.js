@@ -6,7 +6,10 @@
   var VIEWS = ['all', 'year', 'era', 'topic'];
   var SORTS = ['date-desc', 'date-asc', 'series'];
   var FESOFI = 'https://catalogodesellos.fesofi.es/product-category/';
-  // eras as Spanish philately groups its stamps; the BOE open data starts in 1960, so the first eight link to FESOFI
+  var FESOFI_SITE = 'https://catalogodesellos.fesofi.es/';
+  // stamp pictures are shown straight from the FESOFI catalogue, not copied; if they stop loading, the drawn stamp stays
+  var FESOFI_IMG = 'https://catalogodesellos.fesofi.es/wp-content/uploads/';
+  // eras as Spanish philately groups its stamps; the BOE open data starts in 1960, the earlier ones come from FESOFI
   var ERAS = [
     { id: 'isabel-ii', label: 'Isabel II', range: '1850–1870' },
     { id: 'duque-de-la-torre', label: 'Regencia del Duque de la Torre', range: '1870–1872' },
@@ -16,7 +19,7 @@
     { id: 'alfonso-xii', label: 'Alfonso XII', range: '1875–1885' },
     { id: 'alfonso-xiii', label: 'Alfonso XIII', range: '1886–1931' },
     { id: 'segunda-republica', label: 'II República', range: '1931–1939' },
-    { id: 'francisco-franco', label: 'Francisco Franco', range: '1936–1975', note: 'En el BOE abierto desde 1960' },
+    { id: 'francisco-franco', label: 'Francisco Franco', range: '1936–1975' },
     { id: 'juan-carlos-i', label: 'Juan Carlos I', range: '1975–2014' },
     { id: 'felipe-vi', label: 'Felipe VI', range: 'desde 2014' }
   ];
@@ -83,8 +86,25 @@
   function placeName(c) {
     if (c.terr === 'espana') return 'ESPAÑA';
     if (c.terr === 'andorra') return 'ANDORRA';
-    var m = (c.boe.title || '').match(/Sahara|Ifni|Fernando Poo|R[ií]o Muni|Guinea/i);
+    var m = ((c.boe && c.boe.title) || '').match(/Sahara|Ifni|Fernando Poo|R[ií]o Muni|Guinea/i);
     return m ? m[0].toUpperCase() : 'ÁFRICA';
+  }
+  // '1931-09' -> 'septiembre de 1931'
+  function looseDate(c) {
+    if (c.date) return shortDate(c.date);
+    if (c.boe) return 'BOE ' + shortDate(c.boe.date);
+    var p = (c.dateText || String(c.year)).split('-');
+    return p[1] ? MONTHS[+p[1] - 1] + ' de ' + p[0] : p[0];
+  }
+  // the first stamp's picture from FESOFI; the drawn stamp takes its place if it does not load
+  function pictureNode(c, big) {
+    var s = c.stamps[0];
+    if (!s || !s.i) return stampNode(c);
+    var box = el('span', { class: big ? 'photo photo-big' : 'photo', 'aria-hidden': 'true' });
+    var img = el('img', { src: FESOFI_IMG + s.i, alt: '', loading: 'lazy', decoding: 'async', width: 247, height: 300 });
+    img.addEventListener('error', function () { if (box.parentNode) box.parentNode.replaceChild(stampNode(c), box); });
+    box.appendChild(img);
+    return box;
   }
   function ink(c) {
     var t = c.topics[0];
@@ -106,7 +126,7 @@
       ])
     ]);
   }
-  function dateOf(c) { return c.date || c.boe.date; }
+  function dateOf(c) { return c.date || (c.boe ? c.boe.date : '') || c.dateText || String(c.year); }
 
   /* ---------- URL hash state ---------- */
 
@@ -213,13 +233,14 @@
   }
 
   function cardNode(c) {
-    var meta = c.date ? shortDate(c.date) : 'BOE ' + shortDate(c.boe.date);
+    var meta = looseDate(c);
     if (c.count) meta += ' · ' + c.count + (c.count === 1 ? ' sello' : ' sellos');
     var btn = el('button', { type: 'button', class: 'card-btn', 'data-id': c.id }, [
       el('span', { class: 'sr-only', text: niceSeries(c.series) + ', ' + (faces(c.face)[0] || '') + '. ' }),
-      stampNode(c),
+      pictureNode(c),
       el('span', { class: 'card-meta', text: meta }),
-      c.motifs.length ? el('span', { class: 'card-subject', text: c.motifs.join(' · ') }) : null,
+      el('span', { class: 'card-subject', text: niceSeries(c.series) }),
+      c.motifs.length ? el('span', { class: 'card-motifs', text: c.motifs.join(' · ') }) : null,
       c.kind !== 'sellos' ? el('span', { class: 'tag', text: KIND_LABEL[c.kind] }) : null,
       c.terr !== 'espana' ? el('span', { class: 'tag', text: c.terr === 'andorra' ? 'Andorra' : placeName(c).charAt(0) + placeName(c).slice(1).toLowerCase() }) : null
     ]);
@@ -313,7 +334,9 @@
 
     var info = el('div');
     info.appendChild(el('h2', { id: 'dlg-title', text: niceSeries(c.series) }));
-    info.appendChild(el('p', { text: c.date ? 'Puesta en circulación: ' + longDate(c.date) : 'Publicada en el BOE el ' + longDate(c.boe.date) + ' (fecha de emisión no disponible)' }));
+    info.appendChild(el('p', { text: c.date ? 'Puesta en circulación: ' + longDate(c.date)
+      : c.boe ? 'Publicada en el BOE el ' + longDate(c.boe.date) + ' (fecha de emisión no disponible)'
+      : 'Emitida en ' + looseDate(c) }));
     var tags = el('p', { class: 'dlg-tags' }, [el('span', { class: 'tag', text: KIND_LABEL[c.kind] }), el('span', { class: 'tag', text: eraLabel[c.era] })]);
     if (c.terr !== 'espana') tags.appendChild(el('span', { class: 'tag', text: TERR_LABEL[c.terr] }));
     info.appendChild(tags);
@@ -330,10 +353,13 @@
     if (c.text) {
       info.appendChild(el('h3', { text: 'Texto oficial' }));
       info.appendChild(el('p', { class: 'official', text: c.text }));
-    } else {
+    } else if (c.boe) {
       info.appendChild(el('h3', { text: 'Título de la disposición' }));
       info.appendChild(el('p', { text: c.boe.title }));
       if (!c.boe.text) info.appendChild(el('p', { text: 'El BOE solo ofrece esta disposición como PDF escaneado, así que la ficha técnica no está disponible aquí.' }));
+    } else {
+      info.appendChild(el('p', { text: (c.year < 1960 ? 'Esta emisión es anterior a los datos abiertos del BOE' : 'Esta emisión no se ha encontrado en los datos abiertos del BOE') +
+        ', así que aquí solo figura lo necesario para identificarla. La ficha completa de cada sello está en el catálogo de FESOFI.' }));
     }
 
     if (c.facts.length) {
@@ -343,25 +369,47 @@
       info.appendChild(dl);
     }
 
+    if (c.stamps.length) {
+      // the values of the series, as in the FESOFI catalogue: picture, number, face value and subject, each to its page
+      info.appendChild(el('h3', { text: c.stamps.length === 1 ? 'El sello en FESOFI' : 'Los ' + c.stamps.length + ' sellos en FESOFI' }));
+      info.appendChild(el('ul', { class: 'vals' }, c.stamps.map(function (s) {
+        var img = el('img', { src: FESOFI_IMG + s.i, alt: '', loading: 'lazy', decoding: 'async', width: 247, height: 300 });
+        img.addEventListener('error', function () { img.remove(); });
+        return el('li', {}, [el('a', { href: FESOFI_SITE + s.p, target: '_blank', rel: 'noopener' }, [
+          s.i ? img : null,
+          el('span', { class: 'val-n', text: 'Nº FESOFI ' + s.n }),
+          s.v ? el('span', { class: 'val-v', text: s.v }) : null,
+          s.m ? el('span', { class: 'val-m', text: s.m }) : null
+        ])]);
+      })));
+    }
+
     info.appendChild(el('h3', { text: 'Fuente' }));
     var src = el('dl', { class: 'facts' });
-    fact(src, 'Disposición', c.boe.title);
-    fact(src, 'Publicada', longDate(c.boe.date) + ' · ' + c.boe.id);
+    if (c.boe) {
+      fact(src, 'Disposición', c.boe.title);
+      fact(src, 'Publicada', longDate(c.boe.date) + ' · ' + c.boe.id);
+    }
+    if (c.stamps.length) fact(src, c.boe ? 'Imágenes' : 'Datos e imágenes', 'Catálogo de Sellos de España de FESOFI, enlazado desde su web');
     info.appendChild(src);
     if (c.corr.length) {
-      info.appendChild(el('p', { text: c.corr.length === 1 ? 'Corregida después por:' : 'Corregida después por:' }));
+      info.appendChild(el('p', { text: 'Corregida después por:' }));
       info.appendChild(el('ul', { class: 'corr' }, c.corr.map(function (r) {
         return el('li', {}, [el('a', { href: 'https://www.boe.es/diario_boe/txt.php?id=' + r.id, target: '_blank', rel: 'noopener', text: r.title }), ' (' + longDate(r.date) + ')']);
       })));
     }
-    var see = el('ul', { class: 'see' }, [
-      linkBtn('https://www.boe.es/diario_boe/txt.php?id=' + c.boe.id, 'Abrir en el BOE', true),
-      c.boe.pdf ? linkBtn(c.boe.pdf, 'PDF del BOE') : null
-    ]);
-    if (c.terr === 'espana') see.appendChild(linkBtn(FESOFI + c.era + '/?filter_ano-de-emision=' + c.year, 'Imágenes de ' + c.year + ' en FESOFI'));
+    var see = el('ul', { class: 'see' });
+    if (c.boe) {
+      see.appendChild(linkBtn('https://www.boe.es/diario_boe/txt.php?id=' + c.boe.id, 'Abrir en el BOE', true));
+      if (c.boe.pdf) see.appendChild(linkBtn(c.boe.pdf, 'PDF del BOE'));
+    }
+    if (c.stamps.length) see.appendChild(linkBtn(FESOFI_SITE + c.stamps[0].p, 'Ficha en FESOFI', !c.boe));
+    else if (c.terr === 'espana') see.appendChild(linkBtn(FESOFI + c.era + '/?filter_ano-de-emision=' + c.year, 'Sellos de ' + c.year + ' en FESOFI'));
     info.appendChild(see);
 
-    box.appendChild(el('div', { class: 'dlg-img' }, [stampNode(c)]));
+    var pic = el('div', { class: 'dlg-img' }, [pictureNode(c, true)]);
+    if (c.stamps.length && c.stamps[0].i) pic.appendChild(el('p', { class: 'pic-src', text: 'Imagen: catálogo de FESOFI' }));
+    box.appendChild(pic);
     box.appendChild(info);
     dlg.scrollTop = 0;
 
@@ -431,21 +479,22 @@
 
   // pills and the count box at the top, in the format of the other Hobby Lab pages
   function hero(ys) {
-    var stamps = 0, withText = 0, latest = items[0];
+    var withText = 0, withPics = 0, stamps = 0, lastBoe = '';
     items.forEach(function (c) {
-      stamps += c.count || 0;
       if (c.text) withText++;
-      if (c.boe.date > latest.boe.date) latest = c;
+      if (c.stamps.length) withPics++;
+      stamps += c.stamps.length;
+      if (c.boe && c.boe.date > lastBoe) lastBoe = c.boe.date;
     });
     var pills = $('pills');
     pills.textContent = '';
-    ['Sellos de España', ys[0] + '–' + ys[ys.length - 1], 'Boletín Oficial del Estado', 'Último BOE: ' + shortDate(latest.boe.date)]
+    ['Sellos de España', ys[0] + '–' + ys[ys.length - 1], 'BOE y FESOFI', 'Último BOE: ' + shortDate(lastBoe)]
       .forEach(function (t) { pills.appendChild(el('li', { text: t })); });
     var box = $('hero-count');
     box.textContent = '';
     box.appendChild(el('b', { class: 'hl-num', text: String(items.length) }));
-    box.appendChild(el('span', { text: 'emisiones, cada una con su disposición del BOE' }));
-    box.appendChild(el('small', { text: withText + ' con texto y ficha técnica · ' + TOPICS.length + ' temas' }));
+    box.appendChild(el('span', { text: 'emisiones desde ' + ys[0] + ', ' + stamps + ' sellos con imagen' }));
+    box.appendChild(el('small', { text: withText + ' con texto oficial del BOE · ' + TOPICS.length + ' temas' }));
     box.hidden = false;
     var h = $('hero');
     if (window.HLMotion && h.classList.contains('hl-seen')) window.HLMotion.replay(h);
@@ -551,7 +600,9 @@
         c.motifs = c.motifs || [];
         c.facts = c.facts || [];
         c.corr = c.corr || [];
-        c._search = [c.series, c.motifs.join(' '), c.text || '', c.boe.title, c.face || '', String(c.year)]
+        c.stamps = c.stamps || [];
+        c._search = [c.series, c.motifs.join(' '), c.text || '', c.boe ? c.boe.title : '', c.face || '', String(c.year)]
+          .concat(c.stamps.map(function (s) { return (s.m || '') + ' ' + (s.v || '') + ' ' + s.n; }))
           .concat(c.topics.map(function (id) { return topicLabel[id]; })).join(' ').toLowerCase();
       });
       fillTopics();

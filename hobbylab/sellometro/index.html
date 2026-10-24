@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sellómetro</title>
-<meta name="description" content="Todas las emisiones de sellos de correo de España publicadas en el BOE desde 1960, por año, época y tema, con su texto oficial y sus características técnicas.">
+<meta name="description" content="Todas las emisiones de sellos de correo de España desde 1850, por año, época y tema: desde 1960 con el texto oficial y la ficha técnica del BOE, y con las imágenes del catálogo de FESOFI.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/sellometro/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=2af75b9528">
-<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<link rel="stylesheet" href="styles.css?v=620c8f16a4">
+<link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 </head>
 <body>
@@ -64,7 +64,7 @@
     <div class="hero-copy">
       <ul class="hl-pills" id="pills" aria-label="Sobre este catálogo"><li>Sellos de España</li></ul>
       <h1 id="hero-h">Sellómetro</h1>
-      <p class="sub">Todas las emisiones de sellos de correo de España publicadas en el Boletín Oficial del Estado desde 1960, ordenadas por año, época y tema. Cada emisión muestra el texto oficial que la presenta, sus características técnicas y el enlace a la disposición del BOE. Un catálogo no oficial.</p>
+      <p class="sub">Todas las emisiones de sellos de correo de España, de 1850 a hoy, por año, época y tema. Desde 1960 cada emisión muestra el texto oficial y la ficha técnica de su disposición en el Boletín Oficial del Estado. Las imágenes y las emisiones anteriores vienen del catálogo de FESOFI, enlazado desde su web. Un catálogo no oficial.</p>
     </div>
     <div class="hl-count" id="hero-count" hidden></div>
   </section>
@@ -103,8 +103,9 @@
       <h3>Fuente</h3><p>Cada emisión de sellos de correo se aprueba con una disposición publicada en el Boletín Oficial del Estado: una orden ministerial hasta los años noventa y, después, una resolución conjunta de las subsecretarías competentes. El catálogo recorre los sumarios diarios del BOE desde 1960 con su <a href="https://www.boe.es/datosabiertos/" rel="noopener">API de datos abiertos</a> y recoge todas las disposiciones sobre emisión de sellos, tarjetas y sobres.</p>
       <h3>Copiado, no reescrito</h3><p>El nombre de la serie, el texto que presenta cada emisión, la fecha de puesta en circulación y las características técnicas (impresión, papel, dentado, formato, valor, tirada) se copian del texto del BOE. Si el BOE publicó después una corrección de errores, la emisión la enlaza.</p>
       <h3>Antes de 1995</h3><p>El BOE solo ofrece el texto de casi todas las disposiciones anteriores a 1995 como imagen escaneada en PDF. Para esas emisiones el catálogo muestra el título oficial, la fecha de publicación y el enlace al PDF, sin características técnicas.</p>
-      <h3>Antes de 1960</h3><p>Los datos abiertos del BOE empiezan en 1960, así que las épocas anteriores (de Isabel II a la Guerra Civil) aún no tienen emisiones aquí. Cada una enlaza al <a href="https://catalogodesellos.fesofi.es/" rel="noopener">catálogo de FESOFI</a>, que sí las recoge.</p>
-      <h3 id="rights">Imágenes y derechos</h3><p>Este es un catálogo informativo y sin ánimo de lucro. El diseño de cada sello pertenece a sus autores y a Correos, no a este sitio, y las fotos y descripciones de otros catálogos tampoco. Por eso no se reproduce ninguna imagen: cada emisión se dibuja como un sello de texto, con su valor y su año, y enlaza a FESOFI y a Correos para ver las imágenes. Si tienes derechos sobre algún contenido de esta página y quieres que se retire, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">abre una incidencia en GitHub</a> y se quitará.</p>
+      <h3>Antes de 1960</h3><p>Los datos abiertos del BOE empiezan en 1960. Las emisiones anteriores, de Isabel II a la posguerra, y las pocas posteriores que no aparecen en el BOE vienen del <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España de FESOFI</a>, con lo mínimo para identificarlas: fecha, serie, motivo y valor de cada sello. La ficha completa está en FESOFI.</p>
+      <h3>Imágenes</h3><p>Cada emisión del BOE se empareja con sus sellos en FESOFI por la fecha y el nombre de la serie, y muestra sus imágenes y la lista de sus valores. El emparejamiento es automático: alguna emisión puede quedar sin imágenes o, si los dos catálogos la llaman de forma distinta, aparecer dos veces.</p>
+      <h3 id="rights">Imágenes y derechos</h3><p>Este es un catálogo informativo y sin ánimo de lucro. Las imágenes se muestran directamente desde la web de FESOFI, sin copiarlas: este sitio no guarda ninguna, y al abrir la página tu navegador las pide al servidor de FESOFI. Si dejan de cargarse, cada emisión se dibuja como un sello de texto. El diseño de cada sello pertenece a sus autores y a Correos, y las fotos, a FESOFI. Si tienes derechos sobre algún contenido de esta página y quieres que se retire, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">abre una incidencia en GitHub</a> y se quitará.</p>
       <h3>Temas</h3><p>Cada emisión se clasifica en uno o varios temas (arte, naturaleza, personajes, deporte…) a partir de las palabras de su texto oficial. Es una clasificación automática y no oficial, así que alguna emisión puede caer en un tema inesperado.</p>
       <h3>Territorios</h3><p>Además de España, el BOE recoge las emisiones del correo español en Andorra y, hasta los años setenta, las de los territorios de África (Sahara, Ifni, Guinea). Se pueden filtrar aparte.</p>
       <h3>Etiquetas ATM</h3><p>Las etiquetas de franqueo de valor variable no se publican en el BOE. Tienen su propia página, con su historia, cómo leerlas y dónde consultar las emisiones: <a href="atm.html">etiquetas ATM</a>.</p>
@@ -113,7 +114,7 @@
 </main>
 
 <footer><div class="wrap">
-  <p>Textos: disposiciones del Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). Fuente de los datos: Agencia Estatal Boletín Oficial del Estado, reutilización autorizada citando la fuente; los temas y las épocas son una elaboración propia basada en esos datos. Diseños de los sellos: © sus autores y Correos; aquí no se reproduce ninguna imagen, cada emisión se dibuja como un sello de texto solo para identificarla (<a href="#rights">derechos</a>). Este catálogo no es oficial y el BOE no participa en él: consulta siempre la disposición original para el texto auténtico.</p>
+  <p>Textos: disposiciones del Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). Fuente de los datos: Agencia Estatal Boletín Oficial del Estado, reutilización autorizada citando la fuente; los temas y las épocas son una elaboración propia basada en esos datos. Imágenes y emisiones anteriores a 1960: <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España</a> de la Federación Española de Sociedades Filatélicas (FESOFI), enlazado desde su web. Diseños de los sellos: © sus autores y Correos; las imágenes se muestran solo para identificar cada emisión (<a href="#rights">derechos</a>). Este catálogo no es oficial y ni el BOE ni FESOFI participan en él: consulta siempre la fuente original.</p>
   <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. Datos actualizados: <time id="generated">fecha no disponible</time>.</p>
 </div></footer>
 
@@ -140,6 +141,6 @@
   })();
 </script>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="app.js?v=380a71991c"></script>
+<script src="app.js?v=e6b84b24b4"></script>
 </body>
 </html>

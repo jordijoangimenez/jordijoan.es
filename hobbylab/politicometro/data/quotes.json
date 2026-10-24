@@ -1,0 +1,798 @@
+{
+ "generated": "2026-10-24T18:11:42.478Z",
+ "docs": [
+  {
+   "party": "pp",
+   "id": "pp-contrato-2026",
+   "kind": "compromisos",
+   "title": "Mi contrato con España",
+   "url": "https://www.pp.es/wp-content/uploads/2026/10/CONTRATO-CON-ESPANA-.pdf",
+   "date": "2026-10-19",
+   "pages": 4
+  }
+ ],
+ "quotes": [
+  {
+   "id": "pp-contrato-2026-1",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 1,
+   "item": null,
+   "text": "Gobernar la Nación desde la verdad y cumplir la palabra dada.",
+   "topics": [],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-2",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 1,
+   "item": null,
+   "text": "Contar con un gobierno limpio, responsable y sometido a controles efectivos.",
+   "topics": [],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-3",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 1,
+   "text": "Defender la soberanía nacional y la integridad territorial.",
+   "topics": [
+    "territorio"
+   ],
+   "subs": [
+    "autogobierno"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-4",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 1,
+   "text": "Si se pone a prueba, la respuesta será firme.",
+   "topics": [
+    "territorio"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-5",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 1,
+   "text": "Reforzaremos las fronteras con medios humanos, materiales y tecnológicos, y el uso de todos los instrumentos europeos disponibles para ello.",
+   "topics": [
+    "inmigracion",
+    "exterior",
+    "territorio"
+   ],
+   "subs": [
+    "fronteras",
+    "ue"
+   ],
+   "via": "texto y compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-6",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 2,
+   "text": "Recuperar la calidad de nuestra democracia y el respeto a la separación de poderes.",
+   "topics": [
+    "instituciones"
+   ],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-7",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 2,
+   "text": "Los jueces elegirán a los jueces, y el Gobierno no los cuestionará.",
+   "topics": [
+    "seguridad",
+    "instituciones"
+   ],
+   "subs": [
+    "justicia"
+   ],
+   "via": "texto y compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-8",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 2,
+   "text": "Los órganos reguladores, el Tribunal Constitucional o la Fiscalía General del Estado estarán dirigidos por personas independientes.",
+   "topics": [
+    "seguridad",
+    "instituciones"
+   ],
+   "subs": [
+    "justicia",
+    "constitucion"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-9",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 2,
+   "text": "El Poder Ejecutivo dejará de suplantar al Parlamento, presentará presupuestos cada año y convocará obligatoriamente elecciones si acumula más de una prórroga.",
+   "topics": [
+    "cuentas",
+    "instituciones"
+   ],
+   "subs": [
+    "presupuestos"
+   ],
+   "via": "texto y compromiso",
+   "flags": [
+    "plazo"
+   ]
+  },
+  {
+   "id": "pp-contrato-2026-10",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 2,
+   "text": "Se respetará la libertad de prensa.",
+   "topics": [
+    "instituciones"
+   ],
+   "subs": [
+    "medios"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-11",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 3,
+   "text": "Un Estado más limpio y más ligero.",
+   "topics": [
+    "cuentas",
+    "instituciones"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-12",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 3,
+   "text": "Por eso se auditará cada euro y se reducirá un Estado sobredimensionado: menos ministerios, menos altos cargos y menos asesores.",
+   "topics": [
+    "cuentas"
+   ],
+   "subs": [
+    "administracion"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-13",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 3,
+   "text": "Se vigilarán especialmente las áreas afectadas por causas judiciales, los nombramientos indebidos y las estructuras y gastos superfluos.",
+   "topics": [
+    "cuentas",
+    "instituciones"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-14",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 3,
+   "text": "Todo cargo político responderá por la corrupción de sus subordinados.",
+   "topics": [
+    "instituciones"
+   ],
+   "subs": [
+    "corrupcion"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-15",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 4,
+   "text": "Atender eficazmente el primer problema de los españoles: la vivienda.",
+   "topics": [
+    "vivienda"
+   ],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-16",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 4,
+   "text": "El objetivo es aumentar la oferta y construir al menos un millón de nuevas viviendas.",
+   "topics": [
+    "vivienda"
+   ],
+   "subs": [
+    "construccion"
+   ],
+   "via": "texto",
+   "flags": [
+    "cifra"
+   ]
+  },
+  {
+   "id": "pp-contrato-2026-17",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 4,
+   "text": "Los jóvenes, principales víctimas de la situación actual, tendrán prioridad en el acceso al alquiler y a la compra y recibirán la mayor ayuda económica de la historia para poder adelantar su emancipación.",
+   "topics": [
+    "vivienda",
+    "social"
+   ],
+   "subs": [
+    "alquiler",
+    "juventud"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-18",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 4,
+   "text": "El conjunto de administraciones debe unir recursos y esfuerzos para velar por los vulnerables, echar a los okupas en 48 horas, facilitar suelo y reducir burocracia.",
+   "topics": [
+    "vivienda",
+    "cuentas",
+    "seguridad",
+    "social"
+   ],
+   "subs": [
+    "ocupacion",
+    "suelo",
+    "administracion",
+    "policia"
+   ],
+   "via": "texto",
+   "flags": [
+    "cifra",
+    "plazo"
+   ]
+  },
+  {
+   "id": "pp-contrato-2026-19",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 4,
+   "text": "El derecho a la propiedad se protegerá con eficacia.",
+   "topics": [
+    "vivienda"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-20",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "Ordenar la inmigración.",
+   "topics": [
+    "inmigracion"
+   ],
+   "subs": [
+    "integracion"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-21",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "Reducir la inmigración irregular es irrenunciable, igual que la integración y contribución de quien quiera quedarse.",
+   "topics": [
+    "inmigracion"
+   ],
+   "subs": [
+    "fronteras",
+    "integracion"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-22",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "España será un país abierto y solidario., pero esa solidaridad debe ser correspondida.",
+   "topics": [
+    "inmigracion"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-23",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "Quien venga a prosperar y contribuir, será bienvenido y contará con vías legales.",
+   "topics": [
+    "inmigracion"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-24",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "Quien venga a delinquir, deberá marcharse.",
+   "topics": [
+    "seguridad",
+    "inmigracion"
+   ],
+   "subs": [
+    "policia"
+   ],
+   "via": "texto y compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-25",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "Los criterios de acceso a la nacionalidad se reforzarán: el pasaporte español es un privilegio.",
+   "topics": [
+    "inmigracion"
+   ],
+   "subs": [
+    "integracion"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-26",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 2,
+   "item": 5,
+   "text": "La entrada o la permanencia ilegal en España no servirá para conseguir la residencia: se establecerá por ley la prohibición de regulaciones colectivas.",
+   "topics": [
+    "inmigracion"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": [
+    "ley"
+   ]
+  },
+  {
+   "id": "pp-contrato-2026-27",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 6,
+   "text": "Garantizar las pensiones actuales y futuras.",
+   "topics": [
+    "pensiones"
+   ],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-28",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 6,
+   "text": "Proteger el pacto intergeneracional es una tarea nacional prioritaria que debe volver a defenderse en el marco del Pacto de Toledo en el que están representados los partidos políticos y los agentes sociales.",
+   "topics": [
+    "pensiones"
+   ],
+   "subs": [
+    "sostenibilidad"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-29",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 6,
+   "text": "Esto exige actualizar conforme al IPC las pensiones actuales y garantizárselo a los más jóvenes.",
+   "topics": [
+    "pensiones",
+    "social"
+   ],
+   "subs": [
+    "revalorizacion",
+    "juventud"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-30",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 7,
+   "text": "Fortalecer la Sanidad Pública: más médicos y con mejores condiciones.",
+   "topics": [
+    "sanidad"
+   ],
+   "subs": [
+    "profesionales",
+    "sistema"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-31",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 7,
+   "text": "Hacerse cargo de esta situación exige mejorar las plantillas de los profesionales sanitarios, velando especialmente por el aumento de médicos y la mejora de sus condiciones laborales y retributivas.",
+   "topics": [
+    "sanidad"
+   ],
+   "subs": [
+    "profesionales",
+    "sistema"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-32",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 8,
+   "text": "Elevar el nivel educativo.",
+   "topics": [
+    "educacion"
+   ],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-33",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 8,
+   "text": "Para combatir los peores resultados educativos de nuestra historia, la educación tiene que premiar el esfuerzo, incrementar la exigencia y reforzar la autoridad del docente.",
+   "topics": [
+    "educacion"
+   ],
+   "subs": [
+    "escuela"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-34",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 8,
+   "text": "Los contenidos serán elaborados por las reales academias, siguiendo los ejemplos que proporciona la evidencia de los países con mejores resultados, y se erradicará cualquier adoctrinamiento de las aulas.",
+   "topics": [
+    "educacion"
+   ],
+   "subs": [
+    "escuela"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-35",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 8,
+   "text": "Se garantizará la enseñanza del castellano en toda España y de las lenguas cooficiales en sus respectivas Comunidades Autónomas.",
+   "topics": [
+    "educacion",
+    "territorio"
+   ],
+   "subs": [
+    "lenguas_escuela",
+    "lenguas"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-36",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 8,
+   "text": "Se protegerá a los menores frente a las redes sociales y a todas las formas de violencia a las que están expuestos.",
+   "topics": [
+    "digital",
+    "educacion"
+   ],
+   "subs": [
+    "tecnologia"
+   ],
+   "via": "texto y compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-37",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 9,
+   "text": "Más seguridad en las calles.",
+   "topics": [
+    "seguridad"
+   ],
+   "subs": [
+    "policia"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-38",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 9,
+   "text": "Combatiremos la creciente inseguridad en muchos barrios y, en especial, la violencia contra las mujeres, en cifras alarmantes.",
+   "topics": [
+    "seguridad",
+    "social"
+   ],
+   "subs": [
+    "policia",
+    "igualdad"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-39",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 9,
+   "text": "Para ello, las Fuerzas y Cuerpos de Seguridad del Estado contarán con más recursos económicos y materiales, reconocimiento y autoridad.",
+   "topics": [
+    "seguridad"
+   ],
+   "subs": [
+    "policia"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-40",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 10,
+   "text": "Fin al infierno fiscal que asfixia a las familias.",
+   "topics": [
+    "impuestos",
+    "social"
+   ],
+   "subs": [
+    "fiscalidad",
+    "familia"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-41",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 10,
+   "text": "La economía no estará sana mientras las familias vivan ahogadas por precios desorbitados e impuestos excesivos.",
+   "topics": [
+    "impuestos",
+    "social",
+    "economia"
+   ],
+   "subs": [
+    "fiscalidad",
+    "familia"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-42",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 10,
+   "text": "Revisaremos una a una las más de cien subidas fiscales de los últimos años y bajaremos los impuestos, porque trabajar, ahorrar y emprender tiene que merecer la pena.",
+   "topics": [
+    "impuestos",
+    "economia",
+    "social"
+   ],
+   "subs": [
+    "fiscalidad",
+    "pymes"
+   ],
+   "via": "texto y compromiso",
+   "flags": [
+    "cifra"
+   ]
+  },
+  {
+   "id": "pp-contrato-2026-43",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 11,
+   "text": "Subir el salario medio.",
+   "topics": [
+    "empleo"
+   ],
+   "subs": [
+    "smi"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-44",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 11,
+   "text": "La clase media tiene que volver a ser el motor de este país.",
+   "topics": [
+    "empleo"
+   ],
+   "subs": [],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-45",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 11,
+   "text": "Nuestro objetivo económico más ambicioso es que suba el salario medio de los españoles.",
+   "topics": [
+    "empleo"
+   ],
+   "subs": [
+    "smi"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-46",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 3,
+   "item": 11,
+   "text": "Trabajar tiene que compensar más que no hacerlo.",
+   "topics": [
+    "empleo"
+   ],
+   "subs": [],
+   "via": "compromiso",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-47",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 4,
+   "item": 12,
+   "text": "Recuperar el prestigio internacional de España.",
+   "topics": [
+    "exterior"
+   ],
+   "subs": [
+    "internacional"
+   ],
+   "via": "texto",
+   "flags": []
+  },
+  {
+   "id": "pp-contrato-2026-48",
+   "party": "pp",
+   "doc": "pp-contrato-2026",
+   "page": 4,
+   "item": 12,
+   "text": "La Nación debe comportarse como un país serio y fiable, y recuperar las alianzas rotas en la Unión Europea e Hispanoamérica y con nuestros aliados históricos.",
+   "topics": [
+    "exterior"
+   ],
+   "subs": [
+    "ue",
+    "internacional"
+   ],
+   "via": "texto",
+   "flags": []
+  }
+ ]
+}

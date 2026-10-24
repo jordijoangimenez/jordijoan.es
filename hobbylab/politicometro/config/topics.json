@@ -1,18 +1,18 @@
 {
   "_comment": "Topics and subtopics that every proposal is filed under, so parties can be compared side by side. Keywords are matched on lower-case, accent-free text, as word starts ('alquiler' also matches 'alquileres'); a leading '=' means the whole word only. Phrases (with spaces) weigh twice a single word.",
   "topics": [
-    { "id": "vivienda", "name": "Vivienda", "subs": [
+    { "id": "vivienda", "name": "Vivienda", "kw": ["vivienda"], "subs": [
       { "id": "construccion", "name": "Construcción y vivienda pública", "kw": ["vivienda publica", "parque publico de vivienda", "vivienda social", "viviendas sociales", "vivienda protegida", "proteccion oficial", "=vpo", "construccion de vivienda", "construir vivienda", "nuevas viviendas", "viviendas asequibles", "vivienda asequible", "promocion de vivienda"] },
       { "id": "alquiler", "name": "Alquiler", "kw": ["alquiler", "arrendamiento", "arrendatari", "inquilin", "zonas tensionadas", "zona tensionada", "precio del alquiler", "contencion de precios", "alquiler de temporada", "pisos turisticos", "viviendas de uso turistico"] },
       { "id": "compra", "name": "Compra y acceso", "kw": ["primera vivienda", "compra de vivienda", "hipoteca", "hipotecari", "aval", "acceso a la vivienda", "comprar una vivienda", "entrada de la vivienda"] },
       { "id": "ocupacion", "name": "Ocupación ilegal y desahucios", "kw": ["okupa", "ocupacion ilegal", "ocupaciones ilegales", "allanamiento", "desahucio", "desalojo", "usurpacion"] },
       { "id": "suelo", "name": "Suelo y urbanismo", "kw": ["suelo", "urbanis", "planeamiento", "licencias urbanisticas", "licencia urbanistica"] }
     ] },
-    { "id": "empleo", "name": "Empleo y salarios", "subs": [
+    { "id": "empleo", "name": "Empleo y salarios", "kw": ["=empleo", "clase media", "clase trabajadora"], "subs": [
       { "id": "smi", "name": "Salario mínimo y salarios", "kw": ["salario minimo", "=smi", "salarios", "salarial", "subida salarial", "salario medio"] },
       { "id": "jornada", "name": "Jornada laboral", "kw": ["jornada laboral", "reduccion de jornada", "horas semanales", "registro horario", "semana laboral", "37,5 horas", "jornada maxima"] },
       { "id": "contratos", "name": "Contratación, paro y reforma laboral", "kw": ["reforma laboral", "desemple", "=paro", "contratacion", "despido", "temporalidad", "=sepe", "politicas activas de empleo", "mercado laboral", "mercado de trabajo", "convenio colectivo", "negociacion colectiva", "sindica"] },
-      { "id": "autonomos", "name": "Autónomos", "kw": ["autonomo", "autonoma", "trabajadores por cuenta propia", "cuota de autonomos", "=reta"] },
+      { "id": "autonomos", "name": "Autónomos", "kw": ["=autonomo", "=autonomos", "trabajadores autonomos", "trabajadoras autonomas", "trabajadores por cuenta propia", "cuota de autonomos", "=reta"] },
       { "id": "conciliacion", "name": "Conciliación", "kw": ["conciliacion", "permiso de paternidad", "permiso de maternidad", "permisos parentales", "permiso parental", "teletrabajo", "corresponsabilidad"] }
     ] },
     { "id": "impuestos", "name": "Impuestos", "subs": [
@@ -20,20 +20,20 @@
       { "id": "iva", "name": "IVA", "kw": ["=iva", "impuesto sobre el valor anadido", "tipo superreducido", "tipo reducido"] },
       { "id": "sociedades", "name": "Empresas, banca y grandes fortunas", "kw": ["impuesto de sociedades", "impuesto sobre sociedades", "grandes empresas", "banca", "energeticas", "beneficios extraordinarios", "impuesto de patrimonio", "impuesto sobre el patrimonio", "grandes fortunas", "grandes patrimonios", "tasa tobin", "transacciones financieras", "socimi"] },
       { "id": "sucesiones", "name": "Sucesiones y donaciones", "kw": ["sucesiones", "donaciones", "herencia"] },
-      { "id": "fiscalidad", "name": "Fiscalidad general y fraude", "kw": ["fraude fiscal", "evasion fiscal", "elusion", "paraisos fiscales", "presion fiscal", "rebaja fiscal", "bajada de impuestos", "bajar impuestos", "armonizacion fiscal", "reforma fiscal", "sistema tributario", "impuesto", "tributari", "fiscal"] }
+      { "id": "fiscalidad", "name": "Fiscalidad general y fraude", "kw": ["fraude fiscal", "evasion fiscal", "elusion", "paraisos fiscales", "presion fiscal", "rebaja fiscal", "bajada de impuestos", "bajar impuestos", "armonizacion fiscal", "reforma fiscal", "sistema tributario", "impuesto", "tributari", "=fiscal", "=fiscales"] }
     ] },
     { "id": "cuentas", "name": "Gasto, deuda y Administración", "subs": [
       { "id": "presupuestos", "name": "Presupuestos", "kw": ["presupuestos generales", "presupuestos del estado", "presupuesto"] },
       { "id": "deuda", "name": "Déficit y deuda", "kw": ["deuda publica", "deficit", "estabilidad presupuestaria", "regla de gasto", "consolidacion fiscal", "reglas fiscales", "autoridad fiscal", "airef"] },
       { "id": "administracion", "name": "Administración y gasto público", "kw": ["gasto publico", "eficiencia del gasto", "evaluacion de politicas", "administracion publica", "administraciones publicas", "funcionari", "empleo publico", "burocracia", "simplificacion administrativa", "duplicidades", "asesores", "ministerios"] }
     ] },
-    { "id": "pensiones", "name": "Pensiones", "subs": [
-      { "id": "revalorizacion", "name": "Revalorización", "kw": ["revaloriz", "poder adquisitivo de las pensiones", "pensiones con el ipc", "pensiones al ipc", "actualizacion de las pensiones"] },
+    { "id": "pensiones", "name": "Pensiones", "kw": ["pension", "jubilad"], "subs": [
+      { "id": "revalorizacion", "name": "Revalorización", "kw": ["revaloriz", "poder adquisitivo de las pensiones", "pensiones con el ipc", "pensiones al ipc", "actualizacion de las pensiones", "=ipc"] },
       { "id": "sostenibilidad", "name": "Financiación y sostenibilidad", "kw": ["sostenibilidad del sistema", "sostenibilidad de las pensiones", "mecanismo de equidad intergeneracional", "cotizacion", "cotizaciones", "seguridad social", "fondo de reserva", "pacto de toledo", "destope", "bases maximas"] },
       { "id": "jubilacion", "name": "Edad y formas de jubilación", "kw": ["edad de jubilacion", "jubilacion anticipada", "jubilacion flexible", "jubilacion activa", "jubilacion parcial", "jubilacion"] },
       { "id": "minimas", "name": "Pensiones mínimas y no contributivas", "kw": ["pension minima", "pensiones minimas", "no contributiva", "viudedad", "complemento de brecha", "orfandad"] }
     ] },
-    { "id": "sanidad", "name": "Sanidad", "subs": [
+    { "id": "sanidad", "name": "Sanidad", "kw": ["sanidad", "sanitari", "=salud"], "subs": [
       { "id": "esperas", "name": "Listas de espera", "kw": ["listas de espera", "lista de espera", "demoras", "tiempos de espera", "tiempo de espera"] },
       { "id": "primaria", "name": "Atención primaria", "kw": ["atencion primaria", "centros de salud", "centro de salud", "medico de familia", "medicos de familia", "pediatr"] },
       { "id": "profesionales", "name": "Profesionales sanitarios", "kw": ["profesionales sanitarios", "personal sanitario", "medicos", "enfermer", "=mir", "plazas de formacion sanitaria", "especialistas"] },
@@ -41,38 +41,38 @@
       { "id": "farmacia", "name": "Medicamentos", "kw": ["medicamento", "farmac", "copago"] },
       { "id": "sistema", "name": "Sistema sanitario", "kw": ["sanidad publica", "sistema nacional de salud", "sanitari", "hospital", "salud bucodental", "dental", "salud publica", "sanidad"] }
     ] },
-    { "id": "educacion", "name": "Educación", "subs": [
+    { "id": "educacion", "name": "Educación", "kw": ["educacion", "educativ", "ensenanza", "=aulas", "docente", "colegio"], "subs": [
       { "id": "infantil", "name": "Educación infantil (0-3)", "kw": ["0 a 3", "0-3", "primer ciclo de educacion infantil", "educacion infantil", "escuelas infantiles", "escuela infantil", "guarderia"] },
-      { "id": "escuela", "name": "Escuela y profesorado", "kw": ["escuela publica", "concertada", "centros educativos", "curriculo", "docentes", "profesorado", "ratio", "abandono escolar", "=lomloe", "educacion primaria", "educacion secundaria", "bachillerato", "sistema educativo", "alumnado", "alumnos"] },
-      { "id": "lenguas_escuela", "name": "Lenguas en la escuela", "kw": ["lengua vehicular", "lenguas vehiculares", "inmersion linguistica", "castellano en la escuela", "estudiar en castellano"] },
+      { "id": "escuela", "name": "Escuela y profesorado", "kw": ["escuela publica", "concertada", "centros educativos", "curriculo", "docente", "profesorado", "=aulas", "adoctrinamiento", "ratio", "abandono escolar", "=lomloe", "educacion primaria", "educacion secundaria", "bachillerato", "sistema educativo", "alumnado", "alumnos"] },
+      { "id": "lenguas_escuela", "name": "Lenguas en la escuela", "kw": ["lengua vehicular", "lenguas vehiculares", "inmersion linguistica", "castellano en la escuela", "estudiar en castellano", "ensenanza del castellano", "ensenanza en castellano"] },
       { "id": "fp", "name": "Formación profesional", "kw": ["formacion profesional", "=fp", "fp dual"] },
       { "id": "universidad", "name": "Universidad y becas", "kw": ["universidad", "universitari", "becas", "=beca", "tasas universitarias", "matricula"] }
     ] },
-    { "id": "inmigracion", "name": "Inmigración", "subs": [
+    { "id": "inmigracion", "name": "Inmigración", "kw": ["inmigra", "migrant", "migratori"], "subs": [
       { "id": "fronteras", "name": "Fronteras e inmigración irregular", "kw": ["frontera", "inmigracion irregular", "inmigracion ilegal", "irregulares", "ilegales", "mafias", "devolucion", "expulsion", "=cie", "llegadas", "pateras", "cayucos", "salvamento maritimo", "ceuta y melilla"] },
       { "id": "regularizacion", "name": "Regularización y residencia", "kw": ["regularizacion", "arraigo", "permiso de residencia", "permisos de residencia", "papeles", "reglamento de extranjeria", "ley de extranjeria"] },
       { "id": "asilo", "name": "Asilo, menores y acogida", "kw": ["asilo", "refugiad", "proteccion internacional", "menores no acompanados", "menores extranjeros", "acogida"] },
       { "id": "integracion", "name": "Integración y migración laboral", "kw": ["integracion de los inmigrantes", "integracion", "migracion laboral", "contratacion en origen", "visado", "inmigrantes", "migrantes", "inmigracion", "prioridad nacional", "nacionalidad"] }
     ] },
     { "id": "seguridad", "name": "Seguridad y justicia", "subs": [
-      { "id": "policia", "name": "Policía y delincuencia", "kw": ["policia", "guardia civil", "fuerzas y cuerpos de seguridad", "seguridad ciudadana", "delincuencia", "multirreincid", "crimen organizado", "narcotrafico", "terroris", "okupa"] },
+      { "id": "policia", "name": "Policía y delincuencia", "kw": ["policia", "guardia civil", "fuerzas y cuerpos de seguridad", "seguridad ciudadana", "inseguridad", "seguridad en las calles", "delincuencia", "delinquir", "multirreincid", "crimen organizado", "narcotrafico", "terroris", "okupa"] },
       { "id": "justicia", "name": "Justicia y poder judicial", "kw": ["poder judicial", "=cgpj", "consejo general del poder judicial", "jueces", "fiscalia", "fiscal general", "administracion de justicia", "juzgados", "tribunal constitucional", "independencia judicial", "justicia"] },
       { "id": "penal", "name": "Código penal y penas", "kw": ["codigo penal", "penas", "prision permanente", "delito", "delitos", "reforma penal", "carcel", "prisiones"] }
     ] },
-    { "id": "instituciones", "name": "Democracia e instituciones", "subs": [
+    { "id": "instituciones", "name": "Democracia e instituciones", "kw": ["democracia", "democratic", "separacion de poderes", "instituciones", "regeneracion"], "subs": [
       { "id": "corrupcion", "name": "Corrupción y transparencia", "kw": ["corrupcion", "transparencia", "conflictos de intereses", "conflicto de intereses", "puertas giratorias", "rendicion de cuentas", "lobbies", "grupos de interes", "financiacion de los partidos"] },
       { "id": "electoral", "name": "Sistema electoral", "kw": ["ley electoral", "sistema electoral", "ley organica del regimen electoral", "=loreg", "circunscripcion", "listas abiertas", "voto exterior", "voto rogado", "derecho de voto"] },
       { "id": "constitucion", "name": "Constitución y Jefatura del Estado", "kw": ["reforma constitucional", "reformar la constitucion", "constitucion", "monarquia", "corona", "republica", "aforamient", "indulto", "senado"] },
       { "id": "medios", "name": "Medios y libertad de expresión", "kw": ["medios de comunicacion", "=rtve", "libertad de prensa", "libertad de expresion", "desinformacion", "bulos", "periodis"] },
       { "id": "memoria", "name": "Memoria democrática", "kw": ["memoria democratica", "memoria historica", "franquismo", "concordia", "valle de cuelgamuros", "valle de los caidos"] }
     ] },
-    { "id": "territorio", "name": "Modelo territorial", "subs": [
+    { "id": "territorio", "name": "Modelo territorial", "kw": ["comunidades autonomas", "autonomic", "territorial"], "subs": [
       { "id": "financiacion", "name": "Financiación autonómica", "kw": ["financiacion autonomica", "financiacion singular", "=cupo", "concierto economico", "fondo de compensacion", "sistema de financiacion", "deuda autonomica", "condonacion", "quita de la deuda", "agencia tributaria catalana", "hacienda propia"] },
-      { "id": "autogobierno", "name": "Autogobierno, soberanía y unidad", "kw": ["autogobierno", "estatuto de autonomia", "competencias", "autodeterminacion", "independencia", "amnistia", "plurinacional", "soberania", "unidad de espana", "unidad nacional", "derecho a decidir", "nacion", "estado autonomico", "recentraliz"] },
+      { "id": "autogobierno", "name": "Autogobierno, soberanía y unidad", "kw": ["autogobierno", "estatuto de autonomia", "competencias", "autodeterminacion", "independentis", "independencia de cataluna", "declaracion de independencia", "amnistia", "plurinacional", "soberania", "integridad territorial", "unidad de espana", "unidad nacional", "derecho a decidir", "nacion de naciones", "nacion catalana", "nacion vasca", "nacion gallega", "estado autonomico", "recentraliz"] },
       { "id": "lenguas", "name": "Lenguas oficiales", "kw": ["catalan", "euskera", "gallego", "valenciano", "lenguas oficiales", "lenguas cooficiales", "plurilinguismo", "lengua propia", "galego"] },
       { "id": "despoblacion", "name": "Despoblación y reto demográfico", "kw": ["despoblacion", "reto demografico", "espana vaciada", "medio rural", "mundo rural", "zonas rurales"] }
     ] },
-    { "id": "energia", "name": "Energía, clima y medio ambiente", "subs": [
+    { "id": "energia", "name": "Energía, clima y medio ambiente", "kw": ["energia", "energetic", "medio ambiente", "medioambient", "=clima"], "subs": [
       { "id": "renovables", "name": "Renovables", "kw": ["renovable", "solar", "eolica", "fotovoltaic", "autoconsumo", "hidrogeno verde", "comunidades energeticas"] },
       { "id": "nuclear", "name": "Energía nuclear", "kw": ["nuclear", "nucleares", "almaraz", "cierre de las centrales"] },
       { "id": "precio_energia", "name": "Precio de la luz y el gas", "kw": ["factura de la luz", "precio de la electricidad", "precio de la luz", "tarifa electrica", "mercado electrico", "bono social", "pobreza energetica", "precio del gas", "carburantes", "gasolina", "diesel"] },
@@ -80,18 +80,18 @@
       { "id": "agua", "name": "Agua", "kw": ["agua", "sequia", "trasvase", "regadio", "depuracion", "hidrologic", "embalses", "desaladora", "pacto del agua"] },
       { "id": "medio_ambiente", "name": "Naturaleza, residuos y animales", "kw": ["biodiversidad", "residuos", "plastico", "contaminacion", "incendios forestales", "incendio", "montes", "bienestar animal", "animales", "caza", "espacios naturales", "litoral", "costas", "dana"] }
     ] },
-    { "id": "economia", "name": "Economía y empresa", "subs": [
+    { "id": "economia", "name": "Economía y empresa", "kw": ["=economia", "empresas", "productividad"], "subs": [
       { "id": "industria", "name": "Industria", "kw": ["industria", "industrial", "reindustrializ", "automocion", "semiconductores"] },
       { "id": "pymes", "name": "Pymes y emprendimiento", "kw": ["=pyme", "=pymes", "emprend", "empresas", "morosidad", "carga administrativa", "ley de crecimiento"] },
       { "id": "productividad", "name": "Productividad e inversión", "kw": ["productividad", "competitividad", "inversion extranjera", "inversion privada", "fondos europeos", "next generation", "mercado unico", "crecimiento economico"] },
       { "id": "turismo", "name": "Turismo y comercio", "kw": ["turismo", "turistic", "comercio", "hosteleria"] },
       { "id": "consumo", "name": "Precios y consumo", "kw": ["consumidor", "cesta de la compra", "inflacion", "coste de la vida", "precio de los alimentos", "alimentos", "supermercad", "banca"] }
     ] },
-    { "id": "campo", "name": "Campo, pesca y mundo rural", "subs": [
+    { "id": "campo", "name": "Campo, pesca y mundo rural", "kw": ["agricult", "ganader", "=campo", "pesca"], "subs": [
       { "id": "agricultura", "name": "Agricultura y ganadería", "kw": ["agricultura", "agricola", "ganaderia", "ganader", "agricultores", "=pac", "politica agraria comun", "sector primario", "cadena alimentaria", "cadena de valor", "mercosur", "regadio", "explotaciones"] },
       { "id": "pesca", "name": "Pesca", "kw": ["pesca", "pesquer", "flota", "acuicultura"] }
     ] },
-    { "id": "social", "name": "Derechos sociales e igualdad", "subs": [
+    { "id": "social", "name": "Derechos sociales e igualdad", "kw": ["igualdad", "derechos sociales", "vulnerables", "pobreza"], "subs": [
       { "id": "igualdad", "name": "Igualdad y violencia contra las mujeres", "kw": ["igualdad entre mujeres y hombres", "violencia de genero", "violencia machista", "violencia contra las mujeres", "brecha salarial", "feminis", "mujeres", "igualdad"] },
       { "id": "lgtbi", "name": "LGTBI", "kw": ["lgtbi", "lgbt", "=trans", "diversidad sexual", "orientacion sexual", "identidad de genero"] },
       { "id": "familia", "name": "Familia, natalidad e infancia", "kw": ["familia", "natalidad", "crianza", "infancia", "prestacion por hijo", "hijos", "familias numerosas", "maternidad", "cheque bebe", "pobreza infantil"] },
@@ -99,17 +99,17 @@
       { "id": "pobreza", "name": "Pobreza e ingresos mínimos", "kw": ["pobreza", "ingreso minimo vital", "exclusion social", "renta minima", "sinhogarismo", "personas sin hogar", "rentas basicas", "renta basica"] },
       { "id": "juventud", "name": "Juventud", "kw": ["jovenes", "juventud", "emancipacion"] }
     ] },
-    { "id": "exterior", "name": "Exterior, UE y defensa", "subs": [
+    { "id": "exterior", "name": "Exterior, UE y defensa", "kw": ["internacional", "politica exterior", "aliados", "alianzas", "diplomac"], "subs": [
       { "id": "defensa", "name": "Defensa", "kw": ["defensa", "=otan", "fuerzas armadas", "gasto militar", "gasto en defensa", "ejercito", "servicio militar", "industria de defensa", "armamento", "militar"] },
       { "id": "ue", "name": "Unión Europea", "kw": ["union europea", "europa", "europeo", "europea", "bruselas", "parlamento europeo"] },
-      { "id": "internacional", "name": "Política internacional", "kw": ["ucrania", "rusia", "israel", "palestin", "gaza", "marruecos", "sahara", "gibraltar", "iberoamerica", "latinoamerica", "cooperacion internacional", "cooperacion al desarrollo", "venezuela", "china", "estados unidos", "politica exterior", "accion exterior", "naciones unidas"] }
+      { "id": "internacional", "name": "Política internacional", "kw": ["ucrania", "rusia", "israel", "palestin", "gaza", "marruecos", "sahara", "gibraltar", "iberoamerica", "hispanoamerica", "latinoamerica", "prestigio internacional", "cooperacion internacional", "cooperacion al desarrollo", "venezuela", "china", "estados unidos", "politica exterior", "accion exterior", "naciones unidas"] }
     ] },
-    { "id": "digital", "name": "Ciencia, digital y cultura", "subs": [
+    { "id": "digital", "name": "Ciencia, digital y cultura", "kw": ["digital", "=ciencia", "=cultura", "=tecnologia", "=tecnologias", "innovacion", "inteligencia artificial"], "subs": [
       { "id": "ciencia", "name": "Ciencia e innovación", "kw": ["investigacion", "ciencia", "cientific", "=i+d", "=i+d+i", "innovacion", "investigadores"] },
       { "id": "tecnologia", "name": "Digitalización e IA", "kw": ["digital", "inteligencia artificial", "=ia", "ciberseguridad", "conectividad", "telecomunicaciones", "=5g", "banda ancha", "brecha digital", "datos personales", "redes sociales", "menores en internet", "plataformas digitales"] },
       { "id": "cultura", "name": "Cultura y deporte", "kw": ["cultura", "cultural", "patrimonio historico", "cine", "libro", "museos", "tauromaquia", "toros", "deporte", "deportiv", "artistas", "creadores"] }
     ] },
-    { "id": "infraestructuras", "name": "Transporte e infraestructuras", "subs": [
+    { "id": "infraestructuras", "name": "Transporte e infraestructuras", "kw": ["infraestructura", "transporte"], "subs": [
       { "id": "transporte", "name": "Transporte público y tren", "kw": ["transporte publico", "cercanias", "rodalies", "=renfe", "=adif", "ferrocarril", "ferroviari", "alta velocidad", "abono", "autobus", "movilidad", "tren"] },
       { "id": "carreteras", "name": "Carreteras, puertos y aeropuertos", "kw": ["carretera", "autovia", "peaje", "aeropuerto", "=aena", "puertos", "corredor mediterraneo", "corredor atlantico", "infraestructura"] }
     ] }

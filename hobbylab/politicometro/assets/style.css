@@ -95,16 +95,34 @@ button { font: inherit; color: inherit; }
   display: block; height: 28px; min-width: 34px; border-radius: 7px;
   background: color-mix(in srgb, var(--pc, var(--accent)) 13%, var(--surface));
 }
-.cell { animation: mx-wave 3.6s ease-in-out infinite; animation-delay: calc((var(--r) + var(--c)) * 110ms); }
-.cell.ready, .cell-key.on { background: var(--pc, var(--accent)); animation: none; }
+.cell { display: grid; place-items: center; animation: mx-wave 3.6s ease-in-out infinite; animation-delay: calc((var(--r) + var(--c)) * 110ms); }
+.cell.none, .cell-key.none { animation: none; background: transparent; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--pc, var(--muted)) 35%, transparent); }
+.cell.on, .cell-key.on {
+  animation: none; cursor: pointer; background: color-mix(in srgb, var(--pc, var(--accent)) 72%, var(--surface));
+  color: #fff; font-weight: 700; font-size: 13px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); font-variant-numeric: tabular-nums;
+}
+.cell.on:hover { outline: 2px solid var(--pc); outline-offset: 1px; }
+.cell-key.on { display: inline-grid; place-items: center; font-style: normal; font-size: 10px; }
 @keyframes mx-wave { 0%, 60%, 100% { background: color-mix(in srgb, var(--pc) 13%, var(--surface)); } 30% { background: color-mix(in srgb, var(--pc) 55%, var(--surface)); } }
-.sub-row td { padding: 2px 8px 14px; }
-.sub-row p { margin: 0 0 6px; font-size: 13px; color: var(--muted); }
-.subs { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; }
-.subs li { padding: 4px 11px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface-2); color: var(--ink-2); font-size: 13px; }
-.key-row { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: 13px; color: var(--muted); }
-.key-row span { display: inline-flex; align-items: center; gap: 8px; }
+/* an open topic: one row per subtopic with a tick per party, then the quotes */
+.sub-tick th { padding: 2px 8px 2px 22px; font-size: 13px; font-weight: 400; color: var(--ink-2); }
+.sub-tick td { text-align: center; }
+.tick { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; font-size: 13px; font-weight: 700; color: var(--pc); background: color-mix(in srgb, var(--pc) 16%, transparent); }
+.tick.none { background: none; color: var(--muted); font-weight: 400; }
+.q-row > td { position: sticky; left: 0; padding: 8px 8px 18px; }
+.pq { border-left: 4px solid var(--pc); padding: 2px 0 2px 14px; margin: 6px 0 14px; max-width: 980px; }
+.pq h3 { margin: 0 0 8px; font-size: 14px; font-weight: 400; color: var(--muted); }
+.pq h3 b { color: var(--ink); font: 700 16px/1.2 var(--hl-display, var(--font)); margin-right: 4px; }
+.q-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.q { margin: 0; }
+.q p { margin: 0; color: var(--ink); font-size: 15px; line-height: 1.5; }
+.q-meta { margin: 3px 0 0; font-size: 12.5px; color: var(--muted); }
+.q-none { margin: 4px 0 8px; color: var(--muted); font-size: 14px; }
+.flag { display: inline-block; padding: 1px 8px; border-radius: 999px; font: 600 11px/1.6 var(--hl-mono, var(--font)); color: var(--accent-ink); background: var(--accent-wash); }
+.key-row { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; font-size: 13px; color: var(--muted); }
+.key-row span { display: inline-flex; align-items: center; gap: 6px; }
 .cell-key { display: inline-block; width: 22px; min-width: 0; height: 14px; border-radius: 4px; }
+.tick-key { color: var(--accent-ink); font-size: 14px; }
 
 /* ---------- parties ---------- */
 .parties { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
@@ -119,6 +137,9 @@ button { font: inherit; color: inherit; }
 .status.done::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--pc); }
 @keyframes pulse { 50% { opacity: 0.25; } }
 .p-note { margin: 0; font-size: 13px; color: var(--muted); }
+.p-stats { list-style: none; margin: 2px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, auto); gap: 6px 14px; }
+.p-stats li { display: flex; flex-direction: column; font-size: 12px; color: var(--muted); line-height: 1.25; }
+.p-stats b { font: 650 18px/1.1 var(--hl-display, var(--font)); color: var(--ink); font-variant-numeric: tabular-nums; }
 .p-site { font-size: 13px; margin-top: auto; }
 
 /* ---------- method ---------- */

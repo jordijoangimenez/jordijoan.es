@@ -6,7 +6,7 @@
 <title>Politicómetro</title>
 <meta name="description" content="Qué propone cada partido para las elecciones generales del 29 de noviembre de 2026, tema a tema y palabra por palabra, con citas literales de los programas oficiales.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/politicometro/">
-<link rel="stylesheet" href="assets/style.css?v=f80c28e7b0">
+<link rel="stylesheet" href="assets/style.css?v=6161e59247">
 <link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 </head>
@@ -42,7 +42,13 @@
     <p class="empty" id="empty" hidden>Todavía no se ha incorporado ningún programa. Cuando un partido publique el suyo en su web oficial, sus propuestas aparecerán en esta tabla, copiadas tal cual y ordenadas por tema. Pulsa un tema para ver qué se comparará.</p>
     <p class="error" id="error" role="alert" hidden>No se han podido cargar los datos. Vuelve a intentarlo en un momento.</p>
     <div class="table-wrap"><table class="matrix" id="matrix"><caption class="sr-only">Propuestas por tema y partido</caption></table></div>
-    <div class="key-row" aria-hidden="true"><span><i class="cell-key"></i>sin propuestas todavía</span><span><i class="cell-key on"></i>con propuestas (número)</span></div>
+    <div class="key-row" aria-hidden="true">
+      <span><i class="cell-key"></i>documento pendiente</span>
+      <span><i class="cell-key none"></i>nada sobre el tema</span>
+      <span><i class="cell-key on">3</i>número de propuestas</span>
+      <span><b class="tick-key">✓</b>dice algo sobre el subtema</span>
+      <span><b class="flag">cifra</b><b class="flag">plazo</b><b class="flag">ley</b>da una cantidad, fija un plazo o cita una ley</span>
+    </div>
   </section>
 
   <section class="card" id="partidos" aria-labelledby="par-h">
@@ -53,10 +59,12 @@
   <section class="card" id="metodo" aria-labelledby="met-h">
     <div class="card-head"><h2 id="met-h">Cómo funciona</h2></div>
     <div class="method">
-      <h3>Solo documentos oficiales</h3><p>Se usa el programa electoral que cada partido publica en su propia web. No se usan resúmenes de prensa, argumentarios ni declaraciones.</p>
+      <h3>Solo documentos oficiales</h3><p>Se usa el programa electoral que cada partido publica en su propia web. Si antes publica un documento de compromisos, también se incorpora, indicando qué es. No se usan resúmenes de prensa, argumentarios ni declaraciones.</p>
       <h3>Palabra por palabra</h3><p>Cada propuesta se copia tal cual, con el número de página y un enlace al documento. Antes de publicarla, una comprobación automática verifica que el texto aparece exactamente así en el programa.</p>
       <h3>Ordenado por temas</h3><p>Las propuestas se clasifican en <span id="n-topics">18</span> temas y <span id="n-subs">76</span> subtemas a partir de los títulos de sección del programa y de palabras clave. Una propuesta puede aparecer en más de un tema.</p>
-      <h3>Sin valoraciones</h3><p>El Politicómetro no puntúa, no resume y no opina: solo pone una al lado de la otra las propuestas de cada partido sobre lo mismo.</p>
+      <h3>Cobertura</h3><p>Cada subtema lleva una ✓ si el partido dice algo sobre él. Así se ve de qué habla cada uno y sobre qué calla.</p>
+      <h3>Concreción</h3><p>Cada propuesta se marca si da una cifra (una cantidad, un porcentaje o un importe), si fija un plazo o un calendario, o si cita una ley que crear o cambiar. Mide cuánto se compromete, no si la propuesta es buena.</p>
+      <h3>Sin valoraciones</h3><p>El Politicómetro no puntúa a los partidos, no resume y no opina: solo pone una al lado de la otra las propuestas de cada uno sobre lo mismo. Las cifras de cada partido cuentan propuestas, no las juzgan.</p>
       <h3>Partidos</h3><p>Doce partidos de ámbito estatal y autonómico con presencia en el Congreso o en las encuestas. Frente Amplio es la coalición de IU, Movimiento Sumar, Comuns, Más Madrid y otros.</p>
       <h3>Derechos</h3><p>Los programas pertenecen a sus partidos. Aquí se citan fragmentos para su análisis y comparación, indicando siempre la fuente y la página, como permite el derecho de cita (artículo 32 de la Ley de Propiedad Intelectual).</p>
     </div>
@@ -69,6 +77,6 @@
 </div></footer>
 
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="assets/app.js?v=6e5908702e" defer></script>
+<script src="assets/app.js?v=c789dd6cd8" defer></script>
 </body>
 </html>

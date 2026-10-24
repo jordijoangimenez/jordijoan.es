@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Politicómetro: downloads the parties' official documents and builds data/quotes.json",
+  "scripts": {
+    "fetch": "node scripts/fetch-docs.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "pdfjs-dist": "4.10.38"
+  }
+}

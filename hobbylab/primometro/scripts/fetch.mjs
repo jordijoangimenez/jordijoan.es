@@ -139,5 +139,11 @@ const same = old && JSON.stringify({ ...old, updated: null }) === JSON.stringify
 doc.updated = same ? old.updated : new Date().toISOString();
 await mkdir(join(ROOT, 'data'), { recursive: true });
 await writeFile(OUT, JSON.stringify(doc) + '\n');
+
+// a few hundred bytes for the Hobby Lab landing page: latest premium of every country against Germany
+const lm = yields.DE.at(-1)[0];
+const at = k => (yields[k] || []).find(r => r[0] === lm)?.[1];
+const premia = Object.entries(EURO).filter(([k]) => k !== 'DE' && at(k) != null).map(([k, [n]]) => [k, n, Math.round((at(k) - at('DE')) * 100)]).sort((a, b) => b[2] - a[2]);
+await writeFile(join(ROOT, 'data', 'summary.json'), JSON.stringify({ month: lm, vs: 'DE', premia, deposit: doc.rates.dfr.at(-1) }) + '\n');
 const last = yields.DE[yields.DE.length - 1][0];
 console.log(`${same ? 'no change' : 'updated'}: ${Object.keys(yields).length} yield series, last month ${last}; ${Object.keys(infl).length} inflation series, last month ${infl.U2.at(-1)[0]}; ${Object.keys(deficit).length} deficit series, last year ${deficit.U2.at(-1)[0]}; ${Object.keys(gdpGrowth).length} GDP series, last year ${gdpGrowth.U2.at(-1)[0]}, last quarter ${gdpQuarter.U2?.at(-1)?.[0]}; deposit rate ${doc.rates.dfr.at(-1).join(' = ')}`);

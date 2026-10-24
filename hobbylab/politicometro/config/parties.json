@@ -1,0 +1,18 @@
+{
+  "_comment": "Parties covered. 'docs' lists the official documents the quotes come from: add the electoral programme here once the party publishes it (id, kind 'programa' or 'otro', title, url to the official PDF, date). 'watch' are official pages the daily job scans for new PDF links that look like a programme.",
+  "election": { "name": "Elecciones generales", "date": "2026-11-29", "closes": "2026-11-29T20:00:00+01:00" },
+  "parties": [
+    { "id": "pp", "name": "Partido Popular", "short": "PP", "color": "#1D84CE", "watch": ["https://www.pp.es/"], "docs": [] },
+    { "id": "psoe", "name": "Partido Socialista Obrero Español", "short": "PSOE", "color": "#E30613", "watch": ["https://www.psoe.es/"], "docs": [] },
+    { "id": "vox", "name": "Vox", "short": "VOX", "color": "#5AC035", "watch": ["https://www.voxespana.es/"], "docs": [] },
+    { "id": "fa", "name": "Frente Amplio", "short": "FA", "color": "#EE3500", "note": "Coalición de IU, Movimiento Sumar, Comuns, Más Madrid y otros.", "watch": [], "docs": [] },
+    { "id": "podemos", "name": "Podemos", "short": "Podemos", "color": "#9169F4", "watch": ["https://podemos.info/"], "docs": [] },
+    { "id": "erc", "name": "Esquerra Republicana de Catalunya", "short": "ERC", "color": "#FFB232", "watch": ["https://www.esquerra.cat/"], "docs": [] },
+    { "id": "junts", "name": "Junts per Catalunya", "short": "Junts", "color": "#20C0B2", "watch": ["https://junts.cat/"], "docs": [] },
+    { "id": "bildu", "name": "EH Bildu", "short": "EH Bildu", "color": "#08A3A6", "watch": ["https://ehbildu.eus/"], "docs": [] },
+    { "id": "pnv", "name": "Partido Nacionalista Vasco", "short": "EAJ-PNV", "color": "#01853A", "watch": ["https://www.eaj-pnv.eus/"], "docs": [] },
+    { "id": "bng", "name": "Bloque Nacionalista Galego", "short": "BNG", "color": "#76B3DD", "watch": ["https://www.bng.gal/"], "docs": [] },
+    { "id": "cc", "name": "Coalición Canaria", "short": "CC", "color": "#FFD700", "watch": ["https://coalicioncanaria.org/"], "docs": [] },
+    { "id": "salf", "name": "Se Acabó La Fiesta", "short": "SALF", "color": "#785A46", "watch": [], "docs": [] }
+  ]
+}

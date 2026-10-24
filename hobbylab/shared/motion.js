@@ -11,7 +11,7 @@
 
   var ITEMS = '.bar-row, .seat-list li, .rank button, .legend button, .legend select, .chip, .minimal li, .tile, .mini, tbody tr, .fit-sum > div, .summary > div, .coal-result, .presets button, .map-legend span, .bars-key span, .key-row span, .hl-pills li, .card-head, .seg, .map-ctl, .ramp-box, .others, .note';
   var GROW = '.track .fill, .rank .bar, .meter i, .sb i';
-  var COUNT = '.hero-num, .center-num, .seat-list .num, .tile .v, .coal-result .big, .summary b, .fit-sum b, .rank .val';
+  var COUNT = '.hl-num, .hero-num, .center-num, .seat-list .num, .tile .v, .coal-result .big, .summary b, .fit-sum b, .rank .val';
   var MAP = '.map-svg .cty, .map-svg .prov';
   var SCOPES = '.card, .hl-rise';
 

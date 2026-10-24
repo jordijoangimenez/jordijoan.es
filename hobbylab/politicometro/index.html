@@ -1,17 +1,18 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Politicómetro</title>
-<meta name="description" content="Qué propone cada partido para las elecciones generales del 29 de noviembre de 2026, tema a tema y palabra por palabra, con citas literales de los programas oficiales.">
+<meta name="description" content="What each party proposes for Spain's general election of 29 November 2026, topic by topic and word for word, with literal quotes from the official programmes.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/politicometro/">
 <link rel="stylesheet" href="assets/style.css?v=6161e59247">
-<link rel="stylesheet" href="../shared/motion.css?v=71f2ca6394">
+<link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+<script src="../shared/lang.js?v=90a9ab947f"></script>
 </head>
 <body>
-<a class="skip" href="#comparador">Saltar al comparador</a>
+<a class="skip" href="#comparador" data-i18n="skip">Skip to the comparison</a>
 
 <header class="top"><div class="wrap">
   <a class="brand" href="./" aria-label="Politicómetro">
@@ -19,64 +20,64 @@
     Politicómetro
   </a>
   <nav>
-    <a href="#comparador" class="hide-sm">Comparador</a>
-    <a href="#partidos" class="hide-sm">Partidos</a>
-    <a href="#metodo" class="hide-sm">Método</a>
+    <a href="#comparador" class="hide-sm" data-i18n="nav_cmp">Comparison</a>
+    <a href="#partidos" class="hide-sm" data-i18n="nav_par">Parties</a>
+    <a href="#metodo" class="hide-sm" data-i18n="nav_met">Method</a>
     <a href="../">Hobby Lab</a>
-    <button class="icon-btn" id="theme" type="button" aria-label="Cambiar tema">◐</button>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme" data-i18n-attr="aria-label:theme">◐</button>
   </nav>
 </div></header>
 
 <main class="wrap" id="main">
   <section class="hero hl-rise" id="hero" aria-labelledby="hero-h">
     <div class="hero-copy">
-      <ul class="hl-pills" id="pills" aria-label="La elección"><li>Elecciones generales</li></ul>
+      <ul class="hl-pills" id="pills" aria-label="The election" data-i18n-attr="aria-label:election"><li>General election</li></ul>
       <h1 id="hero-h">Politicómetro</h1>
-      <p class="sub">Qué propone cada partido para el 29 de noviembre, tema a tema y palabra por palabra. Cada propuesta se copia literalmente del programa oficial, con enlace a su página, para ponerlas una al lado de la otra sin resúmenes ni interpretaciones.</p>
+      <p class="sub" data-i18n="sub">What each party proposes for Spain's general election of 29 November, topic by topic and word for word. Every proposal is copied literally from the official document, with a link to its page, so they can be read side by side without summaries or interpretation.</p>
     </div>
     <div id="countdown"></div>
   </section>
 
   <section class="card" id="comparador" aria-labelledby="cmp-h">
-    <div class="card-head"><h2 id="cmp-h">Comparador</h2><span class="hint" id="cmp-hint">temas por partidos</span></div>
-    <p class="empty" id="empty" hidden>Todavía no se ha incorporado ningún programa. Cuando un partido publique el suyo en su web oficial, sus propuestas aparecerán en esta tabla, copiadas tal cual y ordenadas por tema. Pulsa un tema para ver qué se comparará.</p>
-    <p class="error" id="error" role="alert" hidden>No se han podido cargar los datos. Vuelve a intentarlo en un momento.</p>
-    <div class="table-wrap"><table class="matrix" id="matrix"><caption class="sr-only">Propuestas por tema y partido</caption></table></div>
+    <div class="card-head"><h2 id="cmp-h" data-i18n="cmp">Comparison</h2><span class="hint" id="cmp-hint">topics by parties</span></div>
+    <p class="empty" id="empty" hidden data-i18n="empty">No party document has been added yet. When a party publishes its programme on its official website, its proposals will appear in this table, copied as they are and sorted by topic. Open a topic to see what will be compared.</p>
+    <p class="error" id="error" role="alert" hidden data-i18n="error">The data could not be loaded. Please try again in a moment.</p>
+    <div class="table-wrap"><table class="matrix" id="matrix"><caption class="sr-only" data-i18n="caption">Proposals by topic and party</caption></table></div>
     <div class="key-row" aria-hidden="true">
-      <span><i class="cell-key"></i>documento pendiente</span>
-      <span><i class="cell-key none"></i>nada sobre el tema</span>
-      <span><i class="cell-key on">3</i>número de propuestas</span>
-      <span><b class="tick-key">✓</b>dice algo sobre el subtema</span>
-      <span><b class="flag">cifra</b><b class="flag">plazo</b><b class="flag">ley</b>da una cantidad, fija un plazo o cita una ley</span>
+      <span><i class="cell-key"></i><span data-i18n="k_pending">document pending</span></span>
+      <span><i class="cell-key none"></i><span data-i18n="k_none">nothing on the topic</span></span>
+      <span><i class="cell-key on">3</i><span data-i18n="k_count">number of proposals</span></span>
+      <span><b class="tick-key">✓</b><span data-i18n="k_tick">says something on the subtopic</span></span>
+      <span data-i18n="k_flags"><b class="flag">figure</b><b class="flag">deadline</b><b class="flag">law</b>gives a quantity, sets a deadline or names a law</span>
     </div>
   </section>
 
   <section class="card" id="partidos" aria-labelledby="par-h">
-    <div class="card-head"><h2 id="par-h">Partidos</h2><span class="hint">estado de cada programa</span></div>
+    <div class="card-head"><h2 id="par-h" data-i18n="parties">Parties</h2><span class="hint" data-i18n="parties_hint">status of each document</span></div>
     <ul class="parties" id="parties"></ul>
   </section>
 
   <section class="card" id="metodo" aria-labelledby="met-h">
-    <div class="card-head"><h2 id="met-h">Cómo funciona</h2></div>
-    <div class="method">
-      <h3>Solo documentos oficiales</h3><p>Se usa el programa electoral que cada partido publica en su propia web. Si antes publica un documento de compromisos, también se incorpora, indicando qué es. No se usan resúmenes de prensa, argumentarios ni declaraciones.</p>
-      <h3>Palabra por palabra</h3><p>Cada propuesta se copia tal cual, con el número de página y un enlace al documento. Antes de publicarla, una comprobación automática verifica que el texto aparece exactamente así en el programa.</p>
-      <h3>Ordenado por temas</h3><p>Las propuestas se clasifican en <span id="n-topics">18</span> temas y <span id="n-subs">76</span> subtemas a partir de los títulos de sección del programa y de palabras clave. Una propuesta puede aparecer en más de un tema.</p>
-      <h3>Cobertura</h3><p>Cada subtema lleva una ✓ si el partido dice algo sobre él. Así se ve de qué habla cada uno y sobre qué calla.</p>
-      <h3>Concreción</h3><p>Cada propuesta se marca si da una cifra (una cantidad, un porcentaje o un importe), si fija un plazo o un calendario, o si cita una ley que crear o cambiar. Mide cuánto se compromete, no si la propuesta es buena.</p>
-      <h3>Sin valoraciones</h3><p>El Politicómetro no puntúa a los partidos, no resume y no opina: solo pone una al lado de la otra las propuestas de cada uno sobre lo mismo. Las cifras de cada partido cuentan propuestas, no las juzgan.</p>
-      <h3>Partidos</h3><p>Doce partidos de ámbito estatal y autonómico con presencia en el Congreso o en las encuestas. Frente Amplio es la coalición de IU, Movimiento Sumar, Comuns, Más Madrid y otros.</p>
-      <h3>Derechos</h3><p>Los programas pertenecen a sus partidos. Aquí se citan fragmentos para su análisis y comparación, indicando siempre la fuente y la página, como permite el derecho de cita (artículo 32 de la Ley de Propiedad Intelectual).</p>
+    <div class="card-head"><h2 id="met-h" data-i18n="method">How it works</h2></div>
+    <div class="method" data-i18n="method_body">
+      <h3>Official documents only</h3><p>The source is the electoral programme each party publishes on its own website. If a party first publishes a shorter document of commitments, it is added too, saying what it is. Press summaries, talking points and statements are not used.</p>
+      <h3>Word for word</h3><p>Every proposal is copied as it is, in Spanish, with its page number and a link to the document. Before it is published, an automatic check makes sure the text appears exactly like that in the document.</p>
+      <h3>Sorted by topic</h3><p>Proposals are sorted into <span class="n-topics">18</span> topics and <span class="n-subs">76</span> subtopics from the section headings of the document and from keywords. A proposal can appear under more than one topic.</p>
+      <h3>Coverage</h3><p>A subtopic gets a ✓ when the party says something about it, so you can see what each party talks about and what it leaves out.</p>
+      <h3>Concreteness</h3><p>Each proposal is marked when it gives a figure (a quantity, a percentage or an amount), sets a deadline or a calendar, or names a law to create or change. It measures how much a party commits to, not whether the proposal is good.</p>
+      <h3>No ratings</h3><p>The Politicómetro does not score the parties, summarise or give opinions: it only puts each party's proposals on the same issue side by side. The figures for each party count proposals; they do not judge them.</p>
+      <h3>Parties</h3><p>Twelve national and regional parties present in the Congress or in the polls. Frente Amplio is the coalition of IU, Movimiento Sumar, Comuns, Más Madrid and others.</p>
+      <h3>Rights</h3><p>The documents belong to their parties. Short passages are quoted here for analysis and comparison, always with their source and page, as Spain's quotation right allows (article 32 of the Intellectual Property Act).</p>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap">
-  <p>Fuentes: los programas electorales oficiales de cada partido, enlazados en cuanto se incorporan. Este sitio es independiente y no está vinculado a ningún partido.</p>
-  <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>.</p>
+  <p data-i18n="foot1">Sources: each party's official documents, linked as soon as they are added. This site is independent and not linked to any party.</p>
+  <p><span data-i18n="foot2">A project of</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">at</span> <a href="https://jordijoan.es/">jordijoan.es</a>.</p>
 </div></footer>
 
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="assets/app.js?v=c789dd6cd8" defer></script>
+<script src="assets/app.js?v=e718462fcf" defer></script>
 </body>
 </html>

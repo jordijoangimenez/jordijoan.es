@@ -1,7 +1,31 @@
-/* Hobby Lab landing page: theme toggle and the live previews in each project card. */
+/* Hobby Lab landing page: theme toggle and the live previews in each project card, in English or Spanish (shared/lang.js). */
 (function () {
   'use strict';
   var root = document.documentElement;
+  var L = window.HLLang || { lang: 'en', t: function (d, k) { return d.en[k]; }, apply: function () {} };
+  var ES = L.lang === 'es';
+  L.apply({ es: {
+    _description: 'Pequeños proyectos de datos hechos en mi tiempo libre: la media de todas las encuestas de España, la prima de riesgo de la zona euro junto a los tipos del BCE, todas las monedas conmemorativas de 2 euros, los programas de los partidos comparados tema a tema y todas las emisiones de sellos de España en el BOE.',
+    skip: 'Saltar al contenido', projects: 'Proyectos', dark: 'Modo oscuro', about: 'Sobre Hobby Lab', topics: 'Temas',
+    pill1: 'Proyectos personales', pill2: 'Datos abiertos', pill3: 'Actualizados cada día',
+    lead: 'Pequeños proyectos de datos que hago en mi tiempo libre, por curiosidad. Son experimentos personales, independientes de mis empleadores y de cualquier organización. Todos están en inglés y en español.',
+    el_k: 'Elecciones · Encuestas', el_go: 'Abrir Electómetro →',
+    el_d: 'Todas las encuestas publicadas por Electogrāfica, promediadas en un único parlamento: escaños, porcentaje de voto, mayorías de coalición, resultados oficiales frente a las encuestas y un mapa por provincias.',
+    el_t: '<li>Encuestas</li><li>Visualización de datos</li><li>Datos abiertos</li>',
+    pr_k: 'Economía · Zona euro', pr_go: 'Abrir Primómetro →',
+    pr_d: 'La prima de riesgo, la inflación, el déficit público y el PIB de cada país de la zona euro, en un mapa de Europa y a lo largo del tiempo, junto a los tipos de interés del Banco Central Europeo.',
+    pr_t: '<li>Deuda pública</li><li>BCE</li><li>Inflación</li><li>PIB</li>',
+    do_k: 'Monedas · Zona euro', do_go: 'Abrir Doseurómetro →',
+    do_d: 'Todas las monedas conmemorativas de 2 euros desde 2004, por año, país, tema o emisión común, con la descripción del diseño, la tirada y la fecha de emisión de la comunicación de la Comisión Europea en el Diario Oficial.',
+    do_t: '<li>Numismática</li><li>Diario Oficial</li><li>Catálogo</li>',
+    po_k: 'Elecciones · Programas', po_go: 'Abrir Politicómetro →',
+    po_d: 'Qué propone cada partido para el 29 de noviembre, tema a tema y palabra por palabra: cada cita copiada literalmente del documento oficial, con enlace a su página.',
+    po_t: '<li>Programas electorales</li><li>Comparación</li>',
+    se_k: 'Sellos · España', se_go: 'Abrir Sellómetro →',
+    se_d: 'Todas las emisiones de sellos de España aprobadas en el Boletín Oficial del Estado desde 1960, por año, época y tema, con su texto oficial y sus datos técnicos. Y una guía de las etiquetas ATM.',
+    se_t: '<li>Filatelia</li><li>Boletín oficial</li><li>Catálogo</li>',
+    data: 'Datos: Electogrāfica, Banco Central Europeo, Eurostat, Diario Oficial de la Unión Europea, Boletín Oficial del Estado. Cada proyecto cita sus fuentes.'
+  } });
   var btn = document.getElementById('theme');
   function sync() { btn.setAttribute('aria-pressed', String(root.dataset.theme !== 'light')); }
   btn.addEventListener('click', function () {
@@ -53,9 +77,9 @@
     var T = e.sb.reduce(function (a, g) { return a + g[1]; }, 0), N = e.T || T;
     var h = hemicycle(N, e.sb);
     var top = e.sb.slice().sort(function (a, b) { return b[1] - a[1]; }).slice(0, 3);
-    var cap = el('p', { class: 'cap' }, ['Congreso hoy: ']);
+    var cap = el('p', { class: 'cap' }, [ES ? 'Congreso hoy: ' : 'Congress today: ']);
     top.forEach(function (g, i) { cap.append(el('b', { text: g[0] + ' ' }), el('span', { class: 'hl-num', text: String(g[1]) }), i < 2 ? ' · ' : ''); });
-    cap.append(' · mayoría ' + h.maj);
+    cap.append((ES ? ' · mayoría ' : ' · majority ') + h.maj);
     var pv = document.getElementById('pv-electometro');
     pv.append(el('div', { class: 'hemi' }, [h.svg]), cap);
     reveal('card-electometro');
@@ -71,13 +95,17 @@
     if (es && rows.indexOf(es) < 0) rows.push(es);
     var max = Math.max.apply(null, rows.map(function (r) { return r[2]; }).concat([1]));
     var bars = el('div', { class: 'bars' });
+    var names = null;
+    try { if (!ES) names = new Intl.DisplayNames(['en-GB'], { type: 'region' }); } catch (e) {}
     rows.forEach(function (r) {
-      bars.append(el('div', { class: 'bar-row' }, [el('span', { class: 'nm', text: r[1] }),
+      bars.append(el('div', { class: 'bar-row' }, [el('span', { class: 'nm', text: names ? names.of(r[0]) : r[1] }),
         el('div', { class: 'track' }, [el('i', { class: 'fill', style: 'width:' + Math.max(2, r[2] / max * 100) + '%;background:' + heat(Math.max(0, r[2]) / max) })]),
         el('span', { class: 'v hl-num', text: String(r[2]) })]));
     });
-    var MES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-    var cap = el('p', { class: 'cap' }, ['Prima de riesgo frente a Alemania, ' + MES[+s.month.slice(5) - 1] + ' de ' + s.month.slice(0, 4) + ' (pb). Depósito BCE: ', el('b', { text: String(s.deposit[1]).replace('.', ',') + ' %' })]);
+    var month = new Date(Date.UTC(+s.month.slice(0, 4), +s.month.slice(5) - 1, 15)).toLocaleDateString(ES ? 'es-ES' : 'en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+    var cap = el('p', { class: 'cap' }, ES
+      ? ['Prima de riesgo frente a Alemania, ' + month + ' (pb). Depósito BCE: ', el('b', { text: String(s.deposit[1]).replace('.', ',') + ' %' })]
+      : ['Risk premium against Germany, ' + month + ' (basis points). ECB deposit rate: ', el('b', { text: s.deposit[1] + '%' })]);
     var pv = document.getElementById('pv-primometro');
     pv.append(bars, cap);
     reveal('card-primometro');
@@ -89,7 +117,9 @@
     s.pick.forEach(function (c, i) {
       row.append(el('span', { class: 'coin', style: '--i:' + i }, [el('img', { src: 'doseurometro/' + c.image, alt: '', loading: 'lazy', decoding: 'async', width: 96, height: 96 })]));
     });
-    var cap = el('p', { class: 'cap' }, [el('b', { class: 'hl-num', text: String(s.coins) }), ' coins from ', el('b', { text: s.countries + ' countries' }), ', ' + s.from + ' to ' + s.to + '. Above, one per country from ' + s.to + '.']);
+    var cap = el('p', { class: 'cap' }, ES
+      ? [el('b', { class: 'hl-num', text: String(s.coins) }), ' monedas de ', el('b', { text: s.countries + ' países' }), ', de ' + s.from + ' a ' + s.to + '. Arriba, una por país de ' + s.to + '.']
+      : [el('b', { class: 'hl-num', text: String(s.coins) }), ' coins from ', el('b', { text: s.countries + ' countries' }), ', ' + s.from + ' to ' + s.to + '. Above, one per country from ' + s.to + '.']);
     var pv = document.getElementById('pv-doseurometro');
     pv.append(row, cap);
     reveal('card-doseurometro');
@@ -104,15 +134,18 @@
     grid.append(el('span'));
     parties.forEach(function (p) { grid.append(el('i', { class: 'mx-party', title: p.short, style: 'background:' + p.color })); });
     shown.forEach(function (t, r) {
-      grid.append(el('span', { class: 'mx-topic', lang: 'es', title: t.name, text: t.name.split(/,| y /)[0] }));
+      var name = ES ? t.name : (t.en || t.name);
+      grid.append(el('span', { class: 'mx-topic', lang: ES || !t.en ? 'es' : 'en', title: name, text: name.split(ES ? /,| y / : /,| and /)[0] }));
       parties.forEach(function (p, c) {
-        var has = p.docs && p.docs.some(function (d) { return d.kind === 'programa'; });
+        var has = p.docs && p.docs.length > 0;
         grid.append(el('i', { class: 'mx-cell' + (has ? ' on' : ''), style: '--pc:' + p.color + ';--r:' + r + ';--c:' + c }));
       });
     });
-    var published = parties.filter(function (p) { return p.docs && p.docs.some(function (d) { return d.kind === 'programa'; }); }).length;
-    var days = Math.max(0, Math.ceil((Date.parse('2026-11-29T20:00:00+01:00') - Date.now()) / 864e5));
-    var cap = el('p', { class: 'cap' }, ['Programmes added: ', el('b', { text: published + ' of ' + parties.length }), ' · vote in ', el('b', { text: days + ' days' })]);
+    var added = parties.filter(function (p) { return p.docs && p.docs.length > 0; }).length;
+    var days = Math.max(0, Math.ceil((Date.parse(res[1].election.closes) - Date.now()) / 864e5));
+    var cap = el('p', { class: 'cap' }, ES
+      ? ['Documentos incorporados: ', el('b', { text: added + ' de ' + parties.length }), ' · se vota en ', el('b', { text: days + ' días' })]
+      : ['Documents added: ', el('b', { text: added + ' of ' + parties.length }), ' · vote in ', el('b', { text: days + ' days' })]);
     var pv = document.getElementById('pv-politicometro');
     pv.textContent = '';
     pv.append(grid, cap);
@@ -132,7 +165,9 @@
         el('b', { text: face(c.face) }), el('span', { lang: 'es', text: name })
       ])]));
     });
-    var cap = el('p', { class: 'cap' }, [el('b', { class: 'hl-num', text: String(s.items) }), ' stamp issues from the BOE, ' + s.from + ' to ' + s.to + ', ', el('b', { text: s.withText + ' with full text' }), '. Above, the newest six.']);
+    var cap = el('p', { class: 'cap' }, ES
+      ? [el('b', { class: 'hl-num', text: String(s.items) }), ' emisiones de sellos en el BOE, de ' + s.from + ' a ' + s.to + ', ', el('b', { text: s.withText + ' con el texto completo' }), '. Arriba, las seis más recientes.']
+      : [el('b', { class: 'hl-num', text: String(s.items) }), ' stamp issues from the BOE, ' + s.from + ' to ' + s.to + ', ', el('b', { text: s.withText + ' with full text' }), '. Above, the newest six.']);
     var pv = document.getElementById('pv-sellometro');
     pv.append(row, cap);
     reveal('card-sellometro');

@@ -15,6 +15,9 @@
 :root { --hl-display: "Bricolage Grotesque", system-ui, sans-serif; --hl-mono: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace; }
 h1, h2, .brand { font-family: var(--hl-display); }
 
+/* the EN/ES button added by lang.js next to the theme button */
+.lang-btn { width: auto; min-width: 36px; padding: 0 9px; font: 600 12px/1 var(--hl-mono); letter-spacing: 0.04em; color: var(--ink); }
+
 /* the night sky behind the page */
 .hl-sky { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 body { position: relative; isolation: isolate; }

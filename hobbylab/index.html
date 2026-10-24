@@ -16,89 +16,90 @@
   <meta property="og:image" content="https://jordijoan.es/img/og-card.png">
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="shared/motion.css?v=71f2ca6394">
+  <link rel="stylesheet" href="shared/motion.css?v=64da1c2ad9">
   <link rel="stylesheet" href="hobbylab.css?v=97496d1bef">
   <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+  <script src="shared/lang.js?v=90a9ab947f"></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
   <header class="top">
     <div class="wrap">
       <a class="brand" href="./"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>Hobby Lab</a>
-      <nav aria-label="Projects">
+      <nav aria-label="Projects" data-i18n-attr="aria-label:projects">
         <a href="electometro/" class="hide-sm" lang="es">Electómetro</a>
         <a href="primometro/" class="hide-sm" lang="es">Primómetro</a>
         <a href="doseurometro/" class="hide-sm" lang="es">Doseurómetro</a>
         <a href="politicometro/" class="hide-sm" lang="es">Politicómetro</a>
         <a href="sellometro/" class="hide-sm" lang="es">Sellómetro</a>
         <a href="../">jordijoan.es</a>
-        <button class="icon-btn" id="theme" type="button" aria-label="Dark mode" aria-pressed="true">◐</button>
+        <button class="icon-btn" id="theme" type="button" aria-label="Dark mode" data-i18n-attr="aria-label:dark" aria-pressed="true">◐</button>
       </nav>
     </div>
   </header>
 
   <main id="main" class="wrap">
     <section class="hero hl-rise" aria-labelledby="hero-h">
-      <ul class="hl-pills" aria-label="About">
-        <li>Side projects</li>
-        <li>Open data</li>
-        <li>Updated every day</li>
+      <ul class="hl-pills" aria-label="About" data-i18n-attr="aria-label:about">
+        <li data-i18n="pill1">Side projects</li>
+        <li data-i18n="pill2">Open data</li>
+        <li data-i18n="pill3">Updated every day</li>
       </ul>
       <h1 id="hero-h"><span>Hobby Lab</span></h1>
-      <p class="lead">Small data projects I build in my own time, out of curiosity. They are personal experiments, independent of my employers and of any organisation. Most of them are in Spanish.</p>
+      <p class="lead" data-i18n="lead">Small data projects I build in my own time, out of curiosity. They are personal experiments, independent of my employers and of any organisation. Every project is in English and Spanish.</p>
     </section>
 
-    <h2 class="sr-only">Projects</h2>
+    <h2 class="sr-only" data-i18n="projects">Projects</h2>
     <ul class="projects">
       <li>
         <article class="card" id="card-electometro" style="--c:#e8607a">
-          <p class="kicker">Elections · Polls</p>
+          <p class="kicker" data-i18n="el_k">Elections · Polls</p>
           <h2><a href="electometro/" lang="es">Electómetro</a></h2>
-          <p class="desc">Every opinion poll published by Electogrāfica, averaged into one parliament: seats, vote shares, coalition majorities, official results against the polls and a province map.</p>
+          <p class="desc" data-i18n="el_d">Every opinion poll published by Electogrāfica, averaged into one parliament: seats, vote shares, coalition majorities, official results against the polls and a province map.</p>
           <div class="preview" id="pv-electometro" aria-hidden="true"></div>
-          <ul class="tags" aria-label="Topics"><li>Polling</li><li>Data visualisation</li><li>Open data</li></ul>
-          <span class="go" aria-hidden="true">Open Electómetro →</span>
+          <ul class="tags" aria-label="Topics" data-i18n-attr="aria-label:topics" data-i18n="el_t"><li>Polling</li><li>Data visualisation</li><li>Open data</li></ul>
+          <span class="go" aria-hidden="true" data-i18n="el_go">Open Electómetro →</span>
         </article>
       </li>
       <li>
         <article class="card" id="card-primometro" style="--c:#f2b84b">
-          <p class="kicker">Economy · Euro area</p>
+          <p class="kicker" data-i18n="pr_k">Economy · Euro area</p>
           <h2><a href="primometro/" lang="es">Primómetro</a></h2>
-          <p class="desc">The risk premium, inflation, public deficit and GDP of every euro area country, on a map of Europe and over time, next to the European Central Bank's interest rates.</p>
+          <p class="desc" data-i18n="pr_d">The risk premium, inflation, public deficit and GDP of every euro area country, on a map of Europe and over time, next to the European Central Bank's interest rates.</p>
           <div class="preview" id="pv-primometro" aria-hidden="true"></div>
-          <ul class="tags" aria-label="Topics"><li>Bond markets</li><li>ECB</li><li>Inflation</li><li>GDP</li></ul>
-          <span class="go" aria-hidden="true">Open Primómetro →</span>
+          <ul class="tags" aria-label="Topics" data-i18n-attr="aria-label:topics" data-i18n="pr_t"><li>Bond markets</li><li>ECB</li><li>Inflation</li><li>GDP</li></ul>
+          <span class="go" aria-hidden="true" data-i18n="pr_go">Open Primómetro →</span>
         </article>
       </li>
       <li>
         <article class="card" id="card-doseurometro" style="--c:#39c5a8">
-          <p class="kicker">Coins · Euro area</p>
+          <p class="kicker" data-i18n="do_k">Coins · Euro area</p>
           <h2><a href="doseurometro/" lang="es">Doseurómetro</a></h2>
-          <p class="desc">Every 2-euro commemorative coin since 2004, by year, country, topic or common issue, with the design description, mintage and issue date from the European Commission notice in the Official Journal.</p>
+          <p class="desc" data-i18n="do_d">Every 2-euro commemorative coin since 2004, by year, country, topic or common issue, with the design description, mintage and issue date from the European Commission notice in the Official Journal.</p>
           <div class="preview" id="pv-doseurometro" aria-hidden="true"></div>
-          <ul class="tags" aria-label="Topics"><li>Numismatics</li><li>Official Journal</li><li>Catalogue</li></ul>
-          <span class="go" aria-hidden="true">Open Doseurómetro →</span>
+          <ul class="tags" aria-label="Topics" data-i18n-attr="aria-label:topics" data-i18n="do_t"><li>Numismatics</li><li>Official Journal</li><li>Catalogue</li></ul>
+          <span class="go" aria-hidden="true" data-i18n="do_go">Open Doseurómetro →</span>
         </article>
       </li>
       <li>
         <article class="card" id="card-politicometro" style="--c:#7c9cff">
-          <p class="kicker">Elections · Programmes</p>
+          <p class="kicker" data-i18n="po_k">Elections · Programmes</p>
           <h2><a href="politicometro/" lang="es">Politicómetro</a></h2>
-          <p class="desc">What each party proposes for 29 November, topic by topic and word for word: every quote taken literally from the official programme, with a link to its page.</p>
+          <p class="desc" data-i18n="po_d">What each party proposes for 29 November, topic by topic and word for word: every quote taken literally from the official programme, with a link to its page.</p>
           <div class="preview" id="pv-politicometro" aria-hidden="true"></div>
-          <ul class="tags" aria-label="Topics"><li>Party programmes</li><li>Comparison</li></ul>
-          <span class="go" aria-hidden="true">Open Politicómetro →</span>
+          <ul class="tags" aria-label="Topics" data-i18n-attr="aria-label:topics" data-i18n="po_t"><li>Party programmes</li><li>Comparison</li></ul>
+          <span class="go" aria-hidden="true" data-i18n="po_go">Open Politicómetro →</span>
         </article>
       </li>
       <li>
         <article class="card" id="card-sellometro" style="--c:#d98b5f">
-          <p class="kicker">Stamps · Spain</p>
+          <p class="kicker" data-i18n="se_k">Stamps · Spain</p>
           <h2><a href="sellometro/" lang="es">Sellómetro</a></h2>
-          <p class="desc">Every Spanish postage stamp issue approved in the Boletín Oficial del Estado since 1960, by year, era and topic, with its official text and technical details. Plus a guide to ATM labels.</p>
+          <p class="desc" data-i18n="se_d">Every Spanish postage stamp issue approved in the Boletín Oficial del Estado since 1960, by year, era and topic, with its official text and technical details. Plus a guide to ATM labels.</p>
           <div class="preview" id="pv-sellometro" aria-hidden="true"></div>
-          <ul class="tags" aria-label="Topics"><li>Philately</li><li>Official gazette</li><li>Catalogue</li></ul>
-          <span class="go" aria-hidden="true">Open Sellómetro →</span>
+          <ul class="tags" aria-label="Topics" data-i18n-attr="aria-label:topics" data-i18n="se_t"><li>Philately</li><li>Official gazette</li><li>Catalogue</li></ul>
+          <span class="go" aria-hidden="true" data-i18n="se_go">Open Sellómetro →</span>
         </article>
       </li>
     </ul>
@@ -107,11 +108,11 @@
   <footer>
     <div class="wrap">
       <p>© Jordi-Joan Giménez · <a href="../">jordijoan.es</a></p>
-      <p>Data: Electogrāfica, European Central Bank, Eurostat, Official Journal of the European Union, Boletín Oficial del Estado. Each project cites its sources.</p>
+      <p data-i18n="data">Data: Electogrāfica, European Central Bank, Eurostat, Official Journal of the European Union, Boletín Oficial del Estado. Each project cites its sources.</p>
     </div>
   </footer>
 
   <script src="shared/motion.js?v=e89679c128" defer></script>
-  <script src="hobbylab.js?v=f87fcbae7f" defer></script>
+  <script src="hobbylab.js?v=a85fe4029d" defer></script>
 </body>
 </html>

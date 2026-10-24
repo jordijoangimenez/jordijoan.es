@@ -7,7 +7,7 @@
     ] },
     { "id": "psoe", "name": "Partido Socialista Obrero Español", "short": "PSOE", "color": "#E30613", "watch": ["https://www.psoe.es/"], "docs": [] },
     { "id": "vox", "name": "Vox", "short": "VOX", "color": "#5AC035", "watch": ["https://www.voxespana.es/"], "docs": [] },
-    { "id": "fa", "name": "Frente Amplio", "short": "FA", "color": "#EE3500", "note": "Coalición de IU, Movimiento Sumar, Comuns, Más Madrid y otros.", "watch": [], "docs": [] },
+    { "id": "fa", "name": "Frente Amplio", "short": "FA", "color": "#EE3500", "note": "Coalición de IU, Movimiento Sumar, Comuns, Más Madrid y otros.", "note_en": "Coalition of IU, Movimiento Sumar, Comuns, Más Madrid and others.", "watch": [], "docs": [] },
     { "id": "podemos", "name": "Podemos", "short": "Podemos", "color": "#9169F4", "watch": ["https://podemos.info/"], "docs": [] },
     { "id": "erc", "name": "Esquerra Republicana de Catalunya", "short": "ERC", "color": "#FFB232", "watch": ["https://www.esquerra.cat/"], "docs": [] },
     { "id": "junts", "name": "Junts per Catalunya", "short": "Junts", "color": "#20C0B2", "watch": ["https://junts.cat/"], "docs": [] },

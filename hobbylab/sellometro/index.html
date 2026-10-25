@@ -1,130 +1,131 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sellómetro</title>
-<meta name="description" content="Todas las emisiones de sellos de correo de España desde 1850, por año, época y tema: desde 1960 con el texto oficial y la ficha técnica del BOE, y con las imágenes del catálogo de FESOFI.">
+<meta name="description" content="Every Spanish postage stamp issue since 1850, by year, era and topic: from 1960 with the official text and technical details from the BOE, and with pictures from the FESOFI catalogue.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/sellometro/">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css?v=620c8f16a4">
 <link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+<script src="../shared/lang.js?v=90a9ab947f"></script>
 </head>
 <body>
-<a class="skip" href="#browse">Saltar a las emisiones</a>
+<a class="skip" href="#browse" data-i18n="skip">Skip to the issues</a>
 
 <header class="top"><div class="wrap">
   <a class="brand" href="./" aria-label="Sellómetro">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h14v18H5z" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 1.6"/><rect x="8" y="6.5" width="8" height="8" rx="1" fill="currentColor"/><path d="M8 17.5h8" stroke="currentColor" stroke-width="1.6"/></svg>
     Sellómetro
   </a>
-  <nav aria-label="Secciones">
-    <a href="#eras" class="hide-sm">Épocas</a>
-    <a href="#browse" class="hide-sm">Emisiones</a>
+  <nav aria-label="Sections" data-i18n-attr="aria-label:sections">
+    <a href="#eras" class="hide-sm" data-i18n="nav_eras">Eras</a>
+    <a href="#browse" class="hide-sm" data-i18n="nav_issues">Issues</a>
     <a href="atm.html">ATM</a>
-    <a href="#method" class="hide-sm">Método</a>
+    <a href="#method" class="hide-sm" data-i18n="nav_method">Method</a>
     <a href="../">Hobby Lab</a>
-    <button class="icon-btn" id="theme" type="button" aria-label="Cambiar tema">◐</button>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme" data-i18n-attr="aria-label:theme">◐</button>
   </nav>
 </div></header>
 
 <main class="wrap" id="main">
-  <form id="filters" class="filters" role="search" aria-label="Filtrar emisiones" autocomplete="off">
-    <div class="field field-search"><label for="f-q">Buscar</label><input id="f-q" type="search" placeholder="Serie, motivo, personaje, lugar…"></div>
-    <div class="field"><label for="f-era">Época</label><select id="f-era"><option value="">Todas las épocas</option></select></div>
-    <div class="field field-year"><label for="f-from">Desde</label><select id="f-from"><option value="">Cualquier año</option></select></div>
-    <div class="field field-year"><label for="f-to">Hasta</label><select id="f-to"><option value="">Cualquier año</option></select></div>
-    <div class="field"><label for="f-kind">Tipo</label>
+  <form id="filters" class="filters" role="search" aria-label="Filter issues" data-i18n-attr="aria-label:filters" autocomplete="off">
+    <div class="field field-search"><label for="f-q" data-i18n="f_q">Search</label><input id="f-q" type="search" placeholder="Series, subject, person, place…" data-i18n-attr="placeholder:f_q_ph"></div>
+    <div class="field"><label for="f-era" data-i18n="f_era">Era</label><select id="f-era"><option value="" data-i18n="all_eras">All eras</option></select></div>
+    <div class="field field-year"><label for="f-from" data-i18n="f_from">From</label><select id="f-from"><option value="" data-i18n="any_year">Any year</option></select></div>
+    <div class="field field-year"><label for="f-to" data-i18n="f_to">To</label><select id="f-to"><option value="" data-i18n="any_year">Any year</option></select></div>
+    <div class="field"><label for="f-kind" data-i18n="f_kind">Type</label>
       <select id="f-kind">
-        <option value="">Todos los tipos</option>
-        <option value="sellos">Sellos y hojas bloque</option>
-        <option value="tarjeta">Tarjetas prefranqueadas</option>
-        <option value="sobre">Sobres y enteros postales</option>
-        <option value="aerograma">Aerogramas</option>
-        <option value="etiqueta">Etiquetas</option>
+        <option value="" data-i18n="all_kinds">All types</option>
+        <option value="sellos" data-i18n="k_sellos">Stamps and souvenir sheets</option>
+        <option value="tarjeta" data-i18n="k_tarjeta">Prepaid postcards</option>
+        <option value="sobre" data-i18n="k_sobre">Envelopes and postal stationery</option>
+        <option value="aerograma" data-i18n="k_aerograma">Aerogrammes</option>
+        <option value="etiqueta" data-i18n="k_etiqueta">Labels</option>
       </select></div>
-    <div class="field"><label for="f-terr">Territorio</label>
+    <div class="field"><label for="f-terr" data-i18n="f_terr">Territory</label>
       <select id="f-terr">
-        <option value="">España, Andorra y África</option>
-        <option value="espana">España</option>
-        <option value="andorra">Andorra (correo español)</option>
-        <option value="africa">Territorios de África</option>
+        <option value="" data-i18n="all_terr">Spain, Andorra and Africa</option>
+        <option value="espana" data-i18n="t_espana">Spain</option>
+        <option value="andorra" data-i18n="t_andorra">Andorra (Spanish post)</option>
+        <option value="africa" data-i18n="t_africa">Territories in Africa</option>
       </select></div>
-    <div class="field"><label for="f-sort">Orden</label>
+    <div class="field"><label for="f-sort" data-i18n="f_sort">Sort</label>
       <select id="f-sort">
-        <option value="date-desc">Más recientes primero</option>
-        <option value="date-asc">Más antiguas primero</option>
-        <option value="series">Serie, de la A a la Z</option>
+        <option value="date-desc" data-i18n="s_new">Newest first</option>
+        <option value="date-asc" data-i18n="s_old">Oldest first</option>
+        <option value="series" data-i18n="s_series">Series, A to Z</option>
       </select></div>
-    <button type="button" id="f-reset" class="btn">Limpiar</button>
+    <button type="button" id="f-reset" class="btn" data-i18n="reset">Reset</button>
   </form>
 
   <section class="hero hl-rise" id="hero" aria-labelledby="hero-h">
     <div class="hero-copy">
-      <ul class="hl-pills" id="pills" aria-label="Sobre este catálogo"><li>Sellos de España</li></ul>
+      <ul class="hl-pills" id="pills" aria-label="About this catalogue" data-i18n-attr="aria-label:about"><li>Spanish stamps</li></ul>
       <h1 id="hero-h">Sellómetro</h1>
-      <p class="sub">Todas las emisiones de sellos de correo de España, de 1850 a hoy, por año, época y tema. Desde 1960 cada emisión muestra el texto oficial y la ficha técnica de su disposición en el Boletín Oficial del Estado. Las imágenes y las emisiones anteriores vienen del catálogo de FESOFI, enlazado desde su web. Un catálogo no oficial.</p>
+      <p class="sub" data-i18n="sub">Every Spanish postage stamp issue, from 1850 to today, by year, era and topic. From 1960 each issue shows the official text and technical details of its provision in the Boletín Oficial del Estado, Spain's official gazette. The pictures and the earlier issues come from the FESOFI catalogue, linked from its website. An unofficial catalogue.</p>
     </div>
     <div class="hl-count" id="hero-count" hidden></div>
   </section>
 
   <section class="card" id="eras" aria-labelledby="eras-h">
     <div class="card-head">
-      <h2 id="eras-h">Sellos por época</h2>
-      <span class="hint">Pulsa una época para ver sus emisiones</span>
+      <h2 id="eras-h" data-i18n="eras_h">Stamps by era</h2>
+      <span class="hint" data-i18n="eras_hint">Pick an era to see its issues</span>
     </div>
     <ul class="eras" id="era-list"></ul>
   </section>
 
   <section class="card" id="browse" aria-labelledby="browse-h">
     <div class="card-head">
-      <h2 id="browse-h">Emisiones</h2>
-      <span class="hint" id="count" role="status" aria-live="polite">Cargando emisiones…</span>
-      <div id="views" class="seg" role="group" aria-label="Agrupar emisiones">
-        <button type="button" data-view="year" aria-pressed="true">Por año</button>
-        <button type="button" data-view="era" aria-pressed="false">Por época</button>
-        <button type="button" data-view="topic" aria-pressed="false">Por tema</button>
-        <button type="button" data-view="all" aria-pressed="false">Todas</button>
+      <h2 id="browse-h" data-i18n="issues_h">Issues</h2>
+      <span class="hint" id="count" role="status" aria-live="polite" data-i18n="loading">Loading issues…</span>
+      <div id="views" class="seg" role="group" aria-label="Group issues" data-i18n-attr="aria-label:views">
+        <button type="button" data-view="year" aria-pressed="true" data-i18n="v_year">By year</button>
+        <button type="button" data-view="era" aria-pressed="false" data-i18n="v_era">By era</button>
+        <button type="button" data-view="topic" aria-pressed="false" data-i18n="v_topic">By topic</button>
+        <button type="button" data-view="all" aria-pressed="false" data-i18n="v_all">All</button>
       </div>
     </div>
-    <div class="topics" id="topics" role="group" aria-label="Filtrar por tema" hidden></div>
+    <div class="topics" id="topics" role="group" aria-label="Filter by topic" data-i18n-attr="aria-label:by_topic" hidden></div>
     <p id="error" class="error" role="alert" hidden></p>
     <div id="groups" class="groups" hidden></div>
-    <ul id="grid" class="grid" aria-label="Emisiones" hidden></ul>
+    <ul id="grid" class="grid" aria-label="Issues" data-i18n-attr="aria-label:issues_h" hidden></ul>
     <div class="more">
-      <button type="button" id="more" class="btn btn-primary" hidden>Ver más</button>
+      <button type="button" id="more" class="btn btn-primary" hidden>Load more</button>
     </div>
   </section>
 
   <section class="card" id="method" aria-labelledby="method-h">
-    <div class="card-head"><h2 id="method-h">Cómo funciona</h2></div>
-    <div class="method">
-      <h3>Fuente</h3><p>Cada emisión de sellos de correo se aprueba con una disposición publicada en el Boletín Oficial del Estado: una orden ministerial hasta los años noventa y, después, una resolución conjunta de las subsecretarías competentes. El catálogo recorre los sumarios diarios del BOE desde 1960 con su <a href="https://www.boe.es/datosabiertos/" rel="noopener">API de datos abiertos</a> y recoge todas las disposiciones sobre emisión de sellos, tarjetas y sobres.</p>
-      <h3>Copiado, no reescrito</h3><p>El nombre de la serie, el texto que presenta cada emisión, la fecha de puesta en circulación y las características técnicas (impresión, papel, dentado, formato, valor, tirada) se copian del texto del BOE. Si el BOE publicó después una corrección de errores, la emisión la enlaza.</p>
-      <h3>Antes de 1995</h3><p>El BOE solo ofrece el texto de casi todas las disposiciones anteriores a 1995 como imagen escaneada en PDF. Para esas emisiones el catálogo muestra el título oficial, la fecha de publicación y el enlace al PDF, sin características técnicas.</p>
-      <h3>Antes de 1960</h3><p>Los datos abiertos del BOE empiezan en 1960. Las emisiones anteriores, de Isabel II a la posguerra, y las pocas posteriores que no aparecen en el BOE vienen del <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España de FESOFI</a>, con lo mínimo para identificarlas: fecha, serie, motivo y valor de cada sello. La ficha completa está en FESOFI.</p>
-      <h3>Imágenes</h3><p>Cada emisión del BOE se empareja con sus sellos en FESOFI por la fecha y el nombre de la serie, y muestra sus imágenes y la lista de sus valores. El emparejamiento es automático: alguna emisión puede quedar sin imágenes o, si los dos catálogos la llaman de forma distinta, aparecer dos veces.</p>
-      <h3 id="rights">Imágenes y derechos</h3><p>Este es un catálogo informativo y sin ánimo de lucro. Las imágenes se muestran directamente desde la web de FESOFI, sin copiarlas: este sitio no guarda ninguna, y al abrir la página tu navegador las pide al servidor de FESOFI. Si dejan de cargarse, cada emisión se dibuja como un sello de texto. El diseño de cada sello pertenece a sus autores y a Correos, y las fotos, a FESOFI. Si tienes derechos sobre algún contenido de esta página y quieres que se retire, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">abre una incidencia en GitHub</a> y se quitará.</p>
-      <h3>Temas</h3><p>Cada emisión se clasifica en uno o varios temas (arte, naturaleza, personajes, deporte…) a partir de las palabras de su texto oficial. Es una clasificación automática y no oficial, así que alguna emisión puede caer en un tema inesperado.</p>
-      <h3>Territorios</h3><p>Además de España, el BOE recoge las emisiones del correo español en Andorra y, hasta los años setenta, las de los territorios de África (Sahara, Ifni, Guinea). Se pueden filtrar aparte.</p>
-      <h3>Etiquetas ATM</h3><p>Las etiquetas de franqueo de valor variable no se publican en el BOE. Tienen su propia página, con su historia, cómo leerlas y dónde consultar las emisiones: <a href="atm.html">etiquetas ATM</a>.</p>
+    <div class="card-head"><h2 id="method-h" data-i18n="method">How it works</h2></div>
+    <div class="method" data-i18n="method_body">
+      <h3>Source</h3><p>Every Spanish postage stamp issue is approved by a provision published in the Boletín Oficial del Estado (BOE), Spain's official gazette: a ministerial order until the 1990s, and a joint resolution of the competent under-secretariats since. The catalogue goes through the daily summaries of the BOE since 1960 with its <a href="https://www.boe.es/datosabiertos/" rel="noopener">open data API</a> and collects every provision on issuing stamps, postcards and envelopes.</p>
+      <h3>Copied, not rewritten</h3><p>The series name, the text that presents each issue, its first day of sale and its technical details (printing, paper, perforation, size, face value, print run) are copied from the BOE, so they appear in Spanish. Where the BOE later published a correction, the issue links to it.</p>
+      <h3>Before 1995</h3><p>For almost every provision before 1995 the BOE only offers a scanned PDF. For those issues the catalogue shows the official title, the publication date and the link to the PDF, without technical details.</p>
+      <h3>Before 1960</h3><p>The BOE open data starts in 1960. Earlier issues, from Isabel II to the post-war years, and the few later ones that are not in the BOE come from the <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España by FESOFI</a>, with just what is needed to identify them: date, series, subject and face value of each stamp. The full record is on FESOFI.</p>
+      <h3>Pictures</h3><p>Each BOE issue is matched to its stamps in FESOFI by date and series name, and shows their pictures and the list of its values. The matching is automatic: an issue may have no pictures or, when the two catalogues name it differently, appear twice.</p>
+      <h3 id="rights">Pictures and rights</h3><p>This is an informative, non-commercial catalogue. The pictures are shown straight from the FESOFI website, not copied: this site keeps none of them, and when you open the page your browser asks FESOFI's server for them. If they stop loading, each issue is drawn as a text stamp. The design of each stamp belongs to its authors and to Correos, and the photographs to FESOFI. If you hold the rights to anything on this page and want it removed, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">open an issue on GitHub</a> and it will be taken down.</p>
+      <h3>Topics</h3><p>Each issue is sorted into one or more topics (art, nature, people, sport…) from the words of its official text. This is an automatic, unofficial classification, so a few issues may sit in a surprising place.</p>
+      <h3>Territories</h3><p>Besides Spain, the BOE covers the issues of the Spanish post in Andorra and, until the 1970s, those of the Spanish territories in Africa (Sahara, Ifni, Guinea). They can be filtered separately.</p>
+      <h3>ATM labels</h3><p>Variable-value postage labels are not published in the BOE. They have their own page, with their history, how to read them and where to look up each issue: <a href="atm.html">ATM labels</a>.</p>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap">
-  <p>Textos: disposiciones del Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). Fuente de los datos: Agencia Estatal Boletín Oficial del Estado, reutilización autorizada citando la fuente; los temas y las épocas son una elaboración propia basada en esos datos. Imágenes y emisiones anteriores a 1960: <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España</a> de la Federación Española de Sociedades Filatélicas (FESOFI), enlazado desde su web. Diseños de los sellos: © sus autores y Correos; las imágenes se muestran solo para identificar cada emisión (<a href="#rights">derechos</a>). Este catálogo no es oficial y ni el BOE ni FESOFI participan en él: consulta siempre la fuente original.</p>
-  <p>Un proyecto de <a href="../">Hobby Lab</a> en <a href="https://jordijoan.es/">jordijoan.es</a>. Datos actualizados: <time id="generated">fecha no disponible</time>.</p>
+  <p data-i18n="foot1">Texts: provisions of the Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). Data source: Agencia Estatal Boletín Oficial del Estado, reuse authorised with acknowledgement of the source; the topics and eras are our own work based on those data. Pictures and issues before 1960: <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España</a> by the Federación Española de Sociedades Filatélicas (FESOFI), linked from its website. Stamp designs: &copy; their authors and Correos; the pictures are shown only to identify each issue (<a href="#rights">rights</a>). This catalogue is unofficial and neither the BOE nor FESOFI takes part in it: always check the original source.</p>
+  <p><span data-i18n="foot2">A</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">project at</span> <a href="https://jordijoan.es/">jordijoan.es</a>. <span data-i18n="updated">Data updated:</span> <time id="generated">–</time>.</p>
 </div></footer>
 
 <dialog id="dlg" aria-labelledby="dlg-title">
   <article class="dlg-body">
     <div class="dlg-bar">
-      <button type="button" id="dlg-prev" class="btn">&larr; Anterior</button>
+      <button type="button" id="dlg-prev" class="btn" data-i18n="prev">&larr; Previous</button>
       <span id="dlg-pos" class="dlg-pos" aria-live="polite"></span>
-      <button type="button" id="dlg-next" class="btn">Siguiente &rarr;</button>
-      <button type="button" id="dlg-close" class="btn btn-close" aria-label="Cerrar">Cerrar</button>
+      <button type="button" id="dlg-next" class="btn" data-i18n="next">Next &rarr;</button>
+      <button type="button" id="dlg-close" class="btn btn-close" data-i18n="close">Close</button>
     </div>
     <div class="dlg-content" id="dlg-content"></div>
   </article>
@@ -141,6 +142,6 @@
   })();
 </script>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
-<script src="app.js?v=e6b84b24b4"></script>
+<script src="app.js?v=676331b319"></script>
 </body>
 </html>

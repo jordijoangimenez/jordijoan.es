@@ -22,7 +22,7 @@
     po_d: 'Qué propone cada partido para el 29 de noviembre, tema a tema y palabra por palabra: cada cita copiada literalmente del documento oficial, con enlace a su página.',
     po_t: '<li>Programas electorales</li><li>Comparación</li>',
     se_k: 'Sellos · España', se_go: 'Abrir Sellómetro →',
-    se_d: 'Todas las emisiones de sellos de España aprobadas en el Boletín Oficial del Estado desde 1960, por año, época y tema, con su texto oficial y sus datos técnicos. Y una guía de las etiquetas ATM.',
+    se_d: 'Todas las emisiones de sellos de España desde 1850, por año, época y tema: desde 1960 con el texto oficial y los datos técnicos del Boletín Oficial del Estado, y con las imágenes del catálogo de FESOFI. Y una guía de las etiquetas ATM.',
     se_t: '<li>Filatelia</li><li>Boletín oficial</li><li>Catálogo</li>',
     data: 'Datos: Electogrāfica, Banco Central Europeo, Eurostat, Diario Oficial de la Unión Europea, Boletín Oficial del Estado. Cada proyecto cita sus fuentes.'
   } });
@@ -166,8 +166,8 @@
       ])]));
     });
     var cap = el('p', { class: 'cap' }, ES
-      ? [el('b', { class: 'hl-num', text: String(s.items) }), ' emisiones de sellos en el BOE, de ' + s.from + ' a ' + s.to + ', ', el('b', { text: s.withText + ' con el texto completo' }), '. Arriba, las seis más recientes.']
-      : [el('b', { class: 'hl-num', text: String(s.items) }), ' stamp issues from the BOE, ' + s.from + ' to ' + s.to + ', ', el('b', { text: s.withText + ' with full text' }), '. Above, the newest six.']);
+      ? [el('b', { class: 'hl-num', text: String(s.items) }), ' emisiones de sellos, de ' + s.from + ' a ' + s.to + ', ', el('b', { text: s.withText + ' con el texto oficial del BOE' }), '. Arriba, las seis más recientes.']
+      : [el('b', { class: 'hl-num', text: String(s.items) }), ' stamp issues, ' + s.from + ' to ' + s.to + ', ', el('b', { text: s.withText + ' with the official BOE text' }), '. Above, the newest six.']);
     var pv = document.getElementById('pv-sellometro');
     pv.append(row, cap);
     reveal('card-sellometro');

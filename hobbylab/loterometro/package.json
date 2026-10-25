@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "type": "module",
+  "description": "Loterómetro: the Lotería Nacional draws announced in the BOE, built into data/sorteos.json",
+  "scripts": {
+    "index": "node scripts/fetch-index.mjs",
+    "draws": "node scripts/build-draws.mjs",
+    "docs": "node scripts/fetch-docs.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "dependencies": {
+    "pdfjs-dist": "4.10.38"
+  }
+}

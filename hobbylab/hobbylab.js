@@ -24,6 +24,9 @@
     se_k: 'Sellos · España', se_go: 'Abrir Sellómetro →',
     se_d: 'Todas las emisiones de sellos de España desde 1850, por año, época y tema: desde 1960 con el texto oficial y los datos técnicos del Boletín Oficial del Estado, y con las imágenes del catálogo de FESOFI. Y una guía de las etiquetas ATM.',
     se_t: '<li>Filatelia</li><li>Boletín oficial</li><li>Catálogo</li>',
+    lo_k: 'Lotería · España', lo_go: 'Abrir Loterómetro →',
+    lo_d: 'Todos los sorteos de la Lotería Nacional publicados en el Boletín Oficial del Estado de 1960 a 2011: su fecha, tipo y programa de premios, y el primer premio de las listas oficiales de números premiados.',
+    lo_t: '<li>Lotería Nacional</li><li>Boletín oficial</li><li>Historia</li>',
     data: 'Datos: Electogrāfica, Banco Central Europeo, Eurostat, Diario Oficial de la Unión Europea, Boletín Oficial del Estado. Cada proyecto cita sus fuentes.'
   } });
   var btn = document.getElementById('theme');
@@ -171,5 +174,18 @@
     var pv = document.getElementById('pv-sellometro');
     pv.append(row, cap);
     reveal('card-sellometro');
+  }).catch(function () {});
+
+  // ---- Loterómetro: the latest confirmed Christmas first prizes, printed like ticket numbers ----
+  getJson('loterometro/data/summary.json').then(function (s) {
+    var row = el('div', { class: 'tickets' });
+    s.gordo.forEach(function (g, i) { row.append(el('span', { class: 'tk', style: '--i:' + i }, [el('small', { text: g[0] }), el('b', { text: g[1] })])); });
+    var nf = new Intl.NumberFormat(ES ? 'es-ES' : 'en-GB');
+    var cap = el('p', { class: 'cap' }, ES
+      ? [el('b', { class: 'hl-num', text: nf.format(s.draws) }), ' sorteos en el BOE, de ' + s.from + ' a ' + s.to + ', ', el('b', { text: s.confirmed + ' primeros premios confirmados' }), '. Arriba, Gordos de Navidad.']
+      : [el('b', { class: 'hl-num', text: nf.format(s.draws) }), ' draws in the BOE, ' + s.from + ' to ' + s.to + ', ', el('b', { text: s.confirmed + ' first prizes confirmed' }), '. Above, Christmas first prizes.']);
+    var pv = document.getElementById('pv-loterometro');
+    pv.append(row, cap);
+    reveal('card-loterometro');
   }).catch(function () {});
 })();

@@ -94,6 +94,14 @@ a { color: var(--accent-ink); text-underline-offset: 3px; }
 .hl-motion .card.hl-on:not(.hl-done) .coin { transition: opacity 0.4s ease calc(var(--i) * 70ms + 200ms), transform 0.9s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--i) * 70ms + 200ms); }
 @keyframes coin-turn { 0% { transform: perspective(400px) rotateY(0deg); } 8%, 100% { transform: perspective(400px) rotateY(360deg); } }
 @media (prefers-reduced-motion: reduce) { .coin img { animation: none; } }
+/* Loterómetro preview: Christmas first prizes printed like ticket numbers, dealt one after another */
+.tickets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.tk { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 4px; border-radius: 8px; border: 1px dashed color-mix(in srgb, #f2b84b 55%, transparent); background: color-mix(in srgb, #f2b84b 10%, var(--surface)); }
+.tk small { font: 500 11px/1 var(--hl-mono); color: var(--muted); }
+.tk b { font: 700 clamp(15px, 2vw, 19px)/1.1 var(--hl-mono); letter-spacing: 0.06em; color: color-mix(in srgb, #f2b84b 75%, var(--ink)); font-variant-numeric: tabular-nums; }
+.hl-motion:not(.hl-reduce) .card:not(.hl-on) .tk { opacity: 0; transform: translateY(10px) rotate(-3deg); }
+.hl-motion .card.hl-on:not(.hl-done) .tk { transition: opacity 0.4s ease calc(var(--i) * 80ms + 150ms), transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1) calc(var(--i) * 80ms + 150ms); }
+
 /* Sellómetro preview: paper stamps with a perforated edge, laid down one after another */
 .stamps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; }
 .pstamp {

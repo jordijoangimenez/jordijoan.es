@@ -17,7 +17,7 @@
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="shared/motion.css?v=64da1c2ad9">
-  <link rel="stylesheet" href="hobbylab.css?v=97496d1bef">
+  <link rel="stylesheet" href="hobbylab.css?v=924c48700e">
   <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
   <script src="shared/lang.js?v=90a9ab947f"></script>
 </head>
@@ -33,6 +33,7 @@
         <a href="doseurometro/" class="hide-sm" lang="es">Doseurómetro</a>
         <a href="politicometro/" class="hide-sm" lang="es">Politicómetro</a>
         <a href="sellometro/" class="hide-sm" lang="es">Sellómetro</a>
+        <a href="loterometro/" class="hide-sm" lang="es">Loterómetro</a>
         <a href="../">jordijoan.es</a>
         <button class="icon-btn" id="theme" type="button" aria-label="Dark mode" data-i18n-attr="aria-label:dark" aria-pressed="true">◐</button>
       </nav>
@@ -102,6 +103,16 @@
           <span class="go" aria-hidden="true" data-i18n="se_go">Open Sellómetro →</span>
         </article>
       </li>
+      <li>
+        <article class="card" id="card-loterometro" style="--c:#6cc04a">
+          <p class="kicker" data-i18n="lo_k">Lottery · Spain</p>
+          <h2><a href="loterometro/" lang="es">Loterómetro</a></h2>
+          <p class="desc" data-i18n="lo_d">Every Lotería Nacional draw announced in the Boletín Oficial del Estado from 1960 to 2011: its date, kind and prize programme, and the first prize from the official lists of winning numbers.</p>
+          <div class="preview" id="pv-loterometro" aria-hidden="true"></div>
+          <ul class="tags" aria-label="Topics" data-i18n-attr="aria-label:topics" data-i18n="lo_t"><li>Lotería Nacional</li><li>Official gazette</li><li>History</li></ul>
+          <span class="go" aria-hidden="true" data-i18n="lo_go">Open Loterómetro →</span>
+        </article>
+      </li>
     </ul>
   </main>
 
@@ -113,6 +124,6 @@
   </footer>
 
   <script src="shared/motion.js?v=e89679c128" defer></script>
-  <script src="hobbylab.js?v=d595e3312e" defer></script>
+  <script src="hobbylab.js?v=068883b339" defer></script>
 </body>
 </html>

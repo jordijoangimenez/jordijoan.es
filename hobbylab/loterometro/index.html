@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loterómetro</title>
+<meta name="description" content="Every Lotería Nacional draw announced in Spain's official gazette (BOE) from 1960 to 2011: date, kind, prize programme and the first prize from the official lists of winning numbers.">
+<link rel="canonical" href="https://jordijoan.es/hobbylab/loterometro/">
+<link rel="stylesheet" href="assets/style.css?v=81934785be">
+<link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
+<script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
+<script src="../shared/lang.js?v=90a9ab947f"></script>
+</head>
+<body>
+<a class="skip" href="#sorteos" data-i18n="skip">Skip to the draws</a>
+
+<header class="top"><div class="wrap">
+  <a class="brand" href="./" aria-label="Loterómetro">
+    <svg viewBox="0 0 26 18" aria-hidden="true"><rect x="1.5" y="1.5" width="23" height="15" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 1.5v15" stroke="currentColor" stroke-width="1.6" stroke-dasharray="2 2"/><text x="16.5" y="12.4" text-anchor="middle" font-size="8.5" font-weight="700" fill="currentColor" font-family="ui-monospace,monospace">7</text></svg>
+    Loterómetro
+  </a>
+  <nav>
+    <a href="#sorteos" class="hide-sm" data-i18n="nav_draws">Draws</a>
+    <a href="#gordo" class="hide-sm" data-i18n="nav_gordo">El Gordo</a>
+    <a href="#metodo" class="hide-sm" data-i18n="nav_method">Method</a>
+    <a href="../">Hobby Lab</a>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch theme" data-i18n-attr="aria-label:theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="wrap" id="main">
+  <section class="hero hl-rise" id="hero" aria-labelledby="hero-h">
+    <div class="hero-copy">
+      <ul class="hl-pills" id="pills" aria-label="About this catalogue" data-i18n-attr="aria-label:about"><li>Lotería Nacional</li></ul>
+      <h1 id="hero-h">Loterómetro</h1>
+      <p class="sub" data-i18n="sub">Every Lotería Nacional draw announced in Spain's official gazette, the BOE, from 1960 to 2011: when it was held, what kind of draw it was, its prize programme and, up to 1991, the first prize as printed in the official list of winning numbers.</p>
+    </div>
+    <div class="hl-count" id="hero-count" hidden></div>
+  </section>
+
+  <form class="filters" id="filters" role="search" aria-label="Filter draws" data-i18n-attr="aria-label:filters" autocomplete="off">
+    <div class="field field-search"><label for="f-q" data-i18n="f_q">Search</label><input id="f-q" type="search" inputmode="search" placeholder="Number, town or year" data-i18n-attr="placeholder:f_q_ph"></div>
+    <div class="field"><label for="f-kind" data-i18n="f_kind">Kind of draw</label><select id="f-kind"></select></div>
+    <div class="field field-year"><label for="f-from" data-i18n="f_from">From</label><select id="f-from"></select></div>
+    <div class="field field-year"><label for="f-to" data-i18n="f_to">To</label><select id="f-to"></select></div>
+    <div class="field field-check"><input id="f-won" type="checkbox"><label for="f-won" data-i18n="f_won">Only with a confirmed first prize</label></div>
+    <button type="button" id="f-reset" class="btn" data-i18n="reset">Reset</button>
+  </form>
+
+  <section class="card" id="gordo" aria-labelledby="gordo-h">
+    <div class="card-head"><h2 id="gordo-h" data-i18n="gordo">El Gordo de Navidad</h2><span class="hint" id="gordo-hint" data-i18n="gordo_hint">the Christmas draw, year by year</span></div>
+    <ol class="gordo" id="gordo-list"></ol>
+    <p class="note" id="gordo-note"></p>
+  </section>
+
+  <div class="grid2">
+    <section class="card" id="perYear" aria-labelledby="py-h">
+      <div class="card-head"><h2 id="py-h" data-i18n="per_year">Draws per year</h2><span class="hint" data-i18n="per_year_hint">by kind of draw</span></div>
+      <div class="chart" id="pyChart"></div>
+      <div class="key-row" id="pyKey"></div>
+    </section>
+    <section class="card" id="towns" aria-labelledby="tw-h">
+      <div class="card-head"><h2 id="tw-h" data-i18n="towns">Where the first prize was sold</h2><span class="hint" id="tw-hint"></span></div>
+      <ol class="rank" id="twList"></ol>
+    </section>
+  </div>
+
+  <section class="card" id="sorteos" aria-labelledby="dr-h">
+    <div class="card-head"><h2 id="dr-h" data-i18n="draws">Draws</h2><span class="hint" id="count" role="status" aria-live="polite" data-i18n="loading">Loading draws…</span></div>
+    <p class="error" id="error" role="alert" hidden></p>
+    <div id="years"></div>
+    <div class="more"><button type="button" class="btn" id="more" hidden></button></div>
+  </section>
+
+  <section class="card" id="metodo" aria-labelledby="met-h">
+    <div class="card-head"><h2 id="met-h" data-i18n="method">How it works</h2></div>
+    <div class="method" data-i18n="method_body">
+      <h3>Source</h3><p>Every draw comes from the BOE: until early 2011 the lottery published there the prize programme of each draw and, until 1991, the official list of winning numbers. Each draw links to its notices. Since 2011 the Lotería Nacional no longer publishes them in the BOE, so the catalogue stops there.</p>
+      <h3>Programme</h3><p>From 1995 the BOE has the text of each programme, and the series, tickets, price, tenths and prize money are read from it. Earlier programmes only exist as scanned pages and are linked as they are.</p>
+      <h3>First prize</h3><p>Up to 1991 the first prize is read from the text layer of the scanned official list, which often has reading errors. A number is only shown when the same list confirms it: the two approximations are the number before and after it, the hundred it belongs to, or the endings of the smaller prizes. Where it cannot be confirmed, the draw links to the scan instead.</p>
+      <h3>Kinds of draw</h3><p>Ordinary, Thursday, extraordinary, special, Zodíaco and «Los Millones» draws, as the BOE calls them. The Christmas draw is the one held on 22 December, or on the nearest day when the 22nd is a Sunday; El Niño is the one held on 5 or 6 January.</p>
+      <h3>Money</h3><p>Amounts are shown in the currency of the time: pesetas until 2001 and euros from 2002.</p>
+      <h3>Rights</h3><p>The BOE's texts can be reused citing the source. The tickets' artwork belongs to Loterías y Apuestas del Estado and its artists, so no ticket images are shown; for them, see the collectors' archives such as the <a href="https://nacionalloteria.mundodeportivo.com/rincon-del-coleccionista/index.php" rel="noopener">Rincón del Coleccionista</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <p data-i18n="foot1">Source of the data: Agencia Estatal Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). This site is unofficial and not linked to Loterías y Apuestas del Estado.</p>
+  <p><span data-i18n="foot2">A</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">project at</span> <a href="https://jordijoan.es/">jordijoan.es</a>. <span id="upd"></span></p>
+</div></footer>
+<div class="tip" id="tip" hidden></div>
+<script src="../shared/motion.js?v=e89679c128" defer></script>
+<script src="assets/app.js?v=4990d845a3" defer></script>
+</body>
+</html>

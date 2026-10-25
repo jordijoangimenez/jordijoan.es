@@ -33,6 +33,21 @@ async function summary(ds) {
   return 'error';
 }
 
+async function htmlDay(ds) {
+  try {
+    const r = await fetch(`https://www.boe.es/boe/dias/${ds.slice(0, 4)}/${ds.slice(4, 6)}/${ds.slice(6, 8)}/`, { headers: { 'user-agent': UA['user-agent'] } });
+    if (!r.ok) return null;
+    const page = await r.text(), out = [];
+    for (const m of page.matchAll(/<li class="dispo">\s*<p>([\s\S]*?)<\/p>[\s\S]*?txt\.php\?id=(BOE-[A-Z]-\d{4}-\d+)/g)) {
+      const title = m[1].replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).trim();
+      if (!KEEP.test(title)) continue;
+      const pdf = (page.slice(m.index, m.index + m[0].length + 600).match(/href="([^"]+\.pdf)"/) || [])[1];
+      out.push(JSON.stringify({ date: ds, id: m[2], title, pdf: pdf ? new URL(pdf, 'https://www.boe.es').href : null }));
+    }
+    return out;
+  } catch { return null; }
+}
+
 const today = new Date().toISOString().slice(0, 10);
 for (let y = from; y <= to; y++) {
   const doneFile = join(DIR, `${y}.done`), outFile = join(DIR, `${y}.jsonl`);
@@ -49,7 +64,14 @@ for (let y = from; y <= to; y++) {
     while (next < days.length) {
       const ds = days[next++];
       const j = await summary(ds);
-      if (j === 'error') { failed++; continue; }
+      if (j === 'error') {
+        // a few summaries always fail in the API: read that day's HTML index page instead
+        const lines = await htmlDay(ds);
+        if (lines == null) { failed++; continue; }
+        if (lines.length) { await appendFile(outFile, lines.join('\n') + '\n'); hits += lines.length; }
+        await appendFile(doneFile, ds + '\n');
+        continue;
+      }
       if (j) {
         const seen = new Set(), lines = [];
         for (const it of items(j)) {

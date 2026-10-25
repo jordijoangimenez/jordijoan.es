@@ -48,9 +48,71 @@
       link(GAL + '74-1992-1996-emisiones-kluessendorf-ibm', 'Klüssendorf e IBM, 1992–1996', 'Galería ATM') + link(GAL + '76-1989-1990-emision-frama', 'Frama, 1989–1990', 'Galería ATM') +
       link(GAL + '79-1980-1993-etiquetas-postales', 'Frama y Epelsa, 1980–1993', 'Galería ATM') + link(CORREOS_ATM, 'Etiquetas franqueadoras ATM', 'Correos') +
       link('https://www.ateeme.com/', 'Estudio de los sellos de valor variable', 'ATEEME'),
+    labels_h: 'Etiquetas emitidas por Correos', labels_loading: 'Cargando etiquetas…', labels_filter: 'Filtrar por tipo',
     note_h: 'Sobre esta página',
-    note_body: '<p>El texto es propio y resume la información publicada por Correos y la clasificación por etapas de Galería ATM. No reproduce imágenes ni listados de otros catálogos: los enlaza. Galería ATM es una tienda especializada y ATEEME, un grupo de estudio de los sellos de valor variable; ninguno participa en esta página.</p>',
-    foot1: 'Textos: elaboración propia a partir de la información de <a href="' + CORREOS_ATM + '" rel="noopener">Correos</a> (máquina, código, tarifas y dónde comprar) y de la clasificación por etapas de <a href="' + GAL + '56-espana" rel="noopener">Galería ATM</a>. Diseños de las etiquetas: &copy; sus autores y Correos; aquí no se reproduce ninguna imagen ni ningún listado, solo se enlazan (<a href="./#rights">derechos</a>). Esta página no es oficial: consulta siempre en Correos las tarifas y condiciones vigentes (las de esta página son de 2026).',
+    note_body: '<p>El texto es propio y resume la información publicada por Correos y la clasificación por etapas de Galería ATM. La lista de etiquetas viene de las fichas de Filatelia de Correos (título, fecha y lugar de cada una), con sus imágenes mostradas desde correos.es, sin copiarlas. De Galería ATM no se toma nada: se enlaza. Galería ATM es una tienda especializada y ATEEME, un grupo de estudio de los sellos de valor variable; ni ellos ni Correos participan en esta página.</p>',
+    foot1: 'Textos: elaboración propia a partir de la información de <a href="' + CORREOS_ATM + '" rel="noopener">Correos</a> (máquina, código, tarifas y dónde comprar) y de la clasificación por etapas de <a href="' + GAL + '56-espana" rel="noopener">Galería ATM</a>. Lista de etiquetas: fichas de Filatelia de Correos, con sus imágenes mostradas desde correos.es. Diseños de las etiquetas: &copy; sus autores y Correos; las imágenes se muestran solo para identificar cada etiqueta (<a href="./#rights">derechos</a>). Esta página no es oficial: consulta siempre en Correos las tarifas y condiciones vigentes (las de esta página son de 2026).',
     foot2: 'Un proyecto de', foot3: 'en', updated: 'Página actualizada:', updated_date: '24 de octubre de 2026'
   } });
+
+  // ---- the labels of the Correos pages (data/atm.json): by year, filtered by kind; pictures shown from correos.es ----
+  var ES = L.lang === 'es';
+  var CORREOS = 'https://www.correos.es';
+  var GROUPS = ES
+    ? { ferias: 'Ferias y eventos', 'ubicacion-fija': 'Ubicación fija', 'de-coleccion': 'De colección', 'etiquetas-franqueadoras-2006-1989': '1989–2006' }
+    : { ferias: 'Fairs and events', 'ubicacion-fija': 'Permanent machine', 'de-coleccion': 'Collection labels', 'etiquetas-franqueadoras-2006-1989': '1989–2006' };
+  var T = ES
+    ? { all: 'Todas', count: function (n) { return n + (n === 1 ? ' etiqueta' : ' etiquetas') + ' · abre una para ver su ficha en Correos'; }, none: 'No se han podido cargar las etiquetas.' }
+    : { all: 'All', count: function (n) { return n + (n === 1 ? ' label' : ' labels') + ' · open one for its record on Correos'; }, none: 'The labels could not be loaded.' };
+  var MONTHS = ES ? ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'] : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  var labels = [], group = '';
+  function el(tag, props, kids) {
+    var n = document.createElement(tag);
+    Object.keys(props || {}).forEach(function (k) { if (k === 'text') n.textContent = props[k]; else if (k === 'class') n.className = props[k]; else n.setAttribute(k, props[k]); });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function day(iso) { if (!iso) return ''; var p = iso.split('-'); return (+p[2]) + ' ' + MONTHS[+p[1] - 1] + ' ' + p[0]; }
+  function card(a) {
+    var kids = [];
+    if (a.i) {
+      var img = el('img', { src: CORREOS + encodeURI(a.i), alt: '', loading: 'lazy', decoding: 'async' });
+      var box = el('span', { class: 'atm-pic', 'aria-hidden': 'true' }, [img]);
+      img.addEventListener('error', function () { box.remove(); });
+      kids.push(box);
+    }
+    kids.push(el('span', { class: 'card-meta', text: [day(a.d), a.place].filter(Boolean).join(' · ') }));
+    var t = el('span', { class: 'card-subject', text: a.t });
+    if (!ES) t.setAttribute('lang', 'es');
+    kids.push(t);
+    return el('li', {}, [el('a', { class: 'atm-card', href: CORREOS + a.p, target: '_blank', rel: 'noopener' }, kids)]);
+  }
+  function render() {
+    var box = document.getElementById('atm-list');
+    box.textContent = '';
+    var list = labels.filter(function (a) { return !group || a.g === group; });
+    var years = {};
+    list.forEach(function (a) { var y = (a.d || '').slice(0, 4) || '–'; (years[y] = years[y] || []).push(a); });
+    Object.keys(years).sort().reverse().forEach(function (y, i) {
+      box.appendChild(el('section', { class: 'group', 'aria-labelledby': 'ay-' + i }, [
+        el('h3', { id: 'ay-' + i, class: 'group-h', text: y }),
+        el('ul', { class: 'grid atm-grid', 'aria-label': y }, years[y].map(card))
+      ]));
+    });
+    document.getElementById('atm-count').textContent = T.count(list.length);
+    Array.prototype.forEach.call(document.querySelectorAll('#atm-groups button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-g') === group)); });
+  }
+  fetch('data/atm.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); }).then(function (data) {
+    labels = data;
+    var counts = {};
+    labels.forEach(function (a) { counts[a.g] = (counts[a.g] || 0) + 1; });
+    var chips = document.getElementById('atm-groups');
+    chips.appendChild(el('button', { type: 'button', class: 'chip', 'data-g': '', 'aria-pressed': 'true', text: T.all }));
+    Object.keys(GROUPS).forEach(function (g) {
+      if (counts[g]) chips.appendChild(el('button', { type: 'button', class: 'chip', 'data-g': g, 'aria-pressed': 'false' }, [GROUPS[g], el('small', { text: String(counts[g]) })]));
+    });
+    chips.hidden = false;
+    chips.addEventListener('click', function (e) { var b = e.target.closest('button[data-g]'); if (!b) return; group = b.getAttribute('data-g'); render(); });
+    render();
+  }).catch(function () { document.getElementById('atm-count').textContent = T.none; });
 })();

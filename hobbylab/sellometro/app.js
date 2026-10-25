@@ -14,7 +14,7 @@
     f_terr: 'Territorio', all_terr: 'España, Andorra y África', t_espana: 'España', t_andorra: 'Andorra (correo español)', t_africa: 'Territorios de África',
     f_sort: 'Orden', s_new: 'Más recientes primero', s_old: 'Más antiguas primero', s_series: 'Serie, de la A a la Z', reset: 'Limpiar',
     about: 'Sobre este catálogo',
-    sub: 'Todas las emisiones de sellos de correo de España, de 1850 a hoy, por año, época y tema. Desde 1960 cada emisión muestra el texto oficial y la ficha técnica de su disposición en el Boletín Oficial del Estado. Las imágenes y las emisiones anteriores vienen del catálogo de FESOFI, enlazado desde su web. Un catálogo no oficial.',
+    sub: 'Todas las emisiones de sellos de correo de España, de 1850 a hoy, por año, época y tema. Desde 1960 cada emisión muestra el texto oficial y la ficha técnica de su disposición en el Boletín Oficial del Estado. Las imágenes vienen del catálogo de FESOFI y de la web de Filatelia de Correos, enlazadas desde ellas, y las emisiones anteriores, de FESOFI. Un catálogo no oficial.',
     eras_h: 'Sellos por época', eras_hint: 'Pulsa una época para ver sus emisiones', issues_h: 'Emisiones', loading: 'Cargando emisiones…',
     views: 'Agrupar emisiones', v_year: 'Por año', v_era: 'Por época', v_topic: 'Por tema', v_all: 'Todas', by_topic: 'Filtrar por tema',
     method: 'Cómo funciona',
@@ -22,12 +22,12 @@
       '<h3>Copiado, no reescrito</h3><p>El nombre de la serie, el texto que presenta cada emisión, la fecha de puesta en circulación y las características técnicas (impresión, papel, dentado, formato, valor, tirada) se copian del texto del BOE. Si el BOE publicó después una corrección de errores, la emisión la enlaza.</p>' +
       '<h3>Antes de 1995</h3><p>El BOE solo ofrece el texto de casi todas las disposiciones anteriores a 1995 como imagen escaneada en PDF. Para esas emisiones el catálogo muestra el título oficial, la fecha de publicación y el enlace al PDF, sin características técnicas.</p>' +
       '<h3>Antes de 1960</h3><p>Los datos abiertos del BOE empiezan en 1960. Las emisiones anteriores, de Isabel II a la posguerra, y las pocas posteriores que no aparecen en el BOE vienen del <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España de FESOFI</a>, con lo mínimo para identificarlas: fecha, serie, motivo y valor de cada sello. La ficha completa está en FESOFI.</p>' +
-      '<h3>Imágenes</h3><p>Cada emisión del BOE se empareja con sus sellos en FESOFI por la fecha y el nombre de la serie, y muestra sus imágenes y la lista de sus valores. El emparejamiento es automático: alguna emisión puede quedar sin imágenes o, si los dos catálogos la llaman de forma distinta, aparecer dos veces.</p>' +
-      '<h3 id="rights">Imágenes y derechos</h3><p>Este es un catálogo informativo y sin ánimo de lucro. Las imágenes se muestran directamente desde la web de FESOFI, sin copiarlas: este sitio no guarda ninguna, y al abrir la página tu navegador las pide al servidor de FESOFI. Si dejan de cargarse, cada emisión se dibuja como un sello de texto. El diseño de cada sello pertenece a sus autores y a Correos, y las fotos, a FESOFI. Si tienes derechos sobre algún contenido de esta página y quieres que se retire, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">abre una incidencia en GitHub</a> y se quitará.</p>' +
+      '<h3>Imágenes</h3><p>Cada emisión del BOE se empareja con sus sellos en FESOFI por la fecha y el nombre de la serie, y muestra sus imágenes y la lista de sus valores. Cuando FESOFI no tiene imagen (las emisiones más nuevas, algunas recientes, Andorra, las tarjetas prefranqueadas), muestra la imagen oficial de la web de Filatelia de Correos, emparejada por fecha y título; Correos las publica desde 1997. El emparejamiento es automático: alguna emisión puede quedar sin imágenes o, si los catálogos la llaman de forma distinta, aparecer dos veces.</p>' +
+      '<h3 id="rights">Imágenes y derechos</h3><p>Este es un catálogo informativo y sin ánimo de lucro. Las imágenes se muestran directamente desde las webs de FESOFI y de Correos, sin copiarlas: este sitio no guarda ninguna, y al abrir la página tu navegador las pide a sus servidores. Si dejan de cargarse, cada emisión se dibuja como un sello de texto. El diseño de cada sello pertenece a sus autores y a Correos, y las fotos, a FESOFI y a Correos. Si tienes derechos sobre algún contenido de esta página y quieres que se retire, <a href="https://github.com/jordijoangimenez/jordijoan.es/issues" rel="noopener">abre una incidencia en GitHub</a> y se quitará.</p>' +
       '<h3>Temas</h3><p>Cada emisión se clasifica en uno o varios temas (arte, naturaleza, personajes, deporte…) a partir de las palabras de su texto oficial. Es una clasificación automática y no oficial, así que alguna emisión puede caer en un tema inesperado.</p>' +
       '<h3>Territorios</h3><p>Además de España, el BOE recoge las emisiones del correo español en Andorra y, hasta los años setenta, las de los territorios de África (Sahara, Ifni, Guinea). Se pueden filtrar aparte.</p>' +
       '<h3>Etiquetas ATM</h3><p>Las etiquetas de franqueo de valor variable no se publican en el BOE. Tienen su propia página, con su historia, cómo leerlas y dónde consultar las emisiones: <a href="atm.html">etiquetas ATM</a>.</p>',
-    foot1: 'Textos: disposiciones del Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). Fuente de los datos: Agencia Estatal Boletín Oficial del Estado, reutilización autorizada citando la fuente; los temas y las épocas son una elaboración propia basada en esos datos. Imágenes y emisiones anteriores a 1960: <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España</a> de la Federación Española de Sociedades Filatélicas (FESOFI), enlazado desde su web. Diseños de los sellos: &copy; sus autores y Correos; las imágenes se muestran solo para identificar cada emisión (<a href="#rights">derechos</a>). Este catálogo no es oficial y ni el BOE ni FESOFI participan en él: consulta siempre la fuente original.',
+    foot1: 'Textos: disposiciones del Boletín Oficial del Estado (<a href="https://www.boe.es/" rel="noopener">BOE</a>). Fuente de los datos: Agencia Estatal Boletín Oficial del Estado, reutilización autorizada citando la fuente; los temas y las épocas son una elaboración propia basada en esos datos. Imágenes: <a href="https://catalogodesellos.fesofi.es/" rel="noopener">Catálogo de Sellos de España</a> de la Federación Española de Sociedades Filatélicas (FESOFI) y <a href="https://www.correos.es/es/es/particulares/filatelia" rel="noopener">Filatelia de Correos</a>, enlazadas desde sus webs; emisiones anteriores a 1960: FESOFI. Diseños de los sellos: &copy; sus autores y Correos; las imágenes se muestran solo para identificar cada emisión (<a href="#rights">derechos</a>). Este catálogo no es oficial y ni el BOE, ni FESOFI, ni Correos participan en él: consulta siempre la fuente original.',
     foot2: 'Un proyecto de', foot3: 'en', updated: 'Datos actualizados:', prev: '&larr; Anterior', next: 'Siguiente &rarr;', close: 'Cerrar'
   } });
 
@@ -56,9 +56,10 @@
     fesofiNo: 'Nº FESOFI ', sourceH: 'Fuente', provision: 'Disposición', published: 'Publicada', pics: 'Imágenes', dataPics: 'Datos e imágenes',
     fesofiCat: 'Catálogo de Sellos de España de FESOFI, enlazado desde su web', corrected: 'Corregida después por:',
     openBoe: 'Abrir en el BOE', pdf: 'PDF del BOE', fesofiPage: 'Ficha en FESOFI', yearOnFesofi: function (y) { return 'Sellos de ' + y + ' en FESOFI'; },
-    picSrc: 'Imagen: catálogo de FESOFI', pos: function (i, n) { return i + ' de ' + n; },
-    pills: function (y0, y1, last) { return ['Sellos de España', y0 + '–' + y1, 'BOE y FESOFI', 'Último BOE: ' + last]; },
-    countLabel: function (y0, n) { return 'emisiones desde ' + y0 + ', ' + n + ' sellos con imagen'; },
+    picSrc: 'Imagen: catálogo de FESOFI', picSrcCorreos: 'Imagen: Filatelia de Correos', pos: function (i, n) { return i + ' de ' + n; },
+    correosH: 'Imágenes en Correos', correosPage: 'Ficha en Correos', officialPics: 'Imágenes oficiales', correosSite: 'Filatelia de Correos, enlazadas desde su web',
+    pills: function (y0, y1, last) { return ['Sellos de España', y0 + '–' + y1, 'BOE, FESOFI y Correos', 'Último BOE: ' + last]; },
+    countLabel: function (y0, n) { return 'emisiones desde ' + y0 + ', ' + n + ' con imagen'; },
     countSmall: function (t, n) { return t + ' con texto oficial del BOE · ' + n + ' temas'; },
     allTopics: 'Todos los temas',
     fail: function (m) { return 'No se han podido cargar los datos (' + m + '). Si has abierto la página como archivo local, sírvela por http, por ejemplo con un servidor web estático.'; }
@@ -85,9 +86,10 @@
     fesofiNo: 'FESOFI no. ', sourceH: 'Source', provision: 'Provision', published: 'Published', pics: 'Pictures', dataPics: 'Data and pictures',
     fesofiCat: 'Catálogo de Sellos de España by FESOFI, linked from its website', corrected: 'Later corrected by:',
     openBoe: 'Open in the BOE', pdf: 'BOE PDF', fesofiPage: 'Record on FESOFI', yearOnFesofi: function (y) { return 'Stamps of ' + y + ' on FESOFI'; },
-    picSrc: 'Picture: FESOFI catalogue', pos: function (i, n) { return i + ' of ' + n; },
-    pills: function (y0, y1, last) { return ['Spanish stamps', y0 + '–' + y1, 'BOE and FESOFI', 'Latest BOE: ' + last]; },
-    countLabel: function (y0, n) { return 'issues since ' + y0 + ', ' + n + ' stamps with a picture'; },
+    picSrc: 'Picture: FESOFI catalogue', picSrcCorreos: 'Picture: Correos Filatelia', pos: function (i, n) { return i + ' of ' + n; },
+    correosH: 'Pictures on Correos', correosPage: 'Record on Correos', officialPics: 'Official pictures', correosSite: 'Correos Filatelia, linked from its website',
+    pills: function (y0, y1, last) { return ['Spanish stamps', y0 + '–' + y1, 'BOE, FESOFI and Correos', 'Latest BOE: ' + last]; },
+    countLabel: function (y0, n) { return 'issues since ' + y0 + ', ' + n + ' with a picture'; },
     countSmall: function (t, n) { return t + ' with the official BOE text · ' + n + ' topics'; },
     allTopics: 'All topics',
     fail: function (m) { return 'The data could not be loaded (' + m + '). If you opened this page as a local file, serve the folder over http instead, for example with a simple static web server.'; }
@@ -100,8 +102,10 @@
   var SORTS = ['date-desc', 'date-asc', 'series'];
   var FESOFI = 'https://catalogodesellos.fesofi.es/product-category/';
   var FESOFI_SITE = 'https://catalogodesellos.fesofi.es/';
-  // stamp pictures are shown straight from the FESOFI catalogue, not copied; if they stop loading, the drawn stamp stays
+  // stamp pictures are shown straight from the FESOFI catalogue or, when it has none, from the Correos pages; nothing is
+  // copied, and if they stop loading the drawn stamp stays
   var FESOFI_IMG = 'https://catalogodesellos.fesofi.es/wp-content/uploads/';
+  var CORREOS = 'https://www.correos.es';
   // eras as Spanish philately groups its stamps; the BOE open data starts in 1960, the earlier ones come from FESOFI
   var ERAS = [
     { id: 'isabel-ii', range: '1850–1870' }, { id: 'duque-de-la-torre', range: '1870–1872' }, { id: 'amadeo-i', range: '1872–1873' },
@@ -187,13 +191,26 @@
     var p = (c.dateText || String(c.year)).split('-');
     return p[1] ? S.monthYear(+p[1] - 1, p[0]) : p[0];
   }
-  // the first stamp's picture from FESOFI; the drawn stamp takes its place if it does not load
+  function correosUrl(path) { return CORREOS + encodeURI(path); }
+  // the pictures to try, in order: the first FESOFI stamp that has one (small), then the official Correos picture
+  function pictureUrls(c) {
+    var urls = [];
+    for (var i = 0; i < c.stamps.length; i++) if (c.stamps[i].i) { urls.push(FESOFI_IMG + c.stamps[i].i); break; }
+    if (c.correos && c.correos.i.length) urls.push(correosUrl(c.correos.i[0]));
+    return urls;
+  }
+  // the issue's picture; if one does not load the next is tried, and at the end the drawn stamp takes its place
   function pictureNode(c, big) {
-    var s = c.stamps[0];
-    if (!s || !s.i) return stampNode(c);
-    var box = el('span', { class: big ? 'photo photo-big' : 'photo', 'aria-hidden': 'true' });
-    var img = el('img', { src: FESOFI_IMG + s.i, alt: '', loading: 'lazy', decoding: 'async', width: 247, height: 300 });
-    img.addEventListener('error', function () { if (box.parentNode) box.parentNode.replaceChild(stampNode(c), box); });
+    var urls = pictureUrls(c);
+    if (!urls.length) return stampNode(c);
+    var box = el('span', { class: (big ? 'photo photo-big' : 'photo') + (urls[0].indexOf(CORREOS) === 0 ? ' photo-c' : ''), 'aria-hidden': 'true' });
+    var img = el('img', { src: urls[0], alt: '', loading: 'lazy', decoding: 'async', width: 247, height: 300 });
+    var k = 0;
+    img.addEventListener('error', function () {
+      k++;
+      if (k < urls.length) { box.classList.toggle('photo-c', urls[k].indexOf(CORREOS) === 0); img.src = urls[k]; }
+      else if (box.parentNode) box.parentNode.replaceChild(stampNode(c), box);
+    });
     box.appendChild(img);
     return box;
   }
@@ -469,6 +486,17 @@
       })));
     }
 
+    if (c.correos && c.correos.i.length) {
+      // the official pictures on the Correos page of the issue
+      info.appendChild(el('h3', { text: S.correosH }));
+      info.appendChild(el('ul', { class: 'cpics' }, c.correos.i.map(function (p) {
+        var img = el('img', { src: correosUrl(p), alt: '', loading: 'lazy', decoding: 'async' });
+        var li = el('li', {}, [el('a', { href: CORREOS + c.correos.p, target: '_blank', rel: 'noopener', 'aria-label': S.correosPage }, [img])]);
+        img.addEventListener('error', function () { li.remove(); });
+        return li;
+      })));
+    }
+
     info.appendChild(el('h3', { text: S.sourceH }));
     var src = el('dl', { class: 'facts' });
     if (c.boe) {
@@ -477,6 +505,7 @@
       fact(src, S.published, longDate(c.boe.date) + ' · ' + c.boe.id);
     }
     if (c.stamps.length) fact(src, c.boe ? S.pics : S.dataPics, S.fesofiCat);
+    if (c.correos) fact(src, S.officialPics, S.correosSite);
     info.appendChild(src);
     if (c.corr.length) {
       info.appendChild(el('p', { text: S.corrected }));
@@ -491,12 +520,14 @@
       see.appendChild(linkBtn('https://www.boe.es/diario_boe/txt.php?id=' + c.boe.id, S.openBoe, true));
       if (c.boe.pdf) see.appendChild(linkBtn(c.boe.pdf, S.pdf));
     }
+    if (c.correos) see.appendChild(linkBtn(CORREOS + c.correos.p, S.correosPage));
     if (c.stamps.length) see.appendChild(linkBtn(FESOFI_SITE + c.stamps[0].p, S.fesofiPage, !c.boe));
-    else if (c.terr === 'espana') see.appendChild(linkBtn(FESOFI + c.era + '/?filter_ano-de-emision=' + c.year, S.yearOnFesofi(c.year)));
+    else if (c.terr === 'espana' && !c.correos) see.appendChild(linkBtn(FESOFI + c.era + '/?filter_ano-de-emision=' + c.year, S.yearOnFesofi(c.year)));
     info.appendChild(see);
 
+    var urls = pictureUrls(c);
     var pic = el('div', { class: 'dlg-img' }, [pictureNode(c, true)]);
-    if (c.stamps.length && c.stamps[0].i) pic.appendChild(el('p', { class: 'pic-src', text: S.picSrc }));
+    if (urls.length) pic.appendChild(el('p', { class: 'pic-src', text: urls[0].indexOf(CORREOS) === 0 ? S.picSrcCorreos : S.picSrc }));
     box.appendChild(pic);
     box.appendChild(info);
     dlg.scrollTop = 0;
@@ -567,10 +598,10 @@
 
   // pills and the count box at the top, in the format of the other Hobby Lab pages
   function hero(ys) {
-    var withText = 0, stamps = 0, lastBoe = '';
+    var withText = 0, withPics = 0, lastBoe = '';
     items.forEach(function (c) {
       if (c.text) withText++;
-      stamps += c.stamps.length;
+      if (pictureUrls(c).length) withPics++;
       if (c.boe && c.boe.date > lastBoe) lastBoe = c.boe.date;
     });
     var pills = $('pills');
@@ -579,7 +610,7 @@
     var box = $('hero-count');
     box.textContent = '';
     box.appendChild(el('b', { class: 'hl-num', text: String(items.length) }));
-    box.appendChild(el('span', { text: S.countLabel(ys[0], stamps) }));
+    box.appendChild(el('span', { text: S.countLabel(ys[0], withPics) }));
     box.appendChild(el('small', { text: S.countSmall(withText, TOPICS.length) }));
     box.hidden = false;
     var h = $('hero');

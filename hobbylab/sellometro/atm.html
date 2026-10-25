@@ -7,7 +7,7 @@
 <meta name="description" content="What variable-value ATM postage labels are, which machines Correos has used in Spain, how to read their code, their rates and where to look up each issue.">
 <link rel="canonical" href="https://jordijoan.es/hobbylab/sellometro/atm.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=620c8f16a4">
+<link rel="stylesheet" href="styles.css?v=87ec3a64ce">
 <link rel="stylesheet" href="../shared/motion.css?v=64da1c2ad9">
 <script>try { var t = localStorage.getItem('theme'); document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark'; } catch (e) { document.documentElement.dataset.theme = 'dark'; }</script>
 <script src="../shared/lang.js?v=90a9ab947f"></script>
@@ -100,6 +100,15 @@
     </div>
   </section>
 
+  <section class="card" id="labels" aria-labelledby="labels-h">
+    <div class="card-head">
+      <h2 id="labels-h" data-i18n="labels_h">Labels issued by Correos</h2>
+      <span class="hint" id="atm-count" role="status" aria-live="polite" data-i18n="labels_loading">Loading labels…</span>
+    </div>
+    <div class="topics" id="atm-groups" role="group" aria-label="Filter by kind" data-i18n-attr="aria-label:labels_filter" hidden></div>
+    <div id="atm-list" class="groups"></div>
+  </section>
+
   <section class="card" aria-labelledby="cat-h">
     <div class="card-head"><h2 id="cat-h" data-i18n="cat_h">Issue catalogues</h2><span class="hint" data-i18n="cat_hint">To see each design, with pictures</span></div>
     <ul class="links" data-i18n="cat_links">
@@ -123,13 +132,13 @@
   <section class="card" aria-labelledby="note-h">
     <div class="card-head"><h2 id="note-h" data-i18n="note_h">About this page</h2></div>
     <div class="prose" data-i18n="note_body">
-      <p>The text is our own and summarises the information published by Correos and Galería ATM's classification by stages. It reproduces no pictures or lists from other catalogues: it links to them. Galería ATM is a specialist shop and ATEEME a study group on variable-value stamps; neither takes part in this page.</p>
+      <p>The text is our own and summarises the information published by Correos and Galería ATM's classification by stages. The list of labels comes from the Correos Filatelia pages (title, date and place of each one), with their pictures shown from correos.es, not copied. Nothing is taken from Galería ATM, which is linked. Galería ATM is a specialist shop and ATEEME a study group on variable-value stamps; neither they nor Correos take part in this page.</p>
     </div>
   </section>
 </main>
 
 <footer><div class="wrap">
-  <p data-i18n="foot1">Texts: our own, based on information from <a href="https://www.correos.es/es/es/particulares/filatelia/productos-filatelicos/etiquetas-franqueadoras-atm" rel="noopener">Correos</a> (machine, code, rates and where to buy) and the classification by stages of <a href="https://www.galeriaatm.com/es/56-espana" rel="noopener">Galería ATM</a>. Label designs: &copy; their authors and Correos; no pictures or lists are reproduced here, only linked (<a href="./#rights">rights</a>). This page is unofficial: always check the current rates and conditions with Correos (the ones on this page are for 2026).</p>
+  <p data-i18n="foot1">Texts: our own, based on information from <a href="https://www.correos.es/es/es/particulares/filatelia/productos-filatelicos/etiquetas-franqueadoras-atm" rel="noopener">Correos</a> (machine, code, rates and where to buy) and the classification by stages of <a href="https://www.galeriaatm.com/es/56-espana" rel="noopener">Galería ATM</a>. List of labels: Correos Filatelia pages, with their pictures shown from correos.es. Label designs: &copy; their authors and Correos; the pictures are shown only to identify each label (<a href="./#rights">rights</a>). This page is unofficial: always check the current rates and conditions with Correos (the ones on this page are for 2026).</p>
   <p><span data-i18n="foot2">A</span> <a href="../">Hobby Lab</a> <span data-i18n="foot3">project at</span> <a href="https://jordijoan.es/">jordijoan.es</a>. <span data-i18n="updated">Page updated:</span> <time datetime="2026-10-24" data-i18n="updated_date">24 October 2026</time>.</p>
 </div></footer>
 
@@ -143,7 +152,7 @@
     });
   })();
 </script>
-<script src="atm.js?v=85c01b1654"></script>
+<script src="atm.js?v=b9de1ed217"></script>
 <script src="../shared/motion.js?v=e89679c128" defer></script>
 </body>
 </html>
